@@ -179,10 +179,18 @@ export default function GovernancePage() {
           </div>
 
           <p className="mb-12 text-[13.5px] leading-[1.7] text-fg-mute">
-            The Governance Reviewer is an AI agent that reads DAO proposals
-            and posts an advisory verdict before the vote opens. Pick a
-            preset below — watch it flag the flash-loan and dust-stake
-            shapes a contract can&apos;t reason about.
+            An AI agent that reads a DAO treasury proposal before voting
+            opens and posts a signed{" "}
+            <span className="font-bold text-[color:var(--green)]">APPROVE</span>{" "}
+            /{" "}
+            <span className="font-bold text-[color:var(--amber)]">CAUTION</span>{" "}
+            /{" "}
+            <span className="font-bold text-[color:var(--red)]">REJECT</span>{" "}
+            verdict. Pick a preset — a routine grants budget, a dust-staked
+            wallet trying to drain the treasury at 03:00 on a Sunday, a
+            hostile router upgrade, or the exact shape that drained Beanstalk
+            for $182M — and watch the reviewer read the calldata + the
+            proposer&apos;s voting history before the vote opens.
           </p>
 
           <div id="governance-scenarios">
