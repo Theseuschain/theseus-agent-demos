@@ -34,7 +34,7 @@ export function PortfolioPanel({ portfolio, market, presetLabel }: Props) {
   return (
     <div>
       <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-        on-chain portfolio · {presetLabel}
+        paper portfolio · sandbox · {presetLabel}
       </p>
 
       <div className="mt-2 flex items-baseline gap-5">

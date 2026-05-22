@@ -71,10 +71,13 @@ export interface FundScenarioState {
   presetLabel: string;
 }
 
-/** Starting NAV: $1M, 50-50 by USD value at deploy. */
+/** Starting NAV: $100k paper capital, 50-50 by USD value at deploy.
+ *  Smaller than a real fund mandate would carry, but big enough that
+ *  decimal rounding doesn't dominate display. The sandbox framing is
+ *  surfaced in the UI; the numbers are simulated, not on-chain. */
 export const STARTING_PORTFOLIO: FundPortfolio = {
-  usdc: 500_000,
-  weth: 500_000 / 2500, // 200 WETH at $2,500
+  usdc: 50_000,
+  weth: 50_000 / 2500, // 20 WETH at $2,500
 };
 
 /** WETH price at deploy time, used to compute the fund's cost basis in USD.

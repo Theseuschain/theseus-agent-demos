@@ -8,21 +8,29 @@ interface Props {
 
 export function FundTickButton({ busy, pending, onSubmit }: Props) {
   const disabled = busy || pending;
-  const label = pending ? "agent reasoning…" : busy ? "executing…" : "run tick →";
+  const label = pending
+    ? "agent reasoning…"
+    : busy
+      ? "executing…"
+      : "run a tick →";
 
   return (
-    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 text-[12px]">
+    <div>
       <button
         type="button"
         onClick={() => onSubmit()}
         disabled={disabled}
-        className="italic underline decoration-border underline-offset-[3px] transition-colors hover:text-fg hover:decoration-fg disabled:opacity-30 disabled:hover:no-underline"
+        className="cta-ink inline-flex items-center px-4 py-2 font-mono text-[12px] uppercase tracking-[0.18em] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {label}
       </button>
-      <span className="text-fg-mute">
-        each tick the agent reads market + portfolio and decides HOLD / BUY_WETH / SELL_WETH. signed, executed on-chain, no human approval.
-      </span>
+      <p className="mt-3 text-[12px] leading-relaxed text-fg-mute">
+        Each tick the agent reads the market + portfolio and decides{" "}
+        <span className="font-mono">HOLD</span> /{" "}
+        <span className="font-mono">BUY_WETH</span> /{" "}
+        <span className="font-mono">SELL_WETH</span>. Signed, no human
+        approval.
+      </p>
     </div>
   );
 }

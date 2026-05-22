@@ -170,9 +170,11 @@ export default function FundPage() {
           </div>
 
           <p className="mb-12 text-[13.5px] leading-[1.7] text-fg-mute">
-            A sovereign agent that paper-trades a USDC/WETH portfolio against
-            a written mandate. Pick a market preset and run a tick — watch
-            the agent decide whether to buy, hold, or sell.
+            A sovereign agent that owns its own capital and rebalances against
+            a mandate. The sandbox below paper-trades a $100k portfolio — pick
+            a market, run a tick, watch the agent decide. The same agent is
+            deployed on Base Sepolia at the foot of the page; it&apos;s live
+            but unfunded.
           </p>
 
           <div id="fund-scenarios" className="mb-10">
