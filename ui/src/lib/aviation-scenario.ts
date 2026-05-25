@@ -239,6 +239,22 @@ export function applyAviationPreset(
   };
 }
 
+/** Loads an arbitrary external CertificationChange (e.g. a live FAA
+ *  Airworthiness Directive fetched from the Federal Register) into the
+ *  scenario, replacing whichever preset was active. */
+export function applyAviationChange(
+  state: AviationScenarioState,
+  change: CertificationChange,
+  label: string,
+): AviationScenarioState {
+  return {
+    ...state,
+    change: { ...change },
+    presetLabel: label,
+    blockOffset: state.blockOffset + 1,
+  };
+}
+
 export function setAviationPending(
   state: AviationScenarioState,
   pending: boolean,

@@ -54,6 +54,7 @@ export interface BridgeAgentVerdict {
 }
 
 import type { OnChainCommit } from "./agent-onchain/types";
+import type { LiveBridgeFill } from "./across";
 
 export interface BridgeTimelineEntry {
   block: number;
@@ -74,6 +75,11 @@ export interface BridgeScenarioState {
   blockOffset: number;
   pending: boolean;
   presetLabel: string;
+  /** When the user picked a live Across fill instead of a synthetic
+   *  preset, this carries the rich context (origin chain, amount, token,
+   *  recipient, etc.) so the agent prompt can mention it. Cleared on
+   *  preset selection or reset. */
+  liveFill?: LiveBridgeFill;
 }
 
 export const HEALTHY_BRIDGE: BridgeState = {
@@ -234,6 +240,23 @@ export function applyBridgePreset(
     ...state,
     state: { ...p.state },
     presetLabel: p.label,
+    blockOffset: state.blockOffset + 1,
+    liveFill: undefined,
+  };
+}
+
+/** Loads a live Across fill into the scenario, replacing whichever
+ *  preset was active. Mirrors applyBridgePreset but also carries the
+ *  rich fill context for the agent prompt. */
+export function applyBridgeLiveFill(
+  state: BridgeScenarioState,
+  fill: LiveBridgeFill,
+): BridgeScenarioState {
+  return {
+    ...state,
+    state: { ...fill.bridgeState },
+    presetLabel: fill.label,
+    liveFill: fill,
     blockOffset: state.blockOffset + 1,
   };
 }

@@ -13,6 +13,7 @@ import {
   BridgeScenarioState,
   BRIDGE_PRESETS,
   applyBridgeAgentVerdict,
+  applyBridgeLiveFill,
   applyBridgeOnChainCommit,
   applyBridgeCommitError,
   applyBridgePendingAction,
@@ -21,6 +22,7 @@ import {
   setBridgePending,
   setBridgePendingReasoning,
 } from "@/lib/bridge-scenario";
+import type { LiveBridgeFill } from "@/lib/across";
 import {
   BridgePreset,
   readBridgeUrl,
@@ -73,6 +75,7 @@ export default function BridgePage() {
             action: "WITHDRAW",
             amountUsd,
             recentVerdicts,
+            liveFill: scenario.liveFill,
           }),
         });
         if (!res.ok || !res.body) {
@@ -161,6 +164,30 @@ export default function BridgePage() {
     setScenario(initialBridgeScenario());
   }, []);
 
+  // Live Across fills landing on Base. Lazy-loaded on first expansion
+  // so the page render stays fast and we don't burn the upstream API
+  // for visitors who never open the section.
+  const [liveOpen, setLiveOpen] = useState(false);
+  const [liveFills, setLiveFills] = useState<LiveBridgeFill[] | null>(null);
+  const [liveErr, setLiveErr] = useState<string | null>(null);
+
+  const fetchLive = useCallback(async () => {
+    if (liveFills || liveErr) return;
+    try {
+      const res = await fetch("/api/bridge/recent-fills");
+      if (!res.ok) throw new Error(`http ${res.status}`);
+      const j = (await res.json()) as { fills: LiveBridgeFill[] };
+      setLiveFills(j.fills);
+    } catch (e) {
+      setLiveErr((e as Error).message);
+    }
+  }, [liveFills, liveErr]);
+
+  const handleLivePick = useCallback((fill: LiveBridgeFill) => {
+    setPresetKey(null);
+    setScenario((s) => applyBridgeLiveFill(s, fill));
+  }, []);
+
   return (
     <>
       <BridgeGuardianJsonLd />
@@ -199,6 +226,106 @@ export default function BridgePage() {
               onReset={handleReset}
             />
           </div>
+
+          <details
+            className="mt-6 border-t pt-4"
+            style={{ borderColor: "var(--border)" }}
+            onToggle={(e) => {
+              const open = (e.currentTarget as HTMLDetailsElement).open;
+              setLiveOpen(open);
+              if (open) fetchLive();
+            }}
+          >
+            <summary className="cursor-pointer text-[10.5px] uppercase tracking-[0.18em] text-fg-mute transition-colors hover:text-fg">
+              or review a live Across fill ↓
+            </summary>
+            <p className="mt-3 text-[12px] leading-relaxed text-fg-mute">
+              Pulled from{" "}
+              <a
+                href="https://across.to"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-border underline-offset-[3px] hover:text-fg hover:decoration-fg"
+              >
+                Across Protocol
+              </a>
+              , the intent-based bridge that fills cross-chain transfers on
+              Base. Each row is a real fill that already landed. Click one to
+              load it into the review pipeline above; the agent will read the
+              fill (origin chain, amount, recipient) and decide whether it
+              looks suspicious. Same flow as the synthetic presets.
+            </p>
+            <div className="mt-4">
+              {liveOpen && !liveFills && !liveErr && (
+                <p className="text-[12px] text-fg-mute">Loading…</p>
+              )}
+              {liveErr && (
+                <p
+                  className="text-[12px]"
+                  style={{ color: "var(--red)" }}
+                >
+                  Couldn&apos;t reach Across: {liveErr}
+                </p>
+              )}
+              {liveFills && liveFills.length === 0 && (
+                <p className="text-[12px] text-fg-mute">
+                  No recent fills returned.
+                </p>
+              )}
+              {liveFills && liveFills.length > 0 && (
+                <ul className="border-t border-border">
+                  {liveFills.map((f) => {
+                    const active = scenario.liveFill?.fillId === f.fillId;
+                    const ageMin = Math.max(
+                      1,
+                      Math.round(
+                        (Date.now() - Date.parse(f.fillTimeIso)) / 60_000,
+                      ),
+                    );
+                    return (
+                      <li
+                        key={f.fillId}
+                        className="border-b border-border py-3 last:border-b-0"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => handleLivePick(f)}
+                          className="block w-full text-left transition-colors hover:text-fg"
+                          style={active ? { color: "var(--coral)" } : undefined}
+                        >
+                          <p className="font-serif text-[15px] text-fg leading-snug">
+                            {f.originChain} → Base ·{" "}
+                            {f.amountToken < 1
+                              ? f.amountToken.toFixed(4)
+                              : f.amountToken < 1000
+                                ? f.amountToken.toFixed(2)
+                                : f.amountToken.toFixed(0)}{" "}
+                            {f.tokenSymbol}
+                          </p>
+                          <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
+                            ~${Math.round(f.amountUsd).toLocaleString()}
+                            {" · "}
+                            {ageMin}m ago
+                            {" · "}
+                            recipient {f.recipient.slice(0, 6)}…
+                            {f.recipient.slice(-4)}
+                            {f.recipientDiffersFromDepositor && (
+                              <>
+                                {" "}
+                                <span style={{ color: "var(--coral)" }}>
+                                  ≠ depositor
+                                </span>
+                              </>
+                            )}
+                          </p>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          </details>
 
           <div className="mt-10">
             <BridgePanel

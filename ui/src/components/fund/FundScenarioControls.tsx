@@ -9,6 +9,7 @@ interface Props {
   presetLabel: string;
   onPreset: (key: keyof typeof FUND_PRESETS) => Promise<void> | void;
   onReset: () => Promise<void> | void;
+  liveError?: string | null;
 }
 
 const ORDER: (keyof typeof FUND_PRESETS)[] = [
@@ -16,6 +17,7 @@ const ORDER: (keyof typeof FUND_PRESETS)[] = [
   "bullTrend",
   "drawdown",
   "blackSwan",
+  "live",
 ];
 
 export function FundScenarioControls({
@@ -23,6 +25,7 @@ export function FundScenarioControls({
   presetLabel,
   onPreset,
   onReset,
+  liveError,
 }: Props) {
   const [busy, setBusy] = useState(false);
   const disabled = busy || agentPending;
@@ -81,6 +84,14 @@ export function FundScenarioControls({
           style={{ color: "var(--coral)" }}
         >
           agent reasoning…
+        </span>
+      )}
+      {liveError && (
+        <span
+          className="basis-full font-mono text-[10.5px] uppercase tracking-[0.16em]"
+          style={{ color: "var(--coral)" }}
+        >
+          live feed unavailable: {liveError}. synthetic presets still work.
         </span>
       )}
     </div>

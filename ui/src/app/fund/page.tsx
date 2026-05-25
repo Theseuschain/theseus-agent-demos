@@ -13,7 +13,9 @@ import {
   FUND_PRESETS,
   FundAgentDecision,
   FundScenarioState,
+  MarketSnapshot,
   applyFundDecision,
+  applyFundLiveMarket,
   applyFundPendingTick,
   applyFundPreset,
   initialFundScenario,
@@ -36,13 +38,35 @@ export default function FundPage() {
   );
   const [busy, setBusy] = useState(false);
   const [presetKey, setPresetKey] = useState<FundPreset | null>(null);
+  const [liveError, setLiveError] = useState<string | null>(null);
+
+  const loadLiveMarket = useCallback(async () => {
+    setLiveError(null);
+    const res = await fetch("/api/fund/live-market", { cache: "no-store" });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error ?? `http ${res.status}`);
+    }
+    const body = (await res.json()) as {
+      snapshot: MarketSnapshot;
+      fetchedAt: number;
+    };
+    setScenario((s) => applyFundLiveMarket(s, body.snapshot));
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const url = readFundUrl(window.location.search);
     if (url.preset) {
       setPresetKey(url.preset);
-      setScenario((s) => applyFundPreset(s, url.preset!));
+      if (url.preset === "live") {
+        loadLiveMarket().catch((e: unknown) => {
+          const msg = e instanceof Error ? e.message : String(e);
+          setLiveError(msg);
+        });
+      } else {
+        setScenario((s) => applyFundPreset(s, url.preset!));
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -136,13 +160,24 @@ export default function FundPage() {
   const handlePreset = useCallback(
     async (key: keyof typeof FUND_PRESETS) => {
       setPresetKey(key as FundPreset);
+      if (key === "live") {
+        try {
+          await loadLiveMarket();
+        } catch (e: unknown) {
+          const msg = e instanceof Error ? e.message : String(e);
+          setLiveError(msg);
+        }
+        return;
+      }
+      setLiveError(null);
       setScenario((s) => applyFundPreset(s, key));
     },
-    [],
+    [loadLiveMarket],
   );
 
   const handleReset = useCallback(async () => {
     setPresetKey(null);
+    setLiveError(null);
     setScenario(initialFundScenario());
   }, []);
 
@@ -183,6 +218,7 @@ export default function FundPage() {
               presetLabel={scenario.presetLabel}
               onPreset={handlePreset}
               onReset={handleReset}
+              liveError={liveError}
             />
           </div>
 

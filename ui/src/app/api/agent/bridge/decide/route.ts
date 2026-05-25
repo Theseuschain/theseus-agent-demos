@@ -40,7 +40,10 @@ export async function POST(req: NextRequest) {
 
   // Stable per-scenario key so identical scenarios get the same on-chain
   // attestation root. Hash of the bridge state's distinguishing fields.
-  const scenarioKey = `bridge:${input.state.sourceHeight}:${input.state.finalizedHeight}:${input.state.validatorsSigning}/${input.state.validatorsTotal}:${input.state.attestationAgeSec}:${input.amountUsd}`;
+  // For live Across fills we include the fillId so each real fill gets
+  // its own attestation rather than collapsing under one healthy key.
+  const liveSuffix = input.liveFill ? `:live=${input.liveFill.fillId}` : "";
+  const scenarioKey = `bridge:${input.state.sourceHeight}:${input.state.finalizedHeight}:${input.state.validatorsSigning}/${input.state.validatorsTotal}:${input.state.attestationAgeSec}:${input.amountUsd}${liveSuffix}`;
 
   const stream = streamWithCommit({
     stream: decideBridgeStream(input),

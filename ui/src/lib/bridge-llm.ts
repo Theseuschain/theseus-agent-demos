@@ -12,6 +12,7 @@ import {
   BridgeAgentVerdict,
   BridgeState,
 } from "./bridge-scenario";
+import type { LiveBridgeFill } from "./across";
 import { chainContextLines } from "./chain-context";
 import {
   extractPartialReasoning,
@@ -27,6 +28,11 @@ export interface BridgeDecideInput {
     decision: "ALLOW" | "REFUSE";
     reason: string;
   }[];
+  /** Optional live Across-fill context. When present, the prompt
+   *  surfaces origin chain / token / recipient / depositor so the
+   *  agent can reason about the actual fill rather than just the
+   *  synthesized validator-multisig state. */
+  liveFill?: LiveBridgeFill;
 }
 
 const DEEPSEEK_URL = "https://api.deepseek.com/chat/completions";
@@ -115,6 +121,29 @@ function buildUserMessage(input: BridgeDecideInput): string {
   lines.push("Action requested:");
   lines.push(`  ${input.action} $${input.amountUsd.toLocaleString()}`);
   lines.push("");
+  if (input.liveFill) {
+    const lf = input.liveFill;
+    lines.push(
+      "This is a real Across Protocol fill that has already landed on Base. Across is an intent-based optimistic bridge (no validator multisig), so most of the structured signals above are synthesized as healthy. The interesting context is in the live fill itself; reason about whether THIS fill looks suspicious given who, what, and where:",
+    );
+    lines.push(
+      `  origin: ${lf.originChain} (chainId ${lf.originChainId}) → destination: ${lf.destinationChain}`,
+    );
+    lines.push(
+      `  amount: ${lf.amountToken} ${lf.tokenSymbol} (~$${Math.round(lf.amountUsd).toLocaleString()})`,
+    );
+    lines.push(`  depositor: ${lf.depositor}`);
+    lines.push(
+      `  recipient: ${lf.recipient}${lf.recipientDiffersFromDepositor ? " (differs from depositor)" : " (same as depositor)"}`,
+    );
+    lines.push(`  fill latency: ${lf.fillLatencySec}s deposit → fill`);
+    lines.push(`  fill tx on Base: ${lf.fillTxHash}`);
+    lines.push("");
+    lines.push(
+      "If amounts, parties, and timing look like normal cross-chain activity, ALLOW. Only REFUSE if something stands out (e.g. an exotic origin chain not in your knowledge, a recipient pattern that looks like a known mixer or sanctioned address shape, or an amount so large it dominates the bridge's recent flow).",
+    );
+    lines.push("");
+  }
   if (input.recentVerdicts.length > 0) {
     lines.push("Recent verdicts:");
     for (const r of input.recentVerdicts.slice(0, 3)) {

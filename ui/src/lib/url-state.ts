@@ -33,7 +33,13 @@ export type AaveUrlState = {
   scenario?: AaveScenarioAction;
 };
 
-export type TerraPreset = "healthy" | "wobble" | "cracking" | "bankRun" | "spiral";
+export type TerraPreset =
+  | "healthy"
+  | "wobble"
+  | "cracking"
+  | "bankRun"
+  | "spiral"
+  | "live";
 
 export type TerraUrlState = {
   preset?: TerraPreset;
@@ -66,7 +72,7 @@ export type AviationUrlState = {
   preset?: AviationPreset;
 };
 
-export type FundPreset = "calm" | "bullTrend" | "drawdown" | "blackSwan";
+export type FundPreset = "calm" | "bullTrend" | "drawdown" | "blackSwan" | "live";
 
 export type FundUrlState = {
   preset?: FundPreset;
@@ -117,7 +123,14 @@ export function writeAaveUrl(state: AaveUrlState): string {
 export function readTerraUrl(search: string): TerraUrlState {
   const p = new URLSearchParams(search);
   const presetRaw = p.get("preset");
-  const validPresets: TerraPreset[] = ["healthy", "wobble", "cracking", "bankRun", "spiral"];
+  const validPresets: TerraPreset[] = [
+    "healthy",
+    "wobble",
+    "cracking",
+    "bankRun",
+    "spiral",
+    "live",
+  ];
   const preset = validPresets.includes(presetRaw as TerraPreset)
     ? (presetRaw as TerraPreset)
     : undefined;
@@ -196,7 +209,7 @@ export function writeAviationUrl(state: AviationUrlState): string {
 export function readFundUrl(search: string): FundUrlState {
   const p = new URLSearchParams(search);
   const presetRaw = p.get("preset");
-  const valid: FundPreset[] = ["calm", "bullTrend", "drawdown", "blackSwan"];
+  const valid: FundPreset[] = ["calm", "bullTrend", "drawdown", "blackSwan", "live"];
   const preset = valid.includes(presetRaw as FundPreset)
     ? (presetRaw as FundPreset)
     : undefined;

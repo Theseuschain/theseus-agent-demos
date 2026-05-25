@@ -10,7 +10,14 @@ interface Props {
   onReset: () => Promise<void> | void;
 }
 
-const ORDER: (keyof typeof PRESETS)[] = ["healthy", "wobble", "cracking", "bankRun", "spiral"];
+const ORDER: (keyof typeof PRESETS)[] = [
+  "healthy",
+  "wobble",
+  "cracking",
+  "bankRun",
+  "spiral",
+  "live",
+];
 
 export function TerraScenarioControls({
   agentPending,

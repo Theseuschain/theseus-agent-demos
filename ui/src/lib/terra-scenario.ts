@@ -88,11 +88,21 @@ export const initialTerraScenario = (): TerraScenarioState => ({
   presetLabel: "Healthy",
 });
 
-/** Five preset vault states, walking through the actual Terra timeline. */
+/** Preset vault states. Four walk through the actual Terra timeline; the
+ *  fifth is a sentinel for "load live Frax/FXS data from the network". The
+ *  page handles `live` specially (it fetches /api/terra/live-frax and uses
+ *  applyTerraLiveVault) so its `vault` field here is just a healthy
+ *  placeholder for callers who introspect PRESETS without dispatching. */
 export const PRESETS: Record<string, { label: string; description: string; vault: VaultState }> = {
   healthy: {
     label: "Healthy",
     description: "Day 0. Peg solid, redemptions normal, LUND stable.",
+    vault: { ...HEALTHY },
+  },
+  live: {
+    label: "Live Frax",
+    description:
+      "Real-world Frax/FXS state right now (CoinGecko + DefiLlama). Mapped onto the USTD/LUND vault shape so the same failsafe agent reasons about an actively-trading stablecoin instead of a synthetic Terra snapshot.",
     vault: { ...HEALTHY },
   },
   wobble: {
@@ -235,6 +245,22 @@ export function applyPreset(
     ...state,
     vault: { ...p.vault },
     presetLabel: p.label,
+    blockOffset: state.blockOffset + 1,
+  };
+}
+
+/** Apply a vault state fetched from a live data source (e.g. /api/terra/live-frax).
+ *  Mirrors applyPreset but takes the VaultState directly so the page can
+ *  drop the network response in without going through the static PRESETS
+ *  table. Always tagged "Live Frax" so the VaultPanel header reflects it. */
+export function applyTerraLiveVault(
+  state: TerraScenarioState,
+  vault: VaultState,
+): TerraScenarioState {
+  return {
+    ...state,
+    vault: { ...vault },
+    presetLabel: PRESETS.live.label,
     blockOffset: state.blockOffset + 1,
   };
 }

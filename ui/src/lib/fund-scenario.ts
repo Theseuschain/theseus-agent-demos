@@ -109,7 +109,7 @@ export const initialFundScenario = (): FundScenarioState => ({
 
 export const FUND_PRESETS: Record<
   string,
-  { label: string; description: string; market: MarketSnapshot }
+  { label: string; description: string; market: MarketSnapshot | null }
 > = {
   calm: {
     label: "Calm",
@@ -155,6 +155,13 @@ export const FUND_PRESETS: Record<
       macroNote:
         "Major unscheduled central-bank action; cross-asset volatility everywhere. Treat as regime change until proven otherwise.",
     },
+  },
+  live: {
+    label: "Live ETH",
+    description:
+      "Real-time ETH/USD from the venue feed used by the Aave Oracle (Coinbase + Binance + Uniswap median), with 24h/7d returns and realized vol derived from a 7-day daily series.",
+    // Sentinel: the page resolves the actual snapshot via /api/fund/live-market.
+    market: null,
   },
 };
 
@@ -234,10 +241,34 @@ export function applyFundPreset(
   presetKey: keyof typeof FUND_PRESETS,
 ): FundScenarioState {
   const p = FUND_PRESETS[presetKey];
+  // Live preset has no static market; the page resolves it via the
+  // /api/fund/live-market endpoint and then calls applyFundLiveMarket.
+  if (!p.market) {
+    return {
+      ...state,
+      presetLabel: p.label,
+      blockOffset: state.blockOffset + 1,
+    };
+  }
   return {
     ...state,
     market: { ...p.market },
     presetLabel: p.label,
+    blockOffset: state.blockOffset + 1,
+  };
+}
+
+/** Apply a freshly-fetched live MarketSnapshot. Mirrors applyFundPreset
+ *  but takes the snapshot directly, since the live preset has no static
+ *  market data. The page calls this after /api/fund/live-market resolves. */
+export function applyFundLiveMarket(
+  state: FundScenarioState,
+  snapshot: MarketSnapshot,
+): FundScenarioState {
+  return {
+    ...state,
+    market: { ...snapshot },
+    presetLabel: FUND_PRESETS.live.label,
     blockOffset: state.blockOffset + 1,
   };
 }

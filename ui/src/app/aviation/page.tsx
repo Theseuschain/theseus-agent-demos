@@ -13,6 +13,7 @@ import {
   AviationAgentVerdict,
   AviationScenarioState,
   applyAviationAgentVerdict,
+  applyAviationChange,
   applyAviationOnChainCommit,
   applyAviationCommitError,
   applyAviationPendingAction,
@@ -21,6 +22,7 @@ import {
   setAviationPending,
   setAviationPendingReasoning,
 } from "@/lib/aviation-scenario";
+import type { LiveAirworthinessDirective } from "@/lib/faa-feed";
 import {
   AviationPreset,
   readAviationUrl,
@@ -155,6 +157,38 @@ export default function AviationPage() {
     setScenario(initialAviationScenario());
   }, []);
 
+  // Live FAA Airworthiness Directives from the Federal Register.
+  // Lazy-loaded on first expansion so the page render stays fast.
+  const [liveOpen, setLiveOpen] = useState(false);
+  const [liveADs, setLiveADs] = useState<LiveAirworthinessDirective[] | null>(
+    null,
+  );
+  const [liveErr, setLiveErr] = useState<string | null>(null);
+
+  const fetchLive = useCallback(async () => {
+    if (liveADs || liveErr) return;
+    try {
+      const res = await fetch("/api/aviation/recent-ads");
+      if (!res.ok) throw new Error(`http ${res.status}`);
+      const j = (await res.json()) as { directives: LiveAirworthinessDirective[] };
+      setLiveADs(j.directives);
+    } catch (e) {
+      setLiveErr((e as Error).message);
+    }
+  }, [liveADs, liveErr]);
+
+  const handleLivePick = useCallback((ad: LiveAirworthinessDirective) => {
+    setPresetKey(null);
+    const family = ad.aircraftFamily || "FAA AD";
+    setScenario((s) =>
+      applyAviationChange(
+        s,
+        ad.change,
+        `FAA AD · ${family.slice(0, 50)}`,
+      ),
+    );
+  }, []);
+
   return (
     <>
       <AviationSafetyReviewerJsonLd />
@@ -193,6 +227,92 @@ export default function AviationPage() {
               onReset={handleReset}
             />
           </div>
+
+          <details
+            className="mt-6 border-t pt-4"
+            style={{ borderColor: "var(--border)" }}
+            onToggle={(e) => {
+              const open = (e.currentTarget as HTMLDetailsElement).open;
+              setLiveOpen(open);
+              if (open) fetchLive();
+            }}
+          >
+            <summary className="cursor-pointer text-[10.5px] uppercase tracking-[0.18em] text-fg-mute transition-colors hover:text-fg">
+              or review a live FAA Airworthiness Directive ↓
+            </summary>
+            <p className="mt-3 text-[12px] leading-relaxed text-fg-mute">
+              Pulled from the{" "}
+              <a
+                href="https://www.federalregister.gov/agencies/federal-aviation-administration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-border underline-offset-[3px] hover:text-fg hover:decoration-fg"
+              >
+                Federal Register&apos;s FAA rules feed
+              </a>
+              . The reviewer reads the AD title and abstract, then posts a
+              signed advisory verdict. Same flow as the synthetic presets
+              above.
+            </p>
+            <div className="mt-4">
+              {liveOpen && !liveADs && !liveErr && (
+                <p className="text-[12px] text-fg-mute">Loading…</p>
+              )}
+              {liveErr && (
+                <p
+                  className="text-[12px]"
+                  style={{ color: "var(--red)" }}
+                >
+                  Couldn&apos;t reach the Federal Register: {liveErr}
+                </p>
+              )}
+              {liveADs && liveADs.length === 0 && (
+                <p className="text-[12px] text-fg-mute">
+                  No recent ADs returned.
+                </p>
+              )}
+              {liveADs && liveADs.length > 0 && (
+                <ul className="border-t border-border">
+                  {liveADs.map((ad) => (
+                    <li
+                      key={ad.documentNumber}
+                      className="border-b border-border py-3 last:border-b-0"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => handleLivePick(ad)}
+                        className="block w-full text-left transition-colors hover:text-fg"
+                      >
+                        <p className="font-serif text-[15px] text-fg leading-snug">
+                          {ad.title}
+                        </p>
+                        <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
+                          <span
+                            className="font-bold"
+                            style={{ color: "var(--fg)" }}
+                          >
+                            {ad.documentNumber}
+                          </span>
+                          {ad.effectiveDate && (
+                            <>
+                              {" · effective "}
+                              {ad.effectiveDate}
+                            </>
+                          )}
+                          {!ad.effectiveDate && ad.publicationDate && (
+                            <>
+                              {" · published "}
+                              {ad.publicationDate}
+                            </>
+                          )}
+                        </p>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </details>
 
           <div className="mt-10">
             <CertificationPanel
