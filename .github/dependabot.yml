@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /ui
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      next:
+        patterns: ["next", "@next/*", "@vercel/*", "eslint-config-next"]
+      wallet:
+        patterns: ["@walletconnect/*", "@reown/*", "@rainbow-me/*", "@wagmi/*", "wagmi", "viem"]
+      lint-format:
+        patterns: ["eslint", "@typescript-eslint/*", "prettier", "@types/*"]
+    labels: ["dependencies", "ui"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "github-actions"]
