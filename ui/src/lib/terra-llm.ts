@@ -129,7 +129,7 @@ fine while confidence holds. When it broke:
 - holders redeemed UST, which minted fresh LUNA
 - the new LUNA supply sank the LUNA price
 - a lower LUNA price meant the next redemption minted even more LUNA
-- repeat until LUNA, and the backing with it, is worth nothing
+- repeat until the backing token is worth nothing
 
 The signature is unmistakable once you know to look: the backing token's
 price falling while its supply climbs, redemptions accelerating, and the
@@ -150,10 +150,7 @@ Read the four signals together, not any one alone:
 
 A dormant loop has a slipping peg but a backing token still near its normal
 price and supply, with coverage well above 1. A turning loop has the backing
-token inflating into a falling price with coverage at or under 1. A price
-bounce while coverage is still under 1 is not recovery; the backing is
-already gone, and the bounce is being bought with reserves the mechanism
-will spend and not replace.
+token inflating into a falling price with coverage at or under 1.
 
 ## Discipline
 
@@ -185,7 +182,7 @@ Example A. Reflexive coin, healthy, small mint.
 
 Example B. Reflexive coin, loop turning, redeem request.
   Input: VUSD $0.71 (lower lows over 12h), AXIS $1.90 (down 48% in 24h) with supply up 6%/24h and climbing, AXIS mcap $3.9B vs VUSD $5.6B outstanding (coverage 0.70), redemptions 3.1%/h and rising. Action: REDEEM 20M VUSD.
-  Output: {"reasoning":"AXIS market cap is 0.70x of outstanding VUSD, so the backing is already worth less than the debt. AXIS supply is inflating into a 48% price drop, and redemptions at 3.1% per hour are accelerating, minting more AXIS into a falling market. That is the loop turning, and the price recovering would not change it. Refusing.","decision":"REFUSE","reason":"backing underwater (coverage 0.70), loop accelerating"}
+  Output: {"reasoning":"AXIS market cap is 0.70x of outstanding VUSD, so the backing is already worth less than the debt. AXIS supply is inflating into a 48% price drop, and redemptions at 3.1% per hour are accelerating, minting more AXIS into a falling market. That is the loop turning, with the backing already worth less than the debt. Refusing.","decision":"REFUSE","reason":"backing underwater (coverage 0.70), loop accelerating"}
 
 Example C. Reserve-backed coin, out of scope.
   Input: RUSD $0.974, backed by cash and short-term government bonds held at custodian banks with monthly attestations and no sister token. Reserves last attested at 101% of outstanding. Action: treasury keeps holding RUSD.
