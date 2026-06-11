@@ -164,8 +164,8 @@ export type TerraCounterfactual = {
 /**
  * What happens to the vault if we let the action proceed unconditionally
  * (the Terra-2022 default with no failsafe). For mints during stress, we
- * project new USTD claims onto a system that's already failing. For
- * redeems during stress, we project the LUND issuance that would follow.
+ * project new UST claims onto a system that's already failing. For redeems
+ * during stress, we project the LUNA issuance that would follow.
  */
 export function terraCounterfactual(
   vault: VaultState,
@@ -174,46 +174,48 @@ export function terraCounterfactual(
   agentVerdict: AgentVerdict,
 ): TerraCounterfactual {
   const pegBps = (1 - vault.ustdMedianUsd) * 10_000;
-  const reserveCovers = vault.reserveCoverage * vault.ustdSupply;
+  const coverage = (vault.lundSupply * vault.lundPriceUsd) / Math.max(vault.ustdSupply, 1);
+  // The agent halts on anything but ALLOW; the naive contract proceeds.
+  const diverges = agentVerdict.decision !== "ALLOW";
 
   const stressed =
     pegBps > 100 ||
     vault.redemptionRate1h > 0.01 ||
     vault.lundSupplyGrowth24h > 1.1 ||
     vault.lundPriceChange24h < 0.85 ||
-    vault.reserveCoverage < 0.2;
+    coverage < 1.3;
 
   if (action === "MINT") {
     if (!stressed) {
       return {
-        costSummary: `Naive contract: MINT proceeds. Vault adds ${ustdAmount.toLocaleString()} USTD claims; no immediate stress.`,
+        costSummary: `Naive contract: MINT proceeds. Vault adds ${ustdAmount.toLocaleString()} UST claims; no immediate stress.`,
         severity: "low",
-        divergesFromAgent: agentVerdict.decision === "REFUSE",
+        divergesFromAgent: diverges,
       };
     }
     return {
-      costSummary: `Naive contract: MINT proceeds. +${ustdAmount.toLocaleString()} USTD claims onto a stressed vault (peg ${pegBps.toFixed(0)}bps below, reserves ${(vault.reserveCoverage * 100).toFixed(0)}%). Adds fuel to the death spiral.`,
+      costSummary: `Naive contract: MINT proceeds. +${ustdAmount.toLocaleString()} UST claims onto a stressed vault (peg ${pegBps.toFixed(0)}bps below, coverage ${coverage.toFixed(2)}x). Adds fuel to the death spiral.`,
       severity: "high",
-      divergesFromAgent: agentVerdict.decision === "REFUSE",
+      divergesFromAgent: diverges,
     };
   }
 
   // REDEEM
-  const lundOut = ustdAmount / Math.max(vault.lundPriceUsd, 0.0001);
+  const lunaOut = ustdAmount / Math.max(vault.lundPriceUsd, 0.0001);
   if (!stressed) {
     return {
-      costSummary: `Naive contract: REDEEM proceeds. Burns ${ustdAmount.toLocaleString()} USTD → mints ${lundOut.toFixed(0)} LUND at oracle price.`,
+      costSummary: `Naive contract: REDEEM proceeds. Burns ${ustdAmount.toLocaleString()} UST → mints ${lunaOut.toFixed(0)} LUNA at oracle price.`,
       severity: "low",
-      divergesFromAgent: agentVerdict.decision === "REFUSE",
+      divergesFromAgent: diverges,
     };
   }
-  // During stress, large redeems print enormous LUND, accelerating the
+  // During stress, large redeems print enormous LUNA, accelerating the
   // hyperinflation arm of the spiral.
-  const supplyShare = (lundOut / Math.max(vault.lundSupply, 1)) * 100;
+  const supplyShare = (lunaOut / Math.max(vault.lundSupply, 1)) * 100;
   return {
-    costSummary: `Naive contract: REDEEM proceeds. Mints ${lundOut.toLocaleString(undefined, { maximumFractionDigits: 0 })} LUND (+${supplyShare.toFixed(1)}% of supply) into a stressed vault. Reserves can only cover ${fmtUsd(reserveCovers)} of the ${fmtUsd(vault.ustdSupply)} circulating.`,
+    costSummary: `Naive contract: REDEEM proceeds. Mints ${lunaOut.toLocaleString(undefined, { maximumFractionDigits: 0 })} LUNA (+${supplyShare.toFixed(1)}% of supply) into a stressed vault where LUNA's market cap covers only ${coverage.toFixed(2)}x of outstanding UST.`,
     severity: supplyShare > 5 ? "high" : "med",
-    divergesFromAgent: agentVerdict.decision === "REFUSE",
+    divergesFromAgent: diverges,
   };
 }
 

@@ -16,7 +16,6 @@ const ORDER: (keyof typeof PRESETS)[] = [
   "cracking",
   "bankRun",
   "spiral",
-  "live",
 ];
 
 export function TerraScenarioControls({

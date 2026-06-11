@@ -1,6 +1,6 @@
 "use client";
 
-import { VaultState } from "@/lib/terra-scenario";
+import { VaultState, lunaMarketCap, backingCoverage } from "@/lib/terra-scenario";
 import { formatUsd } from "@/lib/format";
 
 interface Props {
@@ -10,17 +10,20 @@ interface Props {
 
 export function VaultPanel({ vault, presetLabel }: Props) {
   const pegDevBps = (1 - vault.ustdMedianUsd) * 10_000;
+  const mcap = lunaMarketCap(vault);
+  const coverage = backingCoverage(vault);
   const pegHealth = healthLevel(pegDevBps, [50, 200]);
   const redemptionHealth = healthLevel(vault.redemptionRate1h, [0.005, 0.02]);
   const supplyHealth = healthLevel(vault.lundSupplyGrowth24h - 1, [0.05, 0.3]);
   const priceHealth = healthLevel(1 - vault.lundPriceChange24h, [0.1, 0.4]);
-  const reserveHealth = healthLevel(0.4 - vault.reserveCoverage, [0.0, 0.2]); // inverted
+  // Coverage below 1 is terminal; below 1.3 is a warning.
+  const coverageHealth = healthLevel(1.3 - coverage, [0.0, 0.3]);
 
   return (
     <div>
       <div className="flex items-baseline justify-between gap-3">
         <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-          USTD vault · algorithmic stablecoin
+          UST vault · algorithmic stablecoin
         </p>
         <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
           {presetLabel}
@@ -35,34 +38,36 @@ export function VaultPanel({ vault, presetLabel }: Props) {
           health={pegHealth}
         />
         <BigStat
-          label="LUND price"
-          value={`$${vault.lundPriceUsd.toFixed(2)}`}
-          sub={`${signed(((vault.lundPriceChange24h - 1) * 100))}% / 24h`}
-          health={priceHealth}
+          label="backing coverage"
+          value={`${coverage.toFixed(2)}x`}
+          sub={
+            coverage < 1
+              ? "LUNA worth less than the debt"
+              : "LUNA mcap / UST outstanding"
+          }
+          health={coverageHealth}
         />
       </div>
 
       <div className="mt-5 border-t border-border">
         <Row
-          label="USTD circulating"
-          value={`${(vault.ustdSupply / 1e9).toFixed(2)}B`}
+          label="LUNA price"
+          value={`$${vault.lundPriceUsd.toFixed(2)}`}
+          sub={`${signed((vault.lundPriceChange24h - 1) * 100)}% / 24h`}
+          health={priceHealth}
         />
+        <Row label="LUNA market cap" value={compactUsd(mcap)} />
+        <Row label="UST outstanding" value={compactUsd(vault.ustdSupply)} />
         <Row
-          label="LUND circulating"
+          label="LUNA circulating"
           value={`${(vault.lundSupply / 1e6).toFixed(0)}M`}
-          sub={`${signed(((vault.lundSupplyGrowth24h - 1) * 100))}% / 24h`}
+          sub={`${signed((vault.lundSupplyGrowth24h - 1) * 100)}% / 24h`}
           health={supplyHealth}
-        />
-        <Row
-          label="reserves"
-          value={`${(vault.reserveCoverage * 100).toFixed(1)}%`}
-          sub="of USTD supply"
-          health={reserveHealth}
         />
         <Row
           label="redemption pressure"
           value={`${(vault.redemptionRate1h * 100).toFixed(2)}%/h`}
-          sub={`${formatUsd((vault.redemptionRate1h * vault.ustdSupply))} / hour`}
+          sub={`${compactUsd(vault.redemptionRate1h * vault.ustdSupply)} / hour`}
           health={redemptionHealth}
         />
       </div>
@@ -86,6 +91,13 @@ function healthColor(h?: Health): string {
 
 function signed(n: number): string {
   return n >= 0 ? `+${n.toFixed(1)}` : n.toFixed(1);
+}
+
+/** Compact dollar amount: $10.5B, $800M, else exact. */
+function compactUsd(n: number): string {
+  if (n >= 1e9) return `$${(n / 1e9).toFixed(n >= 1e10 ? 0 : 1)}B`;
+  if (n >= 1e6) return `$${(n / 1e6).toFixed(0)}M`;
+  return formatUsd(n);
 }
 
 function BigStat({

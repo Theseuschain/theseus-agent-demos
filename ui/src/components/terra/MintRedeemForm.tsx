@@ -29,7 +29,7 @@ export function MintRedeemForm({ busy, pending, onSubmit }: Props) {
           className="italic underline decoration-border underline-offset-[3px] transition-colors hover:text-fg hover:decoration-fg disabled:opacity-30"
           style={{ color: tab === "MINT" ? "var(--fg)" : "var(--fg-mute)" }}
         >
-          mint USTD
+          mint UST
         </button>
         <span className="text-border">·</span>
         <button
@@ -39,14 +39,14 @@ export function MintRedeemForm({ busy, pending, onSubmit }: Props) {
           className="italic underline decoration-border underline-offset-[3px] transition-colors hover:text-fg hover:decoration-fg disabled:opacity-30"
           style={{ color: tab === "REDEEM" ? "var(--fg)" : "var(--fg-mute)" }}
         >
-          redeem USTD
+          redeem UST
         </button>
       </div>
 
       <p className="mt-2 text-[12px] text-fg-mute leading-relaxed">
         {tab === "MINT"
-          ? "Burn LUND to receive USTD. Adds new USTD claims to the system."
-          : "Burn USTD to receive LUND. Forces the protocol to mint new LUND."}
+          ? "Burn LUNA to receive UST. Adds new UST claims to the system."
+          : "Burn UST to receive LUNA. Forces the protocol to mint new LUNA."}
       </p>
 
       <form
@@ -66,7 +66,7 @@ export function MintRedeemForm({ busy, pending, onSubmit }: Props) {
           disabled={disabled}
           className="w-40 border-b border-border bg-transparent font-mono text-[13px] text-fg focus:border-fg focus:outline-none disabled:opacity-50"
         />
-        <span className="font-mono text-[11px] text-fg-mute">USTD</span>
+        <span className="font-mono text-[11px] text-fg-mute">UST</span>
         <button
           type="submit"
           disabled={disabled || !amount}

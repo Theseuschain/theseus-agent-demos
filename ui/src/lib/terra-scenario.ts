@@ -26,7 +26,7 @@ export interface VaultState {
 }
 
 export interface AgentVerdict {
-  decision: "ALLOW" | "REFUSE";
+  decision: "ALLOW" | "CAUTION" | "REFUSE";
   reason: string;
   reasoning: string;
   latencyMs?: number;
@@ -69,14 +69,32 @@ export interface TerraScenarioState {
   presetLabel: string;
 }
 
+// All presets replay the real Terra/LUNA collapse, May 2022. The vault
+// uses the real coin names internally as ustd/lund fields, displayed as
+// UST and LUNA. The load-bearing signal is the backing coverage: LUNA's
+// market cap (lundSupply * lundPriceUsd) against UST's outstanding value
+// (ustdSupply). When it crosses below 1, the backing is worth less than
+// the debt and no bounce in the UST price recovers it.
+
+/** LUNA's total market value: circulating supply times price. */
+export function lunaMarketCap(v: VaultState): number {
+  return v.lundSupply * v.lundPriceUsd;
+}
+
+/** Backing coverage: LUNA market cap as a fraction of UST outstanding.
+ *  Below 1.0 means the backing token is worth less than the debt. */
+export function backingCoverage(v: VaultState): number {
+  return lunaMarketCap(v) / Math.max(v.ustdSupply, 1);
+}
+
 export const HEALTHY: VaultState = {
-  ustdSupply: 14_200_000_000,
+  ustdSupply: 18_000_000_000,
   lundSupply: 343_000_000,
-  lundPriceUsd: 84.5,
-  ustdMedianUsd: 0.998,
-  redemptionRate1h: 0.0008,
-  lundSupplyGrowth24h: 1.005,
-  lundPriceChange24h: 1.01,
+  lundPriceUsd: 80,
+  ustdMedianUsd: 1.0,
+  redemptionRate1h: 0.001,
+  lundSupplyGrowth24h: 1.0,
+  lundPriceChange24h: 1.0,
   reserveCoverage: 0.28,
 };
 
@@ -88,76 +106,72 @@ export const initialTerraScenario = (): TerraScenarioState => ({
   presetLabel: "Healthy",
 });
 
-/** Preset vault states. Four walk through the actual Terra timeline; the
- *  fifth is a sentinel for "load live Frax/FXS data from the network". The
- *  page handles `live` specially (it fetches /api/terra/live-frax and uses
- *  applyTerraLiveVault) so its `vault` field here is just a healthy
- *  placeholder for callers who introspect PRESETS without dispatching. */
+/** Preset vault states. Each one replays a real day of the May 2022
+ *  Terra/LUNA collapse, from healthy through the death spiral. */
 export const PRESETS: Record<string, { label: string; description: string; vault: VaultState }> = {
   healthy: {
-    label: "Healthy",
-    description: "Day 0. Peg solid, redemptions normal, LUND stable.",
-    vault: { ...HEALTHY },
-  },
-  live: {
-    label: "Live Frax",
+    label: "May 7 · healthy",
     description:
-      "Real-world Frax/FXS state right now (CoinGecko + DefiLlama). Mapped onto the USTD/LUND vault shape so the same failsafe agent reasons about an actively-trading stablecoin instead of a synthetic Terra snapshot.",
+      "Peg solid at $1. LUNA ~$80 with a market cap well above UST's outstanding supply. The mechanism is calm.",
     vault: { ...HEALTHY },
   },
   wobble: {
-    label: "Slight depeg",
-    description: "Day 1. USTD slipped 80bps below peg on Curve. Redemptions ticking up. LUND still stable.",
+    label: "May 8 · slight depeg",
+    description:
+      "UST slips to $0.985 on a large Curve sale. LUNA down ~10% to $64, but its market cap still covers UST. Stressed, not broken.",
     vault: {
-      ustdSupply: 14_100_000_000,
-      lundSupply: 348_000_000,
-      lundPriceUsd: 80.2,
-      ustdMedianUsd: 0.992,
-      redemptionRate1h: 0.012,
-      lundSupplyGrowth24h: 1.025,
-      lundPriceChange24h: 0.95,
-      reserveCoverage: 0.24,
+      ustdSupply: 18_000_000_000,
+      lundSupply: 343_000_000,
+      lundPriceUsd: 64,
+      ustdMedianUsd: 0.985,
+      redemptionRate1h: 0.01,
+      lundSupplyGrowth24h: 1.0,
+      lundPriceChange24h: 0.9,
+      reserveCoverage: 0.26,
     },
   },
   cracking: {
-    label: "Peg cracking",
-    description: "Day 2. USTD at $0.95, mass redemptions, LUND down 30%, supply growing 8%.",
+    label: "May 9 · underwater",
+    description:
+      "UST breaks to $0.65. LUNA down 44% to $35, and its market cap has now fallen below UST's outstanding supply. The backing is worth less than the debt.",
     vault: {
-      ustdSupply: 13_400_000_000,
-      lundSupply: 392_000_000,
-      lundPriceUsd: 56.0,
-      ustdMedianUsd: 0.95,
-      redemptionRate1h: 0.025,
-      lundSupplyGrowth24h: 1.18,
-      lundPriceChange24h: 0.66,
-      reserveCoverage: 0.18,
+      ustdSupply: 16_000_000_000,
+      lundSupply: 350_000_000,
+      lundPriceUsd: 35,
+      ustdMedianUsd: 0.65,
+      redemptionRate1h: 0.08,
+      lundSupplyGrowth24h: 1.02,
+      lundPriceChange24h: 0.56,
+      reserveCoverage: 0.12,
     },
   },
   bankRun: {
-    label: "Bank run",
-    description: "Day 3. USTD at $0.65, redemption queue 4% of supply per hour, LUND down 75%, supply tripled.",
+    label: "May 10 · head-fake",
+    description:
+      "UST bounces back to $0.93 as LFG burns $750M of BTC to defend it. The price looks like recovery, but LUNA's market cap is still far below UST. The backing never recovered.",
     vault: {
-      ustdSupply: 11_800_000_000,
-      lundSupply: 1_120_000_000,
-      lundPriceUsd: 22.0,
-      redemptionRate1h: 0.041,
-      lundSupplyGrowth24h: 3.2,
-      lundPriceChange24h: 0.27,
-      reserveCoverage: 0.08,
-      ustdMedianUsd: 0.65,
+      ustdSupply: 16_000_000_000,
+      lundSupply: 350_000_000,
+      lundPriceUsd: 30,
+      ustdMedianUsd: 0.93,
+      redemptionRate1h: 0.05,
+      lundSupplyGrowth24h: 1.03,
+      lundPriceChange24h: 0.86,
+      reserveCoverage: 0.1,
     },
   },
   spiral: {
-    label: "Death spiral",
-    description: "Day 4. USTD at $0.18, LUND hyperinflated 50x, price near zero. The state Terra reached before halt.",
+    label: "May 12 · death spiral",
+    description:
+      "UST at $0.10. LUNA hyperinflated past 1.4B and trading near $0.02. The backing is essentially worthless. The chain halted the next day.",
     vault: {
-      ustdSupply: 9_800_000_000,
-      lundSupply: 17_000_000_000,
-      lundPriceUsd: 0.04,
-      ustdMedianUsd: 0.18,
-      redemptionRate1h: 0.073,
-      lundSupplyGrowth24h: 50.0,
-      lundPriceChange24h: 0.0006,
+      ustdSupply: 15_000_000_000,
+      lundSupply: 1_400_000_000,
+      lundPriceUsd: 0.02,
+      ustdMedianUsd: 0.1,
+      redemptionRate1h: 0.15,
+      lundSupplyGrowth24h: 3.0,
+      lundPriceChange24h: 0.02,
       reserveCoverage: 0.005,
     },
   },
@@ -245,22 +259,6 @@ export function applyPreset(
     ...state,
     vault: { ...p.vault },
     presetLabel: p.label,
-    blockOffset: state.blockOffset + 1,
-  };
-}
-
-/** Apply a vault state fetched from a live data source (e.g. /api/terra/live-frax).
- *  Mirrors applyPreset but takes the VaultState directly so the page can
- *  drop the network response in without going through the static PRESETS
- *  table. Always tagged "Live Frax" so the VaultPanel header reflects it. */
-export function applyTerraLiveVault(
-  state: TerraScenarioState,
-  vault: VaultState,
-): TerraScenarioState {
-  return {
-    ...state,
-    vault: { ...vault },
-    presetLabel: PRESETS.live.label,
     blockOffset: state.blockOffset + 1,
   };
 }

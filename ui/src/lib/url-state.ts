@@ -38,8 +38,7 @@ export type TerraPreset =
   | "wobble"
   | "cracking"
   | "bankRun"
-  | "spiral"
-  | "live";
+  | "spiral";
 
 export type TerraUrlState = {
   preset?: TerraPreset;
@@ -129,7 +128,6 @@ export function readTerraUrl(search: string): TerraUrlState {
     "cracking",
     "bankRun",
     "spiral",
-    "live",
   ];
   const preset = validPresets.includes(presetRaw as TerraPreset)
     ? (presetRaw as TerraPreset)

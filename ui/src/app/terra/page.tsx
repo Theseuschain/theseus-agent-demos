@@ -13,13 +13,11 @@ import {
   AgentVerdict,
   PRESETS,
   TerraScenarioState,
-  VaultState,
   applyAgentVerdict,
   applyTerraOnChainCommit,
   applyTerraCommitError,
   applyPendingAction,
   applyPreset,
-  applyTerraLiveVault,
   initialTerraScenario,
   setTerraPendingReasoning,
 } from "@/lib/terra-scenario";
@@ -35,28 +33,6 @@ export default function TerraPage() {
   const [busy, setBusy] = useState(false);
   // Map the preset key the user last loaded so we can mirror to URL.
   const [presetKey, setPresetKey] = useState<TerraPreset | null>(null);
-  const [liveError, setLiveError] = useState<string | null>(null);
-
-  // Load live Frax/FXS state from our cached server route and apply it.
-  // The page treats "live" as a preset key, but unlike the synthetic
-  // presets the vault state comes from the network.
-  const loadLiveFrax = useCallback(async () => {
-    setLiveError(null);
-    try {
-      const res = await fetch("/api/terra/live-frax", { cache: "no-store" });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body.error ?? `http ${res.status}`);
-      }
-      const data = (await res.json()) as { vault: VaultState };
-      if (!data.vault) throw new Error("missing vault in response");
-      setScenario((s) => applyTerraLiveVault(s, data.vault));
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      console.warn("[terra] live-frax fetch failed", msg);
-      setLiveError(msg);
-    }
-  }, []);
 
   // Hydrate from ?preset=… on mount.
   useEffect(() => {
@@ -64,11 +40,7 @@ export default function TerraPage() {
     const url = readTerraUrl(window.location.search);
     if (url.preset) {
       setPresetKey(url.preset);
-      if (url.preset === "live") {
-        void loadLiveFrax();
-      } else {
-        setScenario((s) => applyPreset(s, url.preset!));
-      }
+      setScenario((s) => applyPreset(s, url.preset!));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -180,21 +152,13 @@ export default function TerraPage() {
     [scenario],
   );
 
-  const handlePreset = useCallback(
-    (key: keyof typeof PRESETS) => {
-      setPresetKey(key as TerraPreset);
-      if (key === "live") {
-        void loadLiveFrax();
-      } else {
-        setScenario((s) => applyPreset(s, key));
-      }
-    },
-    [loadLiveFrax],
-  );
+  const handlePreset = useCallback((key: keyof typeof PRESETS) => {
+    setPresetKey(key as TerraPreset);
+    setScenario((s) => applyPreset(s, key));
+  }, []);
 
   const handleReset = useCallback(() => {
     setPresetKey(null);
-    setLiveError(null);
     setScenario(initialTerraScenario());
   }, []);
 
@@ -222,10 +186,12 @@ export default function TerraPage() {
           </div>
 
           <p className="mb-12 text-[13.5px] leading-[1.7] text-fg-mute">
-            The Terra Failsafe Agent refuses mint and redeem when the
-            algorithmic stablecoin vault is stressed. Load any preset from
-            the actual Terra/Luna collapse and submit a mint or redeem. The
-            original contract didn&apos;t refuse. This one does.
+            The Luna Failsafe gates mint and redeem on a reflexive
+            stablecoin. It reads the backing, not the price: when LUNA&apos;s
+            market cap falls below UST&apos;s outstanding supply, the backing
+            is worth less than the debt and no bounce in the UST price
+            recovers it. Load a day from the May 2022 collapse and submit a
+            mint or redeem.
           </p>
 
           <VaultPanel vault={scenario.vault} presetLabel={scenario.presetLabel} />
@@ -236,15 +202,6 @@ export default function TerraPage() {
             onPreset={handlePreset}
             onReset={handleReset}
           />
-
-          {liveError && (
-            <p
-              className="mt-2 font-mono text-[10.5px] tracking-[0.16em]"
-              style={{ color: "var(--coral)" }}
-            >
-              live frax fetch failed: {liveError.toLowerCase()}. synthetic presets still work.
-            </p>
-          )}
 
           <MintRedeemForm
             busy={busy}

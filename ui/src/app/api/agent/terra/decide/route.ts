@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       const encoder = new TextEncoder();
-      let finalOutput: { decision: "ALLOW" | "REFUSE"; reason: string; reasoning: string; latencyMs?: number; model?: string } | null = null;
+      let finalOutput: { decision: "ALLOW" | "CAUTION" | "REFUSE"; reason: string; reasoning: string; latencyMs?: number; model?: string } | null = null;
       try {
         for await (const event of decideTerraStream(input)) {
           controller.enqueue(encoder.encode(sse(event)));
@@ -54,7 +54,9 @@ export async function POST(req: NextRequest) {
         try {
           const outcome = await commitTerraVerdict({
             action: input.action,
-            decision: finalOutput.decision,
+            // The on-chain enum is binary; CAUTION halts the action like a
+            // REFUSE. The full verdict (including CAUTION) lands in the blob.
+            decision: finalOutput.decision === "ALLOW" ? "ALLOW" : "REFUSE",
             blob: {
               schema: "terra-failsafe/v1",
               chain: "base-sepolia",

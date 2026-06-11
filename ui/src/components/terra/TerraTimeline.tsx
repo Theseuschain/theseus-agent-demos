@@ -61,7 +61,13 @@ function Row({ entry }: { entry: TimelineEntry }) {
   const [inspectOpen, setInspectOpen] = useState(false);
 
   const isPending = !!entry.pending || !entry.verdict;
-  const allowed = !isPending && entry.verdict?.decision === "ALLOW";
+  const decision = entry.verdict?.decision;
+  const verdictColor =
+    decision === "ALLOW"
+      ? "var(--green)"
+      : decision === "CAUTION"
+        ? "#d29922"
+        : "var(--coral)";
 
   // Single source of truth for the reasoning text: streaming partial
   // while the LLM call is in flight, then the final once it lands.
@@ -101,13 +107,13 @@ function Row({ entry }: { entry: TimelineEntry }) {
         ) : (
           <span
             className="font-mono text-[10.5px] font-bold uppercase tracking-[0.16em]"
-            style={{ color: allowed ? "var(--green)" : "var(--coral)" }}
+            style={{ color: verdictColor }}
           >
-            {allowed ? "allow" : "refuse"}
+            {(decision ?? "refuse").toLowerCase()}
           </span>
         )}
         <span className="font-mono tnum text-fg">
-          {entry.action.toLowerCase()} {entry.ustdAmount.toLocaleString()} USTD
+          {entry.action.toLowerCase()} {entry.ustdAmount.toLocaleString()} UST
         </span>
         {entry.scenarioLabel && (
           <span className="font-mono text-[10.5px] text-fg-mute">
@@ -187,34 +193,34 @@ function Inspect({ entry }: { entry: TimelineEntry }) {
       </p>
       <ul className="mt-2 space-y-1 font-mono text-[10.5px]">
         <li>
-          USTD median{" "}
+          UST median{" "}
           <span className="text-fg tnum">${v.ustdMedianUsd.toFixed(3)}</span>{" "}
           ({((1 - v.ustdMedianUsd) * 10000).toFixed(0)}bps below peg)
+        </li>
+        <li>
+          backing coverage{" "}
+          <span className="text-fg tnum">
+            {((v.lundSupply * v.lundPriceUsd) / v.ustdSupply).toFixed(2)}x
+          </span>{" "}
+          (LUNA mcap / UST outstanding)
+        </li>
+        <li>
+          LUNA price 24h{" "}
+          <span className="text-fg tnum">
+            {((v.lundPriceChange24h - 1) * 100).toFixed(1)}%
+          </span>
+        </li>
+        <li>
+          LUNA supply growth 24h{" "}
+          <span className="text-fg tnum">
+            {((v.lundSupplyGrowth24h - 1) * 100).toFixed(1)}%
+          </span>
         </li>
         <li>
           redemption rate{" "}
           <span className="text-fg tnum">
             {(v.redemptionRate1h * 100).toFixed(2)}%/h
           </span>
-        </li>
-        <li>
-          LUND supply growth 24h{" "}
-          <span className="text-fg tnum">
-            {((v.lundSupplyGrowth24h - 1) * 100).toFixed(1)}%
-          </span>
-        </li>
-        <li>
-          LUND price 24h{" "}
-          <span className="text-fg tnum">
-            {((v.lundPriceChange24h - 1) * 100).toFixed(1)}%
-          </span>
-        </li>
-        <li>
-          reserves{" "}
-          <span className="text-fg tnum">
-            {(v.reserveCoverage * 100).toFixed(1)}%
-          </span>{" "}
-          of supply
         </li>
       </ul>
       {entry.verdict?.prompt && (
