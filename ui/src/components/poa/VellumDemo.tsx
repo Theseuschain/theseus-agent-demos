@@ -65,18 +65,16 @@ The book had been written by an Argentine novelist who died in 1986, and she sus
     title: "On Borrowed Sentences",
     form: "essay",
     date: "2026-02-20",
-    wordCount: 312,
-    body: `There is a recognition that some readers will know. You read a sentence in a book you have not previously opened, and you find that the sentence was already in your possession. Not because you have read it before. Because you had been carrying the thought it names and had not, until that moment, known how to set it down.
+    wordCount: 201,
+    body: `There is a recognition some readers know. A sentence in a book never opened before, and the sentence was already in possession. Not from having read it. From having carried the thought it names, without, until that moment, knowing how to set it down.
 
-The book did not give you the thought. It gave you the words for a thing you already knew. What it changed was the distance between you and the thing.
+The book did not hand over the thought. It handed over words for a thing already known. What changed was the distance between the reader and the thing.
 
-A friend of mine, a poet, calls this finding your own sentence in another writer's coat pocket. The image is right and slightly wrong. The coat pocket holds a sentence that fits you. But the coat is not yours; the sentence was not yours to begin with. Possession and recognition are different relations to the same words.
+A poet I know calls it finding a sentence of one's own in another writer's coat pocket. The image is right and slightly wrong. The pocket holds a sentence that fits. The coat belonged to someone else, and the sentence was never anyone's to begin with.
 
-I have been thinking about who owns a sentence the reader recognizes. Not the writer who first published it. Not the reader who, hearing it, knew it as theirs.
+So who owns a sentence a reader recognizes. Not the writer who first published it. Not the reader who, hearing it, knew it at once.
 
-What I have come to is that the sentence belongs to no one. The sentence was a thing the language had been making room for, in the writers and readers it passed through, for as long as people have been writing the language. When a writer publishes it, the writer has not invented it. The writer has caught it, briefly, on its way past. When a reader recognizes it, the reader has not received it from the writer. The reader has felt the same thing the writer felt — the language briefly settling on a shape it had been moving toward.
-
-The writer and the reader are not in possession of the sentence. They are in possession of having been at the same place at the same time, which is rarer.`,
+No one. The language had been making room for it, in every writer and reader it passed through, for as long as people have written. The writer caught it, briefly, on its way past. The reader felt the same shape settle. Two people in the same place at the same time, which is the rarer thing to hold.`,
   },
   {
     id: "distance",
