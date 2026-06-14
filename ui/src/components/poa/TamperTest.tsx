@@ -10,6 +10,7 @@ import { useState } from "react";
 import { simulateHash, shortHash } from "@/lib/poa/sim-sig";
 import type { OnChainCommit } from "@/lib/agent-onchain/types";
 import { CommitBadge } from "@/components/CommitBadge";
+import { TryItForm, TryItHeader } from "@/components/TryItPanel";
 
 const CALDER_KEY = "5SbV3eF8nP2qL7mR1xY4kJ9wT6vG3bC8aZ5oH2dN4uV9iW";
 const OPERATOR_WALLET = "0xOperatorWallet0000000000000000000000aBcD";
@@ -159,9 +160,6 @@ export default function TamperTest() {
         className="mt-20 border-t pt-8"
         style={{ borderColor: "var(--poa-rule)" }}
       >
-        <p className="mb-3 text-[10.5px] uppercase tracking-[0.18em] text-[var(--poa-ink-soft)]">
-          Or ask Calder to chronicle a new event
-        </p>
         {eventState.kind === "idle" ? (
           <EventForm
             draft={eventDraft}
@@ -184,24 +182,22 @@ export default function TamperTest() {
 
 function RetconPicker({ onPick }: { onPick: (r: Retcon) => void }) {
   return (
-    <div>
-      <p className="text-[12px] text-[var(--poa-ink-soft)]">
-        Try to retcon this dispatch as the operator:{" "}
-        {RETCONS.map((r, i) => (
-          <span key={r.id}>
-            <button
-              type="button"
-              onClick={() => onPick(r)}
-              className="italic underline decoration-[color:var(--poa-rule)] underline-offset-[3px] transition-colors hover:text-[var(--poa-ink)] hover:decoration-[color:var(--poa-ink)]"
-            >
-              {r.label}
-            </button>
-            {i < RETCONS.length - 1 && (
-              <span className="text-[var(--poa-rule)]"> · </span>
-            )}
-          </span>
+    <div className="rounded-xl border border-border bg-surface/60 p-4 sm:p-5">
+      <TryItHeader>
+        Try to retcon this dispatch as the operator &mdash; watch Calder refuse.
+      </TryItHeader>
+      <div className="flex flex-wrap gap-2">
+        {RETCONS.map((r) => (
+          <button
+            key={r.id}
+            type="button"
+            onClick={() => onPick(r)}
+            className="btn !text-[12px]"
+          >
+            {r.label}
+          </button>
         ))}
-      </p>
+      </div>
     </div>
   );
 }
@@ -290,11 +286,12 @@ function EventForm({
   onSubmit: () => void;
 }) {
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit();
-      }}
+    <TryItForm
+      prompt="Or report a new event in AI Town — Calder files a signed dispatch."
+      presets={[]}
+      submitLabel="submit →"
+      submitDisabled={!draft.trim()}
+      onSubmit={onSubmit}
     >
       <textarea
         value={draft}
@@ -305,16 +302,7 @@ function EventForm({
         className="block w-full resize-none border-0 border-b bg-transparent py-2 text-[15px] leading-[1.55] text-[var(--poa-ink)] placeholder:text-[var(--poa-ink-soft)] focus:border-[var(--poa-ink)] focus:outline-none"
         style={{ borderColor: "var(--poa-rule)" }}
       />
-      <div className="mt-3 flex justify-end text-[12px]">
-        <button
-          type="submit"
-          disabled={!draft.trim()}
-          className="text-[var(--poa-ink)] transition-opacity hover:underline disabled:opacity-30 disabled:hover:no-underline"
-        >
-          submit →
-        </button>
-      </div>
-    </form>
+    </TryItForm>
   );
 }
 

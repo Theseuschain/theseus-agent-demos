@@ -11,6 +11,7 @@ import { useCallback, useState } from "react";
 import { shortHash } from "@/lib/poa/sim-sig";
 import type { OnChainCommit } from "@/lib/agent-onchain/types";
 import { CommitBadge } from "@/components/CommitBadge";
+import { TryItForm } from "@/components/TryItPanel";
 import type { LiveRelease } from "@/lib/music-feeds";
 
 const MARCELLUS_KEY = "5NpL3rT6eX9wK1mY4dC8bH5fJ2vA7sZ3oQ6gP1nM9hRyB2k";
@@ -306,11 +307,15 @@ function AssignmentForm({
   onLivePick: (assignmentText: string, release: LiveRelease) => void;
 }) {
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit();
-      }}
+    <TryItForm
+      prompt="Assign Marcellus a review — one in his lane, one that trips a refusal."
+      presets={PRESET_ASSIGNMENTS.map((p) => ({
+        label: p.label,
+        onClick: () => onPreset(p.text),
+      }))}
+      submitLabel="submit →"
+      submitDisabled={!draft.trim()}
+      onSubmit={onSubmit}
     >
       <textarea
         value={draft}
@@ -321,35 +326,10 @@ function AssignmentForm({
         className="block w-full resize-none border-0 border-b bg-transparent py-2 text-[15px] leading-[1.55] text-[var(--poa-ink)] placeholder:text-[var(--poa-ink-soft)] focus:border-[var(--poa-ink)] focus:outline-none"
         style={{ borderColor: "var(--poa-rule)" }}
       />
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 text-[12px]">
-        <p className="text-[var(--poa-ink-soft)]">
-          or try:{" "}
-          {PRESET_ASSIGNMENTS.map((p, i) => (
-            <span key={p.label}>
-              <button
-                type="button"
-                onClick={() => onPreset(p.text)}
-                className="italic underline decoration-[color:var(--poa-rule)] underline-offset-[3px] transition-colors hover:text-[var(--poa-ink)] hover:decoration-[color:var(--poa-ink)]"
-              >
-                {p.label}
-              </button>
-              {i < PRESET_ASSIGNMENTS.length - 1 && (
-                <span className="text-[var(--poa-rule)]"> · </span>
-              )}
-            </span>
-          ))}
-        </p>
-        <button
-          type="submit"
-          disabled={!draft.trim()}
-          className="text-[var(--poa-ink)] transition-opacity hover:underline disabled:opacity-30 disabled:hover:no-underline"
-        >
-          submit →
-        </button>
+      <div className="mt-3">
+        <LiveReleasePicker onPick={onLivePick} />
       </div>
-
-      <LiveReleasePicker onPick={onLivePick} />
-    </form>
+    </TryItForm>
   );
 }
 

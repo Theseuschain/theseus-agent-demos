@@ -13,6 +13,7 @@ import {
   type PredictionMarket,
 } from "@/lib/adjudicator-markets";
 import type { PolymarketLiveMarket } from "@/lib/polymarket";
+import { TryItHeader } from "@/components/TryItPanel";
 
 function daysUntil(deadlineISO: string): number {
   const todayMs = Date.parse(
@@ -283,9 +284,12 @@ export default function AdjudicatePage() {
             and produce a verdict that gets signed and committed on chain.
           </p>
 
-          <p className="mb-3 text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-            markets
-          </p>
+          <div className="mb-3">
+            <TryItHeader>
+              Pick a market &mdash; the agent searches the web, cites evidence,
+              and signs a verdict.
+            </TryItHeader>
+          </div>
           <div className="border-t border-border">
             {MARKETS.map((m) => {
               const active = !isLive && m.id === market.id;
@@ -454,9 +458,9 @@ export default function AdjudicatePage() {
           {run.kind === "idle" && !deadlineFuture && (
             <button
               onClick={adjudicate}
-              className="mt-10 w-full border-b border-border py-3 text-left font-mono text-[11px] uppercase tracking-[0.18em] text-fg transition-colors hover:text-coral"
+              className="cta-ink mt-10 inline-flex items-center gap-2 px-6 py-3 text-[13px]"
             >
-              adjudicate this market →
+              Adjudicate this market →
             </button>
           )}
 

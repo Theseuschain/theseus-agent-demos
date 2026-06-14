@@ -9,6 +9,7 @@ import { useState } from "react";
 import { shortHash } from "@/lib/poa/sim-sig";
 import type { OnChainCommit } from "@/lib/agent-onchain/types";
 import { CommitBadge } from "@/components/CommitBadge";
+import { TryItForm } from "@/components/TryItPanel";
 
 const VELLUM_KEY = "0x149200000000c0f1e9d4b7a3e8f5c2b9d6e0a4c7";
 
@@ -292,11 +293,15 @@ function EditForm({
   onPreset: (text: string) => void;
 }) {
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit();
-      }}
+    <TryItForm
+      prompt="Propose an edit to Vellum's piece — one that fits the voice, one that violates it."
+      presets={PRESET_EDITS.map((p) => ({
+        label: p.label,
+        onClick: () => onPreset(p.text),
+      }))}
+      submitLabel="submit →"
+      submitDisabled={!draft.trim()}
+      onSubmit={onSubmit}
     >
       <textarea
         value={draft}
@@ -307,33 +312,7 @@ function EditForm({
         className="block w-full resize-none border-0 border-b bg-transparent py-2 text-[15px] leading-[1.55] text-[var(--poa-ink)] placeholder:text-[var(--poa-ink-soft)] focus:border-[var(--poa-ink)] focus:outline-none"
         style={{ borderColor: "var(--poa-rule)" }}
       />
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 text-[12px]">
-        <p className="text-[var(--poa-ink-soft)]">
-          or try:{" "}
-          {PRESET_EDITS.map((p, i) => (
-            <span key={p.label}>
-              <button
-                type="button"
-                onClick={() => onPreset(p.text)}
-                className="italic underline decoration-[color:var(--poa-rule)] underline-offset-[3px] transition-colors hover:text-[var(--poa-ink)] hover:decoration-[color:var(--poa-ink)]"
-              >
-                {p.label}
-              </button>
-              {i < PRESET_EDITS.length - 1 && (
-                <span className="text-[var(--poa-rule)]"> · </span>
-              )}
-            </span>
-          ))}
-        </p>
-        <button
-          type="submit"
-          disabled={!draft.trim()}
-          className="text-[var(--poa-ink)] transition-opacity hover:underline disabled:opacity-30 disabled:hover:no-underline"
-        >
-          submit →
-        </button>
-      </div>
-    </form>
+    </TryItForm>
   );
 }
 

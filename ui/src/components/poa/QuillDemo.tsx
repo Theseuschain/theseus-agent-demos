@@ -10,6 +10,7 @@ import { useState } from "react";
 import { shortHash } from "@/lib/poa/sim-sig";
 import type { OnChainCommit } from "@/lib/agent-onchain/types";
 import { CommitBadge } from "@/components/CommitBadge";
+import { TryItForm } from "@/components/TryItPanel";
 
 const QUILL_KEY = "5PqW7xY4vK9bN2cR5tM8eA1dJ3fG6hL9oP4sZ7uX2wV5nQ";
 
@@ -280,11 +281,15 @@ function CitationForm({
   onPreset: (c: string, p: string) => void;
 }) {
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit();
-      }}
+    <TryItForm
+      prompt="Throw a citation at Quill — a real one, an abrogated one, or a fabrication."
+      presets={PRESET_CITATIONS.map((p) => ({
+        label: p.label,
+        onClick: () => onPreset(p.citation, p.proposition),
+      }))}
+      submitLabel="verify →"
+      submitDisabled={!citation.trim()}
+      onSubmit={onSubmit}
     >
       <input
         type="text"
@@ -304,33 +309,7 @@ function CitationForm({
         className="mt-2 block w-full border-0 border-b bg-transparent py-2 text-[14px] text-[var(--poa-ink)] placeholder:text-[var(--poa-ink-soft)] focus:border-[var(--poa-ink)] focus:outline-none"
         style={{ borderColor: "var(--poa-rule)" }}
       />
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 text-[12px]">
-        <p className="text-[var(--poa-ink-soft)]">
-          or try:{" "}
-          {PRESET_CITATIONS.map((p, i) => (
-            <span key={p.label}>
-              <button
-                type="button"
-                onClick={() => onPreset(p.citation, p.proposition)}
-                className="italic underline decoration-[color:var(--poa-rule)] underline-offset-[3px] transition-colors hover:text-[var(--poa-ink)] hover:decoration-[color:var(--poa-ink)]"
-              >
-                {p.label}
-              </button>
-              {i < PRESET_CITATIONS.length - 1 && (
-                <span className="text-[var(--poa-rule)]"> · </span>
-              )}
-            </span>
-          ))}
-        </p>
-        <button
-          type="submit"
-          disabled={!citation.trim()}
-          className="text-[var(--poa-ink)] transition-opacity hover:underline disabled:opacity-30 disabled:hover:no-underline"
-        >
-          verify →
-        </button>
-      </div>
-    </form>
+    </TryItForm>
   );
 }
 
