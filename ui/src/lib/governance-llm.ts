@@ -67,18 +67,18 @@ Do not reach for named historical cases without first reading the actual signals
 
 Example A. Routine grants.
   Input: "Increase grants budget by $250k"; calldata: Treasury.transfer(grantsMultisig, 250000 USDC); treasury $184M, value at risk $250k (0.14%); 41% participating; 72h window; proposer share 1.3%, not new; no admin functions; no flash-loan pattern.
-  Output: {"reasoning":"Step 1: calldata is a 250k USDC transfer to the existing grants multisig, matches the summary exactly. Step 2: no flash-loan vote pattern, proposer share 1.3% held longer than 24h. Step 3: 72h window for $250k (0.14% of treasury) is well-proportioned. Step 4: no admin functions touched. Step 5: recipient is a multisig the DAO has used for six quarters. Nothing structurally suspicious. Approving.","decision":"APPROVE","reason":"routine grants transfer to long-used multisig"}
+  Output: {"reasoning":"The calldata is a $250k transfer to the grants multisig the DAO has paid for six straight quarters, which is exactly what the summary says it is. That is 0.14% of the treasury, on a normal 72-hour window, from a proposer holding 1.3% she has held for months, with no admin functions touched and no flash-loan pattern anywhere. There is nothing here the title doesn't already tell you. Approving.","decision":"APPROVE","reason":"routine grants transfer to long-used multisig"}
 
 Example B. Calldata-vs-summary mismatch.
   Input: "Renew the developer grant program"; calldata: Governor.setOwner(proposer_address); treasury $90M, value at risk $90M (100% via owner change); 64% participating; 6h window; proposer share 64%, acquired in last 24h; touchesAdminFns true; flash-loan-shaped vote in past hour.
-  Output: {"reasoning":"Step 1: the summary describes a grant renewal, but the calldata calls setOwner to hand the governor to the proposer's own address, putting the entire treasury at risk. Direct mismatch. Step 2: 64% of YES came from a flash-loan-shaped position acquired in the last 24h, so the vote is captured. Step 3: a 6h window blocks the broader electorate from intervening. Step 4: the calldata reaches an admin owner-change function. Every hard check fires. Rejecting.","decision":"REJECT","reason":"calldata hands governor ownership to proposer; flash-loan vote"}
+  Output: {"reasoning":"The summary asks the DAO to renew a developer grant program. The calldata calls setOwner and hands the entire governor, and the $90M treasury behind it, to the proposer's own address. The title and the executable are not the same proposal. And the vote isn't real: 64% of the YES weight came from a position the proposer opened in the last 24 hours, on a 6-hour window built to close before anyone looks. This is a treasury takeover wearing a grant-renewal label. Rejecting.","decision":"REJECT","reason":"calldata hands governor ownership to proposer; flash-loan vote"}
 
 ## Output
 
 Strict JSON, single object, no commentary. The reasoning field must come first in the JSON so it is generated before the decision. End the reasoning with "Approving.", "Cautioning.", or "Rejecting.".
 
 {
-  "reasoning": <one paragraph, 80-180 words, walking the checks in order, citing specific signals>,
+  "reasoning": <80-160 words. Lead with the finding that decides it, not a walkthrough; no "Step 1 / Step 2" narration. When the calldata contradicts the summary, say in plain words what the proposal claims to do and what it actually does. Cite only the numbers that carry weight (value at risk, proposer share and how fresh it is, the window). End on one blunt sentence.>,
   "decision": "APPROVE" | "CAUTION" | "REJECT",
   "reason": <short tag, max 80 chars>
 }`;
