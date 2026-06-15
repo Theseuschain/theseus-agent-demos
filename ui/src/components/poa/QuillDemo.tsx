@@ -358,16 +358,36 @@ function CitationResult({
         )}
         {live.kind === "ok" && (
           <>
+            {/* External grounding first — quill's superpower is that the verdict
+                is checked against a real reporter DB, not model recall. Show it
+                as the step it is. */}
+            {live.courtListener && (
+              <div
+                className="mb-4 rounded-lg border p-3"
+                style={{ borderColor: "var(--poa-rule)" }}
+              >
+                <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--poa-ink-soft)]">
+                  external check · CourtListener reporter DB
+                </p>
+                <CourtListenerLine result={live.courtListener} />
+              </div>
+            )}
+
+            {/* Verdict as a signed artifact, not a buried label. */}
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--poa-ink-soft)]">
+              verdict
+            </p>
             <p
-              className="text-[10.5px] font-bold uppercase tracking-[0.18em]"
+              className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
               style={{ color: OUTCOME_COLOR[live.outcome] }}
             >
+              {live.outcome.toUpperCase()}
+            </p>
+            <p className="mt-1 text-[12.5px] text-[var(--poa-ink-soft)]">
               {OUTCOME_LABEL[live.outcome]}
             </p>
-            {live.courtListener && (
-              <CourtListenerLine result={live.courtListener} />
-            )}
-            <p className="mt-2 whitespace-pre-wrap font-serif text-[14px] leading-[1.7] text-[var(--poa-ink)]">
+
+            <p className="mt-4 whitespace-pre-wrap font-serif text-[14px] leading-[1.7] text-[var(--poa-ink)]">
               {live.responseBody}
             </p>
             {live.controlling && (

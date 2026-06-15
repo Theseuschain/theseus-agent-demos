@@ -31,6 +31,17 @@ function hostname(url: string): string {
   }
 }
 
+// The agent's confidence calibration is its real discipline: >=80 only when the
+// criteria are clearly met or clearly not; 60-79 when one side is favoured but a
+// reader could disagree; under 60 when the evidence is thin. Surface the tier.
+function confidenceTier(pct: number): { color: string; label: string } {
+  if (pct >= 80)
+    return { color: "var(--green)", label: "criteria clearly met or clearly not" };
+  if (pct >= 60)
+    return { color: "var(--amber)", label: "favoured, but a reader could disagree" };
+  return { color: "var(--red)", label: "evidence thin or contested" };
+}
+
 interface SearchStep {
   query: string;
   citations: Citation[];
@@ -552,20 +563,52 @@ export default function AdjudicatePage() {
                 </span>
               </div>
 
-              <div className="mt-3 flex items-baseline gap-3">
+              <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 <span className="font-mono text-[12px] text-fg-mute">
                   [{run.output.winningOption}]
                 </span>
                 <span
-                  className="serif text-[22px] leading-snug tracking-tight"
+                  className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
                   style={{ color: "var(--coral)" }}
                 >
                   {market.options[run.output.winningOption] ?? "?"}
                 </span>
-                <span className="font-mono text-[11px] tabular-nums text-fg-mute ml-auto">
-                  {run.output.confidencePct}% confidence
-                </span>
               </div>
+
+              {/* Calibrated-confidence bar — the agent's epistemic discipline made visible */}
+              {(() => {
+                const tier = confidenceTier(run.output.confidencePct);
+                return (
+                  <div className="mt-4">
+                    <div className="mb-1 flex items-baseline justify-between">
+                      <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
+                        confidence · calibrated
+                      </span>
+                      <span
+                        className="font-mono text-[12px] tabular-nums"
+                        style={{ color: tier.color }}
+                      >
+                        {run.output.confidencePct}%
+                      </span>
+                    </div>
+                    <div
+                      className="h-2 w-full overflow-hidden rounded-full"
+                      style={{ background: "var(--border)" }}
+                    >
+                      <div
+                        className="h-full rounded-full transition-all"
+                        style={{
+                          width: `${run.output.confidencePct}%`,
+                          background: tier.color,
+                        }}
+                      />
+                    </div>
+                    <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-mute">
+                      {tier.label}
+                    </p>
+                  </div>
+                );
+              })()}
 
               <p className="mt-4 text-[13.5px] leading-[1.7] text-fg-mute italic">
                 &ldquo;{typedSummary}&rdquo;
