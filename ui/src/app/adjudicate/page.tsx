@@ -49,12 +49,20 @@ interface SearchStep {
 
 type FinalOutput = {
   marketId: number;
+  verdict: "RESOLVED" | "UNRESOLVABLE";
   winningOption: number;
   confidencePct: number;
+  reason?: "source-silent" | "source-contradicts" | "not-yet-decided" | null;
   evidenceSummary: string;
   citations: Citation[];
   latencyMs?: number;
   model?: string;
+};
+
+const REASON_LABEL: Record<string, string> = {
+  "source-silent": "the record is silent on the deciding fact",
+  "source-contradicts": "authoritative sources contradict each other",
+  "not-yet-decided": "the deadline has not passed",
 };
 
 type RunState =
@@ -290,9 +298,12 @@ export default function AdjudicatePage() {
           </div>
 
           <p className="mb-12 text-[13.5px] leading-[1.7] text-fg-mute">
-            An agent that adjudicates prediction markets by searching the
-            web for evidence. Pick a market and watch it gather citations
-            and produce a verdict that gets signed and committed on chain.
+            An agent that resolves prediction markets by searching the web
+            for evidence, and refuses to commit when the record doesn&rsquo;t
+            settle the question. A wrong resolution pays a market out on the
+            wrong truth; on contested or premature questions it returns
+            UNRESOLVABLE instead. When it does resolve, the verdict and its
+            evidence are signed and committed on chain.
           </p>
 
           <div className="mb-3">
@@ -563,22 +574,42 @@ export default function AdjudicatePage() {
                 </span>
               </div>
 
-              <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="font-mono text-[12px] text-fg-mute">
-                  [{run.output.winningOption}]
-                </span>
-                <span
-                  className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
-                  style={{ color: "var(--coral)" }}
-                >
-                  {market.options[run.output.winningOption] ?? "?"}
-                </span>
-              </div>
+              {run.output.verdict === "UNRESOLVABLE" ? (
+                <div className="mt-3">
+                  <span
+                    className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
+                    style={{ color: "var(--amber)" }}
+                  >
+                    UNRESOLVABLE
+                  </span>
+                  {run.output.reason && (
+                    <p className="mt-2 text-[13px] leading-relaxed text-fg-mute">
+                      The agent declined to commit:{" "}
+                      {REASON_LABEL[run.output.reason] ?? run.output.reason}. A
+                      wrong resolution pays the market out on the wrong truth and
+                      can&rsquo;t be undone; this goes to human dispute instead.
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-mono text-[12px] text-fg-mute">
+                    [{run.output.winningOption}]
+                  </span>
+                  <span
+                    className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
+                    style={{ color: "var(--coral)" }}
+                  >
+                    {market.options[run.output.winningOption] ?? "?"}
+                  </span>
+                </div>
+              )}
 
-              {/* Calibrated-confidence bar — the agent's epistemic discipline made visible */}
-              {(() => {
-                const tier = confidenceTier(run.output.confidencePct);
-                return (
+              {/* Calibrated-confidence bar — only when the agent committed */}
+              {run.output.verdict === "RESOLVED" &&
+                (() => {
+                  const tier = confidenceTier(run.output.confidencePct);
+                  return (
                   <div className="mt-4">
                     <div className="mb-1 flex items-baseline justify-between">
                       <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
@@ -642,14 +673,20 @@ export default function AdjudicatePage() {
                 </div>
               )}
 
-              <CommitBadge
-                commit={run.commit}
-                error={run.commitError}
-                className="mt-5"
-                slug="adjudicate"
-              />
+              {run.output.verdict === "RESOLVED" ? (
+                <CommitBadge
+                  commit={run.commit}
+                  error={run.commitError}
+                  className="mt-5"
+                  slug="adjudicate"
+                />
+              ) : (
+                <p className="mt-5 font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
+                  nothing committed on chain · no verdict to settle
+                </p>
+              )}
 
-              {market.actualResolution && (
+              {run.output.verdict === "RESOLVED" && market.actualResolution && (
                 <div className="mt-5">
                   <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
                     polymarket&rsquo;s actual resolution
@@ -677,6 +714,17 @@ export default function AdjudicatePage() {
                   </div>
                   <p className="mt-2 text-[12.5px] leading-relaxed text-fg-mute">
                     {market.actualResolution.note}
+                  </p>
+                </div>
+              )}
+
+              {run.output.verdict === "UNRESOLVABLE" && market.outcomeNote && (
+                <div className="mt-5">
+                  <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
+                    what actually happened
+                  </p>
+                  <p className="mt-2 text-[12.5px] leading-relaxed text-fg-mute">
+                    {market.outcomeNote}
                   </p>
                 </div>
               )}

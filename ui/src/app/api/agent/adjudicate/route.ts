@@ -65,8 +65,13 @@ export async function POST(req: NextRequest) {
 
   const stream = streamWithCommit({
     stream: adjudicateStream({ market }),
+    // Only RESOLVED verdicts get committed on-chain. UNRESOLVABLE still
+    // streams to the client, but there is nothing to settle, so it skips
+    // the commit (pickFinal returns null for it).
     pickFinal: (event) =>
-      event.type === "final" ? (event.output as ResolutionResult) : null,
+      event.type === "final" && event.output.verdict === "RESOLVED"
+        ? (event.output as ResolutionResult)
+        : null,
     commit: async (final) =>
       commitAdjudicatorVerdict({
         kind: "resolve",

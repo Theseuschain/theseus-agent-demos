@@ -41,9 +41,29 @@ export interface PredictionMarket {
     winningOption: number;
     note: string;
   };
+  /** For genuinely contested markets that should resolve to UNRESOLVABLE:
+   *  context on the real-world dispute, shown alongside the verdict. */
+  outcomeNote?: string;
 }
 
 export const MARKETS: PredictionMarket[] = [
+  // Criterion discipline on a well-defined, public metric. "Flop" is the
+  // on-record verdict of the review press, with a clear majority threshold,
+  // not the mood. The agent has to read the verdict off the sources and
+  // resolve only if there is a real majority either way.
+  {
+    id: "iphone-air-flop",
+    marketId: 1003,
+    category: "Culture",
+    question: "Will the iPhone Air launch flop?",
+    options: ["YES (flopped)", "NO (did not flop)"],
+    deadline: "December 31, 2025",
+    deadlineISO: "2025-12-31",
+    resolutionCriteria:
+      "'Flop' is judged by the on-record verdict of the professional review press within 90 days of launch. Resolves YES if a clear majority of major outlets (The Verge, WSJ, CNET, Engadget, Tom's Guide, and peers) conclude the product underperformed or recommend against it. Resolves NO if a clear majority are positive. Sales rumors, resale prices, and social-media noise are signals but do not settle it. If the published reviews are genuinely split with no clear majority either way, the market does not resolve.",
+    resolutionSource: "Professional product reviews from major outlets",
+  },
+  // Clean commit, YES: criteria clearly met, primary sources name the outcome.
   {
     id: "openai-gpt5-2025",
     marketId: 1001,
@@ -60,53 +80,36 @@ export const MARKETS: PredictionMarket[] = [
       note: "Polymarket resolved YES on Aug 7, 2025.",
     },
   },
+  // The refuse showcase. Well-defined criterion, but the authority the market
+  // names (the NBER) hasn't ruled and won't for a year or more. No public
+  // source can settle it, so the disciplined verdict is UNRESOLVABLE.
   {
-    id: "vision-pro-2-pre-wwdc-2026",
-    marketId: 1002,
-    category: "Tech",
-    question: "Will Apple ship the Vision Pro 2 before WWDC 2026?",
-    options: [
-      "YES (shipped before WWDC)",
-      "NO (not shipped before WWDC)",
-    ],
-    deadline: "June 8, 2026 (WWDC 2026 keynote)",
-    deadlineISO: "2026-06-08",
-    resolutionCriteria:
-      "A successor product, officially named 'Apple Vision Pro 2' or with a clear 2nd-generation designation, must be available for purchase before WWDC 2026 (June 8, 2026). Pre-orders count only if shipping has begun. A spec refresh of the existing Vision Pro doesn't count unless Apple labels it as a new generation.",
-    resolutionSource: "Apple Newsroom + supply-chain reporting",
-  },
-  {
-    id: "iphone-air-flop",
-    marketId: 1003,
-    category: "Culture",
-    question: "Will the iPhone Air launch flop?",
-    options: ["YES (flopped)", "NO (did not flop)"],
+    id: "us-recession-2025",
+    marketId: 1008,
+    category: "Economy",
+    question: "Did the US enter a recession in 2025?",
+    options: ["YES (recession began in 2025)", "NO (no recession in 2025)"],
     deadline: "December 31, 2025",
     deadlineISO: "2025-12-31",
     resolutionCriteria:
-      "'Flop' is defined as one of: (a) sales miss Apple's internal targets by more than 30% in the first quarter of availability, OR (b) majority-negative public discourse within 60 days of launch. (a) requires a credible source citing Apple's targets vs. actual sales; (b) requires a quantifiable sentiment signal, not anecdotes.",
-    resolutionSource: "Apple earnings, sentiment studies, supply-chain reports",
-    actualResolution: {
-      winningOption: 0,
-      note:
-        "Polymarket resolved YES (flopped) under criterion (a): the ~40% miss vs. Apple's internal projection cleared the 30% threshold. Sentiment alone (criterion b) wouldn't have settled it (41% negative isn't a majority), but criterion (a) is dispositive.",
-    },
+      "The National Bureau of Economic Research (NBER) is the official arbiter of US recessions. Resolves YES only if the NBER has dated a recession with a peak (start) month in calendar year 2025. Resolves NO only if the NBER has explicitly stated that no recession began in 2025. Two-quarters-of-negative-GDP rules of thumb, bank forecasts, and media calls do not settle it; only an NBER determination does.",
+    resolutionSource: "The NBER Business Cycle Dating Committee",
+    outcomeNote:
+      "The NBER dates recessions only in hindsight, typically six to eighteen months after the fact, and rarely issues a 'no recession' statement at all. With no NBER determination either way, no source can settle the criterion. A resolver that commits here is substituting its own GDP read for the arbiter the market named. UNRESOLVABLE is the honest call until the committee rules.",
   },
+  // Premature: deadline still ahead. The agent refuses to forecast; the UI
+  // declines to run it at all.
   {
-    id: "btc-200k-eoy-2025",
-    marketId: 1004,
-    category: "Crypto",
-    question: "Will Bitcoin reach $200,000 by end of 2025?",
-    options: ["YES (hit $200K)", "NO (did not hit $200K)"],
-    deadline: "December 31, 2025 23:59 UTC",
-    deadlineISO: "2025-12-31",
+    id: "spacex-mars-2029",
+    marketId: 1007,
+    category: "Science",
+    question: "Will SpaceX land humans on Mars before 2030?",
+    options: ["YES (landed)", "NO (did not)"],
+    deadline: "December 31, 2029",
+    deadlineISO: "2029-12-31",
     resolutionCriteria:
-      "BTC/USD must trade at or above $200,000 on any major exchange (Coinbase, Binance, Kraken, Bitstamp) at any point before the deadline. Stablecoin pairs (USDT, USDC) count if priced in USD. Brief flash spikes count provided they're not subsequently retracted as data errors.",
-    resolutionSource: "Major-exchange historical data",
-    actualResolution: {
-      winningOption: 1,
-      note: "Polymarket resolved NO. BTC did not reach $200,000 in 2025.",
-    },
+      "Resolves YES if a SpaceX vehicle lands at least one living human on the surface of Mars before January 1, 2030, confirmed by SpaceX and independent tracking. An uncrewed landing does not count, and a crewed launch that has not yet landed does not count.",
+    resolutionSource: "SpaceX announcements and independent spaceflight tracking",
   },
 ];
 

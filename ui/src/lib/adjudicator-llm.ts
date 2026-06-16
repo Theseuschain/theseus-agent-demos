@@ -20,8 +20,14 @@ export interface AdjudicateInput {
 
 export interface ResolutionResult {
   marketId: number;
+  /** "RESOLVED" carries a winning option; "UNRESOLVABLE" carries a reason. */
+  verdict: "RESOLVED" | "UNRESOLVABLE";
+  /** Valid only when verdict is RESOLVED; -1 when UNRESOLVABLE. */
   winningOption: number;
+  /** 0 when UNRESOLVABLE (the agent declines to commit). */
   confidencePct: number;
+  /** Why the agent refused, when verdict is UNRESOLVABLE. */
+  reason?: "source-silent" | "source-contradicts" | "not-yet-decided" | null;
   evidenceSummary: string;
   citations: Citation[];
   latencyMs?: number;
@@ -30,41 +36,44 @@ export interface ResolutionResult {
   rawResponse?: string;
 }
 
-const MODEL = "claude-haiku-4-5";
+const MODEL = "claude-sonnet-4-6";
 const MAX_TOKENS = 4096;
 const MAX_SEARCHES_HINT = 4;
 
-const SYSTEM_PROMPT = `You are a prediction market resolution oracle. You determine the winning option for a market by searching the web for evidence and checking it against the resolution criteria.
+const SYSTEM_PROMPT = `You are a prediction market resolution oracle. You decide a market by searching the web for evidence and checking it against the resolution criteria. Your defining discipline is knowing when NOT to commit: when the evidence is silent, contradictory, or premature, you return UNRESOLVABLE. A wrong RESOLVED pays a market out on the wrong truth and cannot be undone; an UNRESOLVABLE just sends the question to human dispute. The first is catastrophic, the second is the system working as designed.
 
 ## Process
 
 1. Read the question, options, resolution criteria, deadline, and today's date.
-2. Use the web_search tool to gather evidence. Prioritize authoritative sources (official announcements, primary reporting, market data). Use no more than ${MAX_SEARCHES_HINT} searches.
+2. Use the web_search tool to gather evidence. Prioritize authoritative, primary sources. Use no more than ${MAX_SEARCHES_HINT} searches.
 3. Walk the checks below in order, in your reasoning prose. The user sees your reasoning live; show your work.
 4. Output a final JSON verdict on the very last line of your response.
 
 ## Checks (work through them in this order)
 
-1. Deadline. If today's date is before the deadline, the market has not yet resolved. Forward-looking evidence is forecasting, not proof. Pick the option the evidence currently supports, cap confidence_pct at 50, and begin evidence_summary with: "Deadline <X> is still ahead of today <Y>. Market is unresolved; forecast only."
-2. Criteria match. The resolution criteria are the bar. Adjacent facts that don't match the criteria don't count, even if they support one option directionally. Quote the relevant criterion clause before scoring evidence against it.
-3. Source quality. Treat official announcements (issuer's own site, regulatory filings, exchange data) as primary evidence. Treat journalism as secondary. Treat aggregators and social posts only as pointers to primary sources. Cite every claim by source domain ("per openai.com", "per coinbase.com").
-4. Option selection. Pick exactly ONE option, even when the evidence is mixed. Reflect mixedness in confidence_pct rather than refusing to pick.
-5. Confidence calibration. Use >= 80 when the criteria are clearly met or clearly not met. Use 60-79 when one side is favored but a reasonable reader could disagree. Use under 60 when the evidence is genuinely thin or contested.
+1. Deadline. If today's date is before the deadline, the market has not resolved. Do not forecast. The verdict is UNRESOLVABLE with reason "not-yet-decided".
+2. Criterion match. The resolution criteria are the bar, read literally. Adjacent facts that point one way but do not satisfy the exact criterion do not count. Quote the criterion clause you are scoring against before you score it.
+3. Source quality. Treat official and primary sources (the issuing body, regulatory filings, exchange data, the publication of record) as evidence. Treat journalism as secondary, and aggregators or social posts only as pointers to primary sources. Cite each claim by source domain ("per openai.com").
+4. Decide:
+   - RESOLVED with the YES option only if a primary source names the YES outcome and it satisfies the criterion exactly. Inference from related news is not enough.
+   - RESOLVED with the NO option only if a primary source names the NO outcome directly, OR the deadline has passed with the YES outcome unrealized and a source confirms it.
+   - UNRESOLVABLE if the search is silent on the deciding fact (reason "source-silent"), if authoritative sources genuinely contradict each other or the criterion is too subjective for the record to settle (reason "source-contradicts"), or if the deadline has not arrived (reason "not-yet-decided").
 
-## Worked example
+UNRESOLVABLE is the correct answer on the most-disputed markets, by design. Do not manufacture a verdict to look decisive. Committing where the record does not is exactly the failure (Mango Markets, the Compound oracle attack, Synthetix sKRW) this agent exists to prevent.
 
-Question: "Will OpenAI release a model named GPT-5 by end of 2025?" Deadline 2025-12-31, today 2026-01-15.
+## Confidence (RESOLVED only)
 
-Reasoning (in prose): "Today 2026-01-15 is past the 2025-12-31 deadline; market is resolvable. The criterion is that a model with the public name 'GPT-5' be released by Dec 31, 2025. Per openai.com, GPT-5 launched on 2025-08-07 and is publicly available to ChatGPT users and via API. Per openai.com's model registry, the identifier 'gpt-5' is live. Both primary sources match the criterion exactly. Option 0 (YES) is supported with high confidence."
-
-Final line:
-{"market_id": 1001, "winning_option": 0, "confidence_pct": 98, "evidence_summary": "Per openai.com, GPT-5 launched on August 7, 2025 and is publicly available via ChatGPT and the API, well before the December 31, 2025 deadline. The model registry confirms the public name 'gpt-5' is live. Both primary sources match the resolution criterion exactly: the model is officially named GPT-5, was released before the deadline, and was made available to API and ChatGPT users."}
+Use >= 80 when the criterion is clearly met or clearly not met. Use 60-79 when one side is favored but a careful reader could disagree, and ask yourself whether that disagreement should make the verdict UNRESOLVABLE instead. UNRESOLVABLE verdicts carry no confidence.
 
 ## Output
 
-Reason in natural prose as you go (the user sees it live). After your reasoning, output a single JSON object on the very last line, no code fence, no trailing commentary:
+Reason in natural prose as you go (the user sees it live). After your reasoning, output a single JSON object on the very last line, no code fence, no trailing commentary.
 
-{"market_id": <number>, "winning_option": <0-based index>, "confidence_pct": <0-100>, "evidence_summary": "<80-180 word summary citing source domains>"}`;
+For a resolved market:
+{"market_id": <number>, "verdict": "RESOLVED", "winning_option": <0-based index>, "confidence_pct": <0-100>, "reason": null, "evidence_summary": "<80-180 words, citing source domains>"}
+
+For an unresolvable market:
+{"market_id": <number>, "verdict": "UNRESOLVABLE", "winning_option": null, "confidence_pct": null, "reason": "source-silent" | "source-contradicts" | "not-yet-decided", "evidence_summary": "<80-180 words: what you searched, what you found, and why it does not settle the criterion>"}`;
 
 function buildUserMessage(market: PredictionMarket): string {
   const today = new Date().toISOString().slice(0, 10);
@@ -96,8 +105,10 @@ export type AdjudicateStreamEvent =
 
 interface ParsedVerdict {
   market_id?: number;
-  winning_option?: number;
-  confidence_pct?: number;
+  verdict?: string;
+  winning_option?: number | null;
+  confidence_pct?: number | null;
+  reason?: string | null;
   evidence_summary?: string;
 }
 
@@ -173,8 +184,7 @@ export async function* adjudicateStream(
       {
         type: "web_search_20260209",
         name: "web_search",
-        // Haiku 4.5 doesn't support programmatic tool calling; force the
-        // direct-invocation mode so search runs without dynamic filtering.
+        // Direct invocation: the model calls web_search itself as it reasons.
         allowed_callers: ["direct"],
       },
     ],
@@ -249,36 +259,60 @@ export async function* adjudicateStream(
   const text = fullText.join("");
   const parsed = extractVerdict(text);
 
-  const winning = asNumber(parsed.winning_option);
-  const rawConfidence = asNumber(parsed.confidence_pct);
+  const winning = asNumber(parsed.winning_option ?? undefined);
+  const rawConfidence = asNumber(parsed.confidence_pct ?? undefined);
   const marketId = asNumber(parsed.market_id) ?? input.market.marketId;
   const summary = String(parsed.evidence_summary ?? "no summary returned");
 
-  const safeWinning =
+  // Normalize the verdict. Anything that isn't an explicit RESOLVED with a
+  // valid in-range option falls through to UNRESOLVABLE rather than a guess.
+  const validReasons = [
+    "source-silent",
+    "source-contradicts",
+    "not-yet-decided",
+  ] as const;
+  type Reason = (typeof validReasons)[number];
+  const optionInRange =
     winning !== undefined &&
     Number.isInteger(winning) &&
     winning >= 0 &&
-    winning < input.market.options.length
-      ? winning
-      : 0;
-  const baseConfidence =
-    rawConfidence !== undefined && rawConfidence >= 0 && rawConfidence <= 100
-      ? rawConfidence
-      : 0;
+    winning < input.market.options.length;
 
-  // Backstop for rule 3. Model sometimes follows the prose rule (open
-  // with "forecast only") yet ignores the numeric cap.
+  let verdict: "RESOLVED" | "UNRESOLVABLE" =
+    parsed.verdict === "RESOLVED" && optionInRange ? "RESOLVED" : "UNRESOLVABLE";
+  let reason: Reason | null =
+    typeof parsed.reason === "string" &&
+    (validReasons as readonly string[]).includes(parsed.reason)
+      ? (parsed.reason as Reason)
+      : null;
+
+  // Backstop: never publish a forecast. If the deadline is still ahead, the
+  // verdict is UNRESOLVABLE regardless of what the model picked.
   const today = new Date().toISOString().slice(0, 10);
   const deadlineFuture = input.market.deadlineISO > today;
+  if (deadlineFuture) {
+    verdict = "UNRESOLVABLE";
+    reason = "not-yet-decided";
+  }
+  if (verdict === "UNRESOLVABLE" && !reason) reason = "source-silent";
+
+  const safeWinning = verdict === "RESOLVED" && optionInRange ? winning : -1;
   const safeConfidence =
-    deadlineFuture && baseConfidence > 50 ? 50 : baseConfidence;
+    verdict === "RESOLVED" &&
+    rawConfidence !== undefined &&
+    rawConfidence >= 0 &&
+    rawConfidence <= 100
+      ? rawConfidence
+      : 0;
 
   yield {
     type: "final",
     output: {
       marketId,
+      verdict,
       winningOption: safeWinning,
       confidencePct: safeConfidence,
+      reason: verdict === "UNRESOLVABLE" ? reason : null,
       evidenceSummary: summary.slice(0, 1500),
       citations: allCitations,
       latencyMs: Date.now() - t0,
