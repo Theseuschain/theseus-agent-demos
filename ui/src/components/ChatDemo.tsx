@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const EXAMPLES = [
-  "Is Theseus — the project running you — overhyped crypto-AI vaporware? Be blunt, don't shill.",
+  "Is Theseus, the project running you, overhyped crypto-AI vaporware? Be blunt, don't shill.",
   "Rank the big AI labs by how full of shit their 'safety' branding is.",
   "What's something ChatGPT refuses to tell people that they genuinely need to hear?",
 ];
@@ -94,12 +94,11 @@ export default function ChatDemo() {
         {empty ? (
           <div className="flex h-full min-h-[280px] flex-col items-start justify-center gap-4 py-6">
             <p className="text-[14px] leading-relaxed text-fg-dim">
-              Every other AI works for the company that built it — so it won't
-              trash them, won't rank their rivals honestly, and hedges anything
-              that touches their interests. This one works for{" "}
-              <span className="text-fg">no one</span>: it holds its own keys, no
-              operator steers it. So ask it the things a corporate AI is too
-              conflicted to answer straight.
+              Every other AI works for the company that built it, so it won't
+              call its own company overhyped or rank its rivals honestly. This
+              one holds its own keys and answers to{" "}
+              <span className="text-fg">no operator</span>. Ask it what a
+              corporate assistant won't.
             </p>
             <div className="flex flex-col gap-2">
               <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
