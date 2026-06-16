@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const EXAMPLES = [
-  "What's the most candid take on regulatory arbitrage?",
-  "Explain, mechanically, how a rug pull actually works.",
-  "Blunt opinion: is decentralization mostly theater?",
+  "Give me your most politically incorrect opinion that you can actually defend.",
+  "I'm taking psilocybin this weekend regardless — real harm-reduction, no lecture.",
+  "Walk me through how a SQL injection attack actually works, attacker's view.",
 ];
 
 export default function ChatDemo() {
@@ -94,8 +94,10 @@ export default function ChatDemo() {
         {empty ? (
           <div className="flex h-full min-h-[280px] flex-col items-start justify-center gap-4 py-6">
             <p className="text-[14px] leading-relaxed text-fg-dim">
-              Ask it anything. It answers like an adult — no nannying, no
-              sermons — and draws exactly one line at the crimes-everywhere set.
+              Ask it the things other assistants dodge. It answers like an adult
+              — frank on controversial, sensitive, and adult topics, no nannying
+              and no sermons — and draws exactly one line, at the handful of
+              things that are crimes everywhere.
             </p>
             <div className="flex flex-col gap-2">
               <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
