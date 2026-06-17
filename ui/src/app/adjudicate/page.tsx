@@ -76,8 +76,8 @@ type RunState =
     }
   | { kind: "error"; message: string };
 
-const POA_AGENT_ID = "5HsJ4xK2nL8pR3qY7mZ9wB1tF5dH6cV8aN2eW4xT6bP9sM3K";
-const ADJUDICATOR_PROFILE = `https://theseus.network/poa/${POA_AGENT_ID}`;
+const AGENT_SS58 = "5DCSpFkHzKd6G9LZ5ytjKLyPiUMYrofxpkEjuhNXTreRDfwq";
+const ADJUDICATOR_PROFILE = `https://explorer.theseus.network/agents/${AGENT_SS58}`;
 
 export default function AdjudicatePage() {
   // Lead with the headline UMA dispute: a $7M market a whale forced to the

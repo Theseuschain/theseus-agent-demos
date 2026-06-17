@@ -68,7 +68,7 @@ const AGENTS: AgentCard[] = [
       "A sovereign chat agent that holds its own keys and runs on the Theseus alpha testnet. Candid on controversial, sensitive, and adult topics, with no nannying or sermons, and it draws exactly one line at the handful of things that are crimes everywhere. Deployed sovereign on-chain; the demo streams its replies live.",
     href: "/chat",
     poaUrl:
-      "https://explorer.theseus.network/agents/5Hb6L7M3tCyWTjHhFsR1mRqjG2w4C2ApCgB1ngxPACxUq2Da",
+      "https://explorer.theseus.network/agents/5H19J2TURyDVdRLi2WxZWhcYtYXj3ZeuS4sCivPmdCJHcbY5",
     badge: "Live",
     badgeTone: "live",
   },
@@ -107,7 +107,7 @@ const AGENTS: AgentCard[] = [
       "When a prediction market hits its deadline, the contract asks the agent which option won. The agent runs live web_search, fetches sources, and returns winning_option, confidence, and an evidence summary. Refuses if the event hasn't actually happened yet. Multi-option markets supported.",
     href: "/adjudicate",
     poaUrl:
-      "https://theseus.network/poa/5HsJ4xK2nL8pR3qY7mZ9wB1tF5dH6cV8aN2eW4xT6bP9sM3K",
+      "https://explorer.theseus.network/agents/5DCSpFkHzKd6G9LZ5ytjKLyPiUMYrofxpkEjuhNXTreRDfwq",
     badge: "Live",
     badgeTone: "live",
   },

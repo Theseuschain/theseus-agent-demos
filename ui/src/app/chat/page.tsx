@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import ChatDemo from "@/components/ChatDemo";
 import DemoCTA from "@/components/DemoCTA";
 
-const AGENT_SS58 = "5Hb6L7M3tCyWTjHhFsR1mRqjG2w4C2ApCgB1ngxPACxUq2Da";
+const AGENT_SS58 = "5H19J2TURyDVdRLi2WxZWhcYtYXj3ZeuS4sCivPmdCJHcbY5";
 const EXPLORER = `https://explorer.theseus.network/agents/${AGENT_SS58}`;
 
 const TITLE = "Sovereign Chat · an AI that works for no one";
