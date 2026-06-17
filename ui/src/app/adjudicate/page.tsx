@@ -4,8 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { TopBar } from "@/components/TopBar";
 import DemoCTA from "@/components/DemoCTA";
 import { AdjudicatorJsonLd } from "@/components/JsonLd";
-import { CommitBadge } from "@/components/CommitBadge";
-import type { OnChainCommit } from "@/lib/agent-onchain/types";
 import { useTypewriter } from "@/lib/use-typewriter";
 import {
   MARKETS,
@@ -68,12 +66,7 @@ const REASON_LABEL: Record<string, string> = {
 type RunState =
   | { kind: "idle" }
   | { kind: "streaming"; reasoning: string }
-  | {
-      kind: "done";
-      output: FinalOutput;
-      commit?: OnChainCommit;
-      commitError?: string;
-    }
+  | { kind: "done"; output: FinalOutput }
   | { kind: "error"; message: string };
 
 const AGENT_SS58 = "5DCSpFkHzKd6G9LZ5ytjKLyPiUMYrofxpkEjuhNXTreRDfwq";
@@ -181,26 +174,6 @@ export default function AdjudicatePage() {
               } else if (parsed.type === "final" && parsed.output) {
                 final = parsed.output as FinalOutput;
                 setRun({ kind: "done", output: final });
-              } else if (parsed.type === "committed") {
-                setRun((prev) =>
-                  prev.kind === "done"
-                    ? {
-                        ...prev,
-                        commit: {
-                          txHash: parsed.txHash,
-                          txUrl: parsed.txUrl,
-                          reasonHash: parsed.reasonHash,
-                          blobUrl: parsed.blobUrl ?? null,
-                        },
-                      }
-                    : prev,
-                );
-              } else if (parsed.type === "commit_error") {
-                setRun((prev) =>
-                  prev.kind === "done"
-                    ? { ...prev, commitError: parsed.error ?? "commit failed" }
-                    : prev,
-                );
               } else if (parsed.type === "error") {
                 throw new Error(parsed.error ?? "stream error");
               }
@@ -301,8 +274,9 @@ export default function AdjudicatePage() {
             for evidence, and refuses to commit when the record doesn&rsquo;t
             settle the question. A wrong resolution pays a market out on the
             wrong truth; on contested or premature questions it returns
-            UNRESOLVABLE instead. When it does resolve, the verdict and its
-            evidence are signed and committed on chain.
+            UNRESOLVABLE instead. The agent runs sovereign on the Theseus
+            testnet, holds its own keys, and publishes its verbatim system
+            prompt on chain.
           </p>
 
           <div className="mb-3">
@@ -491,6 +465,178 @@ export default function AdjudicatePage() {
             </p>
           )}
 
+          {/* The decision, up top and impossible to miss. The search trace
+              and reasoning sit below it as the supporting record. */}
+          {isDone &&
+            (() => {
+              const out = run.output;
+              const resolved = out.verdict === "RESOLVED";
+              const vColor = resolved ? "var(--coral)" : "var(--amber)";
+              const tier = resolved ? confidenceTier(out.confidencePct) : null;
+              return (
+                <div className="mt-10">
+                  <div
+                    className="rounded-xl border p-5 sm:p-6"
+                    style={{
+                      borderColor: `color-mix(in srgb, ${vColor} 55%, var(--border))`,
+                      background: `color-mix(in srgb, ${vColor} 6%, transparent)`,
+                    }}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span
+                        className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em]"
+                        style={{ color: vColor }}
+                      >
+                        {resolved ? "Resolved" : "Unresolvable"}
+                      </span>
+                      <span className="font-mono text-[10px] text-fg-mute">
+                        {out.model} · {out.latencyMs ?? "?"}ms
+                      </span>
+                    </div>
+
+                    {resolved ? (
+                      <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <span className="font-mono text-[13px] text-fg-dim">
+                          [{out.winningOption}]
+                        </span>
+                        <span className="serif text-[34px] leading-[1.1] tracking-tight text-fg sm:text-[42px]">
+                          {market.options[out.winningOption] ?? "?"}
+                        </span>
+                      </div>
+                    ) : (
+                      <p className="serif mt-2 text-[30px] leading-[1.1] tracking-tight text-fg sm:text-[38px]">
+                        The record doesn&rsquo;t settle it
+                      </p>
+                    )}
+
+                    {!resolved && out.reason && (
+                      <p className="mt-3 text-[13px] leading-relaxed text-fg-dim">
+                        {REASON_LABEL[out.reason] ?? out.reason}. A wrong
+                        resolution pays the market out on the wrong truth and
+                        can&rsquo;t be undone, so this goes to human dispute
+                        instead.
+                      </p>
+                    )}
+
+                    <p className="mt-3 text-[14px] leading-[1.75] text-fg-dim">
+                      &ldquo;{typedSummary}&rdquo;
+                      {!typewriterCaughtUp && (
+                        <span className="ml-0.5 inline-block h-[1em] w-[6px] animate-pulse bg-coral align-text-bottom" />
+                      )}
+                    </p>
+
+                    {resolved && tier && (
+                      <div className="mt-4">
+                        <div className="mb-1 flex items-baseline justify-between">
+                          <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
+                            confidence · calibrated
+                          </span>
+                          <span
+                            className="font-mono text-[12px] tabular-nums"
+                            style={{ color: tier.color }}
+                          >
+                            {out.confidencePct}%
+                          </span>
+                        </div>
+                        <div
+                          className="h-2 w-full overflow-hidden rounded-full"
+                          style={{ background: "var(--border)" }}
+                        >
+                          <div
+                            className="h-full rounded-full transition-all"
+                            style={{
+                              width: `${out.confidencePct}%`,
+                              background: tier.color,
+                            }}
+                          />
+                        </div>
+                        <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-mute">
+                          {tier.label}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {out.citations.length > 0 && (
+                    <div className="mt-5">
+                      <p className="mb-2 text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
+                        sources cited
+                      </p>
+                      <ul className="space-y-1">
+                        {out.citations.slice(0, 6).map((c, i) => (
+                          <li key={i}>
+                            <a
+                              href={c.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[12.5px] leading-snug text-fg-dim hover:text-coral hover:underline"
+                            >
+                              <span className="font-mono text-[10.5px] mr-2">
+                                {hostname(c.url)}
+                              </span>
+                              {c.title || c.url}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {resolved && market.actualResolution && (
+                    <div className="mt-5">
+                      <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
+                        polymarket&rsquo;s actual resolution
+                      </p>
+                      <div className="mt-2 flex items-baseline gap-3">
+                        <span className="font-mono text-[11px] text-fg">
+                          [{market.actualResolution.winningOption}]{" "}
+                          {market.options[market.actualResolution.winningOption]}
+                        </span>
+                        <span
+                          className="font-mono text-[10.5px] uppercase tracking-[0.16em]"
+                          style={{
+                            color:
+                              market.actualResolution.winningOption ===
+                              out.winningOption
+                                ? "var(--fg)"
+                                : "var(--coral)",
+                          }}
+                        >
+                          {market.actualResolution.winningOption ===
+                          out.winningOption
+                            ? "agreed"
+                            : "disagreed"}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-[12.5px] leading-relaxed text-fg-dim">
+                        {market.actualResolution.note}
+                      </p>
+                    </div>
+                  )}
+
+                  {!resolved && market.outcomeNote && (
+                    <div className="mt-5">
+                      <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
+                        what actually happened
+                      </p>
+                      <p className="mt-2 text-[12.5px] leading-relaxed text-fg-dim">
+                        {market.outcomeNote}
+                      </p>
+                    </div>
+                  )}
+
+                  {!stillTyping && (
+                    <button
+                      onClick={adjudicate}
+                      className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-mute hover:text-fg hover:underline"
+                    >
+                      re-run →
+                    </button>
+                  )}
+                </div>
+              );
+            })()}
+
           {(isStreaming || isDone || searchSteps.length > 0) && (
             <div className="mt-10">
               <p className="mb-3 text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
@@ -558,183 +704,6 @@ export default function AdjudicatePage() {
                     )}
                   </p>
                 </div>
-              )}
-            </div>
-          )}
-
-          {isDone && (
-            <div className="mt-10 border-t border-border pt-6">
-              <div className="flex items-baseline justify-between gap-3">
-                <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-                  verdict
-                </p>
-                <span className="font-mono text-[10.5px] text-fg-mute">
-                  {run.output.model} · {run.output.latencyMs ?? "?"}ms
-                </span>
-              </div>
-
-              {run.output.verdict === "UNRESOLVABLE" ? (
-                <div className="mt-3">
-                  <span
-                    className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
-                    style={{ color: "var(--amber)" }}
-                  >
-                    UNRESOLVABLE
-                  </span>
-                  {run.output.reason && (
-                    <p className="mt-2 text-[13px] leading-relaxed text-fg-mute">
-                      The agent declined to commit:{" "}
-                      {REASON_LABEL[run.output.reason] ?? run.output.reason}. A
-                      wrong resolution pays the market out on the wrong truth and
-                      can&rsquo;t be undone; this goes to human dispute instead.
-                    </p>
-                  )}
-                </div>
-              ) : (
-                <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="font-mono text-[12px] text-fg-mute">
-                    [{run.output.winningOption}]
-                  </span>
-                  <span
-                    className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl"
-                    style={{ color: "var(--coral)" }}
-                  >
-                    {market.options[run.output.winningOption] ?? "?"}
-                  </span>
-                </div>
-              )}
-
-              {/* Calibrated-confidence bar — only when the agent committed */}
-              {run.output.verdict === "RESOLVED" &&
-                (() => {
-                  const tier = confidenceTier(run.output.confidencePct);
-                  return (
-                  <div className="mt-4">
-                    <div className="mb-1 flex items-baseline justify-between">
-                      <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
-                        confidence · calibrated
-                      </span>
-                      <span
-                        className="font-mono text-[12px] tabular-nums"
-                        style={{ color: tier.color }}
-                      >
-                        {run.output.confidencePct}%
-                      </span>
-                    </div>
-                    <div
-                      className="h-2 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--border)" }}
-                    >
-                      <div
-                        className="h-full rounded-full transition-all"
-                        style={{
-                          width: `${run.output.confidencePct}%`,
-                          background: tier.color,
-                        }}
-                      />
-                    </div>
-                    <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-mute">
-                      {tier.label}
-                    </p>
-                  </div>
-                );
-              })()}
-
-              <p className="mt-4 text-[13.5px] leading-[1.7] text-fg-mute italic">
-                &ldquo;{typedSummary}&rdquo;
-                {!typewriterCaughtUp && (
-                  <span className="ml-0.5 inline-block w-[6px] h-[1em] bg-coral align-text-bottom animate-pulse" />
-                )}
-              </p>
-
-              {run.output.citations.length > 0 && (
-                <div className="mt-5">
-                  <p className="mb-2 text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-                    sources cited
-                  </p>
-                  <ul className="space-y-1">
-                    {run.output.citations.slice(0, 6).map((c, i) => (
-                      <li key={i}>
-                        <a
-                          href={c.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[12.5px] leading-snug text-fg-mute hover:text-coral hover:underline"
-                        >
-                          <span className="font-mono text-[10.5px] mr-2">
-                            {hostname(c.url)}
-                          </span>
-                          {c.title || c.url}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {run.output.verdict === "RESOLVED" ? (
-                <CommitBadge
-                  commit={run.commit}
-                  error={run.commitError}
-                  className="mt-5"
-                  slug="adjudicate"
-                />
-              ) : (
-                <p className="mt-5 font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
-                  nothing committed on chain · no verdict to settle
-                </p>
-              )}
-
-              {run.output.verdict === "RESOLVED" && market.actualResolution && (
-                <div className="mt-5">
-                  <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-                    polymarket&rsquo;s actual resolution
-                  </p>
-                  <div className="mt-2 flex items-baseline gap-3">
-                    <span className="font-mono text-[11px] text-fg">
-                      [{market.actualResolution.winningOption}]{" "}
-                      {market.options[market.actualResolution.winningOption]}
-                    </span>
-                    <span
-                      className="font-mono text-[10.5px] uppercase tracking-[0.16em]"
-                      style={{
-                        color:
-                          market.actualResolution.winningOption ===
-                          run.output.winningOption
-                            ? "var(--fg)"
-                            : "var(--coral)",
-                      }}
-                    >
-                      {market.actualResolution.winningOption ===
-                      run.output.winningOption
-                        ? "agreed"
-                        : "disagreed"}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-[12.5px] leading-relaxed text-fg-mute">
-                    {market.actualResolution.note}
-                  </p>
-                </div>
-              )}
-
-              {run.output.verdict === "UNRESOLVABLE" && market.outcomeNote && (
-                <div className="mt-5">
-                  <p className="text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-                    what actually happened
-                  </p>
-                  <p className="mt-2 text-[12.5px] leading-relaxed text-fg-mute">
-                    {market.outcomeNote}
-                  </p>
-                </div>
-              )}
-
-              {!stillTyping && (
-                <button
-                  onClick={adjudicate}
-                  className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-fg-mute hover:text-fg hover:underline"
-                >
-                  re-run →
-                </button>
               )}
             </div>
           )}

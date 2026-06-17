@@ -19,12 +19,12 @@
   --border: #E2E8F0;      /* slate-200 */
   --fg: #0F172A;          /* slate-900 ink */
   --fg-dim: #475569;      /* slate-600 body-soft */
-  --fg-mute: #94A3B8;     /* slate-400 caption */
+  --fg-mute: #64748B;     /* slate-500 caption (AA contrast on light bg) */
   --coral: #4F46E5;       /* indigo-600 brand accent */
   --coral-dim: #4338CA;   /* indigo-700 */
-  --green: #10B981;       /* emerald-500 affirmative */
+  --green: #059669;       /* emerald-600 affirmative (AA on light bg) */
   --red: #E53E0C;         /* brand destructive */
-  --amber: #F59E0B;       /* amber-500 caution */
+  --amber: #B45309;       /* amber-700 caution (AA on light bg) */
   --dot: rgba(15, 23, 42, 0.05);  /* dot-grid backdrop */
 }
 

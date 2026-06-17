@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { adjudicateStream, type ResolutionResult } from "@/lib/adjudicator-llm";
+import { adjudicateStream } from "@/lib/adjudicator-llm";
 import { findMarket, type PredictionMarket } from "@/lib/adjudicator-markets";
-import { commitAdjudicatorVerdict } from "@/lib/agent-onchain/adjudicator";
-import { streamWithCommit } from "@/lib/agent-onchain/stream-commit";
+import { sse } from "@/lib/llm-stream";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 120;
@@ -63,37 +62,23 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const stream = streamWithCommit({
-    stream: adjudicateStream({ market }),
-    // Only RESOLVED verdicts get committed on-chain. UNRESOLVABLE still
-    // streams to the client, but there is nothing to settle, so it skips
-    // the commit (pickFinal returns null for it).
-    pickFinal: (event) =>
-      event.type === "final" && event.output.verdict === "RESOLVED"
-        ? (event.output as ResolutionResult)
-        : null,
-    commit: async (final) =>
-      commitAdjudicatorVerdict({
-        kind: "resolve",
-        marketId: market.marketId,
-        numOptions: market.options.length,
-        winningOption: Math.max(
-          0,
-          Math.min(market.options.length - 1, final.winningOption),
-        ),
-        confidencePct: Math.max(0, Math.min(100, final.confidencePct)),
-        blob: {
-          schema: "prediction-market-adjudicator/v1",
-          chain: "base-sepolia",
-          market: {
-            marketId: market.marketId,
-            question: market.question,
-            options: market.options,
-          },
-          resolution: final,
-          committedAt: new Date().toISOString(),
-        },
-      }),
+  // Stream the agent's reasoning and verdict straight through. The agent
+  // is deployed sovereign on the Theseus testnet; there is no second
+  // settlement chain to post to.
+  const encoder = new TextEncoder();
+  const agentStream = adjudicateStream({ market });
+  const stream = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      try {
+        for await (const event of agentStream) {
+          controller.enqueue(encoder.encode(sse(event as object)));
+        }
+      } catch (e: unknown) {
+        const msg = e instanceof Error ? e.message : String(e);
+        controller.enqueue(encoder.encode(sse({ type: "error", error: msg })));
+      }
+      controller.close();
+    },
   });
 
   return new Response(stream, {
