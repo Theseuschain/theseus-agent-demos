@@ -14,7 +14,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "https://theseus.network/demos/aperture" },
+  alternates: { canonical: "/aperture" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

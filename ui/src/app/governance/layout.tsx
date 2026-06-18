@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://theseus.network/demos/governance",
+    canonical: "/governance",
   },
   keywords: [
     "DAO governance",

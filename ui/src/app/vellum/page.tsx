@@ -15,7 +15,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "https://theseus.network/demos/vellum" },
+  alternates: { canonical: "/vellum" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
