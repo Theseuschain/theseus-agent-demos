@@ -37,9 +37,22 @@ export function genHistory(
   return out;
 }
 
-// Today is mid-June 2026. Every market below is LIVE (undecided): the ones with
-// future deadlines are open for trading and settle at close; the two "resolving"
-// markets just closed and can be settled by the agent now from current data.
+// The two settlement-demo markets reference a recent close (a couple of days
+// back, so the daily close is final and widely reported) and roll that date
+// forward with the calendar, so they never read as stale.
+function isoDaysAgo(n: number): string {
+  const d = new Date();
+  d.setUTCDate(d.getUTCDate() - n);
+  return d.toISOString().slice(0, 10);
+}
+const DEMO_CLOSE_ISO = isoDaysAgo(2);
+const demoCloseDate = new Date(`${DEMO_CLOSE_ISO}T00:00:00Z`);
+const DEMO_CLOSE_LABEL = demoCloseDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+const DEMO_CLOSE_SHORT = demoCloseDate.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+
+// Every market below is LIVE (undecided): future-deadline markets are open for
+// trading and settle at close; the two "resolving" markets just closed and can
+// be settled by the agent now from current data.
 export const SEED_MARKETS: SeedMarket[] = [
   {
     id: 4101,
@@ -224,36 +237,34 @@ export const SEED_MARKETS: SeedMarket[] = [
   // --- Just closed: the agent can settle these now from current data ---
   {
     id: 4201,
-    slug: "bitcoin-above-100k-june-15-2026",
-    question: "Did Bitcoin close above $100,000 on June 15, 2026?",
-    shortTitle: "Bitcoin above $100k on June 15?",
+    slug: "bitcoin-recent-daily-close",
+    question: `Did Bitcoin close above $100,000 on ${DEMO_CLOSE_LABEL}?`,
+    shortTitle: `Bitcoin above $100k on ${DEMO_CLOSE_SHORT}?`,
     description:
       "A single-day price snapshot that just closed. The agent can settle it now by reading the daily close from the public record.",
     category: "Crypto",
     icon: "📊",
-    resolutionCriteria:
-      "Resolves YES if the BTC/USD daily close on June 15, 2026 was at or above $100,000.00, per a consensus of major exchange spot prices (Coinbase, Binance, Kraken). Resolves NO otherwise.",
+    resolutionCriteria: `Resolves YES if the BTC/USD daily close on ${DEMO_CLOSE_LABEL} was at or above $100,000.00, per a consensus of major exchange spot prices (Coinbase, Binance, Kraken). Resolves NO otherwise.`,
     resolutionSource: "Consensus of major exchange spot prices",
-    deadlineISO: "2026-06-15",
-    initialYes: 0.23,
+    deadlineISO: DEMO_CLOSE_ISO,
+    initialYes: 0.46,
     liquidityB: 7000,
     volumeUsd: 12_800_000,
     resolvable: true,
   },
   {
     id: 4202,
-    slug: "ethereum-above-2500-june-15-2026",
-    question: "Did Ethereum close above $2,500 on June 15, 2026?",
-    shortTitle: "Ethereum above $2,500 on June 15?",
+    slug: "ethereum-recent-daily-close",
+    question: `Did Ethereum close above $2,500 on ${DEMO_CLOSE_LABEL}?`,
+    shortTitle: `Ethereum above $2,500 on ${DEMO_CLOSE_SHORT}?`,
     description:
       "Another just-closed single-day snapshot. Run the agent to settle it from the daily close.",
     category: "Crypto",
     icon: "Ξ",
-    resolutionCriteria:
-      "Resolves YES if the ETH/USD daily close on June 15, 2026 was at or above $2,500.00, per a consensus of major exchange spot prices (Coinbase, Binance, Kraken). Resolves NO otherwise.",
+    resolutionCriteria: `Resolves YES if the ETH/USD daily close on ${DEMO_CLOSE_LABEL} was at or above $2,500.00, per a consensus of major exchange spot prices (Coinbase, Binance, Kraken). Resolves NO otherwise.`,
     resolutionSource: "Consensus of major exchange spot prices",
-    deadlineISO: "2026-06-15",
-    initialYes: 0.48,
+    deadlineISO: DEMO_CLOSE_ISO,
+    initialYes: 0.53,
     liquidityB: 6000,
     volumeUsd: 8_900_000,
     resolvable: true,
