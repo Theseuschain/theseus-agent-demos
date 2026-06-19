@@ -36,7 +36,7 @@ const STEPS = [
 const FAQ = [
   {
     q: "How is this different from Polymarket?",
-    a: "The trading is the same shape. The resolution is not. Polymarket's disputed markets are settled by a UMA token vote, so whoever holds the most tokens can move the answer. Three 2025–2026 disputes worth about $298M were settled on the wrong outcome that way. Here, resolution comes from an agent reading the primary record, which no token balance can outvote.",
+    a: "The trading is the same. The resolution is different. Polymarket's disputed markets are settled by a UMA token vote, so whoever holds the most tokens can move the answer. Three 2025–2026 disputes worth about $298M were settled on the wrong outcome that way. Here, resolution comes from an agent reading the primary record, which no token balance can outvote.",
   },
   {
     q: "How do I know the agent is fair?",

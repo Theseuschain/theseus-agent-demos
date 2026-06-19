@@ -353,7 +353,7 @@ export default function BridgePage() {
               reasoning={latest?.verdict?.reasoning}
               pending={!!latest?.pending}
               streaming={latest?.streamingReasoning}
-              idleHint="Load a withdrawal and submit it — the guardian's verdict and reasoning appear here."
+              idleHint="Load a withdrawal and submit it. The guardian's verdict and reasoning appear here."
             />
           </div>
 

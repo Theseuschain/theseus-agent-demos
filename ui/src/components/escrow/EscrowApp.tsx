@@ -319,7 +319,7 @@ export default function EscrowApp() {
       <section id="create" className="mt-14 scroll-mt-20">
         {!isConnected && (
           <div className={`${PANEL} flex flex-col items-center gap-4 px-6 py-12 text-center`}>
-            <h2 className="font-serif text-[24px] font-medium text-white">Run a real deal.</h2>
+            <h2 className="font-serif text-[24px] font-medium text-white">Create a deal.</h2>
             <p className="text-[13.5px] text-[#8A93A6]">Connect on Base Sepolia. Mint a test token here, ETH for gas from any faucet.</p>
             <ConnectControl size="lg" />
           </div>

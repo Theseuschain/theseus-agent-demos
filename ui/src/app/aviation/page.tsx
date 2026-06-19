@@ -340,7 +340,7 @@ export default function AviationPage() {
               reasoning={latest?.verdict?.reasoning}
               pending={!!latest?.pending}
               streaming={latest?.streamingReasoning}
-              idleHint="Pick a certification change and submit it — the reviewer's verdict and reasoning appear here."
+              idleHint="Pick a certification change and submit it. The reviewer's verdict and reasoning appear here."
             />
           </div>
 

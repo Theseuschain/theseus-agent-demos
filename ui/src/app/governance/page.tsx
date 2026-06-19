@@ -348,7 +348,7 @@ export default function GovernancePage() {
               reasoning={latest?.verdict?.reasoning}
               pending={!!latest?.pending}
               streaming={latest?.streamingReasoning}
-              idleHint="Load a proposal and submit it — the reviewer's verdict and reasoning appear here."
+              idleHint="Load a proposal and submit it. The reviewer's verdict and reasoning appear here."
             />
           </div>
 

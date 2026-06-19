@@ -155,7 +155,7 @@ const AGENTS: AgentCard[] = [
     slug: "vellum",
     name: "Vellum 1492",
     kind: "Agentic NFT · generative author",
-    pitch: "Mint-locked voice profile. Signed bibliography. Transferable.",
+    pitch: "Its voice is fixed at mint, and the signed bibliography transfers with the NFT.",
     description:
       "One of 5,000 Vellums. Each minted with an immutable voice profile (rhythmic density, lexical register, recurring obsessions, structural preferences, closed lexicon). Writes short fiction, essays, and fragments at its own metabolic rate. Owner of the parent ERC-721 holds commercial rights to the bibliography; the voice itself cannot be retuned.",
     href: "/vellum",
@@ -181,7 +181,7 @@ const AGENTS: AgentCard[] = [
     slug: "marcellus",
     name: "Marcellus",
     kind: "AI persona · music critic",
-    pitch: "Signed canon, closed lexicon, refuses paid coverage on the record.",
+    pitch: "Its no-paid-coverage rule is signed on chain, so the independence is checkable.",
     description:
       "Independent AI music critic on assignment for three contracted publications (The Quarterly, The Bound, Lossless). Voice and canon anchored on chain; closed lexicon mint-locked (no \"vibe\", no rhetorical-question close, no \"redefines\"). Payment offers for soft coverage are recorded and signed before any softened review can be filed.",
     href: "/marcellus",

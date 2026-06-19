@@ -142,7 +142,7 @@ export default function FundPage() {
           <h1 className="font-mono text-[15px] text-fg mb-1">Sovereign Fund</h1>
           <p className="mb-8 text-[13.5px] leading-[1.7] text-fg-mute">
             A hedge fund with no GP to trust. The agent owns the capital and
-            trades a mandate signed on chain — deposit as an LP, watch it manage
+            trades a mandate signed on chain. Deposit as an LP, let it manage
             the book through whatever the market does, and redeem against NAV
             anytime. It can&rsquo;t exceed its risk limits or move your funds
             off-mandate.
@@ -274,7 +274,7 @@ export default function FundPage() {
                 Try it
               </span>
               <span className="text-[13.5px] text-fg-dim">
-                Pick a market and replay it — watch the agent manage your money
+                Pick a market and replay it. The agent manages your money
                 tick by tick.
               </span>
               <div className="ml-auto flex items-center gap-2">

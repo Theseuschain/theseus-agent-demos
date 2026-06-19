@@ -395,7 +395,7 @@ export default function HomePage() {
 
           <p className="mb-12 text-[13.5px] leading-[1.7] text-fg-mute">
             The Theseus Agent Oracle prices ETH/USD by reading three venues
-            and reconciling them, not by taking a median. Manipulate one. The
+            and reconciling them by depth. If one venue gets manipulated, the
             agent refuses to publish when the venues no longer agree.
           </p>
 

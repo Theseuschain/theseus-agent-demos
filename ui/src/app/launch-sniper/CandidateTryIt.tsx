@@ -125,8 +125,8 @@ export function CandidateTryIt() {
             Try it
           </span>
           <span className="text-[13.5px] text-fg-dim">
-            Throw a fresh launch at the sniper — watch it reject the rugs and
-            catch the rare clean one.
+            Throw a fresh launch at the sniper. It rejects the rugs and
+            catches the rare clean one.
           </span>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -210,7 +210,7 @@ export function CandidateTryIt() {
       </div>
 
       <p className="mt-3 text-[12px] leading-relaxed text-fg-mute">
-        Most launches are rugs, so the sniper mostly passes — that&rsquo;s the
+        Most launches are rugs, so the sniper mostly passes; that&rsquo;s the
         job. The on-chain record below is its real paper book on Base.
       </p>
     </div>

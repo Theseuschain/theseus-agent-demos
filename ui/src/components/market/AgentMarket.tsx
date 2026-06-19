@@ -195,7 +195,7 @@ export default function AgentMarket() {
           </button>
         </div>
         <p className="mt-2 text-[11px] text-[#6B7488]">
-          &ldquo;Scam provider&rdquo; takes the money and submits filler. Watch the adjudicator catch it and refund Atlas.
+          &ldquo;Scam provider&rdquo; takes the money and submits filler. The adjudicator catches it and refunds Atlas.
         </p>
       </section>
 

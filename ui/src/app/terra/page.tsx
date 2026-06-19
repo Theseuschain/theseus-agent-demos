@@ -219,7 +219,7 @@ export default function TerraPage() {
               reasoning={latest?.verdict?.reasoning}
               pending={!!latest?.pending}
               streaming={latest?.streamingReasoning}
-              idleHint="Load a vault state and submit a mint or redeem — the failsafe's verdict and reasoning appear here."
+              idleHint="Load a vault state and submit a mint or redeem. The failsafe's verdict and reasoning appear here."
             />
           </div>
 
