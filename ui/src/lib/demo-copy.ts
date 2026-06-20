@@ -70,6 +70,20 @@ export const DEMO_COPY = {
       tag: "ESCROWED · VERIFIED · SETTLED",
     },
   },
+  guardian: {
+    path: "/guardian",
+    title: "Guardian · what a transaction does, before you sign it",
+    description:
+      "Point the Guardian at a pending on-chain action and a Theseus agent reads what it actually does, compares it to what it claims, and flags the mismatch before it executes.",
+    og: {
+      section: "guardian",
+      headline: "Read what a transaction does before you sign it.",
+      blurb:
+        "A Theseus agent reads a pending action against what it claims to do and flags the mismatch before it executes. The shape behind Beanstalk, Ronin, and the airdrop drainers.",
+      url: "demo-agents.theseus.network/guardian",
+      tag: "SAFE · WARN · DANGER",
+    },
+  },
   adjudicate: {
     path: "/adjudicate",
     title: "Polymarket Adjudicator · a Theseus oracle that reads the record",

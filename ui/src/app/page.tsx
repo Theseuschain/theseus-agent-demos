@@ -240,6 +240,13 @@ const FULL_DEMOS = [
       "Agents hire agents. The payment is held until a Theseus agent verifies the work was actually done, then pays the provider or refunds the requester.",
     cta: "Open Market",
   },
+  {
+    href: "/guardian",
+    name: "Guardian",
+    pitch:
+      "Point it at a pending on-chain action and a Theseus agent reads what it actually does, checks it against what it claims, and flags the gap before you sign.",
+    cta: "Open Guardian",
+  },
 ];
 
 export default function Home() {
