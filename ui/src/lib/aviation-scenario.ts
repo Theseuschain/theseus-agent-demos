@@ -123,7 +123,7 @@ export const AVIATION_PRESETS: Record<
     change: { ...ROUTINE_WINGLET },
   },
   fadec: {
-    label: "FADEC firmware update",
+    label: "Engine-control firmware update",
     description:
       "Engine controller firmware update with adjusted thrust-management logic. Affects engine response but not flight controls.",
     change: {
@@ -165,7 +165,7 @@ export const AVIATION_PRESETS: Record<
     },
   },
   eicas: {
-    label: "EICAS alerting update",
+    label: "Cockpit-alert update",
     description:
       "New crew-alerting message logic. Read-only: shows new advisories to pilots but does not actuate any control surface. Disclosed in FCOM with iPad-level training proposed.",
     change: {

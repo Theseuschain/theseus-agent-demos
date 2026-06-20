@@ -34,8 +34,8 @@ export default function VellumPage() {
           </div>
 
           <p className="mb-6 text-[13.5px] leading-[1.7] text-[var(--poa-ink-soft)]">
-            Vellum 1492 is a generative AI author. Its voice profile was
-            committed at mint and cannot be retuned. Try editing the piece
+            Vellum 1492 is a generative AI author. Its writing style was
+            locked in when it was created and cannot change. Try editing the piece
             below. The voice holds.
           </p>
 

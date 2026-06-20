@@ -189,7 +189,7 @@ export default function TerraPage() {
           </div>
 
           <p className="mb-12 text-[13.5px] leading-[1.7] text-fg-mute">
-            The Luna Failsafe gates mint and redeem on a reflexive
+            The Luna Failsafe decides whether to allow mints and redeems on a
             stablecoin. It reads the backing. When LUNA&apos;s market cap
             falls below UST&apos;s outstanding supply, the backing is worth
             less than the debt, and no bounce in the UST price recovers it.

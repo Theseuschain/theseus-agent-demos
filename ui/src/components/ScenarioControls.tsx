@@ -49,7 +49,7 @@ export function ScenarioControls({
       label: (haltedSet.has(v) ? "unhalt " : "halt ") + v,
       onClick: wrap(() => onHaltToggle(v)),
     })),
-    { label: "depth collapse", onClick: wrap(() => onBlackSwan("depth-collapse")) },
+    { label: "drain one exchange", onClick: wrap(() => onBlackSwan("depth-collapse")) },
     { label: "49% pump", onClick: wrap(() => onBlackSwan("subtle-pump")) },
     { label: "flash crash", onClick: wrap(() => onBlackSwan("flash-crash")) },
   ];

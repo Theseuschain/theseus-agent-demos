@@ -141,11 +141,11 @@ export default function FundPage() {
 
           <h1 className="font-mono text-[15px] text-fg mb-1">Sovereign Fund</h1>
           <p className="mb-8 text-[13.5px] leading-[1.7] text-fg-mute">
-            A hedge fund with no GP to trust. The agent owns the capital and
-            trades a mandate signed on chain. Deposit as an LP, let it manage
-            the book through whatever the market does, and redeem against NAV
-            anytime. It can&rsquo;t exceed its risk limits or move your funds
-            off-mandate.
+            A hedge fund with no manager to trust. The agent owns the money and
+            trades to a rulebook signed on chain. Put money in, let it manage
+            the money through whatever the market does, and cash out at the fund
+            value anytime. It can&rsquo;t exceed its risk limits or move your money
+            outside its rules.
           </p>
 
           {/* HERO: NAV + LP position + the equity curve */}
@@ -153,7 +153,7 @@ export default function FundPage() {
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
               <div>
                 <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-fg-mute">
-                  Fund NAV
+                  Fund value
                 </p>
                 <p className="mt-1 font-serif text-4xl tracking-tight text-fg tabular-nums sm:text-5xl">
                   {usd(nav)}
@@ -203,7 +203,7 @@ export default function FundPage() {
                 ) : (
                   <div className="rounded-lg border border-dashed border-border px-4 py-3">
                     <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-fg-mute">
-                      become an LP
+                      put money in
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {DEPOSITS.map((d) => (

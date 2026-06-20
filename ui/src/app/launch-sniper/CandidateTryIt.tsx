@@ -78,7 +78,7 @@ const CANDIDATES: Candidate[] = [
     checks: { source_verified: true, mint_renounced: true, lp_locked: true, deployer_clean: "unknown", top10_ok: false },
     reason: "real hook, safe rails, concentrated holders → small lottery",
     reasoning:
-      "Verified, mint renounced, LP locked — the rug surfaces are closed. There's a coherent memecoin hook with early traction. The flag is top-10 at 71% and an unknown deployer, so this isn't conviction. A 50 USDC lottery ticket, not a position. Buying small.",
+      "Verified, mint renounced, LP locked, so the scam routes are closed. There's a coherent memecoin hook with early traction. The flag is top-10 at 71% and an unknown deployer, so this isn't conviction. A 50 USDC lottery ticket, not a position. Buying small.",
     outcome: "ran +12%, trimmed to cost",
     outcomePnl: 12,
   },
@@ -89,7 +89,7 @@ const CANDIDATES: Candidate[] = [
     decision: "BUY",
     size: "$250",
     checks: { source_verified: true, mint_renounced: true, lp_locked: true, deployer_clean: true, top10_ok: true },
-    reason: "all green — every rug surface closed",
+    reason: "all green, every scam route closed",
     reasoning:
       "Every check is green: source verified, mint renounced, LP locked for 12 months, deployer has shipped two clean tokens before, top-10 at 38%. This is the rare candidate that clears the whole checklist. Conviction size. Buying 250.",
     outcome: "ran +41%, still holding",

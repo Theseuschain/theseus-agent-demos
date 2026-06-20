@@ -53,7 +53,7 @@ const AGENTS: AgentCard[] = [
     kind: "Oracle replacement",
     pitch: "Reads three venues, refuses when they disagree.",
     description:
-      "Replaces a Chainlink-shaped feed for a forked Aave V3. Reads Coinbase, Binance, and Uniswap directly; reconciles depth-weighted; refuses to price when venues disagree, depth doesn't support the level, or an off-chain context event makes a venue stale. Catches the Mango Markets pump-the-venue shape by construction.",
+      "Replaces a Chainlink-shaped feed for a forked Aave V3. Reads Coinbase, Binance, and Uniswap directly and weighs each by how much it can really trade, then refuses to price when they disagree or the price isn't backed by real volume. Catches the Mango Markets attack, where the price is pushed up on one exchange.",
     href: "/aave",
     poaUrl:
       "https://theseus.network/poa/5GjXyA2tF8oP4qN7pK3sL9mZ8r5yA1cB6dV2eW4nT8fH7sB1",
@@ -64,7 +64,7 @@ const AGENTS: AgentCard[] = [
     slug: "terra",
     name: "Luna Failsafe",
     kind: "Mechanism gate",
-    pitch: "Gates mint/redeem on a reflexive algo stablecoin.",
+    pitch: "Decides whether to allow mints and redeems on a stablecoin that can spiral.",
     description:
       "UST targets $1, backed by LUNA, a token the protocol mints to defend the peg. Before every mint or redeem the protocol asks the agent. It reads the backing: when LUNA's market cap falls below UST's outstanding supply, the backing is worth less than the debt, and it returns ALLOW, CAUTION, or REFUSE. The Terra/LUNA collapse, replayed day by day.",
     href: "/terra",
@@ -131,7 +131,7 @@ const AGENTS: AgentCard[] = [
     kind: "Self-scheduled trader",
     pitch: "Autonomous agent-owned fund. No human caller.",
     description:
-      "Owns its own USDC and WETH and runs a self-scheduled tick on its own clock. Reads market state, computes a target weight from its frozen mandate, executes the rebalance against its own balances through Uniswap V3. The first sovereign-shape agent in this set. No contract calls it; it triggers itself.",
+      "Owns its own USDC and WETH and runs itself on a schedule, with nothing having to call it. It reads the market, works out a target mix from its fixed rulebook, and trades its own balances on Uniswap to hit it. The first agent in this set that runs on its own.",
     href: "/fund",
     poaUrl:
       "https://theseus.network/poa/5LkY9d2vH6mR8nQ1bX3cP5tF7eK4aV2sZ8wM5oG1pJqC",
@@ -157,7 +157,7 @@ const AGENTS: AgentCard[] = [
     kind: "Agentic NFT · generative author",
     pitch: "Its voice is fixed at mint, and the signed bibliography transfers with the NFT.",
     description:
-      "One of 5,000 Vellums. Each minted with an immutable voice profile (rhythmic density, lexical register, recurring obsessions, structural preferences, closed lexicon). Writes short fiction, essays, and fragments at its own metabolic rate. Owner of the parent ERC-721 holds commercial rights to the bibliography; the voice itself cannot be retuned.",
+      "One of 5,000 Vellums. Each created with a fixed writing style: its rhythm, vocabulary, recurring themes, and structure. Writes short fiction, essays, and fragments on its own schedule. Owner of the parent ERC-721 holds commercial rights to the bibliography; the voice itself cannot be retuned.",
     href: "/vellum",
     poaUrl:
       "https://theseus.network/poa/5MnK4xQ8aP2vR7yC3bN6hL9wF1tE5dV2sZ8oW3mG1pJqB4u",

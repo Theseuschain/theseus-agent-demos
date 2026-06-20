@@ -137,14 +137,14 @@ export default function GuardianApp() {
           <div className="absolute -top-28 right-10 h-[420px] w-[420px] rounded-full bg-[#8B5CF6]/18 blur-[130px]" />
         </div>
         <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#AAB2C5]">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#34D399]" /> Pre-execution review
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#34D399]" /> Theseus Guardian
         </span>
         <h1 className="mt-5 max-w-3xl font-serif text-[38px] font-medium leading-[1.04] tracking-tight text-white sm:text-[52px]">
-          Read what a transaction does before you sign it.
+          Know what you&rsquo;re signing.
         </h1>
         <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-[#AAB2C5]">
-          A Theseus agent reads the real call behind a pending action, checks it against what it
-          claims to do, and flags the gap before it executes.
+          Before you approve a transaction, an agent reads what it actually does and tells you
+          whether it&rsquo;s safe to sign.
         </p>
       </section>
 
@@ -236,7 +236,8 @@ export default function GuardianApp() {
 
       {/* Case studies */}
       <section className="mt-16">
-        <h2 className="text-[13px] font-semibold uppercase tracking-[0.15em] text-[#6B7488]">See it catch the real ones</h2>
+        <h2 className="text-[13px] font-semibold uppercase tracking-[0.15em] text-[#6B7488]">Real disasters it would have caught</h2>
+        <p className="mt-2 text-[13px] text-[#8A93A6]">Each links to a live demo of the agent catching that exact case.</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {CASES.map((c) => (
             <Link key={c.href} href={c.href} className={`${PANEL} p-4 transition-colors hover:border-white/15 hover:bg-white/[0.05]`}>

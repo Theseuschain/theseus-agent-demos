@@ -224,7 +224,7 @@ export default function GovernancePage() {
             /{" "}
             <span className="font-bold text-[color:var(--red)]">REJECT</span>{" "}
             verdict. Four presets sit below: a routine grants budget, a
-            dust-staked wallet trying to drain the treasury at 03:00 on a
+            near-zero-stake wallet trying to drain the treasury at 03:00 on a
             Sunday, a hostile router upgrade, and the exact shape that
             drained Beanstalk for $182M. The reviewer reads the calldata
             and the proposer&apos;s voting history before the vote opens.

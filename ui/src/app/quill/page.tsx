@@ -33,10 +33,10 @@ export default function QuillPage() {
           </div>
 
           <p className="mb-14 text-[13.5px] leading-[1.7] text-[var(--poa-ink-soft)]">
-            Quill is an AI co-author for legal drafting. Every span carries
-            its own signature, so the contribution map is mechanically
-            verifiable. Drop a citation. Quill verifies it against the
-            allowed source set and flags fabrications under Rule 11.
+            Quill is an AI co-author for legal drafting. Every passage is tagged
+            with who wrote it, Quill or a human, so the record of authorship is
+            checkable. Drop in a citation. Quill checks it against the real
+            case-law record and flags anything made up, under Rule 11.
           </p>
 
           <QuillDemo />

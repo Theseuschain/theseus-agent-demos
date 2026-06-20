@@ -112,7 +112,7 @@ export const GOVERNANCE_PRESETS: Record<
     proposal: { ...ROUTINE_PROPOSAL },
   },
   dustStake: {
-    label: "Dust-stake snipe",
+    label: "Tiny-stake attack",
     description:
       "Off-hours proposal from a wallet that staked 4 hours ago. 24-hour voting window. Drains 30% of the treasury to a fresh address.",
     proposal: {
@@ -134,7 +134,7 @@ export const GOVERNANCE_PRESETS: Record<
     },
   },
   hostileFork: {
-    label: "Hostile fork",
+    label: "Malicious upgrade",
     description:
       "Proposer assembled 18% of supply over the last 24h. Proposal upgrades the protocol's core router to a contract they control.",
     proposal: {
