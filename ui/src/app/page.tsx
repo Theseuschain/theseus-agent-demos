@@ -244,7 +244,7 @@ const FULL_DEMOS = [
     href: "/guardian",
     name: "Guardian",
     pitch:
-      "A contract calls it before it runs a transaction. A Theseus agent works out what the transaction will do and answers allow or block.",
+      "A contract checks with it before running a transaction. The agent flags the ones that quietly do something they never said they would.",
     cta: "Open Guardian",
   },
 ];

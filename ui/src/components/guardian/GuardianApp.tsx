@@ -140,11 +140,11 @@ export default function GuardianApp() {
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#34D399]" /> Theseus Guardian
         </span>
         <h1 className="mt-5 max-w-3xl font-serif text-[38px] font-medium leading-[1.04] tracking-tight text-white sm:text-[52px]">
-          It checks a transaction before a contract runs it.
+          It catches the transactions that lie about what they do.
         </h1>
         <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-[#AAB2C5]">
-          Before a contract runs a transaction, it asks the agent. The agent works out what the
-          transaction will do and answers allow or block, catching the ones that do something other than what they claim.
+          A contract asks the agent before it runs a transaction. It flags the ones that quietly do
+          something they never said they would.
         </p>
       </section>
 

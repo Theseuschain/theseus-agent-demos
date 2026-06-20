@@ -74,12 +74,12 @@ export const DEMO_COPY = {
     path: "/guardian",
     title: "Guardian · an automatic gate in front of risky transactions",
     description:
-      "A contract calls the Guardian before it runs a transaction. A Theseus agent works out what the transaction will do and answers allow or block, catching the ones that do something other than what they claim.",
+      "A contract checks with the Guardian before it runs a transaction. The agent flags the ones that quietly do something they never said they would.",
     og: {
       section: "guardian",
-      headline: "It checks a transaction before a contract runs it.",
+      headline: "It catches the transactions that lie about what they do.",
       blurb:
-        "Before a contract runs a transaction, it asks the agent. The agent works out what the transaction will do and answers allow or block. The same check that would have caught Beanstalk and Ronin.",
+        "A contract asks the agent before it runs a transaction. It flags the ones that quietly do something they never said they would. The same check that would have caught Beanstalk and Ronin.",
       url: "demo-agents.theseus.network/guardian",
       tag: "ALLOW · CAUTION · BLOCK",
     },
