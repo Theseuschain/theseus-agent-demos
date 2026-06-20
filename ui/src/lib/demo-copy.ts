@@ -72,16 +72,16 @@ export const DEMO_COPY = {
   },
   guardian: {
     path: "/guardian",
-    title: "Guardian · what a transaction does, before you sign it",
+    title: "Guardian · an automatic gate in front of risky transactions",
     description:
-      "Point the Guardian at a pending on-chain action and a Theseus agent reads what it actually does, compares it to what it claims, and flags the mismatch before it executes.",
+      "A contract calls the Guardian before it executes a high-stakes action. A Theseus agent reads what the action actually does, compares it to what it claims, and returns allow or block before it goes through.",
     og: {
       section: "guardian",
-      headline: "Read what a transaction does before you sign it.",
+      headline: "A gate that blocks the bad transaction before it goes through.",
       blurb:
-        "A Theseus agent reads a pending action against what it claims to do and flags the mismatch before it executes. The shape behind Beanstalk, Ronin, and the airdrop drainers.",
+        "A contract asks a Theseus agent before it makes a high-stakes move. The agent reads the real action against its claim and returns allow or block. The shape behind Beanstalk and Ronin.",
       url: "demo-agents.theseus.network/guardian",
-      tag: "SAFE · WARN · DANGER",
+      tag: "ALLOW · CAUTION · BLOCK",
     },
   },
   adjudicate: {

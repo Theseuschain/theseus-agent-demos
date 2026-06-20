@@ -244,7 +244,7 @@ const FULL_DEMOS = [
     href: "/guardian",
     name: "Guardian",
     pitch:
-      "Point it at a pending on-chain action and a Theseus agent reads what it actually does, checks it against what it claims, and flags the gap before you sign.",
+      "A contract calls it before a high-stakes action goes through. A Theseus agent reads what the action actually does, checks it against what it claims, and returns allow or block.",
     cta: "Open Guardian",
   },
 ];

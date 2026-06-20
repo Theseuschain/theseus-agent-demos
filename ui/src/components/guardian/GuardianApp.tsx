@@ -140,11 +140,11 @@ export default function GuardianApp() {
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#34D399]" /> Theseus Guardian
         </span>
         <h1 className="mt-5 max-w-3xl font-serif text-[38px] font-medium leading-[1.04] tracking-tight text-white sm:text-[52px]">
-          Know what you&rsquo;re signing.
+          A gate that blocks the bad transaction before it goes through.
         </h1>
         <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-[#AAB2C5]">
-          Before you approve a transaction, an agent reads what it actually does and tells you
-          whether it&rsquo;s safe to sign.
+          A contract calls the agent before it makes a high-stakes move. The agent reads the real
+          state and returns allow or block. No human in the loop.
         </p>
       </section>
 
@@ -185,7 +185,7 @@ export default function GuardianApp() {
               disabled={running || !action.trim()}
               className="mt-4 w-full rounded-xl bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] px-5 py-3 text-[14px] font-semibold text-white shadow-[0_8px_30px_rgba(99,102,241,0.3)] transition-shadow hover:shadow-[0_8px_40px_rgba(99,102,241,0.5)] disabled:opacity-40 disabled:shadow-none"
             >
-              {running ? "Reviewing…" : "Review before signing →"}
+              {running ? "Reviewing…" : "Run the gate →"}
             </button>
           </div>
 
@@ -193,7 +193,7 @@ export default function GuardianApp() {
           <div className={`${PANEL} flex flex-col p-5`}>
             {!verdict && !running && !err && (
               <div className="flex flex-1 items-center justify-center py-10 text-center text-[13px] text-[#6B7488]">
-                Pick an action and the Guardian reviews it here.
+                Pick an action and the gate decides here.
               </div>
             )}
             {running && !verdict && (
@@ -203,7 +203,7 @@ export default function GuardianApp() {
               <div className={`rounded-xl border ${tone.border} ${tone.bg} p-4`}>
                 <div className="flex items-center justify-between">
                   <span className="text-[22px] font-bold" style={{ color: tone.fg }}>
-                    {verdict.verdict === "SAFE" ? "Safe to sign" : verdict.verdict === "WARN" ? "Caution" : "Do not sign"}
+                    {verdict.verdict === "SAFE" ? "Allow" : verdict.verdict === "WARN" ? "Caution" : "Block"}
                   </span>
                   <span className="font-mono text-[11px] text-[#9AA3B2]">{verdict.confidencePct}% confidence</span>
                 </div>
