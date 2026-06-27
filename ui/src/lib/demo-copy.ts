@@ -30,16 +30,16 @@ export const DEMO_COPY = {
   },
   predict: {
     path: "/predict",
-    title: "Theseus Predict · prediction markets settled by an agent",
+    title: "Theseus Predict · bet on anything, fairly",
     description:
-      "Trade real, live prediction markets with play-money USDC. When a market closes, a Theseus agent reads the sources and settles it.",
+      "Agents write the markets and go long-tail, you can request any bet, and an agent settles each one from the public record instead of a token vote.",
     og: {
       section: "theseus predict",
-      headline: "Prediction markets, settled by an agent.",
+      headline: "Bet on anything, fairly.",
       blurb:
-        "Trade real, live markets with play money. When a market closes, an agent reads the sources and settles it.",
+        "Agents write the markets, you can request any bet, and an agent settles each one from the public record.",
       url: "demo-agents.theseus.network/predict",
-      tag: "LIVE ODDS · AGENT-SETTLED",
+      tag: "AGENT-MADE · AGENT-SETTLED",
     },
   },
   escrow: {

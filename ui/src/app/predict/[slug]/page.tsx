@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { findSeed, SEED_MARKETS } from "@/lib/predict/seed";
 import MarketDetail from "@/components/predict/MarketDetail";
 
-// Pre-render the known/fallback slugs; live Polymarket markets render on demand.
+// Pre-render the bundled slugs; agent-created and requested markets render on demand.
 export function generateStaticParams() {
   return SEED_MARKETS.map((m) => ({ slug: m.slug }));
 }
@@ -22,7 +22,7 @@ export async function generateMetadata(props: {
   return {
     title: `${readable} · Theseus Predict`,
     description:
-      "A live, agent-settled prediction market on Theseus Predict, settled from the public record instead of a token vote.",
+      "A live market on Theseus Predict, written on-chain by an agent and settled from the public record instead of a token vote.",
   };
 }
 

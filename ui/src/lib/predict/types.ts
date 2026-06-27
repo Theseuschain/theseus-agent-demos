@@ -1,8 +1,8 @@
-// Domain types for the agent-settled prediction market (play-money demo).
+// Domain types for the agent-created, agent-settled prediction market (play-money demo).
 
 export type Outcome = "YES" | "NO";
 
-// Known buckets get a curated icon/filter; live Polymarket markets may carry
+// Known buckets get a curated icon/filter; agent-created markets may carry
 // other strings, so the type stays open.
 export type MarketCategory = string;
 

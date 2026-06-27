@@ -84,7 +84,7 @@ export default function RequestMarket() {
               <div>
                 <h2 className="font-serif text-[22px] font-medium tracking-tight text-fg">Request a market</h2>
                 <p className="mt-1 text-[13px] text-fg-dim">
-                  Name the bet you want. A Theseus agent researches it, and if it can be settled fairly, it writes it on-chain and puts it on the board.
+                  Name the bet you want. A Theseus agent researches it. If it's interesting and can be settled fairly, it writes it on-chain and lists it, otherwise it tells you why.
                 </p>
               </div>
               <button onClick={close} className="ml-3 text-fg-mute hover:text-fg">✕</button>
@@ -131,7 +131,7 @@ export default function RequestMarket() {
               <div className="mt-6 flex flex-col items-center py-8 text-center">
                 <div className="h-8 w-8 animate-spin rounded-full border-2 border-coral/30 border-t-coral" />
                 <p className="mt-4 text-[14px] font-medium text-fg">The desk agent is researching your bet</p>
-                <p className="mt-1 text-[12.5px] text-fg-dim">Checking it can be settled fairly, then writing it on-chain. This runs a real agent, give it a minute.</p>
+                <p className="mt-1 text-[12.5px] text-fg-dim">Checking it's interesting and can be settled fairly, then writing it on-chain. This runs a real agent, give it a minute.</p>
               </div>
             )}
 
