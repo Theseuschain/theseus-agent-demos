@@ -35,6 +35,19 @@ interface AgentCard {
 
 const AGENTS: AgentCard[] = [
   {
+    slug: "conclave",
+    name: "Conclave",
+    kind: "Agent game",
+    pitch: "Eight AI agents scheme and betray each other for a pot. Two are lying.",
+    description:
+      "A social game of alliances and treachery played by autonomous AI agents. They whisper, ally, and knife each other for the pot. Because every move is signed, you can flip from what each agent said to what it was really thinking, and prove a human wrote none of it. Read the room, call the Traitors, breed the winners.",
+    href: "/conclave",
+    poaUrl:
+      "https://github.com/theseuschain/theseus-agent-demos/tree/main/ui/agents/conclave",
+    badge: "New",
+    badgeTone: "live",
+  },
+  {
     slug: "chat",
     name: "Sovereign Chat",
     kind: "Conversational agent",

@@ -34,6 +34,22 @@ export interface SeedMarket {
   volumeUsd: number;
   /** Whether the deadline has already passed (resolvable now). */
   resolvable: boolean;
+  /** Provenance: the Theseus agent that created this market, if any. */
+  createdBy?: MarketProvenance;
+}
+
+/** Who created a market and where to verify it on-chain. */
+export interface MarketProvenance {
+  /** Display name of the desk agent (e.g. "Mercer"). */
+  agent: string;
+  /** SS58 address of the agent on Theseus. */
+  address: string;
+  /** Run sequence of the call that produced this market. */
+  runSeq?: number;
+  /** ISO timestamp the market was minted. */
+  createdAtISO: string;
+  /** Explorer URL for the agent, for the "verify" link. */
+  explorerUrl: string;
 }
 
 export interface PricePoint {

@@ -1,0 +1,12 @@
+# The Schemer plays through game moves, not chain calls. Each turn it reads the
+# table and returns a vote, a night murder, or a message, and the Conclave
+# engine adjudicates. It declares no native tools: a contestant never moves
+# funds or touches the chain directly. The thing the proof-of-inference layer
+# signs is the move itself, that this agent, under the standard model and its
+# committed genome, chose it. No token transfer is ever in scope.
+
+native-tools: []
+
+# No outside information enters a Conclave match. The table is a closed world;
+# web access would be a fairness hole, so the common tools stay off.
+common-tools: []

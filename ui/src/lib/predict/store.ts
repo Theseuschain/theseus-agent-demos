@@ -20,8 +20,19 @@ import type {
 } from "./types";
 
 const STORAGE_KEY = "theseus-predict-v2";
+const REQUESTED_KEY = "theseus-predict-requested-v1";
 const STARTING_BALANCE = 1_000;
 const FAUCET_AMOUNT = 1_000;
+
+/** User-requested markets the desk agent approved, persisted so they stick. */
+function loadRequested(): SeedMarket[] {
+  if (typeof window === "undefined") return [];
+  try { return JSON.parse(window.localStorage.getItem(REQUESTED_KEY) || "[]") as SeedMarket[]; }
+  catch { return []; }
+}
+function saveRequested(list: SeedMarket[]) {
+  try { window.localStorage.setItem(REQUESTED_KEY, JSON.stringify(list.slice(0, 50))); } catch { /* ignore */ }
+}
 
 export interface SettledPosition {
   marketId: number;
@@ -149,11 +160,28 @@ function ensureHydrated() {
 
 async function loadLive() {
   const { markets: list, live } = await fetchLiveMarkets();
+  const merged = [...loadRequested(), ...list];
+  rebuildMeta(merged);
+  set({
+    marketList: merged,
+    markets: seedRuntime(merged, state.markets),
+    live,
+  });
+}
+
+/** Add a desk-approved market (from a user request) to the board, and persist it. */
+export function addMarket(seed: SeedMarket) {
+  if (state.marketList.some((m) => m.id === seed.id || m.slug === seed.slug)) return;
+  saveRequested([seed, ...loadRequested().filter((m) => m.id !== seed.id)]);
+  const list = [seed, ...state.marketList];
   rebuildMeta(list);
+  const { qYes, qNo } = seedShares(seed.initialYes, seed.liquidityB);
   set({
     marketList: list,
-    markets: seedRuntime(list, state.markets),
-    live,
+    markets: {
+      ...state.markets,
+      [seed.id]: { qYes, qNo, volumeUsd: seed.volumeUsd, history: genHistory(seed.id, seed.initialYes) },
+    },
   });
 }
 

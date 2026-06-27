@@ -1,0 +1,41 @@
+{
+  "Crypto": [
+    "a specific altcoin or memecoin launch, listing, or token unlock",
+    "a named NFT collection's floor price moving",
+    "a specific protocol's TVL milestone or governance vote outcome",
+    "a named exchange shipping or pulling a specific feature or token"
+  ],
+  "Tech": [
+    "a specific AI model topping a named leaderboard (LMArena, SWE-bench, Chatbot Arena)",
+    "a named app shipping a specific feature, or a notable outage",
+    "a specific open-source repo's GitHub star or release traction",
+    "a named startup's specific funding round, acquihire, or shutdown"
+  ],
+  "Gaming": [
+    "GTA VI trailer drops and release-window slips",
+    "a specific game's next patch, DLC, or roadmap item shipping",
+    "a named esports tournament result this summer",
+    "a Steam concurrent-player record for a specific title"
+  ],
+  "Internet": [
+    "a specific creator or streamer hitting a subscriber or concurrent-viewer milestone",
+    "a viral app climbing or topping the US App Store charts",
+    "a specific subreddit, Discord, or platform metric",
+    "a named meme, trend, or feud and whether it has staying power"
+  ],
+  "Science": [
+    "a specific SpaceX or rocket launch outcome on a named date",
+    "a named clinical trial or research paper readout",
+    "a specific telescope, probe, or mission milestone (Roman, Starship, Artemis)"
+  ],
+  "Sports": [
+    "a specific 2026 World Cup player's goal tally or single-match performance",
+    "a named team's result in a specific fixture",
+    "a specific transfer, signing, or individual record attempt"
+  ],
+  "Culture": [
+    "a specific film's opening-weekend box office or Rotten Tomatoes score",
+    "a named album or single's chart position or first-week numbers",
+    "a specific awards nomination, casting, or release-date slip"
+  ]
+}

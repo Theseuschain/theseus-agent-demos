@@ -57,12 +57,15 @@ export default function PriceChart({
           Math.abs(d.x - hoverX) < Math.abs(best.x - hoverX) ? d : best,
         );
 
+  const lastPt = data.xy[data.xy.length - 1];
+  const lastTopPct = (lastPt.y / data.H) * 100;
+
   return (
+    <div className={className} style={{ position: "relative", height }}>
     <svg
       viewBox={`0 0 ${W} ${data.H}`}
       preserveAspectRatio="none"
       style={{ height, width: "100%", display: "block", overflow: "visible" }}
-      className={className}
       onMouseMove={
         variant === "full"
           ? (e) => {
@@ -129,5 +132,17 @@ export default function PriceChart({
         </>
       )}
     </svg>
+      {variant === "full" && !hovered && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute block h-2 w-2"
+          style={{ right: 0, top: `${lastTopPct}%`, transform: "translate(45%, -50%)" }}
+        >
+          <span className="relative block h-2 w-2 rounded-full" style={{ background: stroke }}>
+            <span className="absolute inset-0 animate-ping rounded-full" style={{ background: stroke, opacity: 0.5 }} />
+          </span>
+        </span>
+      )}
+    </div>
   );
 }

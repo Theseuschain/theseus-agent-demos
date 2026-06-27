@@ -1,0 +1,5 @@
+
+# local user data + agent credentials (never commit)
+.data/
+*_moltbook.json
+scripts/vera-bridge-state.json

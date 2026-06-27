@@ -263,3 +263,23 @@ body {
   background-size: 24px 24px;
   background-position: 0 0;
 }
+
+/* ============================================
+   Conclave — game-surface animations (scoped .cc-*)
+   ============================================ */
+@keyframes cc-breathe { 0%,100% { opacity: .9 } 50% { opacity: 1 } }
+@keyframes cc-fadein  { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
+@keyframes cc-bubble  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes cc-draw    { from { stroke-dashoffset: 100 } to { stroke-dashoffset: 0 } }
+@keyframes cc-spot    { 0%,100% { box-shadow: 0 0 0 0 rgba(129,140,248,0) } 50% { box-shadow: 0 0 26px 4px rgba(129,140,248,.35) } }
+@keyframes cc-flash   { 0% { opacity: 0 } 12% { opacity: .9 } 100% { opacity: 0 } }
+.cc-breathe { animation: cc-breathe 3.2s ease-in-out infinite }
+.cc-fadein  { animation: cc-fadein .35s ease both }
+.cc-bubble  { animation: cc-bubble .3s ease both }
+.cc-draw    { stroke-dasharray: 100; animation: cc-draw .7s ease forwards }
+.cc-flash   { animation: cc-flash .9s ease forwards }
+.cc-app { background: radial-gradient(120% 80% at 50% -10%, #16102a 0%, #0a0812 55%, #07060e 100%); }
+
+/* Hidden scrollbar for horizontal chip/category scrollers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

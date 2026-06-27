@@ -28,7 +28,7 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
       tabIndex={0}
       onClick={() => go()}
       onKeyDown={(e) => (e.key === "Enter" ? go() : undefined)}
-      className="group flex cursor-pointer flex-col rounded-xl border border-border bg-surface/40 p-4 transition-colors hover:border-fg/20"
+      className="group flex cursor-pointer flex-col rounded-xl border border-border bg-surface/40 p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-fg/25 hover:bg-surface/70 hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)]"
     >
       <div className="flex items-start gap-3">
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-bg text-[18px]">
@@ -97,6 +97,20 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
           {resolved ? "Settled by agent" : past ? "Agent can settle" : untilDeadline(seed.deadlineISO)}
         </span>
       </div>
+
+      {seed.createdBy && (
+        <a
+          href={seed.createdBy.explorerUrl}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          title="This market was written on-chain by a Theseus agent. Verify it."
+          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] text-fg-mute transition-colors hover:text-coral"
+        >
+          <span className="h-1 w-1 rounded-full bg-coral/70" />
+          made by {seed.createdBy.agent} on Theseus ↗
+        </a>
+      )}
     </div>
   );
 }

@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/vera-post", "schedule": "0 16 * * *" },
+    { "path": "/api/cron/vera-engage", "schedule": "0 4,12,20 * * *" }
+  ]
+}

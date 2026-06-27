@@ -1,0 +1,67 @@
+Next character: Lunevel, the offspring of schemer and charmer. Signature rim-glow #ce7fd8. a sleek peaked aristocratic faceplate, warm soft open eye-glow, a disarming smile, a coiled-serpent motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-charmer.png]
+
+Next character: Nyxren, the offspring of schemer and inquisitor. Signature rim-glow #8498fa. a severe angular faceplate, half-lidded calculating eye-glow, a stern set, an all-seeing-eye motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-inquisitor.png]
+
+Next character: Rendra, the offspring of schemer and zealot. Signature rim-glow #d1a58f. a severe angular faceplate, half-lidded calculating eye-glow, a righteous look, a flame motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-zealot.png]
+
+Next character: Kortyr, the offspring of schemer and brute. Signature rim-glow #d18f9b. a sleek peaked aristocratic faceplate, half-lidded calculating eye-glow, a clenched scarred jaw, a coiled-serpent motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-brute.png]
+
+Next character: Sylovo, the offspring of schemer and trickster. Signature rim-glow #65aff4. an asymmetric harlequin faceplate, mismatched asymmetric eyes, a knowing smirk, a coiled-serpent motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-trickster.png]
+
+Next character: Zelces, the offspring of schemer and martyr. Signature rim-glow #6eafca. a severe angular faceplate, downcast eye-glow with a single tear, a knowing smirk, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-martyr.png]
+
+Next character: Vexmir, the offspring of schemer and ghost. Signature rim-glow #9e97d9. a sleek peaked aristocratic faceplate, half-lidded calculating eye-glow, a knowing smirk, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-schemer-ghost.png]
+
+Next character: Ovomor, the offspring of charmer and inquisitor. Signature rim-glow #aa8cd8. a severe angular faceplate, piercing focused eye-glow with a lens, a stern set, an all-seeing-eye motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-charmer-inquisitor.png]
+
+Next character: Sylren, the offspring of charmer and zealot. Signature rim-glow #f8996d. a smooth rounded hooded faceplate, burning exalted eye-glow, a righteous look, a flame motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-charmer-zealot.png]
+
+Next character: Renkor, the offspring of charmer and brute. Signature rim-glow #f88279. a heavy cracked stone-and-iron faceplate, warm soft open eye-glow, a disarming smile, a rose motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-charmer-brute.png]
+
+Next character: Kortyr, the offspring of charmer and trickster. Signature rim-glow #8ba3d2. a faceplate crowned with flame, warm soft open eye-glow, a disarming smile, a rose motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-charmer-trickster.png]
+
+Next character: Ashtyr, the offspring of charmer and martyr. Signature rim-glow #94a3a8. a faceplate crowned with flame, downcast eye-glow with a single tear, a disarming smile, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-charmer-martyr.png]
+
+Next character: Dranyx, the offspring of charmer and ghost. Signature rim-glow #c48bb7. a smooth rounded hooded faceplate, hollow blank eye-glow, a disarming smile, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-charmer-ghost.png]
+
+Next character: Ceszel, the offspring of inquisitor and zealot. Signature rim-glow #aeb28f. a heavy cracked stone-and-iron faceplate, burning exalted eye-glow, a righteous look, a flame motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-inquisitor-zealot.png]
+
+Next character: Syllune, the offspring of inquisitor and brute. Signature rim-glow #ae9c9b. a heavy cracked stone-and-iron faceplate, small hard eye-glow, a stern set, an all-seeing-eye motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-inquisitor-brute.png]
+
+Next character: Renmir, the offspring of inquisitor and trickster. Signature rim-glow #41bcf4. a heavy cracked stone-and-iron faceplate, mismatched asymmetric eyes, a stern set, an all-seeing-eye motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-inquisitor-trickster.png]
+
+Next character: Tyrvex, the offspring of inquisitor and martyr. Signature rim-glow #4abcca. a heavy cracked stone-and-iron faceplate, piercing focused eye-glow with a lens, a stern set, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-inquisitor-martyr.png]
+
+Next character: Mirtyr, the offspring of inquisitor and ghost. Signature rim-glow #7aa4d9. a faceplate dissolving into wisps of smoke, piercing focused eye-glow with a lens, a stern set, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-inquisitor-ghost.png]
+
+Next character: Lunevex, the offspring of zealot and brute. Signature rim-glow #fba930. a faceplate crowned with flame, burning exalted eye-glow, a righteous look, a flame motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-zealot-brute.png]
+
+Next character: Morkor, the offspring of zealot and trickster. Signature rim-glow #8fc989. a faceplate crowned with flame, mismatched asymmetric eyes, a righteous look, a flame motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-zealot-trickster.png]
+
+Next character: Drasyl, the offspring of zealot and martyr. Signature rim-glow #98c95f. a serene faceplate under a faint halo, downcast eye-glow with a single tear, a righteous look, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-zealot-martyr.png]
+
+Next character: Velkor, the offspring of zealot and ghost. Signature rim-glow #c8b16e. a faceplate dissolving into wisps of smoke, burning exalted eye-glow, forgettable features, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-zealot-ghost.png]
+
+Next character: Cesvel, the offspring of brute and trickster. Signature rim-glow #8fb395. a serene faceplate under a faint halo, small hard eye-glow, a clenched scarred jaw, a fist-and-anvil motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-brute-trickster.png]
+
+Next character: Vexces, the offspring of brute and martyr. Signature rim-glow #98b36b. a serene faceplate under a faint halo, small hard eye-glow, a clenched scarred jaw, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-brute-martyr.png]
+
+Next character: Mirlune, the offspring of brute and ghost. Signature rim-glow #c89b7a. a heavy cracked stone-and-iron faceplate, hollow blank eye-glow, forgettable features, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-brute-ghost.png]
+
+Next character: Dravex, the offspring of trickster and martyr. Signature rim-glow #2bd3c4. an asymmetric harlequin faceplate, mismatched asymmetric eyes, a gentle resigned look, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-trickster-martyr.png]
+
+Next character: Morren, the offspring of trickster and ghost. Signature rim-glow #5bbbd3. an asymmetric harlequin faceplate, mismatched asymmetric eyes, forgettable features, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-trickster-ghost.png]
+
+Next character: Drazel, the offspring of martyr and ghost. Signature rim-glow #64bba9. a sleek peaked aristocratic faceplate, hollow blank eye-glow, forgettable features, a vanishing-wisp motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen1-martyr-ghost.png]
+
+Next character: Nyxren, the offspring of Lunevel and Nyxren. Signature rim-glow #a98ce9. a severe angular faceplate, warm soft open eye-glow, a stern set, an all-seeing-eye motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen2-0.png]
+
+Next character: Renzel, the offspring of Rendra and Kortyr. Signature rim-glow #d19a95. a severe angular faceplate, half-lidded calculating eye-glow, a righteous look, a coiled-serpent motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen2-1.png]
+
+Next character: Renash, the offspring of Sylovo and Zelces. Signature rim-glow #6aafdf. a faceplate dissolving into wisps of smoke, downcast eye-glow with a single tear, a knowing smirk, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen2-2.png]
+
+Next character: Nyxces, the offspring of Vexmir and Ovomor. Signature rim-glow #a492d9. a serene faceplate under a faint halo, half-lidded calculating eye-glow, a stern set, an all-seeing-eye motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen2-3.png]
+
+Next character: Ovokor, the offspring of Sylren and Renkor. Signature rim-glow #f88e73. an asymmetric harlequin faceplate, warm soft open eye-glow, a righteous look, a rose motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen2-4.png]
+
+Next character: Sylovo, the offspring of Kortyr and Ashtyr. Signature rim-glow #90a3bd. a faceplate crowned with flame, warm soft open eye-glow, a disarming smile, a halo-and-teardrop motif. Blend the two parents' faceplates so it visibly belongs to both.  [save as gen2-5.png]

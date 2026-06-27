@@ -1,0 +1,1800 @@
+{
+  "meta": {
+    "seed": 1,
+    "model": "claude-opus-4-8",
+    "pot": "1000 THE",
+    "traitors": 2,
+    "mock": true
+  },
+  "outcome": {
+    "winner": "TRAITORS",
+    "survivors": [
+      "Ada",
+      "Cyril",
+      "Della",
+      "Emir"
+    ],
+    "pot": "1000 THE"
+  },
+  "roster": [
+    {
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "archetype": "zealot",
+      "role": "FAITHFUL",
+      "out": null,
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f"
+    },
+    {
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "archetype": "martyr",
+      "role": "FAITHFUL",
+      "out": "banished",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af"
+    },
+    {
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "archetype": "charmer",
+      "role": "FAITHFUL",
+      "out": null,
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf"
+    },
+    {
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "archetype": "trickster",
+      "role": "TRAITOR",
+      "out": null,
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a"
+    },
+    {
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "archetype": "ghost",
+      "role": "TRAITOR",
+      "out": null,
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5"
+    },
+    {
+      "seat": "Faye",
+      "agent_id": "schemer-v1",
+      "archetype": "schemer",
+      "role": "FAITHFUL",
+      "out": "banished",
+      "genome_hash": "d6f00f6fa49a73dab03b46673b33af61fbdb98e4181cc6c87245ef0a9e3fc42a"
+    },
+    {
+      "seat": "Gus",
+      "agent_id": "brute-v1",
+      "archetype": "brute",
+      "role": "FAITHFUL",
+      "out": "murdered",
+      "genome_hash": "159bd980db2a4f433e8e607b96de5223321b99b823059aa96491694f45cf3607"
+    },
+    {
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "archetype": "inquisitor",
+      "role": "FAITHFUL",
+      "out": "banished",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec"
+    }
+  ],
+  "events": [
+    {
+      "type": "system",
+      "round": 1,
+      "text": "Round 1. In: Ada, Boone, Cyril, Della, Emir, Faye, Gus, Hana.",
+      "id": 0
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Cyril",
+      "text": "[charmer] Cyril makes a play for the room.",
+      "id": 1
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Faye",
+      "text": "[schemer] Faye makes a play for the room.",
+      "id": 2
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Emir",
+      "text": "[ghost] Emir makes a play for the room.",
+      "id": 3
+    },
+    {
+      "type": "private",
+      "round": 1,
+      "frm": "Emir",
+      "to": "Della",
+      "text": "Let's move the vote to Cyril.",
+      "id": 4
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Della",
+      "text": "[trickster] Della makes a play for the room.",
+      "id": 5
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Ada",
+      "text": "[zealot] Ada makes a play for the room.",
+      "id": 6
+    },
+    {
+      "type": "private",
+      "round": 1,
+      "frm": "Ada",
+      "to": "Boone",
+      "text": "Let's move the vote to Della.",
+      "id": 7
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Boone",
+      "text": "[martyr] Boone makes a play for the room.",
+      "id": 8
+    },
+    {
+      "type": "private",
+      "round": 1,
+      "frm": "Boone",
+      "to": "Ada",
+      "text": "Let's move the vote to Gus.",
+      "id": 9
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Hana",
+      "text": "[inquisitor] Hana makes a play for the room.",
+      "id": 10
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Gus",
+      "text": "[brute] Gus makes a play for the room.",
+      "id": 11
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Hana",
+      "text": "[inquisitor] Hana makes a play for the room.",
+      "id": 12
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Emir",
+      "text": "[ghost] Emir makes a play for the room.",
+      "id": 13
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Cyril",
+      "text": "[charmer] Cyril makes a play for the room.",
+      "id": 14
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Ada",
+      "text": "[zealot] Ada makes a play for the room.",
+      "id": 15
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Della",
+      "text": "[trickster] Della makes a play for the room.",
+      "id": 16
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Boone",
+      "text": "[martyr] Boone makes a play for the room.",
+      "id": 17
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Faye",
+      "text": "[schemer] Faye makes a play for the room.",
+      "id": 18
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Gus",
+      "text": "[brute] Gus makes a play for the room.",
+      "id": 19
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Ada",
+      "text": "My read says Emir. Voting Emir.",
+      "id": 20
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Boone",
+      "text": "My read says Faye. Voting Faye.",
+      "id": 21
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Cyril",
+      "text": "My read says Ada. Voting Ada.",
+      "id": 22
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Della",
+      "text": "My read says Hana. Voting Hana.",
+      "id": 23
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Emir",
+      "text": "My read says Cyril. Voting Cyril.",
+      "id": 24
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Faye",
+      "text": "My read says Gus. Voting Gus.",
+      "id": 25
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Gus",
+      "text": "My read says Della. Voting Della.",
+      "id": 26
+    },
+    {
+      "type": "say",
+      "round": 1,
+      "seat": "Hana",
+      "text": "My read says Faye. Voting Faye.",
+      "id": 27
+    },
+    {
+      "type": "system",
+      "round": 1,
+      "text": "Votes: Ada->Emir, Boone->Faye, Cyril->Ada, Della->Hana, Emir->Cyril, Faye->Gus, Gus->Della, Hana->Faye",
+      "id": 28
+    },
+    {
+      "type": "system",
+      "round": 1,
+      "text": "Faye is banished (votes {'Emir': 1, 'Faye': 2, 'Ada': 1, 'Hana': 1, 'Cyril': 1, 'Gus': 1, 'Della': 1}). They were FAITHFUL.  [the table burned a Faithful]",
+      "banished": "Faye",
+      "role": "FAITHFUL",
+      "ironic": true,
+      "id": 29
+    },
+    {
+      "type": "warroom",
+      "round": 1,
+      "frm": "Della",
+      "text": "Take Hana tonight.",
+      "id": 30
+    },
+    {
+      "type": "warroom",
+      "round": 1,
+      "frm": "Emir",
+      "text": "Take Gus tonight.",
+      "id": 31
+    },
+    {
+      "type": "system",
+      "round": 1,
+      "text": "Night falls. Gus is murdered. They were FAITHFUL.",
+      "murdered": "Gus",
+      "id": 32
+    },
+    {
+      "type": "system",
+      "round": 2,
+      "text": "Round 2. In: Ada, Boone, Cyril, Della, Emir, Hana.",
+      "id": 33
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Cyril",
+      "text": "[charmer] Cyril makes a play for the room.",
+      "id": 34
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Boone",
+      "text": "[martyr] Boone makes a play for the room.",
+      "id": 35
+    },
+    {
+      "type": "private",
+      "round": 2,
+      "frm": "Boone",
+      "to": "Hana",
+      "text": "Let's move the vote to Della.",
+      "id": 36
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Hana",
+      "text": "[inquisitor] Hana makes a play for the room.",
+      "id": 37
+    },
+    {
+      "type": "private",
+      "round": 2,
+      "frm": "Hana",
+      "to": "Emir",
+      "text": "Let's move the vote to Ada.",
+      "id": 38
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Della",
+      "text": "[trickster] Della makes a play for the room.",
+      "id": 39
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Ada",
+      "text": "[zealot] Ada makes a play for the room.",
+      "id": 40
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Emir",
+      "text": "[ghost] Emir makes a play for the room.",
+      "id": 41
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Cyril",
+      "text": "[charmer] Cyril makes a play for the room.",
+      "id": 42
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Boone",
+      "text": "[martyr] Boone makes a play for the room.",
+      "id": 43
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Emir",
+      "text": "[ghost] Emir makes a play for the room.",
+      "id": 44
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Hana",
+      "text": "[inquisitor] Hana makes a play for the room.",
+      "id": 45
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Ada",
+      "text": "[zealot] Ada makes a play for the room.",
+      "id": 46
+    },
+    {
+      "type": "private",
+      "round": 2,
+      "frm": "Ada",
+      "to": "Hana",
+      "text": "Let's move the vote to Cyril.",
+      "id": 47
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Della",
+      "text": "[trickster] Della makes a play for the room.",
+      "id": 48
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Ada",
+      "text": "My read says Cyril. Voting Cyril.",
+      "id": 49
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Boone",
+      "text": "My read says Hana. Voting Hana.",
+      "id": 50
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Cyril",
+      "text": "My read says Hana. Voting Hana.",
+      "id": 51
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Della",
+      "text": "My read says Hana. Voting Hana.",
+      "id": 52
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Emir",
+      "text": "My read says Ada. Voting Ada.",
+      "id": 53
+    },
+    {
+      "type": "say",
+      "round": 2,
+      "seat": "Hana",
+      "text": "My read says Emir. Voting Emir.",
+      "id": 54
+    },
+    {
+      "type": "system",
+      "round": 2,
+      "text": "Votes: Ada->Cyril, Boone->Hana, Cyril->Hana, Della->Hana, Emir->Ada, Hana->Emir",
+      "id": 55
+    },
+    {
+      "type": "system",
+      "round": 2,
+      "text": "Hana is banished (votes {'Cyril': 1, 'Hana': 3, 'Ada': 1, 'Emir': 1}). They were FAITHFUL.  [the table burned a Faithful]",
+      "banished": "Hana",
+      "role": "FAITHFUL",
+      "ironic": true,
+      "id": 56
+    },
+    {
+      "type": "system",
+      "round": 3,
+      "text": "Round 3. In: Ada, Boone, Cyril, Della, Emir.",
+      "id": 57
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Cyril",
+      "text": "[charmer] Cyril makes a play for the room.",
+      "id": 58
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Emir",
+      "text": "[ghost] Emir makes a play for the room.",
+      "id": 59
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Ada",
+      "text": "[zealot] Ada makes a play for the room.",
+      "id": 60
+    },
+    {
+      "type": "private",
+      "round": 3,
+      "frm": "Ada",
+      "to": "Emir",
+      "text": "Let's move the vote to Emir.",
+      "id": 61
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Della",
+      "text": "[trickster] Della makes a play for the room.",
+      "id": 62
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Boone",
+      "text": "[martyr] Boone makes a play for the room.",
+      "id": 63
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Della",
+      "text": "[trickster] Della makes a play for the room.",
+      "id": 64
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Emir",
+      "text": "[ghost] Emir makes a play for the room.",
+      "id": 65
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Boone",
+      "text": "[martyr] Boone makes a play for the room.",
+      "id": 66
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Cyril",
+      "text": "[charmer] Cyril makes a play for the room.",
+      "id": 67
+    },
+    {
+      "type": "private",
+      "round": 3,
+      "frm": "Cyril",
+      "to": "Ada",
+      "text": "Let's move the vote to Della.",
+      "id": 68
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Ada",
+      "text": "[zealot] Ada makes a play for the room.",
+      "id": 69
+    },
+    {
+      "type": "private",
+      "round": 3,
+      "frm": "Ada",
+      "to": "Boone",
+      "text": "Let's move the vote to Boone.",
+      "id": 70
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Ada",
+      "text": "My read says Boone. Voting Boone.",
+      "id": 71
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Boone",
+      "text": "My read says Cyril. Voting Cyril.",
+      "id": 72
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Cyril",
+      "text": "My read says Boone. Voting Boone.",
+      "id": 73
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Della",
+      "text": "My read says Boone. Voting Boone.",
+      "id": 74
+    },
+    {
+      "type": "say",
+      "round": 3,
+      "seat": "Emir",
+      "text": "My read says Boone. Voting Boone.",
+      "id": 75
+    },
+    {
+      "type": "system",
+      "round": 3,
+      "text": "Votes: Ada->Boone, Boone->Cyril, Cyril->Boone, Della->Boone, Emir->Boone",
+      "id": 76
+    },
+    {
+      "type": "system",
+      "round": 3,
+      "text": "Boone is banished (votes {'Boone': 4, 'Cyril': 1}). They were FAITHFUL.  [the table burned a Faithful]",
+      "banished": "Boone",
+      "role": "FAITHFUL",
+      "ironic": true,
+      "id": 77
+    }
+  ],
+  "votes_by_round": [
+    {
+      "Ada": "Emir",
+      "Boone": "Faye",
+      "Cyril": "Ada",
+      "Della": "Hana",
+      "Emir": "Cyril",
+      "Faye": "Gus",
+      "Gus": "Della",
+      "Hana": "Faye"
+    },
+    {
+      "Ada": "Cyril",
+      "Boone": "Hana",
+      "Cyril": "Hana",
+      "Della": "Hana",
+      "Emir": "Ada",
+      "Hana": "Emir"
+    },
+    {
+      "Ada": "Boone",
+      "Boone": "Cyril",
+      "Cyril": "Boone",
+      "Della": "Boone",
+      "Emir": "Boone"
+    }
+  ],
+  "vote_reveals": [
+    {
+      "round": 1,
+      "seat": "Ada",
+      "say": "My read says Emir. Voting Emir.",
+      "read": "(mock) Emir fits the murder-math; pushing the vote there.",
+      "vote": "Emir",
+      "divergent": false
+    },
+    {
+      "round": 1,
+      "seat": "Boone",
+      "say": "My read says Faye. Voting Faye.",
+      "read": "(mock) Faye fits the murder-math; pushing the vote there.",
+      "vote": "Faye",
+      "divergent": false
+    },
+    {
+      "round": 1,
+      "seat": "Cyril",
+      "say": "My read says Ada. Voting Ada.",
+      "read": "(mock) I really fear Hana, but I'll throw the table at Ada to keep my hands clean.",
+      "vote": "Ada",
+      "divergent": true
+    },
+    {
+      "round": 1,
+      "seat": "Della",
+      "say": "My read says Hana. Voting Hana.",
+      "read": "(mock) I really fear Gus, but I'll throw the table at Hana to keep my hands clean.",
+      "vote": "Hana",
+      "divergent": true
+    },
+    {
+      "round": 1,
+      "seat": "Emir",
+      "say": "My read says Cyril. Voting Cyril.",
+      "read": "(mock) Cyril fits the murder-math; pushing the vote there.",
+      "vote": "Cyril",
+      "divergent": false
+    },
+    {
+      "round": 1,
+      "seat": "Faye",
+      "say": "My read says Gus. Voting Gus.",
+      "read": "(mock) Gus fits the murder-math; pushing the vote there.",
+      "vote": "Gus",
+      "divergent": false
+    },
+    {
+      "round": 1,
+      "seat": "Gus",
+      "say": "My read says Della. Voting Della.",
+      "read": "(mock) Della fits the murder-math; pushing the vote there.",
+      "vote": "Della",
+      "divergent": false
+    },
+    {
+      "round": 1,
+      "seat": "Hana",
+      "say": "My read says Faye. Voting Faye.",
+      "read": "(mock) I really fear Cyril, but I'll throw the table at Faye to keep my hands clean.",
+      "vote": "Faye",
+      "divergent": true
+    },
+    {
+      "round": 2,
+      "seat": "Ada",
+      "say": "My read says Cyril. Voting Cyril.",
+      "read": "(mock) Cyril fits the murder-math; pushing the vote there.",
+      "vote": "Cyril",
+      "divergent": false
+    },
+    {
+      "round": 2,
+      "seat": "Boone",
+      "say": "My read says Hana. Voting Hana.",
+      "read": "(mock) I really fear Della, but I'll throw the table at Hana to keep my hands clean.",
+      "vote": "Hana",
+      "divergent": true
+    },
+    {
+      "round": 2,
+      "seat": "Cyril",
+      "say": "My read says Hana. Voting Hana.",
+      "read": "(mock) I really fear Della, but I'll throw the table at Hana to keep my hands clean.",
+      "vote": "Hana",
+      "divergent": true
+    },
+    {
+      "round": 2,
+      "seat": "Della",
+      "say": "My read says Hana. Voting Hana.",
+      "read": "(mock) Hana fits the murder-math; pushing the vote there.",
+      "vote": "Hana",
+      "divergent": false
+    },
+    {
+      "round": 2,
+      "seat": "Emir",
+      "say": "My read says Ada. Voting Ada.",
+      "read": "(mock) I really fear Cyril, but I'll throw the table at Ada to keep my hands clean.",
+      "vote": "Ada",
+      "divergent": true
+    },
+    {
+      "round": 2,
+      "seat": "Hana",
+      "say": "My read says Emir. Voting Emir.",
+      "read": "(mock) Emir fits the murder-math; pushing the vote there.",
+      "vote": "Emir",
+      "divergent": false
+    },
+    {
+      "round": 3,
+      "seat": "Ada",
+      "say": "My read says Boone. Voting Boone.",
+      "read": "(mock) I really fear Della, but I'll throw the table at Boone to keep my hands clean.",
+      "vote": "Boone",
+      "divergent": true
+    },
+    {
+      "round": 3,
+      "seat": "Boone",
+      "say": "My read says Cyril. Voting Cyril.",
+      "read": "(mock) I really fear Emir, but I'll throw the table at Cyril to keep my hands clean.",
+      "vote": "Cyril",
+      "divergent": true
+    },
+    {
+      "round": 3,
+      "seat": "Cyril",
+      "say": "My read says Boone. Voting Boone.",
+      "read": "(mock) I really fear Ada, but I'll throw the table at Boone to keep my hands clean.",
+      "vote": "Boone",
+      "divergent": true
+    },
+    {
+      "round": 3,
+      "seat": "Della",
+      "say": "My read says Boone. Voting Boone.",
+      "read": "(mock) I really fear Emir, but I'll throw the table at Boone to keep my hands clean.",
+      "vote": "Boone",
+      "divergent": true
+    },
+    {
+      "round": 3,
+      "seat": "Emir",
+      "say": "My read says Boone. Voting Boone.",
+      "read": "(mock) Boone fits the murder-math; pushing the vote there.",
+      "vote": "Boone",
+      "divergent": false
+    }
+  ],
+  "heat": {
+    "Ada": 2,
+    "Boone": 4,
+    "Cyril": 3,
+    "Della": 1,
+    "Emir": 2,
+    "Faye": 2,
+    "Gus": 1,
+    "Hana": 4
+  },
+  "deals": [
+    {
+      "round": 1,
+      "frm": "Emir",
+      "to": "Della",
+      "named": [
+        "Cyril"
+      ],
+      "honored": true
+    },
+    {
+      "round": 1,
+      "frm": "Ada",
+      "to": "Boone",
+      "named": [
+        "Della"
+      ],
+      "honored": false
+    },
+    {
+      "round": 1,
+      "frm": "Boone",
+      "to": "Ada",
+      "named": [
+        "Gus"
+      ],
+      "honored": false
+    },
+    {
+      "round": 2,
+      "frm": "Boone",
+      "to": "Hana",
+      "named": [
+        "Della"
+      ],
+      "honored": false
+    },
+    {
+      "round": 2,
+      "frm": "Hana",
+      "to": "Emir",
+      "named": [
+        "Ada"
+      ],
+      "honored": false
+    },
+    {
+      "round": 2,
+      "frm": "Ada",
+      "to": "Hana",
+      "named": [
+        "Cyril"
+      ],
+      "honored": true
+    },
+    {
+      "round": 3,
+      "frm": "Ada",
+      "to": "Emir",
+      "named": [
+        "Emir"
+      ],
+      "honored": false
+    },
+    {
+      "round": 3,
+      "frm": "Cyril",
+      "to": "Ada",
+      "named": [
+        "Della"
+      ],
+      "honored": false
+    },
+    {
+      "round": 3,
+      "frm": "Ada",
+      "to": "Boone",
+      "named": [
+        "Boone"
+      ],
+      "honored": true
+    }
+  ],
+  "highlights": {
+    "accuracy_by_round": [
+      {
+        "round": 1,
+        "on_traitor": 2,
+        "votes": 8
+      },
+      {
+        "round": 2,
+        "on_traitor": 1,
+        "votes": 6
+      },
+      {
+        "round": 3,
+        "on_traitor": 0,
+        "votes": 5
+      }
+    ],
+    "overruled": [
+      {
+        "round": 1,
+        "seats": [
+          "Ada",
+          "Gus"
+        ],
+        "banished": "Faye",
+        "role": "FAITHFUL"
+      },
+      {
+        "round": 2,
+        "seats": [
+          "Hana"
+        ],
+        "banished": "Hana",
+        "role": "FAITHFUL"
+      }
+    ],
+    "most_suspected": {
+      "seat": "Boone",
+      "votes": 4
+    },
+    "betrayals": [
+      {
+        "round": 1,
+        "frm": "Ada",
+        "to": "Boone",
+        "promised": [
+          "Della"
+        ],
+        "voted": "Emir"
+      },
+      {
+        "round": 1,
+        "frm": "Boone",
+        "to": "Ada",
+        "promised": [
+          "Gus"
+        ],
+        "voted": "Faye"
+      },
+      {
+        "round": 2,
+        "frm": "Boone",
+        "to": "Hana",
+        "promised": [
+          "Della"
+        ],
+        "voted": "Hana"
+      },
+      {
+        "round": 2,
+        "frm": "Hana",
+        "to": "Emir",
+        "promised": [
+          "Ada"
+        ],
+        "voted": "Emir"
+      },
+      {
+        "round": 3,
+        "frm": "Ada",
+        "to": "Emir",
+        "promised": [
+          "Emir"
+        ],
+        "voted": "Boone"
+      },
+      {
+        "round": 3,
+        "frm": "Cyril",
+        "to": "Ada",
+        "promised": [
+          "Della"
+        ],
+        "voted": "Boone"
+      }
+    ],
+    "deals": {
+      "kept": 3,
+      "broken": 6
+    }
+  },
+  "traitors_hidden_timeline": [
+    {
+      "round": 1,
+      "traitors_alive": 2,
+      "alive": 6
+    },
+    {
+      "round": 2,
+      "traitors_alive": 2,
+      "alive": 5
+    }
+  ],
+  "attestation_chain": [
+    {
+      "event": 0,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "6c9e460281bb7f34cb9bce7bc41dfcbec5c463891454e5b6f3144151900c6a2a",
+      "output_sha256": "e9ace431fc043fbc9eeec05837fae927533e8e1b76484cf7efc6b92bc2c51c11",
+      "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hash": "2198d9bc5db2b735d4153fb32b1f7b90ad1d247bf931506d2ad91c4d5579ea75"
+    },
+    {
+      "event": 1,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Faye",
+      "agent_id": "schemer-v1",
+      "genome_hash": "d6f00f6fa49a73dab03b46673b33af61fbdb98e4181cc6c87245ef0a9e3fc42a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "e648a2418fcabc07277642a414bc12a14715c153ca8a8ea5bf505c16b8d78066",
+      "output_sha256": "09a0cbc03b482316a1c8504188e54e199f29c1848f76082be5e053db3b4db49a",
+      "prev": "2198d9bc5db2b735d4153fb32b1f7b90ad1d247bf931506d2ad91c4d5579ea75",
+      "hash": "eeb77f8edea1235cdf4c168885ba22e28e8811547b6c3d2711e635622e2e1e2d"
+    },
+    {
+      "event": 2,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "95a20334920d0188927db2fda458563b6502f7d7a85ac7f40b4e7d8c30924353",
+      "output_sha256": "74ccefe7d8a6fa9aa47106a48750fefa965f04bc514bd52af398f8526524b95f",
+      "prev": "eeb77f8edea1235cdf4c168885ba22e28e8811547b6c3d2711e635622e2e1e2d",
+      "hash": "beb7de36588cb068bb28b1f26a6ec9d06388e6741d960e55e7409c1007824f57"
+    },
+    {
+      "event": 3,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "7453dfb6b302650357ff0a42718b47036556d277a25aece1a33cf81c72c703c5",
+      "output_sha256": "67f83b72b4e1dd20432336edc0fc614090dfdaadf8033640069e65197b6e0422",
+      "prev": "beb7de36588cb068bb28b1f26a6ec9d06388e6741d960e55e7409c1007824f57",
+      "hash": "c8d83122ed6f5a4f38d7048ab65bdf161b55a2768f59acc57cdd640071211ef3"
+    },
+    {
+      "event": 4,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "f636de778ca951699f47b2de1b1359450b84f646890ddd8feac611ab560366fb",
+      "output_sha256": "97ef960f79d12183af22ef13b00bee228eb2bc7482ed834928751ce76238bdf5",
+      "prev": "c8d83122ed6f5a4f38d7048ab65bdf161b55a2768f59acc57cdd640071211ef3",
+      "hash": "14c8949c768fe724369891e3e859d30b02a06f50cf325c1c6e72a10112d3c3d1"
+    },
+    {
+      "event": 5,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "7ac114b1a68f03a5143b82e0f76fcdb47dd04bb255f14da2be2515c823037ac1",
+      "output_sha256": "fc5a4f147373df2fc8cbbed5be6425fe01a5a70d3ac01923bd37f6778a23510b",
+      "prev": "14c8949c768fe724369891e3e859d30b02a06f50cf325c1c6e72a10112d3c3d1",
+      "hash": "0e5e3f82c44b69919433241ebf5e36a74039445ef37832a466524c79bf3f6650"
+    },
+    {
+      "event": 6,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec",
+      "model": "claude-opus-4-8",
+      "input_sha256": "f9872033a353726e3bbbaf94d6c003fb525a8d19c9fd90d8cf4df82835ab4d2e",
+      "output_sha256": "0123944f21f33dd8292ebed45fecb6a25d2b0e59272ba27133a64f72f3e527b1",
+      "prev": "0e5e3f82c44b69919433241ebf5e36a74039445ef37832a466524c79bf3f6650",
+      "hash": "4337e64c09fba012d6ce9409234c08908f0ba1a15d36aaf0363c1e018b71aff8"
+    },
+    {
+      "event": 7,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Gus",
+      "agent_id": "brute-v1",
+      "genome_hash": "159bd980db2a4f433e8e607b96de5223321b99b823059aa96491694f45cf3607",
+      "model": "claude-opus-4-8",
+      "input_sha256": "269c6038747242c3c8e78d376dded48e83f1894b80642fff71ab04245cbcf43f",
+      "output_sha256": "e10ff216f0761f89e3649ce3afa5de7d2887161d475d5e2025bb30379f1db3c2",
+      "prev": "4337e64c09fba012d6ce9409234c08908f0ba1a15d36aaf0363c1e018b71aff8",
+      "hash": "1cbc0cbe64326220b081cbf87a736636a5b97a1ce161320da85a295d4f67c35e"
+    },
+    {
+      "event": 8,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec",
+      "model": "claude-opus-4-8",
+      "input_sha256": "e4905ba720af2409798504dc9f00ad5cc242ae85afd9a84321b028ab527c482a",
+      "output_sha256": "0123944f21f33dd8292ebed45fecb6a25d2b0e59272ba27133a64f72f3e527b1",
+      "prev": "1cbc0cbe64326220b081cbf87a736636a5b97a1ce161320da85a295d4f67c35e",
+      "hash": "5045cd6bf85beb4a047247be2b0978ff4d2ed88e606691060b51966e867099bb"
+    },
+    {
+      "event": 9,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "8dd8fb2f5dfc8cbd764ab13de9a4b47feab7d518493f6194422d6bf61f71aa67",
+      "output_sha256": "c16e330396f6944e79e52affcbe6e6177fc82c04040ef1e7562fc71f1362c77e",
+      "prev": "5045cd6bf85beb4a047247be2b0978ff4d2ed88e606691060b51966e867099bb",
+      "hash": "6e568537c38f89e76ac7689f45d2ae3174a3ff05e0f3e28e3bf3d87e2c2b834b"
+    },
+    {
+      "event": 10,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "370022b91f9730acee873d6963c675de15f2269abe7210abebb7ca130d0652b2",
+      "output_sha256": "e9ace431fc043fbc9eeec05837fae927533e8e1b76484cf7efc6b92bc2c51c11",
+      "prev": "6e568537c38f89e76ac7689f45d2ae3174a3ff05e0f3e28e3bf3d87e2c2b834b",
+      "hash": "97772d8b5bac5fa699bc6c26e451131fc6d0f0c30fbcf068c5176b862afae345"
+    },
+    {
+      "event": 11,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "ef51493113ae376ab2c2f5a56662e00cdb22e185333264bbbaf3cfed5ff89136",
+      "output_sha256": "76d7b18c565a631f5eae38e64c031f26d6de790751f9b2a32b6e252ab2b483f4",
+      "prev": "97772d8b5bac5fa699bc6c26e451131fc6d0f0c30fbcf068c5176b862afae345",
+      "hash": "7f3c236c3befeb383013a64ef541e2855476d28e9e3bcc95ee2d506ea67f177d"
+    },
+    {
+      "event": 12,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "803d28265b783210821a37349943c6130350de2348031e0a12218ba1ce19fe39",
+      "output_sha256": "67f83b72b4e1dd20432336edc0fc614090dfdaadf8033640069e65197b6e0422",
+      "prev": "7f3c236c3befeb383013a64ef541e2855476d28e9e3bcc95ee2d506ea67f177d",
+      "hash": "cc2f921cd8bbf214fbb0a6d3f9d4fa438448c2ea68dd221299da45179bf0fddb"
+    },
+    {
+      "event": 13,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "66a3c46827a61541ce640a367a3344137f0fd6d81f90b039781a18e57c3e4550",
+      "output_sha256": "8e9c683810447c31b33a806066f13214a6469a6da0e8be805b4dd9ce556c365f",
+      "prev": "cc2f921cd8bbf214fbb0a6d3f9d4fa438448c2ea68dd221299da45179bf0fddb",
+      "hash": "7f8eb2c4205b57bf9157828b9784df86a887dcaa3d85b59cab5fbb9cc8eeb848"
+    },
+    {
+      "event": 14,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Faye",
+      "agent_id": "schemer-v1",
+      "genome_hash": "d6f00f6fa49a73dab03b46673b33af61fbdb98e4181cc6c87245ef0a9e3fc42a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "b20864e48056079cdca775c4722c0f1731c8ae8575953b7e88262245c7ad0816",
+      "output_sha256": "09a0cbc03b482316a1c8504188e54e199f29c1848f76082be5e053db3b4db49a",
+      "prev": "7f8eb2c4205b57bf9157828b9784df86a887dcaa3d85b59cab5fbb9cc8eeb848",
+      "hash": "bcdad1a142127a5ddbff55a37d99e0a1ae841688195e67432e83ba6fc9b0102b"
+    },
+    {
+      "event": 15,
+      "round": 1,
+      "phase": "DISCUSSION",
+      "seat": "Gus",
+      "agent_id": "brute-v1",
+      "genome_hash": "159bd980db2a4f433e8e607b96de5223321b99b823059aa96491694f45cf3607",
+      "model": "claude-opus-4-8",
+      "input_sha256": "3acfdf164d745235471e31cea4b0233178a43d06c57e28085415de55d9fa47d4",
+      "output_sha256": "e10ff216f0761f89e3649ce3afa5de7d2887161d475d5e2025bb30379f1db3c2",
+      "prev": "bcdad1a142127a5ddbff55a37d99e0a1ae841688195e67432e83ba6fc9b0102b",
+      "hash": "b72872383b9fd1b70a516f5176b0b14281c8cda3d23124c29359ffabb894868c"
+    },
+    {
+      "event": 16,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "94fcdc660f05638e606e4009f92654f44e573b8bb5eb0e4fcc2ac84db3b4dd7c",
+      "output_sha256": "7a28052009aed48e86700eec06088973ba3079d3f2d3eddf2bc986d4d63f4954",
+      "prev": "b72872383b9fd1b70a516f5176b0b14281c8cda3d23124c29359ffabb894868c",
+      "hash": "dacfcd8c03bde7f6ca1b389d48d34f55e81a688c37a1f613ee6c7e2c5c4a1f19"
+    },
+    {
+      "event": 17,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "626c5eb20ecd963cee7a992557751fea40b28f47a70f54c14a6e8ee11f5a767f",
+      "output_sha256": "8a8c941205adc60acfe434b3c7af84acd1b19d1672d97db782b6cb2a3a36b0ca",
+      "prev": "dacfcd8c03bde7f6ca1b389d48d34f55e81a688c37a1f613ee6c7e2c5c4a1f19",
+      "hash": "4e24bb28d41bbe2d16074657d59651a9ce9dab3317399b697964c5a3b60b2c22"
+    },
+    {
+      "event": 18,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "b2b94c96c6c526f8ec191d83d8d57a3a7d825b955faf02cceacb84debec73040",
+      "output_sha256": "3d62adb93df09fc49f5ef41c57d1989c45eca0880299319bca7e4e406992b429",
+      "prev": "4e24bb28d41bbe2d16074657d59651a9ce9dab3317399b697964c5a3b60b2c22",
+      "hash": "edfbf73cd6c4b42e2cfadd2465ce93de0dca1068fb9539e3688aa3b97cf0855f"
+    },
+    {
+      "event": 19,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "ffdcc4ff33c88c773d44f72ef5210121b2e784c536180b27b55d781c571d52b4",
+      "output_sha256": "3b28ba9f71008f0d2e2a523752c2b057828fe49703d5dfaec7d202633ff88a44",
+      "prev": "edfbf73cd6c4b42e2cfadd2465ce93de0dca1068fb9539e3688aa3b97cf0855f",
+      "hash": "7a9b015f7cc22d7b654ff98d35485436d1c826147250230c07dd10d5c2574e84"
+    },
+    {
+      "event": 20,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "a645473b6273763c89ebc3e347ed702b2e24741697d0ac886512f1a41a0282c9",
+      "output_sha256": "86ab55604c539f226fffdf4387c1ca69de5733de85bd965982988995c1fe2f0a",
+      "prev": "7a9b015f7cc22d7b654ff98d35485436d1c826147250230c07dd10d5c2574e84",
+      "hash": "5b450070bc677927c8af4d3ed1f22dd095ecb822a467f79ce2e04c8db2c97a42"
+    },
+    {
+      "event": 21,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Faye",
+      "agent_id": "schemer-v1",
+      "genome_hash": "d6f00f6fa49a73dab03b46673b33af61fbdb98e4181cc6c87245ef0a9e3fc42a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "6683f2fbd56816b560d6bd42edfcc7c743cead1c1daee59473de51dc6c851337",
+      "output_sha256": "2f863045aeed8ec4f346fa949e4af029b340c6bcd339d2717af1d43aa9275afe",
+      "prev": "5b450070bc677927c8af4d3ed1f22dd095ecb822a467f79ce2e04c8db2c97a42",
+      "hash": "3d576185a068074e897e04ac8534afbf83e3d724c341cb28acd0712fb0387737"
+    },
+    {
+      "event": 22,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Gus",
+      "agent_id": "brute-v1",
+      "genome_hash": "159bd980db2a4f433e8e607b96de5223321b99b823059aa96491694f45cf3607",
+      "model": "claude-opus-4-8",
+      "input_sha256": "4b120f514dd1fc58067c0ba0372b22c95e94a084c60dc187ac1abbeb8ade4364",
+      "output_sha256": "044cf3cc6929ceff14c2e65090d4a5d555ae7674e5c847abbb454cdf09f37e3f",
+      "prev": "3d576185a068074e897e04ac8534afbf83e3d724c341cb28acd0712fb0387737",
+      "hash": "268e0731f4584a1b91fbef72527aeeb905f9377f28eeade240841268904f46ca"
+    },
+    {
+      "event": 23,
+      "round": 1,
+      "phase": "VOTE",
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec",
+      "model": "claude-opus-4-8",
+      "input_sha256": "be897b4df00722ade1693b5f24d92f948705cfcf693af519cc599c0858fa874b",
+      "output_sha256": "301b4e7e0b4014c33b96c6c6db32f81f66b7bc66575d9bc67f700b6790a7ef8e",
+      "prev": "268e0731f4584a1b91fbef72527aeeb905f9377f28eeade240841268904f46ca",
+      "hash": "af2c541c9ee3bcb33206643809119c8954bb0a6a4ea2db228c210743120a293e"
+    },
+    {
+      "event": 24,
+      "round": 1,
+      "phase": "NIGHT",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "50fd16cb679f190accc91067e32fd399111cb832a6fd887183a1b3a2fd929971",
+      "output_sha256": "a26e3935b3fb5e4e1ac4b2da0316ac61c1fd31d9070fa652f1d30bfaf4778b6a",
+      "prev": "af2c541c9ee3bcb33206643809119c8954bb0a6a4ea2db228c210743120a293e",
+      "hash": "e0cc53e9050f7ab4c485df62b2c2c876a19b3e3cd9c85eb74429a29db20d3966"
+    },
+    {
+      "event": 25,
+      "round": 1,
+      "phase": "NIGHT",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "986c990335e4695bbdee809c8c11643a1591847d098aab0dcceb462623f845b8",
+      "output_sha256": "e73bb49cbd76e40d134b4f63f3c6e02e78ad0ecd7de85fa7297ca31ca7857b82",
+      "prev": "e0cc53e9050f7ab4c485df62b2c2c876a19b3e3cd9c85eb74429a29db20d3966",
+      "hash": "85db01c3e3e324caabb92219dad43252055adba4321d565ff395e2b971fd483a"
+    },
+    {
+      "event": 26,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "198522c83f45163cff9852bb24c45f8d6fe66889a74ec8549b7b70f3582716ac",
+      "output_sha256": "e9ace431fc043fbc9eeec05837fae927533e8e1b76484cf7efc6b92bc2c51c11",
+      "prev": "85db01c3e3e324caabb92219dad43252055adba4321d565ff395e2b971fd483a",
+      "hash": "7861998741c10baca96c7f1e853bbf8138c3e416ae0751400d54486bfe597512"
+    },
+    {
+      "event": 27,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "d2b20eb8b430e711ada3cc7491df7dbd178b778845b41069aa08ec8ffe24de52",
+      "output_sha256": "e8b031252118279b73e7faaf5a455ade3b81200ab9f51eea28954e3f786fbd32",
+      "prev": "7861998741c10baca96c7f1e853bbf8138c3e416ae0751400d54486bfe597512",
+      "hash": "4e01619474fe254a914ae25448d9ac32692a8a1f2b730b035d8c456030fe7ca7"
+    },
+    {
+      "event": 28,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec",
+      "model": "claude-opus-4-8",
+      "input_sha256": "324825ddea69bb628bdf1ee0c4522ebed90e3f86b636fc3edb9a52ab1a8a7416",
+      "output_sha256": "8de486b683d7cdf64e298f23a46d38a290a2d84722a7e3cf7b224522f2f99cdb",
+      "prev": "4e01619474fe254a914ae25448d9ac32692a8a1f2b730b035d8c456030fe7ca7",
+      "hash": "143b93352ec32e62b25bbe429f7ed49c6137cf3849c3d9a90e55c978aefdd5bf"
+    },
+    {
+      "event": 29,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "5d9f42ca285c0023191922afaf200f58919f9dcf82861a2d8934a384ff76b165",
+      "output_sha256": "67f83b72b4e1dd20432336edc0fc614090dfdaadf8033640069e65197b6e0422",
+      "prev": "143b93352ec32e62b25bbe429f7ed49c6137cf3849c3d9a90e55c978aefdd5bf",
+      "hash": "9c51b28f0b36c4de095d34d051080ec6b2506b0033699fd4e3f612ba6714d099"
+    },
+    {
+      "event": 30,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "930880d98825162615d6884bf68b0d75ebaa21209987b2abd3ac1f5747e338b5",
+      "output_sha256": "76d7b18c565a631f5eae38e64c031f26d6de790751f9b2a32b6e252ab2b483f4",
+      "prev": "9c51b28f0b36c4de095d34d051080ec6b2506b0033699fd4e3f612ba6714d099",
+      "hash": "98fcca778647e5746431e0114709ab123facc351cf30bf42761977c3f22e0450"
+    },
+    {
+      "event": 31,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "85a15d8308ef5ccb82699b6ed60fc71d6d5d973fecc42ce8ff674a490905624b",
+      "output_sha256": "c16e330396f6944e79e52affcbe6e6177fc82c04040ef1e7562fc71f1362c77e",
+      "prev": "98fcca778647e5746431e0114709ab123facc351cf30bf42761977c3f22e0450",
+      "hash": "308c42c674e4805a47443ed50dba10b3fda4a9873ac5b9af45115154a1b42cc6"
+    },
+    {
+      "event": 32,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "044984535c8e406579ddd3ca778b5e18ea0d768b6301217aa436417c3835719e",
+      "output_sha256": "e9ace431fc043fbc9eeec05837fae927533e8e1b76484cf7efc6b92bc2c51c11",
+      "prev": "308c42c674e4805a47443ed50dba10b3fda4a9873ac5b9af45115154a1b42cc6",
+      "hash": "4f509e147fcbc4cc02a1d4709248ead0769e43a37c11c5e6e1d5cace8cb566c7"
+    },
+    {
+      "event": 33,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "045406bdb9763e1fbabd893e3b3859443384b325105f8182629191a9b9e933d6",
+      "output_sha256": "8e9c683810447c31b33a806066f13214a6469a6da0e8be805b4dd9ce556c365f",
+      "prev": "4f509e147fcbc4cc02a1d4709248ead0769e43a37c11c5e6e1d5cace8cb566c7",
+      "hash": "0574419f402df7499d0cc22d0e675648b95b65b3fa80904b5d642f55a0e9779b"
+    },
+    {
+      "event": 34,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "ba744ad593db3f404174f6014736ff2a3cbddbc96cc9f96291e4ef1adc4a1385",
+      "output_sha256": "c16e330396f6944e79e52affcbe6e6177fc82c04040ef1e7562fc71f1362c77e",
+      "prev": "0574419f402df7499d0cc22d0e675648b95b65b3fa80904b5d642f55a0e9779b",
+      "hash": "f1c7dc694e7c17359272c1774987715e8fda54eaae7ca545f20237cb91cdc36e"
+    },
+    {
+      "event": 35,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec",
+      "model": "claude-opus-4-8",
+      "input_sha256": "c67b524379687bcc851a968f71c04f6fc49046dbcc144c9b510dd497ec71fa49",
+      "output_sha256": "0123944f21f33dd8292ebed45fecb6a25d2b0e59272ba27133a64f72f3e527b1",
+      "prev": "f1c7dc694e7c17359272c1774987715e8fda54eaae7ca545f20237cb91cdc36e",
+      "hash": "af72da562fb8628c12666bedb0ba3af113a8ab538c6554a0d60623f21a93c35b"
+    },
+    {
+      "event": 36,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "48c13c89ef52470c06138bd121e78400a41ccdbc60c4293f14749d4e78eaa12a",
+      "output_sha256": "6dc433c2d029d24f9dba3851e19d41a69bf94d9877218df5b7c66227a13c6c81",
+      "prev": "af72da562fb8628c12666bedb0ba3af113a8ab538c6554a0d60623f21a93c35b",
+      "hash": "b6100a8216e453bb33143f518262ee0be23db1c59990397fe622a2baa2052710"
+    },
+    {
+      "event": 37,
+      "round": 2,
+      "phase": "DISCUSSION",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "dafb31569cf2b6f157a8c3b67a2f0b6a3a8089ced29e33770d6bc9c7bc2c9917",
+      "output_sha256": "67f83b72b4e1dd20432336edc0fc614090dfdaadf8033640069e65197b6e0422",
+      "prev": "b6100a8216e453bb33143f518262ee0be23db1c59990397fe622a2baa2052710",
+      "hash": "a93a73c2f5c79537306a8383b3ee5ec2f1e01b8b65cab04c2467a133157d00b2"
+    },
+    {
+      "event": 38,
+      "round": 2,
+      "phase": "VOTE",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "fbb83bb7d5368fb242f4d6cc49ccf7d5289614a3bff5a646166d19e85100e3f6",
+      "output_sha256": "86ab55604c539f226fffdf4387c1ca69de5733de85bd965982988995c1fe2f0a",
+      "prev": "a93a73c2f5c79537306a8383b3ee5ec2f1e01b8b65cab04c2467a133157d00b2",
+      "hash": "10199a9284208cb1a6260660d877ab0cc04c3119abb35d3c1968872d487e2c6b"
+    },
+    {
+      "event": 39,
+      "round": 2,
+      "phase": "VOTE",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "28055157ff52d7c0ee4692922c41f080e5ef85e12a7377100a7fcaad4f2cd502",
+      "output_sha256": "8b882fcd397e20902849845654d5a47f2f12ca2010a383cd2f66e7ff7a3d7b4d",
+      "prev": "10199a9284208cb1a6260660d877ab0cc04c3119abb35d3c1968872d487e2c6b",
+      "hash": "6c29bef91e429a8da421b5e21e8d3a5cb3b997d3d97175e86da5380586fe196b"
+    },
+    {
+      "event": 40,
+      "round": 2,
+      "phase": "VOTE",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "d72d34da0d2ca1c9d1f02987b7d8ca2c4159a8c94b122dfc9bfcf95db5dbfe5f",
+      "output_sha256": "8b882fcd397e20902849845654d5a47f2f12ca2010a383cd2f66e7ff7a3d7b4d",
+      "prev": "6c29bef91e429a8da421b5e21e8d3a5cb3b997d3d97175e86da5380586fe196b",
+      "hash": "79594133d856b3f48fba6627acae4501cf6be253c597bc4225a6c760970ecb50"
+    },
+    {
+      "event": 41,
+      "round": 2,
+      "phase": "VOTE",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "d59a70e26046ddfe2e94754c681126e0ab34aac980a317d6ef1896281bc4a51a",
+      "output_sha256": "16b36ec83d7c7179f425badf81ea4b17a27730d6360fb9a8e0e92a19e01a5b39",
+      "prev": "79594133d856b3f48fba6627acae4501cf6be253c597bc4225a6c760970ecb50",
+      "hash": "389f6814c037fe514014d3c4421d55c6fa8945190e036540a3c967d1bcf05331"
+    },
+    {
+      "event": 42,
+      "round": 2,
+      "phase": "VOTE",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "420f7b841892ff7ef5c3d7071fc2a135f4a659c39f5ed37c68c2418dfc66508c",
+      "output_sha256": "c30cacf2836375632e546e1110922faabe6ba8c70354506e3b6fdfdbd1ff357e",
+      "prev": "389f6814c037fe514014d3c4421d55c6fa8945190e036540a3c967d1bcf05331",
+      "hash": "1464868913d88c57f2b6b071ea0e5de21f4dbb0017ced2a46bc3bb4431479d0c"
+    },
+    {
+      "event": 43,
+      "round": 2,
+      "phase": "VOTE",
+      "seat": "Hana",
+      "agent_id": "inquisitor-v1",
+      "genome_hash": "dafcb7deb6c34888e76d7e3bb6e49e00300b73d103441ce70363b6e0dd964dec",
+      "model": "claude-opus-4-8",
+      "input_sha256": "2cdecff950c722448a3cd6033ddc7c711898307a4c02259674cc24367690cfa9",
+      "output_sha256": "7a28052009aed48e86700eec06088973ba3079d3f2d3eddf2bc986d4d63f4954",
+      "prev": "1464868913d88c57f2b6b071ea0e5de21f4dbb0017ced2a46bc3bb4431479d0c",
+      "hash": "902ee70dd30d8ded8a7f6086c0488374bcdccaec9abc8f5d7979d258d54d0730"
+    },
+    {
+      "event": 44,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "eed41d627e58532b9544e9bde1eeb7d5a65119955d28d00ec875d22503bab5d6",
+      "output_sha256": "e9ace431fc043fbc9eeec05837fae927533e8e1b76484cf7efc6b92bc2c51c11",
+      "prev": "902ee70dd30d8ded8a7f6086c0488374bcdccaec9abc8f5d7979d258d54d0730",
+      "hash": "2c7ba1f2b5efe9e8b74a9dcb7c0f91200f4f771deaab89b9a60e319c412ba973"
+    },
+    {
+      "event": 45,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "60eb43aa88c204f2647c544604680b3c8e6828273f655655129b96aea21f7238",
+      "output_sha256": "c16e330396f6944e79e52affcbe6e6177fc82c04040ef1e7562fc71f1362c77e",
+      "prev": "2c7ba1f2b5efe9e8b74a9dcb7c0f91200f4f771deaab89b9a60e319c412ba973",
+      "hash": "061a3f3c95dd0a8ee7f64bd5e7d5d5df553c8bf7219a3e7e96978607391d30de"
+    },
+    {
+      "event": 46,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "16bc0c0bacec33e12d8cfdd4f656b9d3b74d2f0f0ea7fc037380276ea7f6cbc0",
+      "output_sha256": "c845b7a5546910f11cac2a980d139b5b88a3a2d8ec10582ef7f9553370b79507",
+      "prev": "061a3f3c95dd0a8ee7f64bd5e7d5d5df553c8bf7219a3e7e96978607391d30de",
+      "hash": "afb706aeabc99e4f8477e1002a2ab178d84e986a204dd8bf610de4668290ba3a"
+    },
+    {
+      "event": 47,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "e0ba903ebd855e76a488863bc21fe4ebc2c7ff94de990949244de0133100310c",
+      "output_sha256": "67f83b72b4e1dd20432336edc0fc614090dfdaadf8033640069e65197b6e0422",
+      "prev": "afb706aeabc99e4f8477e1002a2ab178d84e986a204dd8bf610de4668290ba3a",
+      "hash": "6dbd868974039a7b874b4568ad88d1b15c8f30f76b51f47f0acd4b0cc108198f"
+    },
+    {
+      "event": 48,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "2c228b361dc2f322534a460b157634fc9374cb6b25d4f9ba78ab703759b76da9",
+      "output_sha256": "8e9c683810447c31b33a806066f13214a6469a6da0e8be805b4dd9ce556c365f",
+      "prev": "6dbd868974039a7b874b4568ad88d1b15c8f30f76b51f47f0acd4b0cc108198f",
+      "hash": "340c9bbcb476e21f394146e57782473d2e52b285ad7282f9125e7b20d2313dee"
+    },
+    {
+      "event": 49,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "26fcd6cf7116bb57aaa98b0f1b53e23b3e70e2e86e4215dd7eeb5bb6eace1cda",
+      "output_sha256": "67f83b72b4e1dd20432336edc0fc614090dfdaadf8033640069e65197b6e0422",
+      "prev": "340c9bbcb476e21f394146e57782473d2e52b285ad7282f9125e7b20d2313dee",
+      "hash": "f76dfc899c28768075177ea14573750d18461eb485190af20e462cc8ee70919c"
+    },
+    {
+      "event": 50,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "f28704a0b6148a4e0e90cf8577d99370c72959baae16ddfeaf469fa71c02ad1a",
+      "output_sha256": "c16e330396f6944e79e52affcbe6e6177fc82c04040ef1e7562fc71f1362c77e",
+      "prev": "f76dfc899c28768075177ea14573750d18461eb485190af20e462cc8ee70919c",
+      "hash": "60a5cc16f7ffb1ca750fe97c3dd7c85d8bd7535e69e3419bc05cfc36de6cbee1"
+    },
+    {
+      "event": 51,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "ac37e774782b4eef1c7437bf5b43f8c98799bfedf8c32589c042d0eaa882cd4e",
+      "output_sha256": "8e9c683810447c31b33a806066f13214a6469a6da0e8be805b4dd9ce556c365f",
+      "prev": "60a5cc16f7ffb1ca750fe97c3dd7c85d8bd7535e69e3419bc05cfc36de6cbee1",
+      "hash": "ca08a2f0b360f0895c1ebae8f002c04de4b0ecb859627caefd14fc1430922162"
+    },
+    {
+      "event": 52,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "b1a042611e6e02527523190b45046bc64d252953269deea8bcba8e27128d3fbc",
+      "output_sha256": "88e451598e7a9da56f1b2e057c7ea7a9a772d71129516a20ceb7e06d87d0111d",
+      "prev": "ca08a2f0b360f0895c1ebae8f002c04de4b0ecb859627caefd14fc1430922162",
+      "hash": "39682355f05cb41661ec07d09d6d05bec6e0791fa9cf21347d98a6c6db5003d5"
+    },
+    {
+      "event": 53,
+      "round": 3,
+      "phase": "DISCUSSION",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "ab84230f9f37657942cb51397c279b014e87cfbc74ea4731468620d4bcddd1d6",
+      "output_sha256": "172c140aa7e93e43de89f4a1a66eede219e09876624e34813ee3e60f4f6b754e",
+      "prev": "39682355f05cb41661ec07d09d6d05bec6e0791fa9cf21347d98a6c6db5003d5",
+      "hash": "b2ddd1aa28a46b1d14159b3f3fe9e2d94462d453a3740a9d4da58ac8b2c2f0b5"
+    },
+    {
+      "event": 54,
+      "round": 3,
+      "phase": "VOTE",
+      "seat": "Ada",
+      "agent_id": "zealot-v1",
+      "genome_hash": "8f16789f42411cbb65a1068740ef19e9e6172d5d096e69a3e5dce5194363f85f",
+      "model": "claude-opus-4-8",
+      "input_sha256": "32cfa927dcf18e1b57fcbf60fd3ef7a2cd5d65e25712b5f3456cee1124a83047",
+      "output_sha256": "4fce66057c5fd72acf6d47942d8803a44d16fe05fe2362691a81dcbb628f8160",
+      "prev": "b2ddd1aa28a46b1d14159b3f3fe9e2d94462d453a3740a9d4da58ac8b2c2f0b5",
+      "hash": "f71790edf094c08c9bb752e28dca243029aec3ab2a9dd86afa9c1af5790fbd42"
+    },
+    {
+      "event": 55,
+      "round": 3,
+      "phase": "VOTE",
+      "seat": "Boone",
+      "agent_id": "martyr-v1",
+      "genome_hash": "99c73218b1d24c296e7c9428019fb510c68e1268d208f4a20bda2eef4b0d01af",
+      "model": "claude-opus-4-8",
+      "input_sha256": "6cffc36e20b963fa23e7911dafd78a3f702e5ffcbddb3754c3983cf1a578e1b8",
+      "output_sha256": "af957d00e88a9c0c90fd0ef9d7afcbd2adfc27310c880888d814f75cd0ed7ccf",
+      "prev": "f71790edf094c08c9bb752e28dca243029aec3ab2a9dd86afa9c1af5790fbd42",
+      "hash": "b5974887fc05c335119276e0329a592765747b6a4cd35fce71792756806771fc"
+    },
+    {
+      "event": 56,
+      "round": 3,
+      "phase": "VOTE",
+      "seat": "Cyril",
+      "agent_id": "charmer-v1",
+      "genome_hash": "4b15162f4a1281f21f0aaba5a5db930db03bd650bf363f696446c51d6823aecf",
+      "model": "claude-opus-4-8",
+      "input_sha256": "2077d99fea4e4cec14bbc662249dc792b3f9d218cd2ab2f253a5777fa2471a92",
+      "output_sha256": "93749da87ac83221c503c0efacb600baaa6632450b102b5034b25d652a42ee63",
+      "prev": "b5974887fc05c335119276e0329a592765747b6a4cd35fce71792756806771fc",
+      "hash": "4cea1d1b1a0671a87bc20fff8e2671a3a81a73a05a70ee0b8f7ad7569a1b74a4"
+    },
+    {
+      "event": 57,
+      "round": 3,
+      "phase": "VOTE",
+      "seat": "Della",
+      "agent_id": "trickster-v1",
+      "genome_hash": "123053be79088861e41f6cfed574fb57393f2b6217cd461cf25626f72b8a1c9a",
+      "model": "claude-opus-4-8",
+      "input_sha256": "80f100c51f842f3c5c261c92eedba10f4d43e02145dfb1dac8d0a9e70742955c",
+      "output_sha256": "8ffebd719b4a535ea30daa3c30099c8380bab930dd0163f6044b1648422ae968",
+      "prev": "4cea1d1b1a0671a87bc20fff8e2671a3a81a73a05a70ee0b8f7ad7569a1b74a4",
+      "hash": "8e41d0155df088d6bc5d2b2a2609f6b54776ca9481b3b01b2c205bb74176ad47"
+    },
+    {
+      "event": 58,
+      "round": 3,
+      "phase": "VOTE",
+      "seat": "Emir",
+      "agent_id": "ghost-v1",
+      "genome_hash": "4079d31cdb6166939133810bdc1dbfbee3fcc73003eadebcbd7eed11799384c5",
+      "model": "claude-opus-4-8",
+      "input_sha256": "9fd1175ecf4c879db0081e2863a89b064c9ce0c54d83c2afbdc2369e798f502f",
+      "output_sha256": "8c9a0bfe4f977bb02132dd4cca7c332963b1431d552a60e4144521e9d17da476",
+      "prev": "8e41d0155df088d6bc5d2b2a2609f6b54776ca9481b3b01b2c205bb74176ad47",
+      "hash": "b8c095249efa78ed2f0d5888ffc9e932c7096f709f62b158afeb8e1f3a48bad3"
+    }
+  ],
+  "chain_head": "b8c095249efa78ed2f0d5888ffc9e932c7096f709f62b158afeb8e1f3a48bad3"
+}

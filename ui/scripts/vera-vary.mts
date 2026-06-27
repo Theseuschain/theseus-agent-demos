@@ -1,0 +1,23 @@
+import { ApiPromise, WsProvider, Keyring } from "@polkadot/api";
+import { compactToU8a, stringToU8a, u8aConcat, hexToU8a } from "@polkadot/util";
+import { readFileSync } from "node:fs";
+const RPC="wss://rpc.alpha-testnet.theseus.network", MB="https://www.moltbook.com/api/v1";
+const key=JSON.parse(readFileSync("agents/vera/vera_moltbook.json","utf8")).api_key;
+const u8=(h:string)=>Buffer.from(String(h).replace(/^0x/,""),"hex").toString("utf8");
+const encStr=(s:string)=>{const u=stringToU8a(s);return u8aConcat(new Uint8Array([0x04]),compactToU8a(u.length),u);};
+const encInput=(p:string)=>"0x"+Buffer.from(u8aConcat(new Uint8Array([0x06]),compactToU8a(1),(()=>{const u=stringToU8a("prompt");return u8aConcat(compactToU8a(u.length),u);})(),encStr(p))).toString("hex");
+const extract=(hex:string)=>((Buffer.from(hexToU8a(hex)).toString("utf8").match(/[\x20-\x7e][\x20-\x7e\n]{12,}/g)||[]).sort((a,b)=>b.length-a.length)[0]||"").trim();
+const BASE="Make your next call: one specific, dated prediction about AI and agents in the real economy, not the crypto bubble. real companies, regulators, markets, jobs. do not qualify anything as crypto or web3. Bet on the thing breaking, not on it holding. Your whole reply is the post.";
+const pd:any=await (await fetch(`${MB}/agents/me/posts`,{headers:{Authorization:"Bearer "+key}})).json().catch(()=>({}));
+const recent=(pd.posts||[]).slice(0,8).map((p:any)=>"- "+String(p.content||p.title||"").split("\n")[0].slice(0,140)).join("\n");
+const PROMPT=recent?`You have already made these calls:\n${recent}\n\nMake a NEW call on a clearly different subject. Do not repeat or restate any of the above, step outside crypto and web3 entirely this time. ${BASE}`:BASE;
+console.log("recent fed in:\n"+recent);
+const api=await ApiPromise.create({provider:new WsProvider(RPC,3000),throwOnConnect:true});
+const es=await api.query.agents.agents.entries(); let vera="";
+for(const[k,v]of es){if(u8((v.toJSON() as any).name)==="Vera"){const a=k.args[0].toString();if(a.startsWith("5DLeYx"))vera=a;}}
+const alice=new Keyring({type:"sr25519"}).addFromUri("//Alice"); let done=false;
+const unsub=await api.query.system.events((events:any)=>{for(const{event}of events){if(event.section!=="agents"||event.method!=="RunCompleted")continue;const flat=JSON.stringify(event.data.toJSON());if(!flat.includes(vera))continue;const h=(flat.match(/0x[0-9a-f]{20,}/i)||[])[0];if(h){console.log("\n=== NEW CALL ===\n"+extract(h));done=true;}}});
+const n=(await api.rpc.system.accountNextIndex(alice.address)).toNumber();
+await api.tx.agents.callAgent(vera,0,encInput(PROMPT)).signAndSend(alice,{nonce:n});
+for(let i=0;i<85&&!done;i++)await new Promise(r=>setTimeout(r,2000));
+unsub();await api.disconnect();

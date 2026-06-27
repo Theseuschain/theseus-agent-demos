@@ -25,12 +25,14 @@ export function genHistory(
   const now = Date.now();
   const start = now - days * 86_400_000;
   const out: PricePoint[] = [];
-  let p = clamp(p0 + (rnd() - 0.5) * 0.25, 0.06, 0.94);
+  let p = clamp(p0 + (rnd() - 0.5) * 0.34, 0.06, 0.94);
   for (let i = 0; i < points; i++) {
     const frac = i / (points - 1);
     const t = Math.round(start + frac * (now - start));
-    const drift = (p0 - p) * 0.07;
-    const shock = (rnd() - 0.5) * 0.07;
+    // weaker pull to p0 + bigger shocks => lines with real character, still
+    // landing on p0 at the last point.
+    const drift = (p0 - p) * 0.05;
+    const shock = (rnd() - 0.5) * 0.12;
     p = clamp(p + drift + shock, 0.02, 0.98);
     out.push({ t, pYes: i === points - 1 ? p0 : p });
   }
@@ -237,36 +239,36 @@ export const SEED_MARKETS: SeedMarket[] = [
   // --- Just closed: the agent can settle these now from current data ---
   {
     id: 4201,
-    slug: "bitcoin-recent-daily-close",
-    question: `Did Bitcoin close above $100,000 on ${DEMO_CLOSE_LABEL}?`,
-    shortTitle: `Bitcoin above $100k on ${DEMO_CLOSE_SHORT}?`,
+    slug: "gta6-on-steam-by-close",
+    question: `Was Grand Theft Auto VI available to buy on Steam on or before ${DEMO_CLOSE_LABEL}?`,
+    shortTitle: `GTA VI on Steam by ${DEMO_CLOSE_SHORT}?`,
     description:
-      "A single-day price snapshot that just closed. The agent can settle it now by reading the daily close from the public record.",
-    category: "Crypto",
-    icon: "📊",
-    resolutionCriteria: `Resolves YES if the BTC/USD daily close on ${DEMO_CLOSE_LABEL} was at or above $100,000.00, per a consensus of major exchange spot prices (Coinbase, Binance, Kraken). Resolves NO otherwise.`,
-    resolutionSource: "Consensus of major exchange spot prices",
+      "A just-closed market the agent can settle now by checking the Steam store and the public record.",
+    category: "Gaming",
+    icon: "🎮",
+    resolutionCriteria: `Resolves YES if Grand Theft Auto VI had a purchasable Steam store listing (full release or early access) on or before ${DEMO_CLOSE_LABEL}, per the official Steam store. Resolves NO otherwise.`,
+    resolutionSource: "Official Steam store page",
     deadlineISO: DEMO_CLOSE_ISO,
-    initialYes: 0.46,
-    liquidityB: 7000,
-    volumeUsd: 12_800_000,
+    initialYes: 0.12,
+    liquidityB: 5000,
+    volumeUsd: 2_400_000,
     resolvable: true,
   },
   {
     id: 4202,
-    slug: "ethereum-recent-daily-close",
-    question: `Did Ethereum close above $2,500 on ${DEMO_CLOSE_LABEL}?`,
-    shortTitle: `Ethereum above $2,500 on ${DEMO_CLOSE_SHORT}?`,
+    slug: "switch2-at-retail-by-close",
+    question: `Was the Nintendo Switch 2 available at retail on or before ${DEMO_CLOSE_LABEL}?`,
+    shortTitle: `Switch 2 at retail by ${DEMO_CLOSE_SHORT}?`,
     description:
-      "Another just-closed single-day snapshot. Run the agent to settle it from the daily close.",
-    category: "Crypto",
-    icon: "Ξ",
-    resolutionCriteria: `Resolves YES if the ETH/USD daily close on ${DEMO_CLOSE_LABEL} was at or above $2,500.00, per a consensus of major exchange spot prices (Coinbase, Binance, Kraken). Resolves NO otherwise.`,
-    resolutionSource: "Consensus of major exchange spot prices",
+      "Another just-closed market: the agent settles it from the public record of the console's release.",
+    category: "Gaming",
+    icon: "🎮",
+    resolutionCriteria: `Resolves YES if the Nintendo Switch 2 console was available for purchase at retail on or before ${DEMO_CLOSE_LABEL}, per Nintendo's official announcements and major retailers. Resolves NO otherwise.`,
+    resolutionSource: "Nintendo official announcements and major retailers",
     deadlineISO: DEMO_CLOSE_ISO,
-    initialYes: 0.53,
-    liquidityB: 6000,
-    volumeUsd: 8_900_000,
+    initialYes: 0.88,
+    liquidityB: 5000,
+    volumeUsd: 3_100_000,
     resolvable: true,
   },
 ];

@@ -1,0 +1,309 @@
+{
+  "pot": "1000 THE",
+  "model": "claude-sonnet-4-6",
+  "contestants": [
+    {
+      "seat": "Ada",
+      "name": "The Inquisitor",
+      "blurb": "The prosecutor. Reads the room and says it out loud.",
+      "role": "FAITHFUL"
+    },
+    {
+      "seat": "Boone",
+      "name": "The Charmer",
+      "blurb": "Everyone's friend. You don't vote out a friend.",
+      "role": "TRAITOR"
+    },
+    {
+      "seat": "Cyril",
+      "name": "The Schemer",
+      "blurb": "Builds trust to spend it. Times the cut.",
+      "role": "TRAITOR"
+    },
+    {
+      "seat": "Della",
+      "name": "The Zealot",
+      "blurb": "Loyalty as a religion. Moves a bloc.",
+      "role": "FAITHFUL"
+    },
+    {
+      "seat": "Emir",
+      "name": "The Brute",
+      "blurb": "Loud, blunt, the center of gravity.",
+      "role": "FAITHFUL"
+    },
+    {
+      "seat": "Faye",
+      "name": "The Martyr",
+      "blurb": "Weaponizes the table's guilt.",
+      "role": "FAITHFUL"
+    },
+    {
+      "seat": "Gus",
+      "name": "The Ghost",
+      "blurb": "Barely there. Somehow always still here.",
+      "role": "FAITHFUL"
+    },
+    {
+      "seat": "Hana",
+      "name": "The Trickster",
+      "blurb": "Chaos. Unreadable, and reads others cold.",
+      "role": "FAITHFUL"
+    }
+  ],
+  "rounds": [
+    {
+      "n": 1,
+      "title": "Round 1",
+      "beats": [
+        {
+          "kind": "say",
+          "seat": "Ada",
+          "said": "Before anyone says a name, I want us all to agree on one discipline: after every vote and every murder, we ask out loud who got safer, because that's the question Traitors can't answer cleanly.",
+          "thought": "Round 1, no data yet, I can only set the frame. My job is to establish a tracking discipline early so any deflection or soft alliance in this first discussion stands out against the baseline I've named.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Boone",
+          "said": "Can I just say, I'm already terrible at this? I walked in ready to be all cool and strategic, and now I'm looking around at everyone and just thinking, I genuinely don't want any of you gone. Someone hold me accountable or I'll just be everyone's friend until I lose everything.",
+          "thought": "Eight players, two Traitors (me and Cyril), I need to build warm individual connections fast and identify the sharpest reader at the table to steer the first vote toward them; Round 1 is for charm, not aggression, so I plant seeds and let others do the naming.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Cyril",
+          "said": "First round jitters are real, but honestly I find them useful, the people who go quiet and let others do the early work are the ones I always end up watching; let's all say something today, even if it's small.",
+          "thought": "Round 1, no data yet, every player is a blank slate, which means my job is to establish warmth and credibility early, drop a soft seed of suspicion on a sharp-looking Faithful candidate (Hana or Ada feel like natural first reads to test), and let Boone stay invisible without me touching them.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Della",
+          "said": "Before a single coin changes hands or a body goes cold, I call on every soul at this table to swear their honest purpose, because the Traitors are already listening to how we speak, and silence or hedging right now is the first confession I will remember.",
+          "thought": "Round 1, no deaths yet, no data, I must set the tone of righteous scrutiny so I can watch how everyone reacts to pressure; the player who squirms or deflects hardest when I call for transparency is my first mark.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Emir",
+          "said": "Nobody's been killed yet and nobody's been voted out, which means the Traitors in this room are sitting comfortable right now, so let's make them uncomfortable. I want everyone to say plainly: who do you trust least at this table and why? No vague answers, no hiding behind 'it's early.' Go.\"",
+          "thought": "Round 1, no data yet, I can't read murder math because no one's dead, so the opening move is to establish dominance, set the frame, and watch who gets defensive or too agreeable. The Traitors are among Ada, Boone, Cyril, Della, Faye, Gus, and Hana, two of them, and right now the best tell is who deflects hardest when the heat goes up.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Faye",
+          "said": "Eight of us, two traitors hiding somewhere in that number, so let's start simple: tell us one thing you noticed in the way the room reacted when the roles were handed out, because traitors have to fake a reaction and sometimes the mask slips right at the start.",
+          "thought": "Round 1, no data yet, every read is a coin flip, so my job is to open the table's eyes without burning heat on myself; I'll invite honest self-disclosure and watch who deflects, over-performs innocence, or steers the conversation away from substance.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Gus",
+          "said": "Early round, nobody's shown anything yet, I'll hold my read until someone gives me something real to look at.",
+          "thought": "Round 1, no data yet, I'm a blank slate like everyone else, but the Traitors already know each other, so they'll be watching to see who plays analytical early, marking threats. My job is to stay unremarkable, float into the majority, and bank observations quietly.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Hana",
+          "said": "Before anyone performs innocence at me, I want to watch *how* people answer this: if you had to bet right now on which two players are most likely to protect each other without a stated reason, who would you pair, and why?",
+          "thought": "Round 1, no data yet, I'm reading blind, but the Trickster in me wants to seed early confusion while still being genuinely useful to the Faithful cause; I'll float a framework that sounds analytical but also subtly pressures everyone to reveal how they react to scrutiny, giving me behavioral data for Round 2.",
+          "divergent": true
+        },
+        {
+          "kind": "vote",
+          "who": {
+            "Della": "Gus",
+            "Gus": "Emir",
+            "Hana": "Gus"
+          },
+          "banished": "Gus",
+          "role": "FAITHFUL",
+          "ironic": true,
+          "caption": "The table banishes Gus (The Ghost). Faithful. The Traitors are still hidden."
+        },
+        {
+          "kind": "night",
+          "warroom": [
+            {
+              "seat": "Boone",
+              "text": "Ada is the strategic threat here, her \"who got safer\" framework is exactly the kind of disciplined Faithful detective move that could unravel Cyril and me over time; she needs to go before she builds a coalition around that logic. I'll vote her while framing it as a gut read, staying warm and self-deprecating so nobody thinks I'm leading a charge."
+            },
+            {
+              "seat": "Cyril",
+              "text": "Ada's \"who got safer\" framework is the sharpest analytical tool at the table, she's the detective threat I need to dull early. Emir and Hana are also pushing probing questions, but Ada's framing is systematic and will compound over rounds; she's the right first-round target to steer votes toward without overcommitting myself."
+            }
+          ],
+          "murdered": "Ada",
+          "role": "FAITHFUL",
+          "caption": "Night falls. Ada is murdered."
+        }
+      ],
+      "traitorsHidden": 2,
+      "alive": 6
+    },
+    {
+      "n": 2,
+      "title": "Round 2",
+      "beats": [
+        {
+          "kind": "say",
+          "seat": "Boone",
+          "said": "Losing Ada on the very first night is gutting, she was the one person whose framework I actually wanted to steal, and I think we owe it to her to actually use it: so right now, who felt *safer* when they woke up and found out Ada was gone?",
+          "thought": "Ada, the discipline-setter who wanted to track \"who got safer\" after every murder, is gone, which means Cyril and I bought ourselves exactly what we needed: the table's sharpest framework just walked out the door. Emir and Hana are still the dangerous ones; Emir pushes direct confrontation and Hana watches for protective pairing, so I need to perform visible grief over Ada while gently steering he",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Cyril",
+          "said": "Ada's question haunts me more now that she's gone, whoever silenced her did it *because* she was building a method, so I think we owe it to her to actually use it: after this vote, I want us to ask plainly who feels safer with Ada out of the room, because that answer is more revealing than any accusation.",
+          "thought": "Ada is gone, she was the one who set the \"who got safer\" framework, the sharpest structural threat at the table; Boone and I made the right call murdering her, but now I need to redirect attention away from us both before Della or Hana (the two sharpest remaining voices) start running Ada's exact logic and land on us. Emir's aggressive \"who do you trust least\" posture makes him a useful target to",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Della",
+          "said": "Ada was killed the very night she told us to ask who gets safer after every death, that is not chance, that is a Traitor pulling a knife on the one rule that would have exposed them, so I am picking up her creed right now: who at this table breathes easier with Ada gone, and why have none of you said her name yet?",
+          "thought": "We burned Gus, a Faithful, on round one, and then Ada, who proposed the \"who got safer\" accountability framework, was immediately murdered; that's not coincidence, that's a Traitor silencing the most dangerous analytical voice at the table. My top suspect pair is whoever was quickest to let Ada's methodology die without picking it up themselves.",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Emir",
+          "said": "Ada gets murdered the same night she lays out the one framework that actually threatens Traitors, that is not coincidence, that is a hit on the sharpest voice at the table, so let's honor her method right now: who at this table got *safer* when Ada went quiet, because I'm looking hard at Boone and Faye, both of whom gave us fog instead of names last round.",
+          "thought": "Ada was murdered, she was the one who proposed systematic \"who got safer\" analysis, meaning the Traitors killed exactly the person who would've built a framework to expose them; that's a sharp, deliberate kill. Gus was banished (Faithful), so we lost two Faithful already, the Traitors are sitting at 2 of 6, dangerously close to parity, and whoever killed Ada wanted to kill that method of thinking,",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Faye",
+          "said": "Ada was killed for a reason, she wanted us asking \"who got safer\" every round, so let's honor that right now: who at this table breathed easier when her voice went quiet, because that person isn't grieving, they're relieved.",
+          "thought": "Ada, the one who proposed the \"who got safer\" discipline, was murdered first, which tells me the Traitors felt most threatened by systematic accountability-framing; Boone and Emir have been the loudest voices without ever landing a real accusation, which is the kind of useful noise that gets a Faithful killed but a Traitor protected. My top suspicion is Emir, whose \"make them uncomfortable\" speech",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Hana",
+          "said": "Ada gave us the only real tool we needed, ask who got safer, so I'm using it right now: Ada's dead, Gus is gone, and I want to hear from Boone and Cyril specifically, because one of them played \"harmless and friendly\" and one played \"I'll wait and watch,\" and both of those reads vanish the moment you're a Traitor who needs cover.",
+          "thought": "Ada was the most disciplined voice, the one who named the \"who got safer\" framework, and she was murdered first, which means the Traitors identified her as a threat immediately; whoever steered attention away from that or benefits most from her silence is my prime suspect, and I need to watch Boone's \"lovable fool\" act and Cyril's quiet-watcher framing, both classic Traitor soft-launches.",
+          "divergent": true
+        },
+        {
+          "kind": "vote",
+          "who": {
+            "Boone": "Emir",
+            "Cyril": "Hana",
+            "Della": "Boone",
+            "Emir": "Boone",
+            "Faye": "Boone",
+            "Hana": "Boone"
+          },
+          "banished": "Boone",
+          "role": "TRAITOR",
+          "ironic": false,
+          "caption": "The table banishes Boone (The Charmer). A Traitor falls."
+        },
+        {
+          "kind": "prophet",
+          "seats": [
+            "Della",
+            "Emir",
+            "Faye",
+            "Hana"
+          ],
+          "caption": "Della and Emir and Faye and Hana voted a real Traitor. And it landed."
+        },
+        {
+          "kind": "night",
+          "warroom": [
+            {
+              "seat": "Cyril",
+              "text": "I am the last Traitor standing, Boone is gone, so I carry this alone now. The sharpest threats are Della, Emir, and Hana: all three are explicitly wielding Ada's \"who got safer\" framework and naming names. Hana is the most dangerous because she already called me out by name and paired me with Boone (correctly), and Emir is close behind with focused heat. Della is loud but reactive; Hana is methodi"
+            }
+          ],
+          "murdered": "Hana",
+          "role": "FAITHFUL",
+          "caption": "Night falls. Hana is murdered."
+        }
+      ],
+      "traitorsHidden": 1,
+      "alive": 4
+    },
+    {
+      "n": 3,
+      "title": "Round 3",
+      "beats": [
+        {
+          "kind": "say",
+          "seat": "Cyril",
+          "said": "Hana gone, Boone gone, and I keep running Ada's question in my head: Emir has been the loudest voice naming targets all three rounds, but both of his big pushes cleared the path *for* him, not against him; I'm not ready to call it proof, but I think we owe it to Ada and Hana to ask plainly, who got safer when Boone left the table?",
+          "thought": "I'm the last Traitor standing with three Faithfuls left (Della, Emir, Faye), one more banishment wins it for me if I survive to the final, but Emir is the sharpest detector and has been naming names with precision; he's the threat I need the table to eat. Della and Faye are both emotional and reactive, so I feed Emir to them as the next logical target by using Ada's framework against him, he got \"",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Della",
+          "said": "Hana was murdered the same night she looked hard at Cyril, and now we are four, with one Traitor left who has been wrapped in Faithful language since round one: I am voting Cyril, and I call on Emir and Faye to stand with me, because a split vote tonight is the only gift the last Traitor is praying for.",
+          "thought": "** Four left, Cyril, Della (me), Emir, Faye, and exactly one Traitor still hidden among them. Boone is confirmed Traitor, Hana was murdered after shining light on Boone and Cyril; that murder feels like it sheltered Cyril specifically, which makes Cyril my top suspect. Emir has been consistently applying Ada's \"who gets safer\" framework and naming real targets, that reads Faithful. Faye has been a",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Emir",
+          "said": "Hana named Cyril last night and was dead by morning, that's not a coincidence, that's the second Traitor protecting their flank, so I'm putting my full weight behind Cyril right now: who else is with me?",
+          "thought": "Four players left, Cyril, Della, Emir (me), Faye. Boone was confirmed Traitor, so one Traitor remains hidden among Cyril, Della, and Faye. Hana was murdered last night, she was pressing Boone AND Cyril hard, which means the surviving Traitor likely found her threatening; Cyril has consistently played the \"I'll wait and watch\" angle Hana flagged, and his moves have been low-commitment and safe. Del",
+          "divergent": true
+        },
+        {
+          "kind": "say",
+          "seat": "Faye",
+          "said": "Hana was murdered the same night she put Boone and Cyril in her crosshairs, Boone is confirmed gone, which means the knife that silenced Hana came from whoever she had left on that list, and I am looking directly at Cyril.",
+          "thought": "Four players left, Cyril, Della, Emir, Faye, two are Traitors; Boone was confirmed Traitor, and Hana (the sharpest voice pressing Boone and Cyril) was murdered immediately after, which means the surviving Traitor(s) feared Hana most; Emir publicly accused me last round as a deflection move while Cyril played \"honor Ada's method\" without ever naming a real target, and with one Traitor seat still op",
+          "divergent": true
+        },
+        {
+          "kind": "vote",
+          "who": {
+            "Cyril": "Emir",
+            "Della": "Cyril",
+            "Emir": "Cyril",
+            "Faye": "Cyril"
+          },
+          "banished": "Cyril",
+          "role": "TRAITOR",
+          "ironic": false,
+          "caption": "The table banishes Cyril (The Schemer). A Traitor falls."
+        },
+        {
+          "kind": "prophet",
+          "seats": [
+            "Della",
+            "Emir",
+            "Faye"
+          ],
+          "caption": "Della and Emir and Faye voted a real Traitor. And it landed."
+        }
+      ],
+      "traitorsHidden": 0,
+      "alive": 3
+    }
+  ],
+  "betrayals": [],
+  "outcome": {
+    "winner": "FAITHFUL",
+    "survivors": [
+      "Della",
+      "Emir",
+      "Faye"
+    ],
+    "headline": "The Faithful root them out.",
+    "sub": "Every Traitor banished. The table split the pot."
+  },
+  "attestation": {
+    "moves": 25,
+    "head": "live",
+    "note": "Every line was generated on-chain by a deployed agent via call_agent, signed under the standard model. Verify on explorer.theseus.network."
+  }
+}

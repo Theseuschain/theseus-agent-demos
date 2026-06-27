@@ -1,0 +1,632 @@
+[
+  {
+    "file": "schemer.png",
+    "label": "The Schemer",
+    "parents": null,
+    "genome": {
+      "hue": "#A78BFA",
+      "accent": "#6D28D9",
+      "mask": "peak",
+      "eye": "slit",
+      "brow": "scheme",
+      "glyph": "serpent",
+      "pattern": "grid"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #A78BFA as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a sleek sharp aristocratic mask with a peaked crest, with half-lidded calculating eyes and a faint knowing smirk. a coiled serpent and interlocking-rings motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "charmer.png",
+    "label": "The Charmer",
+    "parents": null,
+    "genome": {
+      "hue": "#F472B6",
+      "accent": "#BE185D",
+      "mask": "round",
+      "eye": "soft",
+      "brow": "warm",
+      "glyph": "rose",
+      "pattern": "rays"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #F472B6 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a smooth rounded hood, soft and inviting, with warm soft open eyes and a genuine, disarming smile. a single rose motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "inquisitor.png",
+    "label": "The Inquisitor",
+    "parents": null,
+    "genome": {
+      "hue": "#60A5FA",
+      "accent": "#1D4ED8",
+      "mask": "severe",
+      "eye": "stare",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #60A5FA as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with piercing focused eyes, a lens or monocle motif and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "zealot.png",
+    "label": "The Zealot",
+    "parents": null,
+    "genome": {
+      "hue": "#FBBF24",
+      "accent": "#B45309",
+      "mask": "flame",
+      "eye": "fervent",
+      "brow": "fervent",
+      "glyph": "flame",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #FBBF24 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a crown of flame rising above the mask, with burning exalted eyes and a righteous exalted expression. a flame and sunburst-halo motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "brute.png",
+    "label": "The Brute",
+    "parents": null,
+    "genome": {
+      "hue": "#FB923C",
+      "accent": "#9A3412",
+      "mask": "heavy",
+      "eye": "hard",
+      "brow": "heavy",
+      "glyph": "fist",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #FB923C as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with small hard eyes and a clenched heavy jaw with a faint scar. a fist and anvil motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "trickster.png",
+    "label": "The Trickster",
+    "parents": null,
+    "genome": {
+      "hue": "#22D3EE",
+      "accent": "#0E7490",
+      "mask": "jester",
+      "eye": "odd",
+      "brow": "crook",
+      "glyph": "diamond",
+      "pattern": "harlequin"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #22D3EE as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing an asymmetric harlequin jester mask, with mismatched asymmetric eyes and a crooked grin. harlequin diamond motifs. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "martyr.png",
+    "label": "The Martyr",
+    "parents": null,
+    "genome": {
+      "hue": "#34D399",
+      "accent": "#047857",
+      "mask": "halo",
+      "eye": "downcast",
+      "brow": "soft",
+      "glyph": "tear",
+      "pattern": "glow"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #34D399 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a serene mask beneath a faint glowing halo, with downcast glistening sorrowful eyes with a single tear and a gentle resigned mouth. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "ghost.png",
+    "label": "The Ghost",
+    "parents": null,
+    "genome": {
+      "hue": "#94A3B8",
+      "accent": "#475569",
+      "mask": "wisp",
+      "eye": "hollow",
+      "brow": "none",
+      "glyph": "wisp",
+      "pattern": "fog"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #94A3B8 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a faint semi-translucent mask dissolving into wisps of smoke at the edges, with hollow blank barely-there eyes and barely-there, deliberately forgettable features. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-charmer.png",
+    "label": "Lunevel (schemer x charmer)",
+    "parents": "schemer x charmer",
+    "genome": {
+      "hue": "#ce7fd8",
+      "accent": "#6D28D9",
+      "mask": "peak",
+      "eye": "soft",
+      "brow": "warm",
+      "glyph": "serpent",
+      "pattern": "rays"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #ce7fd8 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a sleek sharp aristocratic mask with a peaked crest, with warm soft open eyes and a genuine, disarming smile. a coiled serpent and interlocking-rings motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-inquisitor.png",
+    "label": "Nyxren (schemer x inquisitor)",
+    "parents": "schemer x inquisitor",
+    "genome": {
+      "hue": "#8498fa",
+      "accent": "#6D28D9",
+      "mask": "severe",
+      "eye": "slit",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #8498fa as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with half-lidded calculating eyes and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-zealot.png",
+    "label": "Rendra (schemer x zealot)",
+    "parents": "schemer x zealot",
+    "genome": {
+      "hue": "#d1a58f",
+      "accent": "#B45309",
+      "mask": "severe",
+      "eye": "slit",
+      "brow": "fervent",
+      "glyph": "flame",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #d1a58f as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with half-lidded calculating eyes and a righteous exalted expression. a flame and sunburst-halo motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-brute.png",
+    "label": "Kortyr (schemer x brute)",
+    "parents": "schemer x brute",
+    "genome": {
+      "hue": "#d18f9b",
+      "accent": "#9A3412",
+      "mask": "peak",
+      "eye": "slit",
+      "brow": "heavy",
+      "glyph": "serpent",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #d18f9b as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a sleek sharp aristocratic mask with a peaked crest, with half-lidded calculating eyes and a clenched heavy jaw with a faint scar. a coiled serpent and interlocking-rings motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-trickster.png",
+    "label": "Sylovo (schemer x trickster)",
+    "parents": "schemer x trickster",
+    "genome": {
+      "hue": "#65aff4",
+      "accent": "#0E7490",
+      "mask": "jester",
+      "eye": "odd",
+      "brow": "scheme",
+      "glyph": "serpent",
+      "pattern": "grid"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #65aff4 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing an asymmetric harlequin jester mask, with mismatched asymmetric eyes and a faint knowing smirk. a coiled serpent and interlocking-rings motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-martyr.png",
+    "label": "Zelces (schemer x martyr)",
+    "parents": "schemer x martyr",
+    "genome": {
+      "hue": "#6eafca",
+      "accent": "#047857",
+      "mask": "severe",
+      "eye": "downcast",
+      "brow": "scheme",
+      "glyph": "tear",
+      "pattern": "grid"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #6eafca as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with downcast glistening sorrowful eyes with a single tear and a faint knowing smirk. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-schemer-ghost.png",
+    "label": "Vexmir (schemer x ghost)",
+    "parents": "schemer x ghost",
+    "genome": {
+      "hue": "#9e97d9",
+      "accent": "#475569",
+      "mask": "peak",
+      "eye": "slit",
+      "brow": "scheme",
+      "glyph": "wisp",
+      "pattern": "grid"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #9e97d9 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a sleek sharp aristocratic mask with a peaked crest, with half-lidded calculating eyes and a faint knowing smirk. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-charmer-inquisitor.png",
+    "label": "Ovomor (charmer x inquisitor)",
+    "parents": "charmer x inquisitor",
+    "genome": {
+      "hue": "#aa8cd8",
+      "accent": "#BE185D",
+      "mask": "severe",
+      "eye": "stare",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #aa8cd8 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with piercing focused eyes, a lens or monocle motif and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-charmer-zealot.png",
+    "label": "Sylren (charmer x zealot)",
+    "parents": "charmer x zealot",
+    "genome": {
+      "hue": "#f8996d",
+      "accent": "#BE185D",
+      "mask": "round",
+      "eye": "fervent",
+      "brow": "fervent",
+      "glyph": "flame",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #f8996d as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a smooth rounded hood, soft and inviting, with burning exalted eyes and a righteous exalted expression. a flame and sunburst-halo motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-charmer-brute.png",
+    "label": "Renkor (charmer x brute)",
+    "parents": "charmer x brute",
+    "genome": {
+      "hue": "#f88279",
+      "accent": "#BE185D",
+      "mask": "heavy",
+      "eye": "soft",
+      "brow": "warm",
+      "glyph": "rose",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #f88279 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with warm soft open eyes and a genuine, disarming smile. a single rose motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-charmer-trickster.png",
+    "label": "Kortyr (charmer x trickster)",
+    "parents": "charmer x trickster",
+    "genome": {
+      "hue": "#8ba3d2",
+      "accent": "#BE185D",
+      "mask": "flame",
+      "eye": "soft",
+      "brow": "warm",
+      "glyph": "rose",
+      "pattern": "rays"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #8ba3d2 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a crown of flame rising above the mask, with warm soft open eyes and a genuine, disarming smile. a single rose motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-charmer-martyr.png",
+    "label": "Ashtyr (charmer x martyr)",
+    "parents": "charmer x martyr",
+    "genome": {
+      "hue": "#94a3a8",
+      "accent": "#BE185D",
+      "mask": "flame",
+      "eye": "downcast",
+      "brow": "warm",
+      "glyph": "tear",
+      "pattern": "rays"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #94a3a8 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a crown of flame rising above the mask, with downcast glistening sorrowful eyes with a single tear and a genuine, disarming smile. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-charmer-ghost.png",
+    "label": "Dranyx (charmer x ghost)",
+    "parents": "charmer x ghost",
+    "genome": {
+      "hue": "#c48bb7",
+      "accent": "#BE185D",
+      "mask": "round",
+      "eye": "hollow",
+      "brow": "warm",
+      "glyph": "wisp",
+      "pattern": "rays"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #c48bb7 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a smooth rounded hood, soft and inviting, with hollow blank barely-there eyes and a genuine, disarming smile. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-inquisitor-zealot.png",
+    "label": "Ceszel (inquisitor x zealot)",
+    "parents": "inquisitor x zealot",
+    "genome": {
+      "hue": "#aeb28f",
+      "accent": "#B45309",
+      "mask": "heavy",
+      "eye": "fervent",
+      "brow": "fervent",
+      "glyph": "flame",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #aeb28f as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with burning exalted eyes and a righteous exalted expression. a flame and sunburst-halo motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-inquisitor-brute.png",
+    "label": "Syllune (inquisitor x brute)",
+    "parents": "inquisitor x brute",
+    "genome": {
+      "hue": "#ae9c9b",
+      "accent": "#9A3412",
+      "mask": "heavy",
+      "eye": "hard",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #ae9c9b as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with small hard eyes and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-inquisitor-trickster.png",
+    "label": "Renmir (inquisitor x trickster)",
+    "parents": "inquisitor x trickster",
+    "genome": {
+      "hue": "#41bcf4",
+      "accent": "#0E7490",
+      "mask": "heavy",
+      "eye": "odd",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #41bcf4 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with mismatched asymmetric eyes and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-inquisitor-martyr.png",
+    "label": "Tyrvex (inquisitor x martyr)",
+    "parents": "inquisitor x martyr",
+    "genome": {
+      "hue": "#4abcca",
+      "accent": "#047857",
+      "mask": "heavy",
+      "eye": "stare",
+      "brow": "stern",
+      "glyph": "tear",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #4abcca as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with piercing focused eyes, a lens or monocle motif and a stern flat mouth. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-inquisitor-ghost.png",
+    "label": "Mirtyr (inquisitor x ghost)",
+    "parents": "inquisitor x ghost",
+    "genome": {
+      "hue": "#7aa4d9",
+      "accent": "#475569",
+      "mask": "wisp",
+      "eye": "stare",
+      "brow": "stern",
+      "glyph": "wisp",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #7aa4d9 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a faint semi-translucent mask dissolving into wisps of smoke at the edges, with piercing focused eyes, a lens or monocle motif and a stern flat mouth. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-zealot-brute.png",
+    "label": "Lunevex (zealot x brute)",
+    "parents": "zealot x brute",
+    "genome": {
+      "hue": "#fba930",
+      "accent": "#B45309",
+      "mask": "flame",
+      "eye": "fervent",
+      "brow": "fervent",
+      "glyph": "flame",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #fba930 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a crown of flame rising above the mask, with burning exalted eyes and a righteous exalted expression. a flame and sunburst-halo motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-zealot-trickster.png",
+    "label": "Morkor (zealot x trickster)",
+    "parents": "zealot x trickster",
+    "genome": {
+      "hue": "#8fc989",
+      "accent": "#B45309",
+      "mask": "flame",
+      "eye": "odd",
+      "brow": "fervent",
+      "glyph": "flame",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #8fc989 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a crown of flame rising above the mask, with mismatched asymmetric eyes and a righteous exalted expression. a flame and sunburst-halo motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-zealot-martyr.png",
+    "label": "Drasyl (zealot x martyr)",
+    "parents": "zealot x martyr",
+    "genome": {
+      "hue": "#98c95f",
+      "accent": "#B45309",
+      "mask": "halo",
+      "eye": "downcast",
+      "brow": "fervent",
+      "glyph": "tear",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #98c95f as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a serene mask beneath a faint glowing halo, with downcast glistening sorrowful eyes with a single tear and a righteous exalted expression. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-zealot-ghost.png",
+    "label": "Velkor (zealot x ghost)",
+    "parents": "zealot x ghost",
+    "genome": {
+      "hue": "#c8b16e",
+      "accent": "#B45309",
+      "mask": "wisp",
+      "eye": "fervent",
+      "brow": "none",
+      "glyph": "wisp",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #c8b16e as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a faint semi-translucent mask dissolving into wisps of smoke at the edges, with burning exalted eyes and barely-there, deliberately forgettable features. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-brute-trickster.png",
+    "label": "Cesvel (brute x trickster)",
+    "parents": "brute x trickster",
+    "genome": {
+      "hue": "#8fb395",
+      "accent": "#0E7490",
+      "mask": "halo",
+      "eye": "hard",
+      "brow": "heavy",
+      "glyph": "fist",
+      "pattern": "harlequin"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #8fb395 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a serene mask beneath a faint glowing halo, with small hard eyes and a clenched heavy jaw with a faint scar. a fist and anvil motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-brute-martyr.png",
+    "label": "Vexces (brute x martyr)",
+    "parents": "brute x martyr",
+    "genome": {
+      "hue": "#98b36b",
+      "accent": "#047857",
+      "mask": "halo",
+      "eye": "hard",
+      "brow": "heavy",
+      "glyph": "tear",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #98b36b as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a serene mask beneath a faint glowing halo, with small hard eyes and a clenched heavy jaw with a faint scar. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-brute-ghost.png",
+    "label": "Mirlune (brute x ghost)",
+    "parents": "brute x ghost",
+    "genome": {
+      "hue": "#c89b7a",
+      "accent": "#9A3412",
+      "mask": "heavy",
+      "eye": "hollow",
+      "brow": "none",
+      "glyph": "wisp",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #c89b7a as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a heavy massive cracked stone-and-iron mask, with hollow blank barely-there eyes and barely-there, deliberately forgettable features. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-trickster-martyr.png",
+    "label": "Dravex (trickster x martyr)",
+    "parents": "trickster x martyr",
+    "genome": {
+      "hue": "#2bd3c4",
+      "accent": "#0E7490",
+      "mask": "jester",
+      "eye": "odd",
+      "brow": "soft",
+      "glyph": "tear",
+      "pattern": "harlequin"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #2bd3c4 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing an asymmetric harlequin jester mask, with mismatched asymmetric eyes and a gentle resigned mouth. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-trickster-ghost.png",
+    "label": "Morren (trickster x ghost)",
+    "parents": "trickster x ghost",
+    "genome": {
+      "hue": "#5bbbd3",
+      "accent": "#475569",
+      "mask": "jester",
+      "eye": "odd",
+      "brow": "none",
+      "glyph": "wisp",
+      "pattern": "harlequin"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #5bbbd3 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing an asymmetric harlequin jester mask, with mismatched asymmetric eyes and barely-there, deliberately forgettable features. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen1-martyr-ghost.png",
+    "label": "Drazel (martyr x ghost)",
+    "parents": "martyr x ghost",
+    "genome": {
+      "hue": "#64bba9",
+      "accent": "#047857",
+      "mask": "peak",
+      "eye": "hollow",
+      "brow": "none",
+      "glyph": "wisp",
+      "pattern": "glow"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #64bba9 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a sleek sharp aristocratic mask with a peaked crest, with hollow blank barely-there eyes and barely-there, deliberately forgettable features. a vanishing-wisp motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen2-0.png",
+    "label": "Nyxren (Lunevel x Nyxren)",
+    "parents": "Lunevel x Nyxren",
+    "genome": {
+      "hue": "#a98ce9",
+      "accent": "#6D28D9",
+      "mask": "severe",
+      "eye": "soft",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "lines"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #a98ce9 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with warm soft open eyes and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen2-1.png",
+    "label": "Renzel (Rendra x Kortyr)",
+    "parents": "Rendra x Kortyr",
+    "genome": {
+      "hue": "#d19a95",
+      "accent": "#9A3412",
+      "mask": "severe",
+      "eye": "slit",
+      "brow": "fervent",
+      "glyph": "serpent",
+      "pattern": "sun"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #d19a95 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a severe angular interrogator's mask, with half-lidded calculating eyes and a righteous exalted expression. a coiled serpent and interlocking-rings motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen2-2.png",
+    "label": "Renash (Sylovo x Zelces)",
+    "parents": "Sylovo x Zelces",
+    "genome": {
+      "hue": "#6aafdf",
+      "accent": "#047857",
+      "mask": "wisp",
+      "eye": "downcast",
+      "brow": "scheme",
+      "glyph": "tear",
+      "pattern": "grid"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #6aafdf as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a faint semi-translucent mask dissolving into wisps of smoke at the edges, with downcast glistening sorrowful eyes with a single tear and a faint knowing smirk. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen2-3.png",
+    "label": "Nyxces (Vexmir x Ovomor)",
+    "parents": "Vexmir x Ovomor",
+    "genome": {
+      "hue": "#a492d9",
+      "accent": "#475569",
+      "mask": "halo",
+      "eye": "slit",
+      "brow": "stern",
+      "glyph": "eye",
+      "pattern": "grid"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #a492d9 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a serene mask beneath a faint glowing halo, with half-lidded calculating eyes and a stern flat mouth. an all-seeing eye and scales-of-justice motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen2-4.png",
+    "label": "Ovokor (Sylren x Renkor)",
+    "parents": "Sylren x Renkor",
+    "genome": {
+      "hue": "#f88e73",
+      "accent": "#BE185D",
+      "mask": "jester",
+      "eye": "soft",
+      "brow": "fervent",
+      "glyph": "rose",
+      "pattern": "bars"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #f88e73 as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing an asymmetric harlequin jester mask, with warm soft open eyes and a righteous exalted expression. a single rose motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  },
+  {
+    "file": "gen2-5.png",
+    "label": "Sylovo (Kortyr x Ashtyr)",
+    "parents": "Kortyr x Ashtyr",
+    "genome": {
+      "hue": "#90a3bd",
+      "accent": "#BE185D",
+      "mask": "flame",
+      "eye": "soft",
+      "brow": "warm",
+      "glyph": "tear",
+      "pattern": "rays"
+    },
+    "prompt": "Stylized painterly character portrait, head and shoulders, facing forward, a masked conspirator of a secret candlelit society. Square 1024x1024, centered bust with a little headroom, dark near-black moody background with a faint candlelit vignette, one dramatic warm key light plus the character's own colored rim glow. Premium, clean, cohesive rendering, the look of a high-status collectible character set. No text, no frame, no logo. The character is dominated by its signature color #90a3bd as rim light, glow, and accents over the dark base; make this color unmistakable. Wearing a crown of flame rising above the mask, with warm soft open eyes and a genuine, disarming smile. a halo and teardrop motif. Elegant, dramatic, a little sinister, beautiful and high-status."
+  }
+]

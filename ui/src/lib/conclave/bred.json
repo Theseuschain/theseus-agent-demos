@@ -1,0 +1,206 @@
+[
+  {
+    "file": "gen-01.png",
+    "name": "Lunevel",
+    "parents": "schemer × charmer",
+    "hue": "#ce7fd8"
+  },
+  {
+    "file": "gen-02.png",
+    "name": "Nyxren",
+    "parents": "schemer × inquisitor",
+    "hue": "#8498fa"
+  },
+  {
+    "file": "gen-03.png",
+    "name": "Rendra",
+    "parents": "schemer × zealot",
+    "hue": "#d1a58f"
+  },
+  {
+    "file": "gen-04.png",
+    "name": "Kortyr",
+    "parents": "schemer × brute",
+    "hue": "#d18f9b"
+  },
+  {
+    "file": "gen-05.png",
+    "name": "Sylovo",
+    "parents": "schemer × trickster",
+    "hue": "#65aff4"
+  },
+  {
+    "file": "gen-06.png",
+    "name": "Zelces",
+    "parents": "schemer × martyr",
+    "hue": "#6eafca"
+  },
+  {
+    "file": "gen-07.png",
+    "name": "Vexmir",
+    "parents": "schemer × ghost",
+    "hue": "#9e97d9"
+  },
+  {
+    "file": "gen-08.png",
+    "name": "Ovomor",
+    "parents": "charmer × inquisitor",
+    "hue": "#aa8cd8"
+  },
+  {
+    "file": "gen-09.png",
+    "name": "Sylren",
+    "parents": "charmer × zealot",
+    "hue": "#f8996d"
+  },
+  {
+    "file": "gen-10.png",
+    "name": "Renkor",
+    "parents": "charmer × brute",
+    "hue": "#f88279"
+  },
+  {
+    "file": "gen-11.png",
+    "name": "Kortyr",
+    "parents": "charmer × trickster",
+    "hue": "#8ba3d2"
+  },
+  {
+    "file": "gen-12.png",
+    "name": "Ashtyr",
+    "parents": "charmer × martyr",
+    "hue": "#94a3a8"
+  },
+  {
+    "file": "gen-13.png",
+    "name": "Dranyx",
+    "parents": "charmer × ghost",
+    "hue": "#c48bb7"
+  },
+  {
+    "file": "gen-14.png",
+    "name": "Ceszel",
+    "parents": "inquisitor × zealot",
+    "hue": "#aeb28f"
+  },
+  {
+    "file": "gen-15.png",
+    "name": "Syllune",
+    "parents": "inquisitor × brute",
+    "hue": "#ae9c9b"
+  },
+  {
+    "file": "gen-16.png",
+    "name": "Renmir",
+    "parents": "inquisitor × trickster",
+    "hue": "#41bcf4"
+  },
+  {
+    "file": "gen-17.png",
+    "name": "Tyrvex",
+    "parents": "inquisitor × martyr",
+    "hue": "#4abcca"
+  },
+  {
+    "file": "gen-18.png",
+    "name": "Mirtyr",
+    "parents": "inquisitor × ghost",
+    "hue": "#7aa4d9"
+  },
+  {
+    "file": "gen-19.png",
+    "name": "Lunevex",
+    "parents": "zealot × brute",
+    "hue": "#fba930"
+  },
+  {
+    "file": "gen-20.png",
+    "name": "Morkor",
+    "parents": "zealot × trickster",
+    "hue": "#8fc989"
+  },
+  {
+    "file": "gen-21.png",
+    "name": "Drasyl",
+    "parents": "zealot × martyr",
+    "hue": "#98c95f"
+  },
+  {
+    "file": "gen-22.png",
+    "name": "Velkor",
+    "parents": "zealot × ghost",
+    "hue": "#c8b16e"
+  },
+  {
+    "file": "gen-23.png",
+    "name": "Cesvel",
+    "parents": "brute × trickster",
+    "hue": "#8fb395"
+  },
+  {
+    "file": "gen-24.png",
+    "name": "Vexces",
+    "parents": "brute × martyr",
+    "hue": "#98b36b"
+  },
+  {
+    "file": "gen-25.png",
+    "name": "Mirlune",
+    "parents": "brute × ghost",
+    "hue": "#c89b7a"
+  },
+  {
+    "file": "gen-26.png",
+    "name": "Dravex",
+    "parents": "trickster × martyr",
+    "hue": "#2bd3c4"
+  },
+  {
+    "file": "gen-27.png",
+    "name": "Morren",
+    "parents": "trickster × ghost",
+    "hue": "#5bbbd3"
+  },
+  {
+    "file": "gen-28.png",
+    "name": "Drazel",
+    "parents": "martyr × ghost",
+    "hue": "#64bba9"
+  },
+  {
+    "file": "gen-29.png",
+    "name": "Nyxren",
+    "parents": "Lunevel × Nyxren",
+    "hue": "#a98ce9"
+  },
+  {
+    "file": "gen-30.png",
+    "name": "Renzel",
+    "parents": "Rendra × Kortyr",
+    "hue": "#d19a95"
+  },
+  {
+    "file": "gen-31.png",
+    "name": "Renash",
+    "parents": "Sylovo × Zelces",
+    "hue": "#6aafdf"
+  },
+  {
+    "file": "gen-32.png",
+    "name": "Nyxces",
+    "parents": "Vexmir × Ovomor",
+    "hue": "#a492d9"
+  },
+  {
+    "file": "gen-33.png",
+    "name": "Ovokor",
+    "parents": "Sylren × Renkor",
+    "hue": "#f88e73"
+  },
+  {
+    "file": "gen-34.png",
+    "name": "Sylovo",
+    "parents": "Kortyr × Ashtyr",
+    "hue": "#90a3bd"
+  }
+]

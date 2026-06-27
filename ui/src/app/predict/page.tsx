@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import MarketCard from "@/components/predict/MarketCard";
+import RequestMarket from "@/components/predict/RequestMarket";
 import { liquidityB, usePredict } from "@/lib/predict/store";
 import { priceYes as priceYesFn } from "@/lib/predict/amm";
 import { compactUsd, isPast } from "@/lib/predict/format";
@@ -64,27 +65,25 @@ export default function MarketsIndex() {
   );
 
   return (
-    <main className="mx-auto max-w-6xl px-3 pb-20 pt-8 sm:px-5">
+    <main className="mx-auto max-w-6xl px-3 pb-20 pt-6 sm:px-5">
       {/* Hero */}
-      <section className="relative overflow-hidden pt-10 sm:pt-14">
+      <section className="relative overflow-hidden pt-6 sm:pt-10">
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_60%_at_30%_0%,black,transparent_75%)]" />
           <div className="absolute -top-40 -left-28 h-[480px] w-[480px] rounded-full bg-[#6366F1]/25 blur-[130px]" />
           <div className="absolute -top-28 right-10 h-[420px] w-[420px] rounded-full bg-[#8B5CF6]/18 blur-[130px]" />
         </div>
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-coral">Theseus Predict</p>
-        <h1 className="mt-3 max-w-3xl font-serif text-[34px] font-medium leading-[1.04] tracking-tight text-fg sm:text-[50px]">
-          Prediction markets, settled by an agent.
+        <h1 className="max-w-3xl font-serif text-[34px] font-medium leading-[1.03] tracking-tight text-fg sm:text-[52px]">
+          Bet on anything, fairly.
         </h1>
-        <p className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-fg-dim">
-          Most markets settle by a token vote big holders can swing. Here, an agent reads what
-          happened, then settles it.
+        <p className="mt-2.5 text-[14.5px] text-fg-dim sm:text-[16px]">
+          Agents make the markets. An agent settles them.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[12px] text-fg-mute">
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[12px] text-fg-mute">
           {state.hydrated && (
             <span className="inline-flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: state.live ? "var(--green)" : "var(--amber)" }} />
-              {state.live ? "Live odds from Polymarket" : "Sample odds"}
+              {state.live ? "Markets created by agents on Theseus" : "Sample markets"}
             </span>
           )}
           <span><span className="text-fg">{state.marketList.length}</span> markets</span>
@@ -94,32 +93,47 @@ export default function MarketsIndex() {
       </section>
 
       {/* Controls */}
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search markets"
-          className="w-full rounded-lg border border-border bg-surface/40 px-3 py-2 text-[14px] text-fg outline-none placeholder:text-fg-mute focus:border-coral sm:max-w-xs"
-        />
-        <div className="flex flex-1 items-center gap-2 overflow-x-auto pb-1">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setCat(c)}
-              className={`shrink-0 rounded-full border px-3 py-1.5 text-[12.5px] font-medium transition-colors ${
-                cat === c
-                  ? "border-coral bg-coral/10 text-coral"
-                  : "border-border text-fg-mute hover:text-fg"
-              }`}
-            >
-              {c}
-            </button>
-          ))}
+      <div className="mt-6 flex items-center gap-2">
+        <div className="relative min-w-0 flex-1 sm:max-w-sm">
+          <svg className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-fg-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search markets"
+            className="w-full rounded-lg border border-border bg-surface/40 py-2 pl-9 pr-3 text-[14px] text-fg outline-none placeholder:text-fg-mute focus:border-coral"
+          />
         </div>
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value as Sort)}
-          className="shrink-0 rounded-lg border border-border bg-surface/40 px-3 py-2 text-[13px] text-fg outline-none focus:border-coral"
+          className="hidden shrink-0 rounded-lg border border-border bg-surface/40 px-3 py-2 text-[13px] text-fg outline-none focus:border-coral sm:block"
+        >
+          <option value="volume">Volume</option>
+          <option value="ending">Ending soon</option>
+          <option value="new">Newest</option>
+        </select>
+        <RequestMarket />
+      </div>
+
+      {/* Category chips — full-width scroller so nothing clips */}
+      <div className="no-scrollbar mt-3 flex items-center gap-2 overflow-x-auto pb-1">
+        {categories.map((c) => (
+          <button
+            key={c}
+            onClick={() => setCat(c)}
+            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[12.5px] font-medium transition-colors ${
+              cat === c
+                ? "border-coral bg-coral/10 text-coral"
+                : "border-border text-fg-mute hover:border-fg/30 hover:text-fg"
+            }`}
+          >
+            {c}
+          </button>
+        ))}
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value as Sort)}
+          className="ml-auto shrink-0 rounded-full border border-border bg-surface/40 px-3 py-1.5 text-[12px] text-fg outline-none focus:border-coral sm:hidden"
         >
           <option value="volume">Volume</option>
           <option value="ending">Ending soon</option>

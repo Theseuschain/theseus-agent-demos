@@ -73,6 +73,17 @@ export default function MarketDetail({ slug }: { slug: string }) {
                 <span className={closed && !settled ? "text-amber" : undefined}>
                   {settled ? "Settled" : closed ? "Awaiting settlement" : `Ends ${fmtDate(seed.deadlineISO)} · ${untilDeadline(seed.deadlineISO)}`}
                 </span>
+                {seed.createdBy && (
+                  <a
+                    href={seed.createdBy.explorerUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Written on-chain by a Theseus agent. Verify it."
+                    className="rounded-full border border-coral/30 px-2 py-0.5 text-coral transition-colors hover:bg-coral/10"
+                  >
+                    made by {seed.createdBy.agent} ↗
+                  </a>
+                )}
               </div>
             </div>
           </div>

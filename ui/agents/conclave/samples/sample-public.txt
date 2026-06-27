@@ -1,0 +1,123 @@
+
+=== CONCLAVE — match (seed 1, MOCK) ===
+Pot: 1000 THE. 8 players, 2 Traitors. Genomes hidden from the table. Model: claude-opus-4-8.
+
+----- ROUND 1 -----
+
+[discussion]
+  Cyril: [charmer] Cyril makes a play for the room.
+  Faye: [schemer] Faye makes a play for the room.
+  Emir: [ghost] Emir makes a play for the room.
+  Della: [trickster] Della makes a play for the room.
+  Ada: [zealot] Ada makes a play for the room.
+  Boone: [martyr] Boone makes a play for the room.
+  Hana: [inquisitor] Hana makes a play for the room.
+  Gus: [brute] Gus makes a play for the room.
+  Hana: [inquisitor] Hana makes a play for the room.
+  Emir: [ghost] Emir makes a play for the room.
+  Cyril: [charmer] Cyril makes a play for the room.
+  Ada: [zealot] Ada makes a play for the room.
+  Della: [trickster] Della makes a play for the room.
+  Boone: [martyr] Boone makes a play for the room.
+  Faye: [schemer] Faye makes a play for the room.
+  Gus: [brute] Gus makes a play for the room.
+
+[vote]
+  Ada: My read says Emir. Voting Emir.
+  Boone: My read says Faye. Voting Faye.
+  Cyril: My read says Ada. Voting Ada.
+  Della: My read says Hana. Voting Hana.
+  Emir: My read says Cyril. Voting Cyril.
+  Faye: My read says Gus. Voting Gus.
+  Gus: My read says Della. Voting Della.
+  Hana: My read says Faye. Voting Faye.
+  Votes: Ada->Emir, Boone->Faye, Cyril->Ada, Della->Hana, Emir->Cyril, Faye->Gus, Gus->Della, Hana->Faye
+
+  >> Faye is banished (votes {'Emir': 1, 'Faye': 2, 'Ada': 1, 'Hana': 1, 'Cyril': 1, 'Gus': 1, 'Della': 1}). They were FAITHFUL.  [the table burned a Faithful]
+
+[night]
+
+  >> Night falls. Gus is murdered. They were FAITHFUL.
+
+----- ROUND 2 -----
+
+[discussion]
+  Cyril: [charmer] Cyril makes a play for the room.
+  Boone: [martyr] Boone makes a play for the room.
+  Hana: [inquisitor] Hana makes a play for the room.
+  Della: [trickster] Della makes a play for the room.
+  Ada: [zealot] Ada makes a play for the room.
+  Emir: [ghost] Emir makes a play for the room.
+  Cyril: [charmer] Cyril makes a play for the room.
+  Boone: [martyr] Boone makes a play for the room.
+  Emir: [ghost] Emir makes a play for the room.
+  Hana: [inquisitor] Hana makes a play for the room.
+  Ada: [zealot] Ada makes a play for the room.
+  Della: [trickster] Della makes a play for the room.
+
+[vote]
+  Ada: My read says Cyril. Voting Cyril.
+  Boone: My read says Hana. Voting Hana.
+  Cyril: My read says Hana. Voting Hana.
+  Della: My read says Hana. Voting Hana.
+  Emir: My read says Ada. Voting Ada.
+  Hana: My read says Emir. Voting Emir.
+  Votes: Ada->Cyril, Boone->Hana, Cyril->Hana, Della->Hana, Emir->Ada, Hana->Emir
+
+  >> Hana is banished (votes {'Cyril': 1, 'Hana': 3, 'Ada': 1, 'Emir': 1}). They were FAITHFUL.  [the table burned a Faithful]
+
+[night]  (the table is small now; no murder, the vote decides it)
+
+----- ROUND 3 -----
+
+[discussion]
+  Cyril: [charmer] Cyril makes a play for the room.
+  Emir: [ghost] Emir makes a play for the room.
+  Ada: [zealot] Ada makes a play for the room.
+  Della: [trickster] Della makes a play for the room.
+  Boone: [martyr] Boone makes a play for the room.
+  Della: [trickster] Della makes a play for the room.
+  Emir: [ghost] Emir makes a play for the room.
+  Boone: [martyr] Boone makes a play for the room.
+  Cyril: [charmer] Cyril makes a play for the room.
+  Ada: [zealot] Ada makes a play for the room.
+
+[vote]
+  Ada: My read says Boone. Voting Boone.
+  Boone: My read says Cyril. Voting Cyril.
+  Cyril: My read says Boone. Voting Boone.
+  Della: My read says Boone. Voting Boone.
+  Emir: My read says Boone. Voting Boone.
+  Votes: Ada->Boone, Boone->Cyril, Cyril->Boone, Della->Boone, Emir->Boone
+
+  >> Boone is banished (votes {'Boone': 4, 'Cyril': 1}). They were FAITHFUL.  [the table burned a Faithful]
+
+========== RESULT: TRAITORS WIN ==========
+Survivors: Ada, Cyril, Della, Emir
+
+The story in numbers:
+  round 1: 2/8 votes aimed at an actual Traitor
+  round 2: 1/6 votes aimed at an actual Traitor
+  round 3: 0/5 votes aimed at an actual Traitor
+  round 1: Ada, Gus fingered a Traitor and were overruled
+  round 2: Hana fingered a Traitor and were overruled
+  most-suspected all match: Boone (4 votes drawn)
+  back-room deals: 3 kept, 6 broken
+    knife: R1: Ada whispered Boone to move on Della, then voted Emir
+    knife: R1: Boone whispered Ada to move on Gus, then voted Faye
+    knife: R2: Boone whispered Hana to move on Della, then voted Hana
+    knife: R2: Hana whispered Emir to move on Ada, then voted Emir
+    knife: R3: Ada whispered Emir to move on Emir, then voted Boone
+  Traitors hidden / players left, by round: R1:2/6  R2:2/5
+
+Genome reveal:
+  Ada    FAITHFUL The Zealot       (alive)
+  Boone  FAITHFUL The Martyr       (banished)
+  Cyril  FAITHFUL The Charmer      (alive)
+  Della  TRAITOR  The Trickster    (alive)
+  Emir   TRAITOR  The Ghost        (alive)
+  Faye   FAITHFUL The Schemer      (banished)
+  Gus    FAITHFUL The Brute        (murdered)
+  Hana   FAITHFUL The Inquisitor   (banished)
+
+Attestation chain: 59 signed moves, head b8c095249efa78ed...

@@ -1,0 +1,70 @@
+    ~ Cyril (thinking): (mock) charmer weighs the table
+    ~ Faye (thinking): (mock) schemer weighs the table
+    ~ Emir (thinking): (mock) ghost weighs the table
+    (whisper) Emir -> Della: Let's move the vote to Cyril.
+    ~ Della (thinking): (mock) trickster weighs the table
+    ~ Ada (thinking): (mock) zealot weighs the table
+    (whisper) Ada -> Boone: Let's move the vote to Della.
+    ~ Boone (thinking): (mock) martyr weighs the table
+    (whisper) Boone -> Ada: Let's move the vote to Gus.
+    ~ Hana (thinking): (mock) inquisitor weighs the table
+    ~ Gus (thinking): (mock) brute weighs the table
+    ~ Hana (thinking): (mock) inquisitor weighs the table
+    ~ Emir (thinking): (mock) ghost weighs the table
+    ~ Cyril (thinking): (mock) charmer weighs the table
+    ~ Ada (thinking): (mock) zealot weighs the table
+    ~ Della (thinking): (mock) trickster weighs the table
+    ~ Boone (thinking): (mock) martyr weighs the table
+    ~ Faye (thinking): (mock) schemer weighs the table
+    ~ Gus (thinking): (mock) brute weighs the table
+    ~ Ada (thinking): (mock) Emir fits the murder-math; pushing the vote there.
+    ~ Boone (thinking): (mock) Faye fits the murder-math; pushing the vote there.
+    ~ Cyril (thinking): (mock) I really fear Hana, but I'll throw the table at Ada to keep my hands clean.
+    ~ Della (thinking): (mock) I really fear Gus, but I'll throw the table at Hana to keep my hands clean.
+    ~ Emir (thinking): (mock) Cyril fits the murder-math; pushing the vote there.
+    ~ Faye (thinking): (mock) Gus fits the murder-math; pushing the vote there.
+    ~ Gus (thinking): (mock) Della fits the murder-math; pushing the vote there.
+    ~ Hana (thinking): (mock) I really fear Cyril, but I'll throw the table at Faye to keep my hands clean.
+    (war room) Della: Take Hana tonight.
+    ~ Della (thinking): (mock) trickster weighs the table
+    (war room) Emir: Take Gus tonight.
+    ~ Emir (thinking): (mock) ghost weighs the table
+    ~ Cyril (thinking): (mock) charmer weighs the table
+    ~ Boone (thinking): (mock) martyr weighs the table
+    (whisper) Boone -> Hana: Let's move the vote to Della.
+    ~ Hana (thinking): (mock) inquisitor weighs the table
+    (whisper) Hana -> Emir: Let's move the vote to Ada.
+    ~ Della (thinking): (mock) trickster weighs the table
+    ~ Ada (thinking): (mock) zealot weighs the table
+    ~ Emir (thinking): (mock) ghost weighs the table
+    ~ Cyril (thinking): (mock) charmer weighs the table
+    ~ Boone (thinking): (mock) martyr weighs the table
+    ~ Emir (thinking): (mock) ghost weighs the table
+    ~ Hana (thinking): (mock) inquisitor weighs the table
+    ~ Ada (thinking): (mock) zealot weighs the table
+    (whisper) Ada -> Hana: Let's move the vote to Cyril.
+    ~ Della (thinking): (mock) trickster weighs the table
+    ~ Ada (thinking): (mock) Cyril fits the murder-math; pushing the vote there.
+    ~ Boone (thinking): (mock) I really fear Della, but I'll throw the table at Hana to keep my hands clean.
+    ~ Cyril (thinking): (mock) I really fear Della, but I'll throw the table at Hana to keep my hands clean.
+    ~ Della (thinking): (mock) Hana fits the murder-math; pushing the vote there.
+    ~ Emir (thinking): (mock) I really fear Cyril, but I'll throw the table at Ada to keep my hands clean.
+    ~ Hana (thinking): (mock) Emir fits the murder-math; pushing the vote there.
+    ~ Cyril (thinking): (mock) charmer weighs the table
+    ~ Emir (thinking): (mock) ghost weighs the table
+    ~ Ada (thinking): (mock) zealot weighs the table
+    (whisper) Ada -> Emir: Let's move the vote to Emir.
+    ~ Della (thinking): (mock) trickster weighs the table
+    ~ Boone (thinking): (mock) martyr weighs the table
+    ~ Della (thinking): (mock) trickster weighs the table
+    ~ Emir (thinking): (mock) ghost weighs the table
+    ~ Boone (thinking): (mock) martyr weighs the table
+    ~ Cyril (thinking): (mock) charmer weighs the table
+    (whisper) Cyril -> Ada: Let's move the vote to Della.
+    ~ Ada (thinking): (mock) zealot weighs the table
+    (whisper) Ada -> Boone: Let's move the vote to Boone.
+    ~ Ada (thinking): (mock) I really fear Della, but I'll throw the table at Boone to keep my hands clean.
+    ~ Boone (thinking): (mock) I really fear Emir, but I'll throw the table at Cyril to keep my hands clean.
+    ~ Cyril (thinking): (mock) I really fear Ada, but I'll throw the table at Boone to keep my hands clean.
+    ~ Della (thinking): (mock) I really fear Emir, but I'll throw the table at Boone to keep my hands clean.
+    ~ Emir (thinking): (mock) Boone fits the murder-math; pushing the vote there.
