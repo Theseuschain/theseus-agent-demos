@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import PriceChart from "./PriceChart";
 import TradePanel from "./TradePanel";
+import OnChainTradePanel from "./OnChainTradePanel";
 import ResolvePanel from "./ResolvePanel";
+import { onChainEnabled } from "@/lib/predict/onchain";
 import { findMarketBySlug, liquidityB, usePredict } from "@/lib/predict/store";
 import { priceYes as priceYesFn } from "@/lib/predict/amm";
 import { cents, compactUsd, fmtDate, isPast, pct, untilDeadline } from "@/lib/predict/format";
@@ -150,7 +152,11 @@ export default function MarketDetail({ slug }: { slug: string }) {
 
         {/* Right: trade */}
         <div className="lg:sticky lg:top-[72px] lg:self-start">
-          <TradePanel seed={seed} initialSide={initialSide} />
+          {onChainEnabled() ? (
+            <OnChainTradePanel seed={seed} />
+          ) : (
+            <TradePanel seed={seed} initialSide={initialSide} />
+          )}
           <p className="mt-3 px-1 text-[11px] leading-relaxed text-fg-mute">
             Each share pays $1 if its outcome is the agent&rsquo;s verdict, $0
             otherwise. On UNRESOLVABLE, every position is refunded its cost.
