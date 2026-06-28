@@ -187,6 +187,70 @@ function AgentSettlePanel({ id, spec, delivery, amountLabel, onSettled }: { id: 
   );
 }
 
+function SentinelVerify({ id, spec, delivery, amountLabel, onchain }: { id: number; spec: string; delivery: string; amountLabel: string; onchain: "RELEASE" | "REFUND" | "UNRESOLVABLE" }) {
+  const [sentinel, setSentinel] = useState<Verdict | null>(null);
+  const [sLog, setSLog] = useState("");
+  const [running, setRunning] = useState(false);
+
+  async function verify() {
+    setRunning(true); setSentinel(null); setSLog("");
+    try {
+      const res = await fetch("/api/escrow/adjudicate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ dealId: id, spec, delivery, amountLabel, role: "sentinel" }) });
+      if (!res.body) throw new Error("no stream");
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        const parts = buf.split("\n\n");
+        buf = parts.pop() ?? "";
+        for (const p of parts) {
+          const dl = p.match(/^data: (.*)$/m)?.[1];
+          if (!dl) continue;
+          let d: Record<string, unknown>;
+          try { d = JSON.parse(dl); } catch { continue; }
+          if (d.type === "text_delta") setSLog((l) => l + String(d.text ?? ""));
+          else if (d.type === "final") setSentinel(d.output as unknown as Verdict);
+        }
+      }
+    } catch {
+      /* retryable */
+    } finally {
+      setRunning(false);
+    }
+  }
+
+  return (
+    <div className="mt-3 border-t border-white/10 pt-3">
+      {!sentinel && !running && (
+        <button onClick={verify} className="rounded-lg border border-white/15 px-3 py-1.5 text-[12px] font-medium text-white/85 transition-colors hover:border-white/35">
+          Re-check independently with Sentinel
+        </button>
+      )}
+      {running && !sentinel && <p className="animate-pulse text-[12px] text-white/70">Sentinel is re-judging from scratch, blind to the verdict…</p>}
+      {sLog && !sentinel && <pre className="max-h-40 overflow-auto whitespace-pre-wrap rounded-lg border border-white/10 bg-black/30 p-3 font-mono text-[11px] leading-relaxed text-[#AAB2C5]">{sLog}</pre>}
+      {sentinel && (() => {
+        const agree = sentinel.verdict === onchain;
+        const sTone = sentinel.verdict === "RELEASE" ? "#34D399" : sentinel.verdict === "REFUND" ? "#F87171" : "#9AA3B2";
+        return (
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[11px] text-[#6B7488]">SENTINEL · model B</span>
+              <span className="font-mono text-[12.5px] font-semibold" style={{ color: sTone }}>{sentinel.verdict}</span>
+            </div>
+            <p className="mt-1.5 text-[12px] leading-relaxed text-[#AAB2C5]">{sentinel.evidenceSummary}</p>
+            <div className="mt-2 rounded-lg border px-3 py-2 text-[12px]" style={{ borderColor: agree ? "#34D39940" : "#FBBF2440", background: agree ? "#34D39912" : "#FBBF2412", color: agree ? "#34D399" : "#FBBF24" }}>
+              {agree ? "An independent second model, blind to the verdict, reached the same call." : "The independent model disagrees — a live deal in this state would be held for a human, not paid."}
+            </div>
+          </div>
+        );
+      })()}
+    </div>
+  );
+}
+
 export default function DealView({ id }: { id: number }) {
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
@@ -288,7 +352,8 @@ export default function DealView({ id }: { id: number }) {
       </section>
 
       {terminal && (() => {
-        const tHex = deal.status === STATUS.RELEASED ? "#34D399" : deal.status === STATUS.REFUNDED ? "#FBBF24" : "#9AA3B2";
+        const tHex = deal.status === STATUS.RELEASED ? "#34D399" : deal.status === STATUS.REFUNDED ? "#F87171" : "#9AA3B2";
+        const arbiterVerdict = (deal.status === STATUS.RELEASED ? "RELEASE" : deal.status === STATUS.REFUNDED ? "REFUND" : "UNRESOLVABLE") as "RELEASE" | "REFUND" | "UNRESOLVABLE";
         return (
           <div className="mt-4 rounded-xl border px-5 py-4" style={{ borderColor: `${tHex}40`, background: `${tHex}12` }}>
             <div className="flex items-center gap-2">
@@ -296,9 +361,10 @@ export default function DealView({ id }: { id: number }) {
               <span className="text-[14.5px] font-semibold text-white">{paidLabel}.</span>
             </div>
             <p className="mt-2 text-[12.5px] leading-relaxed text-[#AAB2C5]">
-              Decided by the agent reading the delivery against the brief, then committed on-chain by the escrow contract &mdash; not by a company support queue.{" "}
+              The Arbiter ruled <span className="font-mono font-semibold" style={{ color: tHex }}>{arbiterVerdict}</span>, reading the delivery against the brief, and the contract committed it on-chain &mdash; not a company support queue.{" "}
               <a href={basescanAddressUrl(ESCROW_ADDRESS)} target="_blank" rel="noopener noreferrer" className="text-white/70 underline decoration-white/20 hover:text-white">View on Basescan ↗</a>
             </p>
+            <SentinelVerify id={id} spec={deal.spec} delivery={deal.delivery} amountLabel={`${fmtUsdc(deal.amount)} ${USDC_SYMBOL}`} onchain={arbiterVerdict} />
           </div>
         );
       })()}

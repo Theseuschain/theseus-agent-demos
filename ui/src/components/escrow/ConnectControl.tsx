@@ -16,7 +16,7 @@ export function ConnectControl({ size = "md" }: { size?: "md" | "lg" }) {
           return (
             <button
               onClick={openConnectModal}
-              className={`${base} bg-white text-[#0a0b0d] hover:bg-white/88`}
+              className={`${base} border border-white/20 text-white hover:bg-white/5`}
             >
               Connect wallet
             </button>

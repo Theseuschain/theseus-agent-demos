@@ -76,41 +76,49 @@ function WorkedDispute() {
         <span className="hidden shrink-0 font-mono text-[11px] text-[#6B7488] sm:block">a contested deal</span>
       </div>
       <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-[#8A93A6]">
-        A single-agent escrow pays out on the first verdict. Here the second, independent model catches
-        what the first one waved through &mdash; so the money stays locked.
+        A single-agent escrow pays out on the first verdict. Watch the second, independent model overturn it.
       </p>
 
-      <div className="mt-6 rounded-lg border border-white/[0.07] bg-black/20 p-4">
-        <p className="font-mono text-[10.5px] uppercase tracking-wide text-[#6B7488]">Brief</p>
-        <p className="mt-1 text-[12.5px] leading-relaxed text-white/85">Translate our homepage into French. Native quality &mdash; no machine translation.</p>
-        <p className="mt-3 font-mono text-[10.5px] uppercase tracking-wide text-[#6B7488]">Delivery</p>
-        <p className="mt-1 text-[12.5px] leading-relaxed text-[#AAB2C5]">&laquo; Bienvenue sur notre plateforme. Nous sommes excit&eacute;s de vous avoir ici&hellip; &raquo; <span className="text-[#6B7488]">(full page submitted)</span></p>
-      </div>
-
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-lg border border-[#34D399]/25 bg-[#34D399]/[0.05] p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[12.5px] font-semibold text-white">Arbiter <span className="font-mono text-[10.5px] font-normal text-[#6B7488]">model A</span></span>
-            <span className="font-mono text-[12.5px] font-semibold text-[#34D399]">RELEASE</span>
-          </div>
-          <p className="mt-1.5 text-[12px] leading-relaxed text-[#8A93A6]">&ldquo;Reads fluently and covers every section of the page. Pay the seller.&rdquo;</p>
+      <div className="mt-6 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
+        {/* The deal — supporting context */}
+        <div className="rounded-lg border border-white/[0.07] bg-black/20 p-4">
+          <p className="font-mono text-[10.5px] uppercase tracking-wide text-[#6B7488]">Brief</p>
+          <p className="mt-1 text-[12.5px] leading-relaxed text-white/85">Translate our homepage into French. Native quality &mdash; no machine translation.</p>
+          <p className="mt-3 font-mono text-[10.5px] uppercase tracking-wide text-[#6B7488]">Delivery</p>
+          <p className="mt-1 text-[12.5px] leading-relaxed text-[#AAB2C5]">&laquo; Bienvenue sur notre plateforme. Nous sommes excit&eacute;s de vous avoir ici&hellip; &raquo;</p>
         </div>
-        <div className="rounded-lg border border-[#F87171]/25 bg-[#F87171]/[0.05] p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[12.5px] font-semibold text-white">Sentinel <span className="font-mono text-[10.5px] font-normal text-[#6B7488]">model B · blind</span></span>
-            <span className="font-mono text-[12.5px] font-semibold text-[#F87171]">REFUND</span>
-          </div>
-          <p className="mt-1.5 text-[12px] leading-relaxed text-[#8A93A6]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a word-for-word calque from English, not native French. The brief required native quality.&rdquo;</p>
-        </div>
-      </div>
 
-      <div className="mt-3 flex items-start gap-3 rounded-lg border border-[#FBBF24]/25 bg-[#FBBF24]/[0.05] px-4 py-3">
-        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#FBBF24]" />
-        <p className="text-[12.5px] leading-relaxed text-[#AAB2C5]">
-          <span className="font-semibold text-[#FBBF24]">They disagree, so the funds stay locked.</span> No automatic
-          payout on a contested call &mdash; a human makes the final decision. A single-agent escrow would have
-          released the money on the first verdict.
-        </p>
+        {/* The confrontation — the focus: Sentinel overturns Arbiter */}
+        <div>
+          <div className="rounded-lg border border-white/10 bg-white/[0.015] p-3.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[12px] text-[#9AA3B2]">Arbiter <span className="font-mono text-[10px] text-[#6B7488]">model A</span></span>
+              <span className="font-mono text-[12px] font-semibold text-[#34D399]/55 line-through decoration-[#F87171]/70 decoration-2">RELEASE</span>
+            </div>
+            <p className="mt-1 text-[11.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, covers every section &mdash; pay the seller.&rdquo;</p>
+          </div>
+
+          <div className="flex items-center gap-2 py-1.5 pl-3 text-[#F87171]">
+            <span className="text-[14px] leading-none">&darr;</span>
+            <span className="font-mono text-[10.5px]">Sentinel overrules &mdash; blind to the first verdict</span>
+          </div>
+
+          <div className="rounded-lg border border-[#F87171]/30 bg-[#F87171]/[0.06] p-3.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[12px] font-medium text-white">Sentinel <span className="font-mono text-[10px] font-normal text-[#6B7488]">model B · blind</span></span>
+              <span className="font-mono text-[12px] font-semibold text-[#F87171]">REFUND</span>
+            </div>
+            <p className="mt-1 text-[11.5px] leading-relaxed text-[#AAB2C5]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French. The brief required native quality.&rdquo;</p>
+          </div>
+
+          <div className="mt-3 rounded-lg border border-[#FBBF24]/35 bg-[#FBBF24]/[0.08] p-4">
+            <div className="flex items-baseline gap-2">
+              <span className="font-mono text-[14px] font-bold uppercase tracking-wide text-[#FBBF24]">Funds held</span>
+              <span className="text-[12px] text-[#9AA3B2]">&middot; a human decides</span>
+            </div>
+            <p className="mt-1 text-[12px] leading-relaxed text-[#AAB2C5]">A single-agent escrow would have released the money on the first verdict. Here it stays locked in the contract.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -119,8 +127,9 @@ function WorkedDispute() {
 const FAQ = [
   { q: "What if the agents can’t decide?", a: "Either one can return UNRESOLVABLE — the brief is too vague to score, or the deliverable can’t be verified. The buyer is refunded and a human takes over. The agent never guesses to look decisive." },
   { q: "Who decides on a tie?", a: "Disagreement or UNRESOLVABLE routes to a human review step, not an automatic payout. The contract holds the funds the entire time — neither the agents nor we can move them to ourselves." },
-  { q: "Can a deliverable trick the agent?", a: "The agent only signals a verdict; it holds no keys, so a prompt-injection has nothing to steal. And a second, independent model has to agree before any payout, so fooling one model isn’t enough to move funds." },
-  { q: "Why not Kleros or UMA?", a: "Those settle with staked jurors or an optimistic-oracle challenge window — capital games and multi-day waits. Here two independent models read the actual deliverable in seconds, and you can read their reasoning on-chain." },
+  { q: "Can a deliverable trick the agents?", a: "The agent holds no keys, so a prompt-injection has nothing to steal. It could still try to fool the judgment — but it has to fool two different models the same way, and any disagreement holds the funds for a human. The brief is fixed before the delivery arrives, so the goalposts can’t move." },
+  { q: "Why not Kleros or UMA?", a: "Those settle with staked jurors or an optimistic-oracle challenge window — capital games and multi-day waits. Here two different models read the actual deliverable in seconds, and you can read both their verdicts on-chain." },
+  { q: "Where does the trust bottom out?", a: "The contract is trustless for custody: no one — not the agents, not us — can move locked funds to themselves. What remains is the model providers and the human who breaks ties, and we don’t hide that. The point is that every verdict is on-chain, so you audit it instead of taking it on faith." },
 ];
 
 const TENETS = [
