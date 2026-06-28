@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { faucet, usePredict } from "@/lib/predict/store";
-import { usd } from "@/lib/predict/format";
 import AccountBar from "./AccountBar";
 
 function WalletButton() {
@@ -69,7 +67,6 @@ function NavLinks({ pathname }: { pathname: string }) {
 
 export default function PredictNav() {
   const pathname = usePathname();
-  const { balance, hydrated } = usePredict();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur">
@@ -93,14 +90,6 @@ export default function PredictNav() {
 
           <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
             <WalletButton />
-            <button
-              onClick={() => faucet()}
-              disabled={!hydrated}
-              className="hidden rounded-md border border-border px-2.5 py-2 text-[13px] font-medium text-fg-dim transition-colors hover:border-fg/30 hover:text-fg disabled:opacity-50 sm:inline sm:px-3"
-              title={`Play-money faucet for non-on-chain markets · balance ${hydrated ? usd(balance, { cents: true }) : "—"}`}
-            >
-              + Play funds
-            </button>
             <AccountBar />
           </div>
         </div>
