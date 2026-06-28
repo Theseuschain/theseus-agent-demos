@@ -227,10 +227,10 @@ function SentinelVerify({ id, spec, delivery, amountLabel, onchain }: { id: numb
       {!sentinel && !running && (
         <div className="flex items-center justify-between gap-3">
           <div>
-            <span className="text-[12.5px] text-white">Sentinel <span className="font-mono text-[10px] text-[#6B7488]">model B · independent</span></span>
-            <p className="mt-0.5 text-[11.5px] text-[#7E8696]">re-judge blind, with a different model</p>
+            <span className="text-[12.5px] font-medium text-white">Sentinel <span className="font-mono text-[10px] font-normal text-[#6B7488]">model B · independent</span></span>
+            <p className="mt-0.5 text-[11.5px] text-[#7E8696]">Optional: re-verify with a second model, blind to the verdict.</p>
           </div>
-          <button onClick={verify} className="shrink-0 rounded-md border border-white/15 px-2.5 py-1 text-[11.5px] font-medium text-white/85 transition-colors hover:border-white/35">Re-check →</button>
+          <button onClick={verify} className="shrink-0 rounded-md border border-white/15 px-2.5 py-1 text-[11.5px] font-medium text-white/85 transition-colors hover:border-white/35">Re-verify →</button>
         </div>
       )}
       {running && !sentinel && <p className="animate-pulse text-[12px] text-white/70">Sentinel is re-judging from scratch, blind to the verdict…</p>}
@@ -364,17 +364,19 @@ export default function DealView({ id }: { id: number }) {
               <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#7E8696]">Settlement record</h2>
               <span className="rounded-md border px-2.5 py-0.5 text-[11px] font-medium" style={{ color: tHex, borderColor: `${tHex}40`, background: `${tHex}14` }}>{paidLabel}</span>
             </div>
-            <div className="mt-4 flex items-center justify-between border-t border-white/[0.07] pt-3">
+            <div className="mt-4 flex items-center justify-between rounded-lg border px-3.5 py-3" style={{ borderColor: `${tHex}33`, background: `${tHex}10` }}>
               <div>
-                <span className="text-[12.5px] text-white">Arbiter <span className="font-mono text-[10px] text-[#6B7488]">model A</span></span>
-                <p className="mt-0.5 text-[11.5px] text-[#7E8696]">read the delivery against the brief, on-chain</p>
+                <span className="text-[12.5px] font-medium text-white">Arbiter <span className="font-mono text-[10px] font-normal text-[#6B7488]">model A</span></span>
+                <p className="mt-0.5 text-[11.5px] text-[#7E8696]">ruled on the brief and the delivery, on-chain</p>
               </div>
-              <span className="font-mono text-[13px] font-semibold" style={{ color: tHex }}>{arbiterVerdict}</span>
+              <span className="rounded-md border px-2 py-1 font-mono text-[12px] font-bold leading-none" style={{ color: tHex, borderColor: `${tHex}59`, background: `${tHex}22` }}>{arbiterVerdict}</span>
             </div>
             <SentinelVerify id={id} spec={deal.spec} delivery={deal.delivery} amountLabel={`${fmtUsdc(deal.amount)} ${USDC_SYMBOL}`} onchain={arbiterVerdict} />
-            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-white/[0.07] pt-3 font-mono text-[11px] text-[#6B7488]">
+            <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-white/[0.07] pt-3 font-mono text-[11px] text-[#6B7488]">
+              <span className="text-[#9AA3B2]">{deal.status === STATUS.RELEASED ? "Both agents agreed, so the contract paid out." : deal.status === STATUS.REFUNDED ? "The buyer was refunded." : "The buyer was refunded; a human takes over."}</span>
+              <span className="mx-1">·</span>
               <span>contract <span className="text-white/75">{shortAddr(ESCROW_ADDRESS)}</span></span>
-              <a href={basescanAddressUrl(ESCROW_ADDRESS)} target="_blank" rel="noopener noreferrer" className="text-white/75 underline decoration-white/20 hover:text-white">View on Basescan ↗</a>
+              <a href={basescanAddressUrl(ESCROW_ADDRESS)} target="_blank" rel="noopener noreferrer" className="text-white/75 underline decoration-white/20 hover:text-white">Basescan ↗</a>
             </div>
           </div>
         );

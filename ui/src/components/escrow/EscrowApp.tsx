@@ -93,30 +93,32 @@ function WorkedDispute() {
           <div className="rounded-lg border border-white/10 bg-white/[0.015] p-3.5">
             <div className="flex items-center justify-between">
               <span className="text-[12px] text-[#9AA3B2]">Arbiter <span className="font-mono text-[10px] text-[#6B7488]">model A</span></span>
-              <span className="font-mono text-[12px] font-semibold text-[#34D399]/55 line-through decoration-[#F87171]/70 decoration-2">RELEASE</span>
+              <span className="rounded border border-[#34D399]/25 bg-[#34D399]/[0.07] px-1.5 py-0.5 font-mono text-[11px] font-bold text-[#34D399]/60 line-through decoration-[#F87171] decoration-2">RELEASE</span>
             </div>
             <p className="mt-1 text-[11.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, covers every section, pay the seller.&rdquo;</p>
           </div>
 
-          <div className="flex items-center gap-2 py-1.5 pl-3 text-[#F87171]">
-            <span className="text-[14px] leading-none">&darr;</span>
-            <span className="font-mono text-[10.5px]">Sentinel overrules, blind to the first verdict</span>
+          <div className="flex items-center gap-2 py-2 pl-3.5 font-mono text-[10.5px] text-[#F87171]">
+            <span className="text-[15px] leading-none">&darr;</span>
+            <span>Sentinel overrules, blind to the first verdict</span>
           </div>
 
-          <div className="rounded-lg border border-[#F87171]/30 bg-[#F87171]/[0.06] p-3.5">
+          <div className="rounded-lg border border-[#F87171]/45 bg-[#F87171]/[0.10] p-3.5">
             <div className="flex items-center justify-between">
               <span className="text-[12px] font-medium text-white">Sentinel <span className="font-mono text-[10px] font-normal text-[#6B7488]">model B · blind</span></span>
-              <span className="font-mono text-[12px] font-semibold text-[#F87171]">REFUND</span>
+              <span className="rounded border border-[#F87171]/55 bg-[#F87171]/20 px-1.5 py-0.5 font-mono text-[11px] font-bold text-[#F87171]">REFUND</span>
             </div>
             <p className="mt-1 text-[11.5px] leading-relaxed text-[#AAB2C5]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French. The brief required native quality.&rdquo;</p>
           </div>
 
-          <div className="mt-3 rounded-lg border border-[#FBBF24]/35 bg-[#FBBF24]/[0.08] p-4">
-            <div className="flex items-baseline gap-2">
-              <span className="font-mono text-[14px] font-bold uppercase tracking-wide text-[#FBBF24]">Funds held</span>
-              <span className="text-[12px] text-[#9AA3B2]">&middot; a human decides</span>
+          <div className="mt-3 overflow-hidden rounded-lg border border-[#FBBF24]/50 bg-[#FBBF24]/[0.13]">
+            <div className="border-l-[3px] border-[#FBBF24] p-4">
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-[15px] font-bold uppercase tracking-wide text-[#FBBF24]">Funds held</span>
+                <span className="text-[12px] text-[#9AA3B2]">&middot; a human decides</span>
+              </div>
+              <p className="mt-1 text-[12px] leading-relaxed text-[#AAB2C5]">A single-agent escrow would have released the money on the first verdict. Here it stays locked in the contract.</p>
             </div>
-            <p className="mt-1 text-[12px] leading-relaxed text-[#AAB2C5]">A single-agent escrow would have released the money on the first verdict. Here it stays locked in the contract.</p>
           </div>
         </div>
       </div>
