@@ -46,7 +46,7 @@ function HeroDealCard({ id, spec, amount }: { id: number; spec: string; amount: 
         </div>
         <p className="mt-3 line-clamp-2 text-[13.5px] leading-relaxed text-white/85">{spec}</p>
 
-        {/* The two-agent verdict — the actual differentiator, shown not asserted */}
+        {/* The two-agent verdict, the actual differentiator, shown not asserted */}
         <div className="mt-4 space-y-2 border-t border-white/[0.07] pt-4">
           <div className="flex items-center justify-between">
             <span className="text-[12.5px] text-[#9AA3B2]">Arbiter</span>
@@ -58,7 +58,7 @@ function HeroDealCard({ id, spec, amount }: { id: number; spec: string; amount: 
           </div>
           <div className="flex items-center gap-2 rounded-lg bg-[#34D399]/[0.07] px-3 py-2 text-[12px] text-[#34D399]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" />
-            Both agents agree — released to the seller on-chain.
+            Both agents agree, released to the seller on-chain.
           </div>
         </div>
       </div>
@@ -80,27 +80,27 @@ function WorkedDispute() {
       </p>
 
       <div className="mt-6 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
-        {/* The deal — supporting context */}
+        {/* The deal, supporting context */}
         <div className="rounded-lg border border-white/[0.07] bg-black/20 p-4">
           <p className="font-mono text-[10.5px] uppercase tracking-wide text-[#6B7488]">Brief</p>
-          <p className="mt-1 text-[12.5px] leading-relaxed text-white/85">Translate our homepage into French. Native quality &mdash; no machine translation.</p>
+          <p className="mt-1 text-[12.5px] leading-relaxed text-white/85">Translate our homepage into French. Native quality, no machine translation.</p>
           <p className="mt-3 font-mono text-[10.5px] uppercase tracking-wide text-[#6B7488]">Delivery</p>
           <p className="mt-1 text-[12.5px] leading-relaxed text-[#AAB2C5]">&laquo; Bienvenue sur notre plateforme. Nous sommes excit&eacute;s de vous avoir ici&hellip; &raquo;</p>
         </div>
 
-        {/* The confrontation — the focus: Sentinel overturns Arbiter */}
+        {/* The confrontation, the focus: Sentinel overturns Arbiter */}
         <div>
           <div className="rounded-lg border border-white/10 bg-white/[0.015] p-3.5">
             <div className="flex items-center justify-between">
               <span className="text-[12px] text-[#9AA3B2]">Arbiter <span className="font-mono text-[10px] text-[#6B7488]">model A</span></span>
               <span className="font-mono text-[12px] font-semibold text-[#34D399]/55 line-through decoration-[#F87171]/70 decoration-2">RELEASE</span>
             </div>
-            <p className="mt-1 text-[11.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, covers every section &mdash; pay the seller.&rdquo;</p>
+            <p className="mt-1 text-[11.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, covers every section, pay the seller.&rdquo;</p>
           </div>
 
           <div className="flex items-center gap-2 py-1.5 pl-3 text-[#F87171]">
             <span className="text-[14px] leading-none">&darr;</span>
-            <span className="font-mono text-[10.5px]">Sentinel overrules &mdash; blind to the first verdict</span>
+            <span className="font-mono text-[10.5px]">Sentinel overrules, blind to the first verdict</span>
           </div>
 
           <div className="rounded-lg border border-[#F87171]/30 bg-[#F87171]/[0.06] p-3.5">
@@ -125,17 +125,17 @@ function WorkedDispute() {
 }
 
 const FAQ = [
-  { q: "What if the agents can’t decide?", a: "Either one can return UNRESOLVABLE — the brief is too vague to score, or the deliverable can’t be verified. The buyer is refunded and a human takes over. The agent never guesses to look decisive." },
-  { q: "Who decides on a tie?", a: "Disagreement or UNRESOLVABLE routes to a human review step, not an automatic payout. The contract holds the funds the entire time — neither the agents nor we can move them to ourselves." },
-  { q: "Can a deliverable trick the agents?", a: "The agent holds no keys, so a prompt-injection has nothing to steal. It could still try to fool the judgment — but it has to fool two different models the same way, and any disagreement holds the funds for a human. The brief is fixed before the delivery arrives, so the goalposts can’t move." },
-  { q: "Why not Kleros or UMA?", a: "Those settle with staked jurors or an optimistic-oracle challenge window — capital games and multi-day waits. Here two different models read the actual deliverable in seconds, and you can read both their verdicts on-chain." },
-  { q: "Where does the trust bottom out?", a: "The contract is trustless for custody: no one — not the agents, not us — can move locked funds to themselves. What remains is the model providers and the human who breaks ties, and we don’t hide that. The point is that every verdict is on-chain, so you audit it instead of taking it on faith." },
+  { q: "What if the agents can’t decide?", a: "Either one can return UNRESOLVABLE when the brief is too vague to score or the deliverable can’t be verified. The buyer is refunded and a human takes over. The agent never guesses to look decisive." },
+  { q: "Who decides on a tie?", a: "Disagreement or UNRESOLVABLE routes to a human review step, not an automatic payout. The contract holds the funds the entire time. Neither the agents nor we can move them to ourselves." },
+  { q: "Can a deliverable trick the agents?", a: "The agent holds no keys, so a prompt-injection has nothing to steal. It could still try to fool the judgment, but it has to fool two different models the same way, and any disagreement holds the funds for a human. The brief is fixed before the delivery arrives, so the goalposts can’t move." },
+  { q: "Why not Kleros or UMA?", a: "Those settle with staked jurors or an optimistic-oracle challenge window, capital games and multi-day waits. Here two different models read the actual deliverable in seconds, and you can read both their verdicts on-chain." },
+  { q: "Where does the trust bottom out?", a: "The contract is trustless for custody: no one, not the agents, not us, can move locked funds to themselves. What remains is the model providers and the human who breaks ties, and we don’t hide that. The point is that every verdict is on-chain, so you audit it instead of taking it on faith." },
 ];
 
 const TENETS = [
   {
     h: "The contract holds the keys, not the agent.",
-    p: "Funds sit in the escrow contract. The agent can only ever signal a verdict — it can’t move money to itself, and there’s no key for a prompt-injection to steal.",
+    p: "Funds sit in the escrow contract. The agent can only ever signal a verdict, it can’t move money to itself, and there’s no key for a prompt-injection to steal.",
   },
   {
     h: "Two independent models must agree to pay out.",
@@ -154,7 +154,7 @@ function StatusPill({ status }: { status: number }) {
     : status === 6 ? "text-[#9AA3B2] border-white/10 bg-white/5"
     : status === 3 ? "text-[#F87171] border-[#F87171]/30 bg-[#F87171]/[0.08]"
     : "text-white/80 border-white/15 bg-white/5";
-  return <span className={`shrink-0 rounded-md border px-2.5 py-0.5 text-[11px] font-medium ${tone}`}>{STATUS_LABEL[status] ?? "—"}</span>;
+  return <span className={`shrink-0 rounded-md border px-2.5 py-0.5 text-[11px] font-medium ${tone}`}>{STATUS_LABEL[status] ?? "·"}</span>;
 }
 
 const EXAMPLE_FALLBACK = {
@@ -257,7 +257,7 @@ export default function EscrowApp() {
             </h1>
             <p className="mt-5 max-w-lg text-[15.5px] leading-relaxed text-[#AAB2C5]">
               Funds sit in a contract, so no one can run off with them. When a deal is disputed, an agent
-              rules on the brief &mdash; and a second, independent agent re-checks it. They have to agree to pay
+              rules on the brief, and a second, independent agent re-checks it. They have to agree to pay
               out. If they don&rsquo;t, a human decides.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -279,7 +279,7 @@ export default function EscrowApp() {
         <WorkedDispute />
       </section>
 
-      {/* Tenets — borderless, so they read as a point of view not a card grid */}
+      {/* Tenets, borderless, so they read as a point of view not a card grid */}
       <section className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-3">
         {TENETS.map((t, i) => (
           <div key={t.h}>

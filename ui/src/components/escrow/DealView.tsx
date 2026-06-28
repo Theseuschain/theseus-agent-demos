@@ -152,7 +152,7 @@ function AgentSettlePanel({ id, spec, delivery, amountLabel, onSettled }: { id: 
           <div className="mt-3 border-t border-white/10 pt-3">
             {!sentinel && !sRunning && (
               <>
-                <p className="text-[12px] leading-relaxed text-[#8A93A6]">Don&rsquo;t want to take one agent&rsquo;s word for it? A second agent &mdash; a different model, blind to this verdict &mdash; can re-judge the deal from scratch.</p>
+                <p className="text-[12px] leading-relaxed text-[#8A93A6]">Don&rsquo;t want to take one agent&rsquo;s word for it? A second agent, a different model, blind to this verdict, can re-judge the deal from scratch.</p>
                 <button onClick={appealSentinel} className="mt-2 rounded-lg border border-white/15 px-3 py-1.5 text-[12.5px] font-medium text-white/85 transition-colors hover:border-white/35">
                   Request independent appeal (Sentinel)
                 </button>
@@ -173,8 +173,8 @@ function AgentSettlePanel({ id, spec, delivery, amountLabel, onSettled }: { id: 
                   <p className="mt-1.5 text-[12px] leading-relaxed text-[#AAB2C5]">{sentinel.evidenceSummary}</p>
                   <div className={`mt-2 rounded-lg border px-3 py-2 text-[12px] ${agree ? "border-[#34D399]/30 bg-[#34D399]/10 text-[#34D399]" : "border-[#FBBF24]/30 bg-[#FBBF24]/10 text-[#FBBF24]"}`}>
                     {agree
-                      ? "Upheld — two independent agents, different models, reached the same verdict."
-                      : "Split — the appeal disagrees with the arbiter. A contested call like this is held and escalated to a human instead of paying out."}
+                      ? "Upheld, two independent agents, different models, reached the same verdict."
+                      : "Split, the appeal disagrees with the arbiter. A contested call like this is held and escalated to a human instead of paying out."}
                   </div>
                 </div>
               );
@@ -223,11 +223,15 @@ function SentinelVerify({ id, spec, delivery, amountLabel, onchain }: { id: numb
   }
 
   return (
-    <div className="mt-3 border-t border-white/10 pt-3">
+    <div className="mt-3 border-t border-white/[0.07] pt-3">
       {!sentinel && !running && (
-        <button onClick={verify} className="rounded-lg border border-white/15 px-3 py-1.5 text-[12px] font-medium text-white/85 transition-colors hover:border-white/35">
-          Re-check independently with Sentinel
-        </button>
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <span className="text-[12.5px] text-white">Sentinel <span className="font-mono text-[10px] text-[#6B7488]">model B · independent</span></span>
+            <p className="mt-0.5 text-[11.5px] text-[#7E8696]">re-judge blind, with a different model</p>
+          </div>
+          <button onClick={verify} className="shrink-0 rounded-md border border-white/15 px-2.5 py-1 text-[11.5px] font-medium text-white/85 transition-colors hover:border-white/35">Re-check →</button>
+        </div>
       )}
       {running && !sentinel && <p className="animate-pulse text-[12px] text-white/70">Sentinel is re-judging from scratch, blind to the verdict…</p>}
       {sLog && !sentinel && <pre className="max-h-40 overflow-auto whitespace-pre-wrap rounded-lg border border-white/10 bg-black/30 p-3 font-mono text-[11px] leading-relaxed text-[#AAB2C5]">{sLog}</pre>}
@@ -242,7 +246,7 @@ function SentinelVerify({ id, spec, delivery, amountLabel, onchain }: { id: numb
             </div>
             <p className="mt-1.5 text-[12px] leading-relaxed text-[#AAB2C5]">{sentinel.evidenceSummary}</p>
             <div className="mt-2 rounded-lg border px-3 py-2 text-[12px]" style={{ borderColor: agree ? "#34D39940" : "#FBBF2440", background: agree ? "#34D39912" : "#FBBF2412", color: agree ? "#34D399" : "#FBBF24" }}>
-              {agree ? "An independent second model, blind to the verdict, reached the same call." : "The independent model disagrees — a live deal in this state would be held for a human, not paid."}
+              {agree ? "An independent second model, blind to the verdict, reached the same call." : "The independent model disagrees, a live deal in this state would be held for a human, not paid."}
             </div>
           </div>
         );
@@ -355,16 +359,23 @@ export default function DealView({ id }: { id: number }) {
         const tHex = deal.status === STATUS.RELEASED ? "#34D399" : deal.status === STATUS.REFUNDED ? "#F87171" : "#9AA3B2";
         const arbiterVerdict = (deal.status === STATUS.RELEASED ? "RELEASE" : deal.status === STATUS.REFUNDED ? "REFUND" : "UNRESOLVABLE") as "RELEASE" | "REFUND" | "UNRESOLVABLE";
         return (
-          <div className="mt-4 rounded-xl border px-5 py-4" style={{ borderColor: `${tHex}40`, background: `${tHex}12` }}>
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full" style={{ background: tHex }} />
-              <span className="text-[14.5px] font-semibold text-white">{paidLabel}.</span>
+          <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-5">
+            <div className="flex items-center justify-between">
+              <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#7E8696]">Settlement record</h2>
+              <span className="rounded-md border px-2.5 py-0.5 text-[11px] font-medium" style={{ color: tHex, borderColor: `${tHex}40`, background: `${tHex}14` }}>{paidLabel}</span>
             </div>
-            <p className="mt-2 text-[12.5px] leading-relaxed text-[#AAB2C5]">
-              The Arbiter ruled <span className="font-mono font-semibold" style={{ color: tHex }}>{arbiterVerdict}</span>, reading the delivery against the brief, and the contract committed it on-chain &mdash; not a company support queue.{" "}
-              <a href={basescanAddressUrl(ESCROW_ADDRESS)} target="_blank" rel="noopener noreferrer" className="text-white/70 underline decoration-white/20 hover:text-white">View on Basescan ↗</a>
-            </p>
+            <div className="mt-4 flex items-center justify-between border-t border-white/[0.07] pt-3">
+              <div>
+                <span className="text-[12.5px] text-white">Arbiter <span className="font-mono text-[10px] text-[#6B7488]">model A</span></span>
+                <p className="mt-0.5 text-[11.5px] text-[#7E8696]">read the delivery against the brief, on-chain</p>
+              </div>
+              <span className="font-mono text-[13px] font-semibold" style={{ color: tHex }}>{arbiterVerdict}</span>
+            </div>
             <SentinelVerify id={id} spec={deal.spec} delivery={deal.delivery} amountLabel={`${fmtUsdc(deal.amount)} ${USDC_SYMBOL}`} onchain={arbiterVerdict} />
+            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-white/[0.07] pt-3 font-mono text-[11px] text-[#6B7488]">
+              <span>contract <span className="text-white/75">{shortAddr(ESCROW_ADDRESS)}</span></span>
+              <a href={basescanAddressUrl(ESCROW_ADDRESS)} target="_blank" rel="noopener noreferrer" className="text-white/75 underline decoration-white/20 hover:text-white">View on Basescan ↗</a>
+            </div>
           </div>
         );
       })()}
