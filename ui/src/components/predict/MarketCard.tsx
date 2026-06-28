@@ -11,9 +11,10 @@ interface Props {
   history: PricePoint[];
   volume: number;
   settlement?: Settlement;
+  featured?: boolean;
 }
 
-export default function MarketCard({ seed, priceYes, history, volume, settlement }: Props) {
+export default function MarketCard({ seed, priceYes, history, volume, settlement, featured }: Props) {
   const router = useRouter();
   const href = `/predict/${seed.slug}`;
   const go = (side?: "YES" | "NO") =>
@@ -38,17 +39,17 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
           {seed.shortTitle}
         </p>
         <div className="shrink-0 text-right">
-          <div className="font-mono text-[18px] font-semibold leading-none tabular-nums text-fg">
+          <div className="font-serif text-[26px] font-medium leading-none tracking-tight tabular-nums text-fg">
             {pct(priceYes)}
           </div>
-          <div className="mt-0.5 text-[9.5px] uppercase tracking-[0.14em] text-fg-mute">
+          <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-fg-mute">
             chance
           </div>
         </div>
       </div>
 
-      <div className="mt-3 h-10">
-        <PriceChart history={history} height={40} variant="spark" />
+      <div className={featured ? "mt-3" : "mt-3 h-10"}>
+        <PriceChart history={history} height={featured ? 96 : 40} variant={featured ? "full" : "spark"} />
       </div>
 
       {resolved ? (

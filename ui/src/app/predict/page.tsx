@@ -156,15 +156,17 @@ export default function MarketsIndex() {
         <p className="mt-16 text-center text-fg-mute">No markets match that filter.</p>
       ) : (
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rows.map((r) => (
-            <MarketCard
-              key={r.seed.id}
-              seed={r.seed}
-              priceYes={r.price}
-              history={r.history}
-              volume={r.volume}
-              settlement={r.settlement}
-            />
+          {rows.map((r, i) => (
+            <div key={r.seed.id} className={i === 0 ? "sm:col-span-2 lg:col-span-3" : ""}>
+              <MarketCard
+                seed={r.seed}
+                priceYes={r.price}
+                history={r.history}
+                volume={r.volume}
+                settlement={r.settlement}
+                featured={i === 0}
+              />
+            </div>
           ))}
         </div>
       )}

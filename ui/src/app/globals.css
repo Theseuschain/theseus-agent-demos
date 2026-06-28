@@ -45,6 +45,22 @@
   --dot: rgba(255, 255, 255, 0.04);
 }
 
+/* Theseus Predict — warm, editorial identity. Scoped to the predict app so the
+   other demos keep the default dark theme. Trades cold slate + indigo for a warm
+   near-black and the real coral accent. */
+.dark.predict {
+  --bg: #0c0a09;
+  --surface: #1c1917;
+  --surface-2: #292524;
+  --border: rgba(250, 244, 238, 0.10);
+  --fg: #fafaf9;
+  --fg-dim: #b0a8a2;
+  --fg-mute: #877d75;
+  --coral: #ff5b3a;
+  --coral-dim: #e8492b;
+  --dot: rgba(255, 245, 235, 0.035);
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);

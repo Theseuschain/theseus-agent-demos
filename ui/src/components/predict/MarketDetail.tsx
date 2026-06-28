@@ -6,6 +6,7 @@ import PriceChart from "./PriceChart";
 import TradePanel from "./TradePanel";
 import OnChainTradePanel from "./OnChainTradePanel";
 import ResolvePanel from "./ResolvePanel";
+import AnimatedPct from "./AnimatedPct";
 import { onChainEnabled } from "@/lib/predict/onchain";
 import { findMarketBySlug, liquidityB, usePredict } from "@/lib/predict/store";
 import { priceYes as priceYesFn } from "@/lib/predict/amm";
@@ -94,9 +95,7 @@ export default function MarketDetail({ slug }: { slug: string }) {
           <div className="mt-6 rounded-xl border border-border bg-surface/40 p-4 sm:p-5">
             <div>
               <div className="flex items-baseline gap-2">
-                <span className="font-mono text-[34px] font-semibold leading-none tabular-nums text-fg">
-                  {pct(pYes)}
-                </span>
+                <AnimatedPct value={pYes} className="font-serif text-[46px] font-medium leading-none tracking-tight tabular-nums text-fg" />
                 <span className="text-[13px] text-fg-mute">YES chance</span>
               </div>
               <div
