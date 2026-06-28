@@ -144,7 +144,7 @@ export default function ResolvePanel({ seed }: { seed: SeedMarket }) {
         ? "var(--green)"
         : "var(--red)";
     return (
-      <div className="rounded-xl border border-border bg-surface/40 p-5">
+      <div className="">
         <Header />
         <div
           className="mt-3 rounded-lg border p-4"
@@ -196,7 +196,7 @@ export default function ResolvePanel({ seed }: { seed: SeedMarket }) {
   // ---- not yet at the deadline ----
   if (!isPast(seed.deadlineISO)) {
     return (
-      <div className="rounded-xl border border-border bg-surface/40 p-5">
+      <div className="">
         <Header />
         <p className="mt-3 text-[13px] leading-relaxed text-fg-dim">
           This market is live. When it closes on{" "}
@@ -217,7 +217,7 @@ export default function ResolvePanel({ seed }: { seed: SeedMarket }) {
 
   // ---- past deadline, awaiting settlement ----
   return (
-    <div className="rounded-xl border border-border bg-surface/40 p-5">
+    <div className="">
       <Header />
       {status === "idle" && (
         <>

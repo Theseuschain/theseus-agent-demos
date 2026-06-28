@@ -31,20 +31,12 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
       onKeyDown={(e) => (e.key === "Enter" ? go() : undefined)}
       className="group flex cursor-pointer flex-col rounded-xl border border-border bg-surface/40 p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-fg/25 hover:bg-surface/70 hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)]"
     >
-      <div className="flex items-start gap-3">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-bg text-[18px]">
-          {seed.icon}
-        </span>
-        <p className="line-clamp-2 flex-1 text-[14px] font-medium leading-snug text-fg">
+      <div className="flex items-start justify-between gap-4">
+        <p className="line-clamp-2 text-[14.5px] font-medium leading-snug text-fg">
           {seed.shortTitle}
         </p>
-        <div className="shrink-0 text-right">
-          <div className="font-serif text-[26px] font-medium leading-none tracking-tight tabular-nums text-fg">
-            {pct(priceYes)}
-          </div>
-          <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-fg-mute">
-            chance
-          </div>
+        <div className="shrink-0 font-serif text-[26px] font-medium leading-none tracking-tight tabular-nums text-fg">
+          {pct(priceYes)}
         </div>
       </div>
 
