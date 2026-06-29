@@ -6,6 +6,7 @@ import { priceYes as priceYesFn } from "@/lib/predict/amm";
 import { liquidityB, resetAccount, usePredict } from "@/lib/predict/store";
 import {
   cents,
+  compactUsd,
   shares as fmtShares,
   signedUsd,
   timeAgo,
@@ -43,6 +44,17 @@ export default function PortfolioPage() {
     }
     return rows;
   }, [state, byId]);
+
+  const hot = useMemo(() => {
+    return state.marketList
+      .map((seed) => {
+        const rt = state.markets[seed.id];
+        const price = rt ? priceYesFn(rt.qYes, rt.qNo, liquidityB(seed.id)) : seed.initialYes;
+        return { seed, price, volume: rt?.volumeUsd ?? seed.volumeUsd };
+      })
+      .sort((a, b) => b.volume - a.volume)
+      .slice(0, 3);
+  }, [state]);
 
   const openValue = open.reduce((s, r) => s + r.value, 0);
   const openCost = open.reduce((s, r) => s + r.cost, 0);
@@ -83,12 +95,42 @@ export default function PortfolioPage() {
       {/* Open positions */}
       <Section title="Open positions">
         {open.length === 0 ? (
-          <Empty>
-            No open positions.{" "}
-            <Link href="/predict" className="text-coral hover:underline">
+          <div className="rounded-xl border border-dashed border-border px-5 py-8 text-center">
+            <p className="text-[15px] font-medium text-fg">
+              {usd(state.balance)} of play-money ready to deploy.
+            </p>
+            <p className="mx-auto mt-1.5 max-w-md text-[13px] leading-relaxed text-fg-mute">
+              Buy YES or NO on any market to open a position. Win and your shares pay $1 each; if the agent can&rsquo;t call it, you get refunded.
+            </p>
+            <Link
+              href="/predict"
+              className="mt-4 inline-block rounded-lg bg-coral px-5 py-2.5 text-[13.5px] font-semibold text-white transition-colors hover:bg-coral-dim"
+            >
               Browse markets →
             </Link>
-          </Empty>
+            {hot.length > 0 && (
+              <div className="mt-7 text-left">
+                <p className="mb-2 text-center font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-mute">
+                  Most traded right now
+                </p>
+                <div className="grid gap-2 sm:grid-cols-3">
+                  {hot.map((h) => (
+                    <Link
+                      key={h.seed.id}
+                      href={`/predict/${h.seed.slug}`}
+                      className="rounded-lg border border-border bg-surface/40 p-3 text-left transition-colors hover:border-fg/25"
+                    >
+                      <p className="line-clamp-2 text-[12.5px] leading-snug text-fg">{h.seed.shortTitle}</p>
+                      <div className="mt-2 flex items-center justify-between">
+                        <span className="font-serif text-[16px] tabular-nums text-fg">{Math.round(h.price * 100)}%</span>
+                        <span className="font-mono text-[10.5px] text-fg-mute">{compactUsd(h.volume)} vol</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         ) : (
           <div className="overflow-hidden rounded-xl border border-border">
             {open.map((r, i) => {
@@ -214,13 +256,5 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="mb-3 text-[14px] font-semibold text-fg">{title}</h2>
       {children}
     </section>
-  );
-}
-
-function Empty({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-xl border border-dashed border-border px-4 py-10 text-center text-[13.5px] text-fg-mute">
-      {children}
-    </div>
   );
 }

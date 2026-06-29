@@ -255,10 +255,10 @@ export default function EscrowApp() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" /> Live on Base Sepolia
             </span>
             <h1 className="mt-5 font-sans text-[37px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-[50px]">
-              Pay only when the work is right.
+              An AI settles your deal fairly, for cents.
             </h1>
             <p className="mt-4 max-w-md text-[15.5px] leading-relaxed text-[#AAB2C5]">
-              Your money is locked in a contract and releases only when the work matches your brief. If you and the seller disagree, an agent settles it in seconds.
+              Hold the money in escrow. If you and the seller disagree, an AI agent reads the work and decides who gets paid.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a href="#create" className={BTN}>Create a deal</a>
@@ -266,7 +266,7 @@ export default function EscrowApp() {
                 See a settled deal →
               </Link>
             </div>
-            <p className="mt-6 text-[12.5px] text-[#6B7488]">escrow.com charges 3.25%. This costs about the price of gas.</p>
+            <p className="mt-6 text-[12.5px] text-[#6B7488]">A human arbitrator takes days and hundreds of dollars. An agent does the same job in seconds.</p>
           </div>
           <HeroDealCard id={hero.id} spec={hero.spec} amount={hero.amount} />
         </div>
@@ -280,8 +280,8 @@ export default function EscrowApp() {
               The agent pays out to whoever is right.
             </h2>
             <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
-              An agent reads the delivery against your brief, and a second, independent model checks the verdict before any
-              money moves. Every ruling is written on-chain, so you can open one and read exactly why it landed where it did.
+              Two independent models have to agree before any money moves, so neither side can game a single judge. Every
+              ruling is written down for anyone to read, so you can open a deal and see exactly why it was paid out.
             </p>
             <p className="mt-4 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
               When a brief is too vague to call fairly, the agent refuses to guess, and your money comes back.

@@ -3,11 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import PriceChart from "./PriceChart";
-import TradePanel from "./TradePanel";
-import OnChainTradePanel from "./OnChainTradePanel";
+import TradeRail from "./TradeRail";
 import ResolvePanel from "./ResolvePanel";
 import AnimatedPct from "./AnimatedPct";
-import { isOnChainMarket } from "@/lib/predict/onchain";
 import { findMarketBySlug, liquidityB, usePredict } from "@/lib/predict/store";
 import { priceYes as priceYesFn } from "@/lib/predict/amm";
 import { compactUsd, fmtDate, isPast, pct, untilDeadline } from "@/lib/predict/format";
@@ -115,9 +113,24 @@ export default function MarketDetail({ slug }: { slug: string }) {
             <p className="text-[13.5px] leading-relaxed text-fg-dim">{seed.description}</p>
             <h2 className="mt-5 text-[11px] text-fg-mute">Resolution rules</h2>
             <p className="mt-1.5 text-[13.5px] leading-relaxed text-fg-dim">{seed.resolutionCriteria}</p>
-            <p className="mt-3 text-[11px] text-fg-mute">
-              Source · <span className="text-fg-dim">{seed.resolutionSource}</span>
-            </p>
+            <dl className="mt-4 grid gap-x-6 gap-y-2 text-[12px] sm:grid-cols-2">
+              <Field label="Primary source" value={seed.resolutionSource} />
+              <Field label="Closes" value={`${fmtDate(seed.deadlineISO)} · 23:59 UTC`} mono />
+              <Field
+                label="Settled by"
+                value={seed.createdBy ? `${seed.createdBy.agent}, on-chain` : "Theseus agent, on-chain"}
+              />
+              <Field label="Outcome pays" value="$1 / share · refund if unresolvable" />
+            </dl>
+            <a
+              href={`/api/predict/market/${seed.slug}`}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-fg-mute transition-colors hover:text-coral"
+            >
+              <span className="rounded border border-border px-1.5 py-0.5">JSON</span>
+              Machine-readable market record ↗
+            </a>
           </section>
 
           {/* Related markets */}
@@ -152,11 +165,7 @@ export default function MarketDetail({ slug }: { slug: string }) {
 
         {/* Right: trade */}
         <div className="lg:sticky lg:top-[72px] lg:self-start">
-          {isOnChainMarket(seed.id) ? (
-            <OnChainTradePanel seed={seed} />
-          ) : (
-            <TradePanel seed={seed} initialSide={initialSide} />
-          )}
+          <TradeRail seed={seed} initialSide={initialSide} />
           <p className="mt-3 px-1 text-[11px] leading-relaxed text-fg-mute">
             Each share pays $1 if its outcome is the agent&rsquo;s verdict, $0
             otherwise. On UNRESOLVABLE, every position is refunded its cost.
@@ -164,5 +173,14 @@ export default function MarketDetail({ slug }: { slug: string }) {
         </div>
       </div>
     </main>
+  );
+}
+
+function Field({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+  return (
+    <div className="flex flex-col">
+      <dt className="text-[10.5px] uppercase tracking-[0.12em] text-fg-mute">{label}</dt>
+      <dd className={`mt-0.5 text-fg-dim ${mono ? "font-mono text-[11.5px]" : "text-[12.5px]"}`}>{value}</dd>
+    </div>
   );
 }

@@ -22,6 +22,9 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
 
   const resolved = !!settlement;
   const past = isPast(seed.deadlineISO);
+  const noPrice = 1 - priceYes;
+  const yesMult = priceYes > 0.01 ? 1 / priceYes : 0;
+  const noMult = noPrice > 0.01 ? 1 / noPrice : 0;
 
   return (
     <div
@@ -32,11 +35,16 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
       className="group flex cursor-pointer flex-col rounded-xl border border-border bg-surface/40 p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-fg/25 hover:bg-surface/70 hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)]"
     >
       <div className="flex items-start justify-between gap-4">
-        <p className="line-clamp-2 text-[14.5px] font-medium leading-snug text-fg">
+        <p className="line-clamp-2 text-[15px] font-medium leading-snug text-fg">
           {seed.shortTitle}
         </p>
-        <div className="shrink-0 font-serif text-[26px] font-medium leading-none tracking-tight tabular-nums text-fg">
-          {pct(priceYes)}
+        <div className="shrink-0 text-right leading-none">
+          <div className="font-serif text-[22px] font-medium tracking-tight tabular-nums text-fg">
+            {pct(priceYes)}
+          </div>
+          <div className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-fg-mute">
+            chance
+          </div>
         </div>
       </div>
 
@@ -68,27 +76,33 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
               e.stopPropagation();
               go("YES");
             }}
-            className="rounded-lg border border-[color-mix(in_srgb,var(--green)_35%,transparent)] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] py-2 text-[13px] font-semibold text-green transition-colors hover:bg-[color-mix(in_srgb,var(--green)_18%,transparent)]"
+            className="flex items-baseline justify-center gap-1.5 rounded-lg border border-[color-mix(in_srgb,var(--green)_35%,transparent)] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] py-2 text-[13px] font-semibold text-green transition-colors hover:bg-[color-mix(in_srgb,var(--green)_18%,transparent)]"
           >
-            Yes {cents(priceYes)}
+            <span>Yes {cents(priceYes)}</span>
+            <span className="font-mono text-[10.5px] font-medium opacity-70">{yesMult.toFixed(1)}×</span>
           </button>
           <button
             onClick={(e) => {
               e.stopPropagation();
               go("NO");
             }}
-            className="rounded-lg border border-[color-mix(in_srgb,var(--red)_35%,transparent)] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] py-2 text-[13px] font-semibold text-red transition-colors hover:bg-[color-mix(in_srgb,var(--red)_18%,transparent)]"
+            className="flex items-baseline justify-center gap-1.5 rounded-lg border border-[color-mix(in_srgb,var(--red)_35%,transparent)] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] py-2 text-[13px] font-semibold text-red transition-colors hover:bg-[color-mix(in_srgb,var(--red)_18%,transparent)]"
           >
-            No {cents(1 - priceYes)}
+            <span>No {cents(noPrice)}</span>
+            <span className="font-mono text-[10.5px] font-medium opacity-70">{noMult.toFixed(1)}×</span>
           </button>
         </div>
       )}
 
       <div className="mt-3 flex items-center justify-between text-[11.5px] text-fg-mute">
         <span>{compactUsd(volume)} Vol</span>
-        <span className={past && !resolved ? "text-amber" : undefined}>
-          {resolved ? "Settled by agent" : past ? "Agent can settle" : untilDeadline(seed.deadlineISO)}
-        </span>
+        {resolved ? (
+          <span>Settled by agent</span>
+        ) : past ? (
+          <span className="rounded-full bg-amber/15 px-2 py-0.5 font-medium text-amber">Agent can settle</span>
+        ) : (
+          <span>{untilDeadline(seed.deadlineISO)}</span>
+        )}
       </div>
     </div>
   );

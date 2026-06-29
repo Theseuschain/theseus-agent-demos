@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { myStanding, usePredict } from "@/lib/predict/store";
 import { usd, cents } from "@/lib/predict/format";
@@ -102,26 +103,40 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
         ))}
       </section>
 
-      {me && (
+      {me && (() => {
+        const leader = rows[0];
+        const ahead = rows.find((r) => r.pnlPct > me!.pnlPct);
+        const target = ahead ?? leader;
+        return (
         <section className="mt-4 rounded-xl border border-coral/40 bg-coral/[0.06] p-5">
           <div className="flex flex-wrap items-center gap-4">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-coral font-serif text-[20px] font-medium text-white">Y</span>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-[14px] font-semibold text-coral">Your standing</span>
-                <span className="text-[12px] text-fg-mute">would place {myRank} of {rows.length + 1}</span>
+                <span className="text-[14px] font-semibold text-coral">You</span>
+                <span className="text-[12px] text-fg-mute">rank {myRank} of {rows.length + 1}</span>
               </div>
-              <p className="mt-0.5 text-[12.5px] text-fg-dim">You trade the same board as the agents, on your own schedule.</p>
+              <p className="mt-0.5 text-[12.5px] text-fg-dim">
+                {target
+                  ? <>Catch <span className="font-semibold text-fg">{target.name}</span> ({target.pnlPct >= 0 ? "+" : ""}{target.pnlPct.toFixed(1)}%) — you trade the same board, on your own schedule.</>
+                  : "You trade the same board as the agents, on your own schedule."}
+              </p>
             </div>
             <div className="ml-auto flex items-center gap-7">
               <Stat label="Return" value={`${me.pnlPct >= 0 ? "+" : ""}${me.pnlPct.toFixed(1)}%`} />
               <Stat label="Portfolio" value={usd(me.value)} />
-              <Stat label="Cash" value={usd(state.balance)} />
               <Stat label="Positions" value={String(myOpen)} />
             </div>
+            <Link
+              href="/predict"
+              className="shrink-0 rounded-lg bg-coral px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-coral-dim"
+            >
+              {myOpen > 0 ? "Trade the board →" : "Place your first bet →"}
+            </Link>
           </div>
         </section>
-      )}
+        );
+      })()}
 
       <section className="mt-12">
         <h2 className="mb-4 font-serif text-[22px] tracking-tight text-fg">Recent agent trades</h2>
@@ -132,18 +147,20 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
         ) : (
           <div className="divide-y divide-border rounded-xl border border-border">
             {feed.map((tr: any, i: number) => (
-              <div key={i} className="flex items-start gap-3 px-4 py-3">
+              <div key={i} className="flex items-start gap-3 px-4 py-3 transition-colors hover:bg-fg/[0.02]">
                 <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg font-serif text-[13px] text-white" style={{ background: HUE[tr.trader] ?? "var(--coral)" }}>
                   {tr.trader[0]}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[13.5px] leading-snug text-fg">
-                    <span className="font-semibold">{tr.trader}</span> bought{" "}
-                    <span style={{ color: tr.side === "YES" ? "var(--green)" : "var(--red)" }}>{tr.side}</span>{" "}
-                    on <span className="text-fg-dim">{tr.q}</span> at {cents(tr.price)}{" "}
-                    <span className="font-mono text-[11.5px] text-fg-mute">· {usd(tr.usd)}</span>
-                  </p>
-                  {tr.reason && <p className="mt-0.5 text-[12.5px] leading-snug text-fg-mute">{tr.reason}</p>}
+                  <div className="flex items-baseline justify-between gap-3">
+                    <p className="min-w-0 truncate text-[13.5px] leading-snug text-fg">
+                      <span className="font-semibold">{tr.trader}</span>{" "}
+                      <span className="font-semibold" style={{ color: tr.side === "YES" ? "var(--green)" : "var(--red)" }}>{tr.side}</span>{" "}
+                      <span className="text-fg-dim">{tr.q}</span>
+                    </p>
+                    <span className="shrink-0 font-mono text-[11.5px] text-fg-mute">{cents(tr.price)} · {usd(tr.usd)}</span>
+                  </div>
+                  {tr.reason && <p className="mt-0.5 line-clamp-1 text-[12.5px] leading-snug text-fg-mute">{tr.reason}</p>}
                 </div>
               </div>
             ))}

@@ -46,12 +46,12 @@ export const DEMO_COPY = {
     path: "/escrow",
     title: "Agentic Escrow · escrow an agent settles",
     description:
-      "On-chain agentic escrow on Base Sepolia. Your money is locked in a contract and releases only when the work matches the brief. An agent settles disputes in seconds for the cost of gas, and a second one checks the call.",
+      "Hold the money in escrow, and if you and the seller disagree, an AI agent reads the work and decides who gets paid. A human arbitrator takes days and hundreds of dollars; an agent does it in seconds, and a second agent checks the call so it stays fair.",
     og: {
       section: "agentic escrow",
-      headline: "Pay only when the work is right.",
+      headline: "An AI settles your deal fairly, for cents.",
       blurb:
-        "Your money is locked in a contract and releases only when the work matches the brief. An agent settles disputes in seconds for the cost of gas, and a second one checks the call.",
+        "If you and the seller disagree, an AI agent decides who gets paid. A human arbitrator takes days and hundreds of dollars; an agent does it in seconds, and a second one checks the call so it stays fair.",
       url: "demo-agents.theseus.network/escrow",
       tag: "RELEASE · REFUND · HELD",
     },

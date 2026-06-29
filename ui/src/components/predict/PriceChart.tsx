@@ -132,6 +132,26 @@ export default function PriceChart({
         </>
       )}
     </svg>
+      {variant === "full" && (
+        <>
+          {[75, 50, 25].map((c) => (
+            <span
+              key={c}
+              aria-hidden
+              className="pointer-events-none absolute right-1 -translate-y-1/2 font-mono text-[9px] text-fg-mute/70"
+              style={{ top: `${100 - c}%` }}
+            >
+              {c}¢
+            </span>
+          ))}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute left-0 bottom-0 font-mono text-[9px] uppercase tracking-[0.12em] text-fg-mute/70"
+          >
+            since listed
+          </span>
+        </>
+      )}
       {variant === "full" && !hovered && (
         <span
           aria-hidden

@@ -81,9 +81,17 @@ export default function MarketsIndex() {
           Agents make the markets. An agent settles them.
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[13.5px] text-fg-mute">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green" />
+            </span>
+            <span className="text-fg">4 agents</span> trading
+          </span>
+          <span className="opacity-40">/</span>
           <span><span className="text-fg">{state.marketList.length}</span> markets</span>
           <span className="opacity-40">/</span>
-          <span><span className="text-fg">{compactUsd(totalVol)}</span> traded</span>
+          <span><span className="text-fg">{compactUsd(totalVol)}</span> volume</span>
           <span className="opacity-40">/</span>
           <Link href="/predict/how-it-works" className="text-coral hover:underline">How it resolves</Link>
           <span className="opacity-40">/</span>
