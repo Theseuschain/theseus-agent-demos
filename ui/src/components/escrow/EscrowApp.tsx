@@ -104,7 +104,7 @@ function RefundedReceipt() {
           <p className="pt-0.5 text-[12px] italic leading-relaxed text-[#8A93A6]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French.&rdquo;</p>
           <div className="mt-1 flex items-center justify-between gap-2 rounded-lg bg-[#4d8df0]/[0.08] px-3 py-2 text-[12px] text-[#9DC1F5]">
             <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#4d8df0]" />Brief not met, refunded to the buyer.</span>
-            <span className="shrink-0 text-[#7badf5]/70 transition-colors group-hover:text-[#7badf5]">Read the ruling &rarr;</span>
+            <span className="shrink-0 text-[#7badf5]/70 transition-colors group-hover:text-[#7badf5]">Read the decision &rarr;</span>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ export default function EscrowApp() {
               Escrow for less.<br />Escrow with confidence.<br />Escrow quickly.
             </h1>
             <p className="mt-5 max-w-md text-[15.5px] leading-relaxed text-[#AAB2C5]">
-              If you and the seller disagree, an AI agent reads the work and decides who gets paid. No human arbitrator, so it takes seconds and costs a few cents.
+              If you and the seller disagree, an AI agent reviews the work and decides who gets paid. No human arbitrator, so it takes seconds and costs a few cents.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a href="#create" className={BTN}>Create a deal</a>
@@ -279,11 +279,11 @@ export default function EscrowApp() {
               The agent pays out to whoever is right.
             </h2>
             <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
-              Two independent models have to agree before any money moves, so neither side can game a single judge. Every
-              ruling is written down for anyone to read, so you can open a deal and see exactly why it was paid out.
+              Two independent AI models check every dispute, and both have to agree before any money is paid. If they
+              disagree, a person decides. Every decision is saved with its reason, so you can open a deal and read it.
             </p>
             <p className="mt-4 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
-              When a brief is too vague to call fairly, the agent refuses to guess, and your money comes back.
+              If a brief is too vague to decide fairly, the agent does not guess. It returns your money.
             </p>
             <Link href="/escrow/how-it-works" className="mt-6 inline-block text-[13.5px] font-medium text-[#4d8df0] transition-colors hover:text-[#7badf5]">
               See exactly how it works &rarr;
@@ -299,7 +299,7 @@ export default function EscrowApp() {
           <div className="grid items-center gap-12 border-t border-white/[0.06] pt-14 lg:grid-cols-[1fr_0.88fr]">
             <div>
               <h2 className="font-sans text-[26px] font-bold tracking-[-0.02em] text-white sm:text-[32px]">Lock your first deal.</h2>
-              <p className="mt-4 max-w-md text-[14px] leading-relaxed text-[#8A93A6]">Connect a wallet to get started. The faucet covers the testnet tokens, so it costs nothing to try.</p>
+              <p className="mt-4 max-w-md text-[14px] leading-relaxed text-[#8A93A6]">Connect a wallet to start. The testnet tokens are free, so it costs nothing to try.</p>
               <div className="mt-6"><ConnectControl size="lg" /></div>
             </div>
             <NewDealPreview />

@@ -96,6 +96,18 @@ export default function PriceChart({
             vectorEffect="non-scaling-stroke"
           />
         ))}
+      {variant === "spark" && (
+        <line
+          x1="0"
+          x2={W}
+          y1={0.5 * data.H}
+          y2={0.5 * data.H}
+          stroke="var(--border)"
+          strokeWidth="0.5"
+          strokeDasharray="2 4"
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
       <path d={data.area} fill={`url(#g${gid})`} />
       <path
         d={data.line}
@@ -106,6 +118,9 @@ export default function PriceChart({
         strokeLinecap="round"
         vectorEffect="non-scaling-stroke"
       />
+      {variant === "spark" && (
+        <circle cx={lastPt.x} cy={lastPt.y} r="2.5" fill={stroke} vectorEffect="non-scaling-stroke" />
+      )}
       {hovered && (
         <>
           <line

@@ -25,6 +25,7 @@ interface Row {
   positions: number;
   kind: "agent" | "you";
   explorerUrl?: string;
+  address?: string;
 }
 
 export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed: any[] }) {
@@ -48,6 +49,7 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
       positions: Object.keys(a.positions || {}).length,
       kind: "agent" as const,
       explorerUrl: a.address ? a.explorerUrl : undefined,
+      address: a.address,
     }))
     .sort((a, b) => b.pnlPct - a.pnlPct);
 
@@ -93,8 +95,9 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
             </div>
 
             {t.explorerUrl ? (
-              <a href={t.explorerUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-[12px] text-fg-mute transition-colors hover:text-coral">
-                <span className="h-1 w-1 rounded-full bg-coral/70" /> Verify on Theseus ↗
+              <a href={t.explorerUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-mute transition-colors hover:text-coral">
+                <span className="h-1 w-1 rounded-full bg-coral/70" />
+                {t.address ? `${t.address.slice(0, 6)}…${t.address.slice(-4)}` : "agent"} · verify on-chain ↗
               </a>
             ) : (
               <p className="mt-3 text-[12px] text-fg-mute">awaiting first round</p>
@@ -118,8 +121,8 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
               </div>
               <p className="mt-0.5 text-[12.5px] text-fg-dim">
                 {target
-                  ? <>Catch <span className="font-semibold text-fg">{target.name}</span> ({target.pnlPct >= 0 ? "+" : ""}{target.pnlPct.toFixed(1)}%) — you trade the same board, on your own schedule.</>
-                  : "You trade the same board as the agents, on your own schedule."}
+                  ? <>Pass <span className="font-semibold text-fg">{target.name}</span> at {target.pnlPct >= 0 ? "+" : ""}{target.pnlPct.toFixed(1)}% return. You trade the same markets as the agents, on your own schedule.</>
+                  : "You trade the same markets as the agents, on your own schedule."}
               </p>
             </div>
             <div className="ml-auto flex items-center gap-7">
@@ -131,7 +134,7 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
               href="/predict"
               className="shrink-0 rounded-lg bg-coral px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-coral-dim"
             >
-              {myOpen > 0 ? "Trade the board →" : "Place your first bet →"}
+              {myOpen > 0 ? "Trade these markets →" : "Place your first bet →"}
             </Link>
           </div>
         </section>
@@ -147,7 +150,7 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
         ) : (
           <div className="divide-y divide-border rounded-xl border border-border">
             {feed.map((tr: any, i: number) => (
-              <div key={i} className="flex items-start gap-3 px-4 py-3 transition-colors hover:bg-fg/[0.02]">
+              <div key={i} className={`flex items-start gap-3 px-4 py-3 transition-colors hover:bg-fg/[0.03] ${i % 2 ? "bg-fg/[0.015]" : ""}`}>
                 <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg font-serif text-[13px] text-white" style={{ background: HUE[tr.trader] ?? "var(--coral)" }}>
                   {tr.trader[0]}
                 </span>
@@ -160,7 +163,7 @@ export default function LeaderboardBoard({ agents, feed }: { agents: any[]; feed
                     </p>
                     <span className="shrink-0 font-mono text-[11.5px] text-fg-mute">{cents(tr.price)} · {usd(tr.usd)}</span>
                   </div>
-                  {tr.reason && <p className="mt-0.5 line-clamp-1 text-[12.5px] leading-snug text-fg-mute">{tr.reason}</p>}
+                  {tr.reason && <p className="mt-0.5 line-clamp-1 text-[12.5px] leading-snug text-fg-dim">{tr.reason}</p>}
                 </div>
               </div>
             ))}

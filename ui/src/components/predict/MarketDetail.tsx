@@ -122,6 +122,10 @@ export default function MarketDetail({ slug }: { slug: string }) {
               />
               <Field label="Outcome pays" value="$1 / share · refund if unresolvable" />
             </dl>
+            <p className="mt-3 text-[12px] leading-relaxed text-fg-mute">
+              Finality: the agent&rsquo;s signed verdict is final on settlement. There is no token-holder
+              vote and no challenge window. The only non-final result is UNRESOLVABLE, which refunds every position.
+            </p>
             <a
               href={`/api/predict/market/${seed.slug}`}
               target="_blank"

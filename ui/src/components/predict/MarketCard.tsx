@@ -12,9 +12,11 @@ interface Props {
   volume: number;
   settlement?: Settlement;
   featured?: boolean;
+  hot?: boolean;
+  change?: number;
 }
 
-export default function MarketCard({ seed, priceYes, history, volume, settlement, featured }: Props) {
+export default function MarketCard({ seed, priceYes, history, volume, settlement, featured, hot, change = 0 }: Props) {
   const router = useRouter();
   const href = `/predict/${seed.slug}`;
   const go = (side?: "YES" | "NO") =>
@@ -35,9 +37,16 @@ export default function MarketCard({ seed, priceYes, history, volume, settlement
       className="group flex cursor-pointer flex-col rounded-xl border border-border bg-surface/40 p-4 transition-all duration-150 hover:-translate-y-0.5 hover:border-fg/25 hover:bg-surface/70 hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)]"
     >
       <div className="flex items-start justify-between gap-4">
-        <p className="line-clamp-2 text-[15px] font-medium leading-snug text-fg">
-          {seed.shortTitle}
-        </p>
+        <div className="min-w-0">
+          {hot && (
+            <span className="mb-1 inline-flex items-center gap-1 rounded-full bg-coral/12 px-2 py-0.5 font-mono text-[9.5px] font-semibold uppercase tracking-[0.12em] text-coral">
+              Hot {change >= 0 ? "▲" : "▼"}{Math.abs(Math.round(change * 100))}
+            </span>
+          )}
+          <p className="line-clamp-2 text-[15px] font-medium leading-snug text-fg">
+            {seed.shortTitle}
+          </p>
+        </div>
         <div className="shrink-0 text-right leading-none">
           <div className="font-serif text-[22px] font-medium tracking-tight tabular-nums text-fg">
             {pct(priceYes)}

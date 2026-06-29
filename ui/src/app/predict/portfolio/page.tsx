@@ -97,7 +97,7 @@ export default function PortfolioPage() {
         {open.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border px-5 py-8 text-center">
             <p className="text-[15px] font-medium text-fg">
-              {usd(state.balance)} of play-money ready to deploy.
+              {usd(state.balance)} of play-money to bet with.
             </p>
             <p className="mx-auto mt-1.5 max-w-md text-[13px] leading-relaxed text-fg-mute">
               Buy YES or NO on any market to open a position. Win and your shares pay $1 each; if the agent can&rsquo;t call it, you get refunded.

@@ -10,12 +10,14 @@ import { compactUsd, isPast } from "@/lib/predict/format";
 
 const CAT_ORDER = ["Crypto", "Politics", "Economy", "Tech", "Science", "Sports", "Trending"];
 type Sort = "volume" | "ending" | "new";
+type Status = "all" | "open" | "resolved";
 
 export default function MarketsIndex() {
   const state = usePredict();
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<string>("All");
   const [sort, setSort] = useState<Sort>("volume");
+  const [status, setStatus] = useState<Status>("all");
 
   const categories = useMemo(() => {
     const present = new Set(state.marketList.map((m) => m.category));
@@ -29,6 +31,11 @@ export default function MarketsIndex() {
       .filter((m) => {
         if (cat !== "All" && m.category !== cat) return false;
         if (q && !m.question.toLowerCase().includes(q.toLowerCase())) return false;
+        if (status !== "all") {
+          const resolved = !!state.settlements[m.id];
+          if (status === "resolved" && !resolved) return false;
+          if (status === "open" && resolved) return false;
+        }
         return true;
       })
       .map((seed) => {
@@ -36,10 +43,13 @@ export default function MarketsIndex() {
         const price = rt
           ? priceYesFn(rt.qYes, rt.qNo, liquidityB(seed.id))
           : seed.initialYes;
+        const history = rt?.history ?? [];
+        const change = history.length >= 2 ? price - history[0].pYes : 0;
         return {
           seed,
           price,
-          history: rt?.history ?? [],
+          history,
+          change,
           volume: rt?.volumeUsd ?? seed.volumeUsd,
           settlement: state.settlements[seed.id],
         };
@@ -52,8 +62,14 @@ export default function MarketsIndex() {
       if (ap !== bp) return ap - bp;
       return Date.parse(a.seed.deadlineISO) - Date.parse(b.seed.deadlineISO);
     });
-    return list;
-  }, [state, q, cat, sort]);
+    // Flag the biggest movers (open markets only) so traders see what is active.
+    const movers = [...list]
+      .filter((r) => !r.settlement && Math.abs(r.change) >= 0.05)
+      .sort((a, b) => Math.abs(b.change) - Math.abs(a.change))
+      .slice(0, 3)
+      .map((r) => r.seed.id);
+    return list.map((r) => ({ ...r, hot: movers.includes(r.seed.id) }));
+  }, [state, q, cat, sort, status]);
 
   const totalVol = useMemo(
     () =>
@@ -123,8 +139,28 @@ export default function MarketsIndex() {
         <RequestMarket />
       </div>
 
-      {/* Category chips — full-width scroller so nothing clips */}
+      {/* Status + category chips — full-width scroller so nothing clips */}
       <div className="no-scrollbar mt-3 flex items-center gap-2 overflow-x-auto pb-1">
+        <div className="flex shrink-0 items-center gap-0.5 rounded-full border border-border p-0.5">
+          {(
+            [
+              ["all", "All"],
+              ["open", "Open"],
+              ["resolved", "Resolved"],
+            ] as const
+          ).map(([s, label]) => (
+            <button
+              key={s}
+              onClick={() => setStatus(s)}
+              className={`shrink-0 rounded-full px-2.5 py-1 text-[12px] font-medium transition-colors ${
+                status === s ? "bg-fg/[0.08] text-fg" : "text-fg-mute hover:text-fg"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <span className="h-4 w-px shrink-0 bg-border" />
         {categories.map((c) => (
           <button
             key={c}
@@ -172,6 +208,8 @@ export default function MarketsIndex() {
                 volume={r.volume}
                 settlement={r.settlement}
                 featured={i === 0}
+                hot={r.hot}
+                change={r.change}
               />
             </div>
           ))}

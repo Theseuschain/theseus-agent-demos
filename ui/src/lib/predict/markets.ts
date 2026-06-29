@@ -6,18 +6,28 @@
 // closed markets) are appended so the agent-settlement demo always has something
 // to settle.
 
-import { DEMO_MARKETS, SEED_MARKETS } from "./seed";
+import { DEMO_MARKETS as DEMO_RAW, SEED_MARKETS } from "./seed";
 import type { SeedMarket } from "./types";
 import agentMarketsRaw from "./agent-markets.json";
 
-export { DEMO_MARKETS };
+// The bundled volume figures were authored at mainnet scale. This is a
+// play-money testnet where individual trades are a few hundred to a few
+// thousand eUSDC, so we bring the seeded volume into the same range. Trades
+// placed in-app add their real eUSDC amount on top.
+const VOLUME_SCALE = 0.01;
+const scaleVolume = (m: SeedMarket): SeedMarket => ({
+  ...m,
+  volumeUsd: Math.round((m.volumeUsd * VOLUME_SCALE) / 100) * 100,
+});
+
+export const DEMO_MARKETS: SeedMarket[] = DEMO_RAW.map(scaleVolume);
 
 /** Markets minted by the Theseus desk agent, with on-chain provenance. */
 export const AGENT_MARKETS: SeedMarket[] =
-  (agentMarketsRaw as unknown as SeedMarket[]) ?? [];
+  ((agentMarketsRaw as unknown as SeedMarket[]) ?? []).map(scaleVolume);
 
 export const FALLBACK_MARKETS: SeedMarket[] =
-  AGENT_MARKETS.length > 0 ? AGENT_MARKETS : SEED_MARKETS;
+  AGENT_MARKETS.length > 0 ? AGENT_MARKETS : SEED_MARKETS.map(scaleVolume);
 
 export interface LoadResult {
   markets: SeedMarket[];
@@ -27,6 +37,6 @@ export interface LoadResult {
 
 export async function fetchLiveMarkets(): Promise<LoadResult> {
   const agentMade = AGENT_MARKETS.length > 0;
-  const base = agentMade ? AGENT_MARKETS : SEED_MARKETS;
+  const base = agentMade ? AGENT_MARKETS : SEED_MARKETS.map(scaleVolume);
   return { markets: [...base, ...DEMO_MARKETS], live: agentMade };
 }

@@ -46,12 +46,12 @@ export const DEMO_COPY = {
     path: "/escrow",
     title: "Agentic Escrow · escrow an agent settles",
     description:
-      "Hold the money in escrow, and if you and the seller disagree, an AI agent reads the work and decides who gets paid. A human arbitrator takes days and hundreds of dollars; an agent does it in seconds, and a second agent checks the call so it stays fair.",
+      "If you and the seller disagree, an AI agent reviews the work and decides who gets paid. There is no human arbitrator, so it takes seconds and costs a few cents. A second AI model checks the decision, and if they disagree a person decides.",
     og: {
       section: "agentic escrow",
       headline: "Escrow for less, with confidence, quickly.",
       blurb:
-        "If you and the seller disagree, an AI agent reads the work and decides who gets paid. No human arbitrator, so it takes seconds and costs a few cents, and a second agent checks the call so it stays fair.",
+        "If you and the seller disagree, an AI agent reviews the work and decides who gets paid. There is no human arbitrator, so it takes seconds and costs a few cents. A second AI model checks the decision.",
       url: "demo-agents.theseus.network/escrow",
       tag: "RELEASE · REFUND · HELD",
     },

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { priceYes as priceYesFn, quoteBuy, sellProceeds } from "@/lib/predict/amm";
+import { buyCost, priceYes as priceYesFn, quoteBuy, sellProceeds } from "@/lib/predict/amm";
 import { buy, liquidityB, sell, usePredict } from "@/lib/predict/store";
 import { cents, isPast, pct, shares as fmtShares, usd } from "@/lib/predict/format";
 import type { Outcome, SeedMarket } from "@/lib/predict/types";
@@ -50,6 +50,13 @@ export default function TradePanel({
     const proceeds = sellProceeds(rt.qYes, rt.qNo, b, side, s);
     return { shares: s, proceeds, avgPrice: proceeds / s };
   }, [rt, mode, amt, side, held, b]);
+
+  // Depth: eUSDC needed to move this side's price up by one cent. Lower = deeper.
+  const depthUsd = useMemo(() => {
+    if (!rt) return 0;
+    const moveShares = (0.01 * b) / Math.max(0.0004, sidePrice * (1 - sidePrice));
+    return buyCost(rt.qYes, rt.qNo, b, side, moveShares);
+  }, [rt, b, side, sidePrice]);
 
   if (settled) {
     return (
@@ -126,6 +133,12 @@ export default function TradePanel({
         })}
       </div>
 
+      {/* Liquidity / depth */}
+      <div className="mt-2.5 flex items-center justify-between rounded-lg border border-border bg-bg/60 px-3 py-1.5 text-[11px] text-fg-mute">
+        <span>LMSR market maker</span>
+        <span className="tabular-nums">~{usd(depthUsd)} moves {side} 1¢</span>
+      </div>
+
       {resolving && (
         <p className="mt-3 rounded-lg border border-border bg-bg px-3 py-2 text-center text-[11.5px] font-medium text-amber">
           Resolving. You can keep trading until the agent settles it below.
@@ -178,43 +191,36 @@ export default function TradePanel({
             </div>
           </div>
 
-          {/* Quote */}
-          <div className="mt-4 space-y-1.5 text-[13px]">
-            {mode === "buy" && buyQuote && (
-              <>
-                <Row label="Avg price" value={cents(buyQuote.avgPrice)} />
-                <Row label="Shares" value={fmtShares(buyQuote.shares)} />
-                <Row
-                  label="Price impact"
-                  value={pct(Math.max(0, buyQuote.priceImpact))}
-                  muted
-                />
-                <div className="my-2 border-t border-border" />
-                <Row
-                  label="Payout if correct"
-                  value={usd(buyQuote.shares, { cents: true })}
-                  strong
-                />
-                <Row
-                  label="Return"
-                  value={`+${pct(amt > 0 ? (buyQuote.shares - amt) / amt : 0)}`}
-                  good
-                />
-              </>
-            )}
-            {mode === "sell" && sellQuote && (
-              <>
-                <Row label="Avg price" value={cents(sellQuote.avgPrice)} />
-                <Row label="Selling" value={`${fmtShares(sellQuote.shares)} shares`} />
-                <div className="my-2 border-t border-border" />
-                <Row
-                  label="You receive"
-                  value={usd(sellQuote.proceeds, { cents: true })}
-                  strong
-                />
-              </>
-            )}
-          </div>
+          {/* Quote — always visible so shares, impact and payout stay legible */}
+          {mode === "buy" ? (
+            <div className="mt-4">
+              <div className="rounded-lg border border-border bg-bg/60 p-3">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-[11.5px] text-fg-mute">Payout if correct</span>
+                  <span className="font-mono text-[20px] font-semibold tabular-nums text-fg">
+                    {buyQuote ? usd(buyQuote.shares, { cents: true }) : "$0.00"}
+                  </span>
+                </div>
+                {buyQuote && (
+                  <div className="mt-0.5 text-right font-mono text-[11.5px] tabular-nums text-green">
+                    +{pct((buyQuote.shares - amt) / amt)} on {usd(amt)}
+                  </div>
+                )}
+              </div>
+              <div className="mt-2.5 space-y-1.5 text-[13px]">
+                <Row label="Avg price" value={buyQuote ? cents(buyQuote.avgPrice) : cents(sidePrice)} />
+                <Row label="Shares" value={buyQuote ? fmtShares(buyQuote.shares) : "—"} />
+                <Row label="Price impact" value={buyQuote ? pct(Math.max(0, buyQuote.priceImpact)) : "—"} muted />
+              </div>
+            </div>
+          ) : (
+            <div className="mt-4 space-y-1.5 text-[13px]">
+              <Row label="Avg price" value={sellQuote ? cents(sellQuote.avgPrice) : cents(sidePrice)} />
+              <Row label="Selling" value={sellQuote ? `${fmtShares(sellQuote.shares)} shares` : "—"} />
+              <div className="my-2 border-t border-border" />
+              <Row label="You receive" value={sellQuote ? usd(sellQuote.proceeds, { cents: true }) : "$0.00"} strong />
+            </div>
+          )}
 
           <button
             onClick={submit}
@@ -239,6 +245,10 @@ export default function TradePanel({
       {flash && (
         <p className="mt-2 text-center text-[12px] font-medium text-green">{flash}</p>
       )}
+
+      <p className="mt-2.5 text-center text-[11px] text-fg-mute">
+        If the agent cannot determine the outcome, every position is refunded its cost.
+      </p>
 
       {/* Position */}
       {pos && (pos.yesShares > 0 || pos.noShares > 0) && (
