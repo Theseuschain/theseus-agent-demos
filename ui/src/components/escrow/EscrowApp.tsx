@@ -84,26 +84,62 @@ function HeroDealCard({ id, spec, amount }: { id: number; spec: string; amount: 
 // the worked dispute on the how-it-works page, not a specific on-chain receipt.
 function RefundedReceipt() {
   return (
+    <Link href="/escrow/how-it-works" className="group block">
+      <div className="rounded-xl border border-white/10 bg-white/[0.025] p-5 transition-colors group-hover:border-white/20">
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[12px] text-[#7E8696]">Translation deal · 1,200 {USDC_SYMBOL}</span>
+          <span className="rounded-md border border-white/12 bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-[#AAB2C5]">Refunded</span>
+        </div>
+        <p className="mt-3 text-[13.5px] leading-relaxed text-white/85">A native-quality French translation of the homepage. No machine translation.</p>
+
+        <div className="mt-4 space-y-2 border-t border-white/[0.07] pt-4">
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-1.5 text-[12.5px] text-[#9AA3B2]"><AgentMark name="arbiter" className="h-4 w-4 text-[#8A93A6]" />Arbiter</span>
+            <span className="font-mono text-[12.5px] font-semibold text-[#EF4444]">REFUND</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-1.5 text-[12.5px] text-[#9AA3B2]"><AgentMark name="sentinel" className="h-4 w-4 text-[#8A93A6]" />Sentinel <span className="text-[#6B7488]">(independent)</span></span>
+            <span className="font-mono text-[12.5px] font-semibold text-[#EF4444]">REFUND</span>
+          </div>
+          <p className="pt-0.5 text-[12px] italic leading-relaxed text-[#8A93A6]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French.&rdquo;</p>
+          <div className="mt-1 flex items-center justify-between gap-2 rounded-lg bg-[#4d8df0]/[0.08] px-3 py-2 text-[12px] text-[#9DC1F5]">
+            <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#4d8df0]" />Brief not met, refunded to the buyer.</span>
+            <span className="text-[#7badf5] opacity-0 transition-opacity group-hover:opacity-100">Read the ruling &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+// A still of the actual create form, so the closing CTA mirrors the product cards
+// above it instead of stranding the button in empty space.
+function NewDealPreview() {
+  const Field = ({ label, value }: { label: string; value: string }) => (
+    <div>
+      <div className="text-[11px] text-[#8A93A6]">{label}</div>
+      <div className="mt-1 rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2 font-mono text-[12px] text-[#6B7488]">{value}</div>
+    </div>
+  );
+  return (
     <div className="rounded-xl border border-white/10 bg-white/[0.025] p-5">
       <div className="flex items-center justify-between">
-        <span className="font-mono text-[12px] text-[#7E8696]">Translation deal · 1,200 {USDC_SYMBOL}</span>
-        <span className="rounded-md border border-white/12 bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-[#AAB2C5]">Refunded</span>
+        <span className="text-[13px] font-semibold text-white">New deal</span>
+        <span className="rounded-md border border-white/12 px-2 py-0.5 text-[11px] text-[#9AA3B2]">Faucet +5,000</span>
       </div>
-      <p className="mt-3 text-[13.5px] leading-relaxed text-white/85">A native-quality French translation of the homepage. No machine translation.</p>
-
-      <div className="mt-4 space-y-2 border-t border-white/[0.07] pt-4">
-        <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-[12.5px] text-[#9AA3B2]"><AgentMark name="arbiter" className="h-4 w-4 text-[#8A93A6]" />Arbiter</span>
-          <span className="font-mono text-[12.5px] font-semibold text-[#EF4444]">REFUND</span>
+      <div className="mt-4 space-y-3">
+        <Field label="Seller address" value="0x…" />
+        <div className="grid grid-cols-2 gap-3">
+          <Field label="Amount" value="1,000" />
+          <Field label="Days" value="7" />
         </div>
-        <div className="flex items-center justify-between">
-          <span className="flex items-center gap-1.5 text-[12.5px] text-[#9AA3B2]"><AgentMark name="sentinel" className="h-4 w-4 text-[#8A93A6]" />Sentinel <span className="text-[#6B7488]">(independent)</span></span>
-          <span className="font-mono text-[12.5px] font-semibold text-[#EF4444]">REFUND</span>
-        </div>
-        <p className="pt-0.5 text-[12px] italic leading-relaxed text-[#8A93A6]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French.&rdquo;</p>
-        <div className="mt-1 flex items-center gap-2 rounded-lg bg-[#4d8df0]/[0.08] px-3 py-2 text-[12px] text-[#9DC1F5]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#4d8df0]" />
-          Brief not met, refunded to the buyer on-chain.
+        <div>
+          <div className="text-[11px] text-[#8A93A6]">Brief</div>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {BRIEF_TEMPLATES.map((t) => (
+              <span key={t.label} className="rounded-md border border-white/12 px-2 py-0.5 text-[11px] text-white/70">{t.label}</span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -219,10 +255,10 @@ export default function EscrowApp() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" /> Live on Base Sepolia
             </span>
             <h1 className="mt-5 font-sans text-[37px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-[50px]">
-              Pay for work, not promises.
+              Pay only when the work is right.
             </h1>
             <p className="mt-4 max-w-md text-[15.5px] leading-relaxed text-[#AAB2C5]">
-              Your money is locked in the contract, not our hands, and releases only when the work matches your brief. If there&rsquo;s a dispute, an agent settles it in seconds for the cost of gas.
+              Your money is locked in the contract and releases only when the work matches your brief. If there&rsquo;s a dispute, an agent settles it in seconds for the cost of gas.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a href="#create" className={BTN}>Create a deal</a>
@@ -230,9 +266,8 @@ export default function EscrowApp() {
                 See a settled deal →
               </Link>
             </div>
-            <p className="mt-6 text-[12.5px] text-[#6B7488]">
-              escrow.com takes 3.25%. A lawyer takes hundreds. This takes about the cost of gas.
-            </p>
+            <p className="mt-4 text-[12.5px] text-[#6B7488]">Free to try on testnet, and locking a deal takes about a minute.</p>
+            <p className="mt-2 text-[12.5px] text-[#6B7488]">escrow.com charges 3.25%. This costs about the price of gas.</p>
           </div>
           <HeroDealCard id={hero.id} spec={hero.spec} amount={hero.amount} />
         </div>
@@ -243,16 +278,15 @@ export default function EscrowApp() {
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.88fr]">
           <div>
             <h2 className="font-sans text-[25px] font-bold leading-[1.14] tracking-[-0.02em] text-white sm:text-[31px]">
-              It pays the seller when the work is right. It refunds you when it isn&rsquo;t.
+              The agent pays out to whoever is right.
             </h2>
             <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
-              An agent reads the delivery against your brief, and a second, different model checks the verdict before any
-              money moves. Both calls are written on-chain, so you can read exactly why it ruled. And when a brief is too
-              vague to call fairly, the agent refuses to guess: you get refunded and a person steps in.
+              An agent reads the delivery against your brief, and a second, independent model checks the verdict before any
+              money moves. Every ruling is written on-chain, so you can open one and read exactly why it landed where it did.
             </p>
             <p className="mt-4 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
-              Until then your money sits in the contract, where nobody, not the seller, not us, can pull it out. And the
-              whole thing costs cents, not a percentage.
+              When a brief is too vague to call fairly, the agent refuses to guess and your money comes back. Until a deal
+              settles it sits in the contract, out of everyone&rsquo;s reach, for about the price of gas.
             </p>
             <Link href="/escrow/how-it-works" className="mt-6 inline-block text-[13.5px] font-medium text-[#4d8df0] transition-colors hover:text-[#7badf5]">
               See exactly how it works &rarr;
@@ -265,10 +299,13 @@ export default function EscrowApp() {
       {/* App surface */}
       <section id="create" className="mt-16 scroll-mt-20">
         {!isConnected && (
-          <div className="flex flex-col items-center gap-4 border-t border-white/[0.06] py-14 text-center">
-            <h2 className="font-sans text-[24px] font-bold tracking-[-0.02em] text-white sm:text-[30px]">Lock your first deal.</h2>
-            <p className="max-w-sm text-[13.5px] leading-relaxed text-[#8A93A6]">Connect a wallet on Base Sepolia, write a brief, and lock the funds. About a minute, and the faucet covers the testnet tokens.</p>
-            <div className="mt-1"><ConnectControl size="lg" /></div>
+          <div className="grid items-center gap-12 border-t border-white/[0.06] pt-12 lg:grid-cols-[1fr_0.88fr]">
+            <div>
+              <h2 className="font-sans text-[26px] font-bold tracking-[-0.02em] text-white sm:text-[32px]">Lock your first deal.</h2>
+              <p className="mt-4 max-w-md text-[14px] leading-relaxed text-[#8A93A6]">Connect a wallet on Base Sepolia, write a brief, and lock the funds. The faucet hands you testnet tokens, so it costs nothing to try.</p>
+              <div className="mt-6"><ConnectControl size="lg" /></div>
+            </div>
+            <NewDealPreview />
           </div>
         )}
 

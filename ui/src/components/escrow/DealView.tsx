@@ -247,7 +247,7 @@ function SentinelVerify({ id, spec, delivery, amountLabel, onchain }: { id: numb
             </div>
             <p className="mt-1.5 text-[12px] leading-relaxed text-[#AAB2C5]">{sentinel.evidenceSummary}</p>
             <div className="mt-2 rounded-lg border px-3 py-2 text-[12px]" style={{ borderColor: agree ? "#34D39940" : "#FBBF2440", background: agree ? "#34D39912" : "#FBBF2412", color: agree ? "#34D399" : "#FBBF24" }}>
-              {agree ? "An independent second model, blind to the verdict, reached the same call." : "The independent model disagrees, a live deal in this state would be held for a human, not paid."}
+              {agree ? "An independent second model, blind to the verdict, reached the same call." : "The independent model disagrees, so a live deal in this state would be held for a human to decide."}
             </div>
           </div>
         );

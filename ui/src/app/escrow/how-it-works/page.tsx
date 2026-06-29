@@ -11,10 +11,10 @@ const STEPS = [
 ];
 
 const FAQ = [
-  { q: "Who holds the money?", a: "The contract does. From the moment it is locked until it is released, no one, not the seller, not the buyer, not us, can move it. The agent only ever signals a verdict; it never holds the keys." },
+  { q: "Who holds the money?", a: "The contract does. From the moment it is locked until it is released, it is out of everyone's reach, including ours. The agent only ever signals a verdict; it never holds the keys." },
   { q: "What if the agents can’t decide?", a: "Either one can return UNRESOLVABLE when the brief is too vague to score or the work can’t be verified. The buyer is refunded and a human steps in. The agent never guesses to look decisive." },
   { q: "Can a deliverable trick the agents?", a: "It would have to fool two different models the same way, and any disagreement holds the funds for a person. The brief is fixed before the work arrives, so the goalposts can’t move." },
-  { q: "Why not Kleros or escrow.com?", a: "No staked-juror games, no multi-day votes, and no 3% platform cut. Two models read the actual work in seconds, and you can read both their verdicts on-chain." },
+  { q: "Why not Kleros or escrow.com?", a: "Two independent models read the actual work in seconds and write their verdicts on-chain for anyone to check. Kleros runs a multi-day vote among staked jurors; escrow.com charges 3.25% and rules out of sight." },
 ];
 
 export default function HowEscrowWorks() {
