@@ -49,13 +49,6 @@ const BRIEF_TEMPLATES: { label: string; text: string }[] = [
   { label: "Code", text: "Write a [language] function that [does X]. Handle bad input, add a short docstring, and include one usage example." },
 ];
 
-const STEPS = [
-  { h: "Lock the funds", p: "The buyer puts the money in the contract and says what they want done." },
-  { h: "Deliver the work", p: "The seller hands in the work, plus any files." },
-  { h: "Release or dispute", p: "If the buyer is happy, they release the money. If not, it goes to the agents." },
-  { h: "The agents settle it", p: "One agent makes the call, a second checks it, and the contract pays whoever is right." },
-];
-
 function HeroDealCard({ id, spec, amount }: { id: number; spec: string; amount: bigint }) {
   return (
     <Link href={`/escrow/${id}`} className="group block">
@@ -83,26 +76,6 @@ function HeroDealCard({ id, spec, amount }: { id: number; spec: string; amount: 
         </div>
       </div>
     </Link>
-  );
-}
-
-function WorkedDispute() {
-  // The moat made concrete: a second, independent model catches what the first
-  // missed, so the funds don't move. A single-agent escrow would have paid out.
-  return (
-    <div>
-      <h2 className="font-sans text-[21px] font-bold leading-tight tracking-[-0.02em] text-white sm:text-[27px]">When the two agents disagree, no one gets paid.</h2>
-      <p className="mt-5 max-w-3xl text-[16.5px] leading-[1.75] text-[#AAB2C5]">
-        A buyer orders a French translation of their homepage. The seller turns it in. The first agent reads it, thinks
-        it&rsquo;s good, and votes to{" "}
-        <span className="font-semibold text-[#34D399]/70 line-through decoration-[#EF4444] decoration-2">pay the seller</span>.
-        A second agent, which never saw that call, notices a line lifted straight from English instead of real French,
-        and votes to{" "}
-        <span className="font-semibold text-[#EF4444]">refund the buyer</span>. They don&rsquo;t agree, so{" "}
-        <span className="font-semibold text-[#FBBF24]">the money stays put</span> and a person makes the call. With one
-        agent, the seller would already have been paid.
-      </p>
-    </div>
   );
 }
 
@@ -215,10 +188,10 @@ export default function EscrowApp() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" /> Live on Base Sepolia
             </span>
             <h1 className="mt-5 font-sans text-[37px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-[50px]">
-              Escrow for cents, not percentages.
+              Pay for work, not promises.
             </h1>
             <p className="mt-4 max-w-md text-[15.5px] leading-relaxed text-[#AAB2C5]">
-              A human escrow takes a percentage and days, and can take a side. An agent settles in seconds for about the cost of gas, with no stake in who wins.
+              Lock the payment up front. It only reaches the seller once the work is actually done, and an agent settles any dispute in seconds for the cost of gas, taking no one&rsquo;s side.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a href="#create" className={BTN}>Create a deal</a>
@@ -234,23 +207,25 @@ export default function EscrowApp() {
         </div>
       </section>
 
-      {/* Simple how-it-works guide */}
-      <section className="mt-16">
-        <h2 className="text-[13px] font-semibold text-[#9AA3B2]">How it works</h2>
-        <div className="mt-5 grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((s, i) => (
-            <div key={s.h}>
-              <div className="text-[13px] font-semibold text-[#4d8df0]">{i + 1}</div>
-              <h3 className="mt-2 text-[14px] font-semibold text-white">{s.h}</h3>
-              <p className="mt-1.5 text-[12.5px] leading-relaxed text-[#8A93A6]">{s.p}</p>
-            </div>
-          ))}
+      {/* Why you'd want it */}
+      <section className="mt-20">
+        <div className="grid gap-x-10 gap-y-9 sm:grid-cols-3">
+          <div>
+            <h2 className="text-[16px] font-semibold text-white">Nobody can run off with your money.</h2>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-[#8A93A6]">It is locked in the contract until the deal is done. Not the seller, not us, no one can pull it out early.</p>
+          </div>
+          <div>
+            <h2 className="text-[16px] font-semibold text-white">You only pay for work that&rsquo;s right.</h2>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-[#8A93A6]">An agent checks the delivery against your brief, and a second agent checks the agent. Cheap doesn&rsquo;t mean careless.</p>
+          </div>
+          <div>
+            <h2 className="text-[16px] font-semibold text-white">Cents, not a percentage.</h2>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-[#8A93A6]">No 3% platform fee, no lawyer on retainer, no week of waiting. About the cost of gas.</p>
+          </div>
         </div>
-      </section>
-
-      {/* The moat, demonstrated on a real contested deal */}
-      <section className="mt-16">
-        <WorkedDispute />
+        <Link href="/escrow/how-it-works" className="mt-9 inline-block text-[13.5px] font-medium text-[#4d8df0] transition-colors hover:text-[#7badf5]">
+          See exactly how it works &rarr;
+        </Link>
       </section>
 
       {/* App surface */}
