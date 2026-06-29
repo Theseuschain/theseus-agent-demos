@@ -71,7 +71,7 @@ function HeroDealCard({ id, spec, amount }: { id: number; spec: string; amount: 
           </div>
           <div className="flex items-center justify-between gap-2 rounded-lg bg-[#34D399]/[0.07] px-3 py-2 text-[12px] text-[#34D399]">
             <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#34D399]" />Both agents agree, paid the seller.</span>
-            <span className="text-[#34D399]/70 opacity-0 transition-opacity group-hover:opacity-100">Open deal &rarr;</span>
+            <span className="shrink-0 text-[#34D399]/60 transition-colors group-hover:text-[#34D399]">Open deal &rarr;</span>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ function RefundedReceipt() {
           <p className="pt-0.5 text-[12px] italic leading-relaxed text-[#8A93A6]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French.&rdquo;</p>
           <div className="mt-1 flex items-center justify-between gap-2 rounded-lg bg-[#4d8df0]/[0.08] px-3 py-2 text-[12px] text-[#9DC1F5]">
             <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#4d8df0]" />Brief not met, refunded to the buyer.</span>
-            <span className="text-[#7badf5] opacity-0 transition-opacity group-hover:opacity-100">Read the ruling &rarr;</span>
+            <span className="shrink-0 text-[#7badf5]/70 transition-colors group-hover:text-[#7badf5]">Read the ruling &rarr;</span>
           </div>
         </div>
       </div>
