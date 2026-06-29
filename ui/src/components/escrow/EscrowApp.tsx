@@ -249,10 +249,10 @@ export default function EscrowApp() {
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#34D399]" /> Live on Base Sepolia
             </span>
             <h1 className="mt-5 font-sans text-[37px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-[50px]">
-              Escrow that doesn&rsquo;t trust a single agent.
+              Escrow for cents, not percent.
             </h1>
             <p className="mt-4 max-w-md text-[15.5px] leading-relaxed text-[#AAB2C5]">
-              Funds sit in a contract until two independent agents agree on who gets paid.
+              A human escrow takes a percentage and days, and can take a side. An agent settles in seconds for about the cost of gas, with no stake in who wins.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <a href="#create" className={BTN}>Create a deal</a>
@@ -260,6 +260,9 @@ export default function EscrowApp() {
                 See a settled deal →
               </Link>
             </div>
+            <p className="mt-6 text-[12.5px] text-[#6B7488]">
+              escrow.com takes 3.25%. A lawyer takes hundreds. This takes about the cost of gas.
+            </p>
           </div>
           <HeroDealCard id={hero.id} spec={hero.spec} amount={hero.amount} />
         </div>

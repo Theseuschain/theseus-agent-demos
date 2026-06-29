@@ -46,12 +46,12 @@ export const DEMO_COPY = {
     path: "/escrow",
     title: "Agentic Escrow · escrow an agent settles",
     description:
-      "On-chain agentic escrow on Base Sepolia. Funds sit in a contract until two independent agents agree on who gets paid. If they disagree, a human decides.",
+      "On-chain agentic escrow on Base Sepolia. A human escrow takes a percentage and days, and can take a side. An agent settles disputes in seconds for about the cost of gas, with no stake in who wins.",
     og: {
       section: "agentic escrow",
-      headline: "Escrow that doesn’t trust a single agent.",
+      headline: "Escrow for cents, not percent.",
       blurb:
-        "Funds sit in a contract until two independent agents agree on who gets paid. If they disagree, a human decides.",
+        "A human escrow takes a percentage and days, and can take a side. An agent settles in seconds for about the cost of gas, with no stake in who wins.",
       url: "demo-agents.theseus.network/escrow",
       tag: "RELEASE · REFUND · HELD",
     },
