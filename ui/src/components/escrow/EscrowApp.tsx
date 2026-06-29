@@ -247,7 +247,8 @@ export default function EscrowApp() {
             </h2>
             <p className="mt-5 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
               An agent reads the delivery against your brief, and a second, different model checks the verdict before any
-              money moves. Both calls are written on-chain, so you can read exactly why it ruled the way it did.
+              money moves. Both calls are written on-chain, so you can read exactly why it ruled. And when a brief is too
+              vague to call fairly, the agent refuses to guess: you get refunded and a person steps in.
             </p>
             <p className="mt-4 max-w-md text-[14.5px] leading-relaxed text-[#9AA3B2]">
               Until then your money sits in the contract, where nobody, not the seller, not us, can pull it out. And the
