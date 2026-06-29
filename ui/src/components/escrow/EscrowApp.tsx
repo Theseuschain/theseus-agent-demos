@@ -85,21 +85,21 @@ function WorkedDispute() {
           <p className="mt-1 text-[#9AA3B2]">&laquo; Bienvenue&hellip; Nous sommes excit&eacute;s de vous avoir ici&hellip; &raquo;</p>
         </div>
 
-        <div className="space-y-4">
-          <div className="flex items-start justify-between gap-5">
-            <div className="min-w-0">
-              <span className="flex items-center gap-2 text-[13.5px] text-[#9AA3B2]"><AgentMark name="arbiter" className="h-4 w-4 text-[#8A93A6]" />Arbiter</span>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, pay the seller.&rdquo;</p>
+        <div className="space-y-5">
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-2 text-[14px] text-[#9AA3B2]"><AgentMark name="arbiter" className="h-4 w-4 text-[#8A93A6]" />Arbiter</span>
+              <span className="text-[12.5px] font-semibold text-[#34D399]/55 line-through decoration-[#EF4444] decoration-2">RELEASE</span>
             </div>
-            <span className="shrink-0 pt-0.5 text-[13px] font-semibold text-[#34D399]/55 line-through decoration-[#EF4444] decoration-2">RELEASE</span>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, pay the seller.&rdquo;</p>
           </div>
 
-          <div className="flex items-start justify-between gap-5">
-            <div className="min-w-0">
-              <span className="flex items-center gap-2 text-[13.5px] text-white"><AgentMark name="sentinel" className="h-4 w-4 text-[#EF4444]" />Sentinel</span>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-[#9AA3B2]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French.&rdquo;</p>
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-2 text-[14px] text-white"><AgentMark name="sentinel" className="h-4 w-4 text-[#EF4444]" />Sentinel</span>
+              <span className="text-[12.5px] font-semibold text-[#EF4444]">REFUND</span>
             </div>
-            <span className="shrink-0 pt-0.5 text-[13px] font-semibold text-[#EF4444]">REFUND</span>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-[#9AA3B2]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French.&rdquo;</p>
           </div>
 
           <p className="border-t border-white/[0.08] pt-4 text-[13px] leading-relaxed text-[#AAB2C5]">
