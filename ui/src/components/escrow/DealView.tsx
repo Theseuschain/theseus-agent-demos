@@ -308,7 +308,7 @@ export default function DealView({ id }: { id: number }) {
     : deal.status === STATUS.UNRESOLVABLE ? "Agent declined; refunded to the buyer" : "";
 
   return (
-    <main className="mx-auto max-w-3xl px-4 pb-24 pt-8 sm:px-6">
+    <main className="mx-auto max-w-3xl px-4 pb-12 pt-8 sm:px-6">
       <Link href="/escrow" className="text-[13px] text-[#6B7488] transition-colors hover:text-white">← All deals</Link>
 
       <div className="mt-5 flex flex-wrap items-center gap-3">

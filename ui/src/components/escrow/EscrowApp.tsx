@@ -98,15 +98,15 @@ function WorkedDispute() {
             <p className="mt-1 text-[11.5px] leading-relaxed text-[#7E8696]">&ldquo;Reads fluently, covers every section, pay the seller.&rdquo;</p>
           </div>
 
-          <div className="flex items-center gap-2 py-2 pl-3.5 font-mono text-[10.5px] text-[#F87171]">
+          <div className="flex items-center gap-2 py-2 pl-3.5 font-mono text-[10.5px] text-[#EF4444]">
             <span className="text-[15px] leading-none">&darr;</span>
             <span>Sentinel overrules, blind to the first verdict</span>
           </div>
 
-          <div className="rounded-lg border border-[#F87171]/45 bg-[#F87171]/[0.10] p-3.5">
+          <div className="rounded-lg border border-[#EF4444]/50 bg-[#EF4444]/[0.12] p-3.5 shadow-[0_0_30px_-8px_rgba(239,68,68,0.55)]">
             <div className="flex items-center justify-between">
               <span className="text-[12px] font-medium text-white">Sentinel <span className="font-mono text-[10px] font-normal text-[#6B7488]">model B · blind</span></span>
-              <span className="rounded border border-[#F87171]/55 bg-[#F87171]/20 px-1.5 py-0.5 font-mono text-[11px] font-bold text-[#F87171]">REFUND</span>
+              <span className="rounded border border-[#EF4444]/60 bg-[#EF4444]/25 px-1.5 py-0.5 font-mono text-[11px] font-bold text-[#FCA5A5]">REFUND</span>
             </div>
             <p className="mt-1 text-[11.5px] leading-relaxed text-[#AAB2C5]">&ldquo;&lsquo;Excit&eacute;s de vous avoir&rsquo; is a calque from English, not native French. The brief required native quality.&rdquo;</p>
           </div>
